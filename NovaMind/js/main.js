@@ -71,75 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     autoplay: { delay: 5000 }
   });
 
-  // Chart.js dashboards – line, pie, bar, area charts
-  const lineCtx = document.getElementById('lineChart')?.getContext('2d');
-  if (lineCtx) {
-    new Chart(lineCtx, {
-      type: 'line',
-      data: {
-        labels: ['2018','2019','2020','2021','2022','2023','2024','2025','2026'],
-        datasets: [{
-          label: 'Innovators',
-          data: [1200,1500,1900,2400,3000,3800,4600,5600,6600],
-          borderColor: '#2563EB',
-          backgroundColor: 'rgba(38,99,235,0.1)',
-          tension: 0.4,
-          fill: true
-        }]
-      },
-      options: { responsive: true, maintainAspectRatio: false }
-    });
-  }
-
-  const pieCtx = document.getElementById('pieChart')?.getContext('2d');
-  if (pieCtx) {
-    new Chart(pieCtx, {
-      type: 'pie',
-      data: {
-        labels: ['AI','Quantum','IoT','Blockchain'],
-        datasets: [{
-          data: [45,25,20,10],
-          backgroundColor: ['#2563EB','#7C3AED','#06B6D4','#38BDF8']
-        }]
-      },
-      options: { responsive: true, maintainAspectRatio: false }
-    });
-  }
-
-  const barCtx = document.getElementById('barChart')?.getContext('2d');
-  if (barCtx) {
-    new Chart(barCtx, {
-      type: 'bar',
-      data: {
-        labels: ['USA','China','Germany','India','UK'],
-        datasets: [{
-          label: 'Projects',
-          data: [120,95,70,55,40],
-          backgroundColor: '#06B6D4'
-        }]
-      },
-      options: { responsive: true, maintainAspectRatio: false }
-    });
-  }
-
-  const areaCtx = document.getElementById('areaChart')?.getContext('2d');
-  if (areaCtx) {
-    new Chart(areaCtx, {
-      type: 'line',
-      data: {
-        labels: ['2018','2019','2020','2021','2022','2023','2024','2025','2026'],
-        datasets: [{
-          label: 'Success Rate',
-          data: [60,65,70,75,80,82,85,88,92],
-          borderColor: '#7C3AED',
-          backgroundColor: 'rgba(124,58,213,0.15)',
-          fill: true,
-          tension: 0.3
-        }]
-      },
-      options: { responsive: true, maintainAspectRatio: false }
-    });
-  }
+  // Chart.js removed for performance
 
   // Counter animation on scroll using IntersectionObserver
   const counters = document.querySelectorAll('.counter');
