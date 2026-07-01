@@ -1,0 +1,91 @@
+/* ================================================================
+   NovaMind — Subtle Animations
+   Premium SaaS micro-interactions: fade, float, soft scale
+   ================================================================ */
+
+/* ── Hero Title Entrance ── */
+.hero-title {
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease-out) forwards;
+  animation-delay: 0.3s;
+}
+
+.hero-section .lead {
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease-out) forwards;
+  animation-delay: 0.5s;
+}
+
+.hero-section .d-flex {
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease-out) forwards;
+  animation-delay: 0.7s;
+}
+
+.hero-section .scroll-indicator {
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease-out) forwards;
+  animation-delay: 0.9s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Float Animation (used for scroll indicator) ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ── Subtle Glow for dots/indicators ── */
+@keyframes softPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(37, 99, 235, 0.2); }
+  50% { box-shadow: 0 0 16px rgba(37, 99, 235, 0.4); }
+}
+
+.timeline-item .dot {
+  animation: softPulse 3s ease-in-out infinite;
+}
+
+/* ── Card hover lift — handled via CSS transitions in style.css ── */
+
+/* ── Disable AOS forced opacity ── */
+[data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* ── Focus Ring for Accessibility ── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Reduced Motion Preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-title,
+  .hero-section .lead,
+  .hero-section .d-flex,
+  .hero-section .scroll-indicator {
+    opacity: 1;
+    animation: none;
+  }
+}

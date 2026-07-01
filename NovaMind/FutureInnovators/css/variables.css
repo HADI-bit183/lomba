@@ -1,0 +1,49 @@
+:root {
+  /* Colors */
+  --color-bg: #0a0a2a; /* dark navy */
+  --color-primary: #3b82f6; /* blue */
+  --color-secondary: #7c3aed; /* purple */
+  --color-accent: #06b6d4; /* cyan */
+  --color-white: #ffffff;
+  --color-muted: #a0a0b5;
+
+  /* Gradient */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 12px rgba(59, 130, 246, 0.6);
+
+  /* Typography */
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+
+  /* Spacing (8px grid) */
+  --space-0: 0;
+  --space-1: 0.5rem;   /* 8px */
+  --space-2: 1rem;     /* 16px */
+  --space-3: 1.5rem;   /* 24px */
+  --space-4: 2rem;     /* 32px */
+  --space-5: 2.5rem;   /* 40px */
+  --space-6: 3rem;     /* 48px */
+  --space-7: 3.5rem;   /* 56px */
+  --space-8: 4rem;     /* 64px */
+
+  /* Border radius */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 24px;
+
+  /* Transitions */
+  --transition-speed: 0.3s;
+
+  /* Typography scale (fluid) */
+  --fs-display: clamp(2.5rem, 5vw, 3.5rem);
+  --fs-h1: clamp(2rem, 4.5vw, 3rem);
+  --fs-h2: clamp(1.75rem, 4vw, 2.5rem);
+  --fs-h3: clamp(1.5rem, 3.5vw, 2rem);
+  --fs-body: clamp(1rem, 2vw, 1.125rem);
+  --fs-small: clamp(0.875rem, 1.5vw, 1rem);
+}

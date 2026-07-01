@@ -1,0 +1,185 @@
+/* ================================================================
+   NovaMind — Responsive Breakpoints
+   Mobile-first, clean breakpoints
+   ================================================================ */
+
+/* Tablet landscape and below */
+@media (max-width: 992px) {
+  :root {
+    --space-9: 4rem;
+    --space-10: 5rem;
+  }
+
+  #navbar {
+    max-width: 100%;
+    border-radius: var(--radius-xl);
+    margin: var(--space-1) var(--space-2);
+    padding: 0.5rem 1rem;
+  }
+
+  #navbar .navbar-nav {
+    padding: var(--space-2) 0;
+    gap: 0.25rem;
+  }
+
+  #navbar .nav-link {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .premium-btn.ms-3 {
+    margin: 0.5rem 0 !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  #dark-mode-toggle {
+    margin: 0.5rem 0 !important;
+  }
+
+  .section {
+    padding: var(--space-7) 0;
+  }
+
+  section > .container.glass-card {
+    padding: var(--space-4);
+  }
+
+  .hero-section {
+    min-height: 75vh;
+  }
+
+  .hero-section .container {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+
+  .gallery-grid {
+    column-count: 2;
+  }
+}
+
+/* Tablet portrait */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 70vh;
+  }
+
+  .hero-section .container {
+    padding-top: var(--space-7);
+    padding-bottom: var(--space-7);
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+  }
+
+  .hero-section .lead {
+    font-size: var(--fs-body);
+  }
+
+  .hero-section .d-flex.gap-3 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-section .btn-lg {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .counter {
+    font-size: 2rem;
+  }
+
+  .timeline-items {
+    gap: 1rem;
+  }
+
+  section > .container.glass-card {
+    padding: var(--space-3);
+    border-radius: var(--radius-lg);
+  }
+
+  .section-title {
+    font-size: var(--fs-h3);
+  }
+
+  .novamind-toast {
+    left: 16px;
+    right: 16px;
+    max-width: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  #navbar {
+    margin: 0.5rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .hero-section {
+    min-height: 65vh;
+  }
+
+  .gallery-grid {
+    column-count: 1;
+  }
+
+  .counter {
+    font-size: 1.75rem;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  .navbar-brand img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .brand-text {
+    font-size: 1rem;
+  }
+
+  #team .card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  footer .row > div {
+    text-align: center;
+  }
+
+  footer .social-links {
+    justify-content: center;
+  }
+
+  footer .d-flex.gap-2 {
+    justify-content: center;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .premium-btn.btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: var(--fs-small);
+  }
+
+  section > .container.glass-card {
+    padding: var(--space-2);
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1200px;
+  }
+}

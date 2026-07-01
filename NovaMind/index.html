@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaMind – Empowering Global Innovators</title>
+  <meta name="description" content="A global platform connecting innovators, researchers, students, and technology enthusiasts to build an intelligent and sustainable future.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="NovaMind – Empowering Global Innovators">
+  <meta property="og:description" content="A global platform connecting innovators, researchers, students, and technology enthusiasts to build an intelligent and sustainable future.">
+  <meta property="og:image" content="assets/logo.svg">
+  <meta property="og:type" content="website">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NovaMind – Empowering Global Innovators">
+  <meta name="twitter:description" content="A global platform connecting innovators, researchers, students, and technology enthusiasts to build an intelligent and sustainable future.">
+  <meta name="twitter:image" content="assets/logo.svg">
+  <!-- Structured Data for FAQ -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity": [
+      {"@type":"Question","name":"What is NovaMind?","acceptedAnswer": {"@type":"Answer","text":"NovaMind is a global innovation platform that empowers young innovators, students, researchers, and technology enthusiasts to build an intelligent and sustainable future through innovation and collaboration."}},
+      {"@type":"Question","name":"How can I join the NovaMind community?","acceptedAnswer": {"@type":"Answer","text":"Click the Join Now button in the navigation bar to become a member. Choose from Student Member, Innovator Member, or Global Partner tiers based on your needs."}},
+      {"@type":"Question","name":"What technologies power NovaMind?","acceptedAnswer": {"@type":"Answer","text":"NovaMind leverages AI, quantum computing simulations, blockchain, edge computing, IoT, and modern web technologies to deliver interactive demos and global collaboration tools."}},
+      {"@type":"Question","name":"Is my data safe on NovaMind?","acceptedAnswer": {"@type":"Answer","text":"We adhere to GDPR and industry-standard encryption. Personal data is stored securely and never shared without consent."}}
+    ]
+  }
+  </script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Orbitron:wght@500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- CSS Libraries -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+<body>
+  <a class="skip-link sr-only sr-only-focusable" href="#main-content">Skip to main content</a>
+
+  <section id="preloader" class="preloader glass" aria-hidden="true">
+    <div class="preloader-inner">
+      <img src="assets/logo.svg" alt="NovaMind Logo" class="preloader-logo">
+      <div class="preloader-bar"><div class="preloader-progress"></div></div>
+      <p class="preloader-text">Initializing NovaMind...</p>
+    </div>
+  </section>
+
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#hero">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#problem">Challenges</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">Solutions</a></li>
+          <li class="nav-item"><a class="nav-link" href="#technology">Technology</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#articles">Articles</a></li>
+          <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <button class="premium-btn ms-3" id="cta-navbar" data-bs-toggle="modal" data-bs-target="#joinNowModal">Join Now</button>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <!-- Hero Section -->
+    <section id="hero" class="section hero-section position-relative overflow-hidden" aria-label="Hero">
+      <div class="aurora-bg"></div>
+      <div id="particles-js" class="particles-js"></div>
+      <div class="container text-center  position-relative z-2 py-5">
+                <h1 class="display-4 fw-bold mb-3 hero-title" aria-live="polite">Connecting Minds for Sustainable Solutions</h1>
+        <p class="lead mb-4">Connecting brilliant minds worldwide to create breakthrough technologies for a better tomorrow.</p>
+        <div class="d-flex justify-content-center gap-3">
+          <button class="premium-btn btn-lg" id="cta-hero-primary" data-bs-toggle="modal" data-bs-target="#joinNowModal">Get Started</button>
+          <button class="btn btn-outline-light btn-lg" id="cta-hero-secondary" onclick="document.getElementById('problem').scrollIntoView({behavior:'smooth'})">Learn More</button>
+        </div>
+        <div class="scroll-indicator mt-5" role="button" tabindex="0" aria-label="Scroll down to next section" onclick="document.getElementById('problem').scrollIntoView({behavior:'smooth'})">
+          <i class="fa-solid fa-mouse fa-2x"></i>
+          <span class="ms-2">Scroll Down</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- World Problems -->
+    <section id="problem" class="section py-5 bg-light text-dark" aria-label="Global Challenges">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-3">Global Challenges</h2>
+        <p class="section-subtitle text-center mb-5">Our world faces unprecedented crises that demand immediate, intelligent, and collaborative action.</p>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card glass h-100 p-4 border-0">
+              <i class="fa-solid fa-earth-americas fa-3x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title">Climate Crisis</h5>
+              <p class="card-text">Rapid environmental degradation and extreme weather events threaten the sustainability of our ecosystems.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card glass h-100 p-4 border-0">
+              <i class="fa-solid fa-user-shield fa-3x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title">Digital Divide</h5>
+              <p class="card-text">Unequal access to emerging technologies creates gaps in education, healthcare, and economic opportunity.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card glass h-100 p-4 border-0">
+              <i class="fa-solid fa-heart-crack fa-3x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title">Resource Scarcity</h5>
+              <p class="card-text">Growing populations strain global infrastructure, requiring smarter, more efficient resource management.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions -->
+    <section id="about" class="section py-5" aria-label="Our Solutions">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-5">Our Solutions</h2>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card p-4 h-100" aria-labelledby="about-ai">
+              <i class="fa-solid fa-brain fa-3x mb-3 text-primary"></i>
+              <h5 class="card-title" id="about-ai">Artificial Intelligence</h5>
+              <p class="card-text">Transforming data into insights, powering the next wave of intelligent solutions across industries worldwide.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card p-4 h-100" aria-labelledby="about-quantum">
+              <i class="fa-solid fa-atom fa-3x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title" id="about-quantum">Quantum Computing</h5>
+              <p class="card-text">Harnessing quantum mechanics to solve complex problems that classical computers cannot address efficiently.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card p-4 h-100" aria-labelledby="about-iot">
+              <i class="fa-solid fa-network-wired fa-3x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title" id="about-iot">Internet of Things</h5>
+              <p class="card-text">Connecting billions of devices to create smart ecosystems that enhance everyday life and industrial processes.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="glass-card p-4 h-100" aria-labelledby="about-sustainability">
+              <i class="fa-solid fa-leaf fa-3x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title" id="about-sustainability">Sustainable Tech</h5>
+              <p class="card-text">Developing green technologies and renewable energy solutions for a cleaner, more sustainable planet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Showcase -->
+    <section id="technology" class="section py-5" aria-label="Technology Showcase">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-3">Technology Showcase</h2>
+        <p class="section-subtitle text-center mb-5">Cutting-edge technologies powering the next wave of global innovation.</p>
+        <div class="row g-4 tech-grid">
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+            <div class="tech-card">
+              <div class="tech-icon-wrapper tech-icon-blue">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <h5 class="tech-card-title">Machine Learning</h5>
+              <p class="tech-card-desc">Advanced models that learn, predict, and create intelligent outcomes from complex datasets.</p>
+              <span class="tech-card-tag">AI / ML</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="tech-card">
+              <div class="tech-icon-wrapper tech-icon-cyan">
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              <h5 class="tech-card-title">Edge Computing</h5>
+              <p class="tech-card-desc">Processing data closer to the source for faster, more efficient real-time analytics.</p>
+              <span class="tech-card-tag">Infrastructure</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="tech-card">
+              <div class="tech-icon-wrapper tech-icon-purple">
+                <i class="fa-solid fa-link"></i>
+              </div>
+              <h5 class="tech-card-title">Blockchain</h5>
+              <p class="tech-card-desc">Decentralized ledger technology ensuring transparency, security, and trust in digital transactions.</p>
+              <span class="tech-card-tag">Web3</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="tech-card">
+              <div class="tech-icon-wrapper tech-icon-blue">
+                <i class="fa-solid fa-cloud"></i>
+              </div>
+              <h5 class="tech-card-title">Cloud Infrastructure</h5>
+              <p class="tech-card-desc">Scalable, elastic computing resources powering global innovation at unprecedented scale.</p>
+              <span class="tech-card-tag">Cloud</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="tech-card">
+              <div class="tech-icon-wrapper tech-icon-cyan">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h5 class="tech-card-title">Cybersecurity</h5>
+              <p class="tech-card-desc">Advanced threat detection and protection systems safeguarding digital infrastructure worldwide.</p>
+              <span class="tech-card-tag">Security</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="tech-card">
+              <div class="tech-icon-wrapper tech-icon-purple">
+                <i class="fa-solid fa-vr-cardboard"></i>
+              </div>
+              <h5 class="tech-card-title">Extended Reality</h5>
+              <p class="tech-card-desc">Immersive AR/VR experiences transforming education, healthcare, and entertainment.</p>
+              <span class="tech-card-tag">XR / Metaverse</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Laboratory -->
+    <section id="lab" class="section py-5 bg-light text-dark" aria-label="AI Laboratory">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-5">AI Laboratory</h2>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card p-4 h-100">
+              <i class="fa-solid fa-comments fa-2x mb-3 text-primary"></i>
+              <h5 class="card-title">AI Chatbot</h5>
+              <p class="card-text">Interact with our intelligent assistant powered by natural language processing.</p>
+              <button class="btn btn-primary w-100 open-chatbot">Open Chat</button>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card p-4 h-100">
+              <i class="fa-solid fa-microphone fa-2x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title">Voice Interaction</h5>
+              <p class="card-text">Speak naturally and let our AI understand and respond to your queries.</p>
+              <button class="btn btn-primary w-100 open-voice" onclick="openModal('voice-modal')">Start Voice</button>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card p-4 h-100">
+              <i class="fa-solid fa-image fa-2x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title">Image Classification</h5>
+              <p class="card-text">Upload an image and watch our AI identify objects with confidence scores.</p>
+              <button class="btn btn-primary w-100 open-classify" onclick="openModal('classify-modal')">Classify Image</button>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card p-4 h-100">
+              <i class="fa-solid fa-face-smile fa-2x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title">Sentiment Analysis</h5>
+              <p class="card-text">Analyze text to determine emotional tone using keyword-based NLP techniques.</p>
+              <button class="btn btn-primary w-100 open-analyze" onclick="openModal('analyze-modal')">Analyze Text</button>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card p-4 h-100">
+              <i class="fa-solid fa-lightbulb fa-2x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title">Topic Recommendations</h5>
+              <p class="card-text">Get personalized learning recommendations across AI, cloud, and emerging tech.</p>
+              <button class="btn btn-primary w-100 open-recommendations">Get Recommendations</button>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="glass-card p-4 h-100">
+              <i class="fa-solid fa-chart-line fa-2x mb-3 text-secondary"></i>
+              <h5 class="card-title">Future Forecast</h5>
+              <p class="card-text">Explore technology adoption trends and future predictions through interactive charts.</p>
+              <button class="btn btn-primary w-100 open-forecast" onclick="initForecastChart(); openModal('forecast-section')">View Forecast</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Innovation Timeline -->
+    <section id="timeline" class="section py-5" aria-label="Innovation Timeline">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-3">Innovation Timeline</h2>
+        <p class="section-subtitle text-center mb-5">Our journey towards building a smarter, more sustainable future.</p>
+        <div class="timeline-wrapper position-relative">
+          <div class="timeline-line"></div>
+          <div class="timeline-items">
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="0">
+              <div class="timeline-dot-wrapper">
+                <div class="dot"><i class="fa-solid fa-rocket"></i></div>
+              </div>
+              <div class="timeline-content">
+                <time datetime="2024" class="year">2024</time>
+                <h6 class="timeline-event-title">Platform Launch</h6>
+                <p class="event-desc">Community building &amp; global outreach initiatives across 50+ countries.</p>
+              </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+              <div class="timeline-dot-wrapper">
+                <div class="dot"><i class="fa-solid fa-cloud-sun"></i></div>
+              </div>
+              <div class="timeline-content">
+                <time datetime="2025" class="year">2025</time>
+                <h6 class="timeline-event-title">AI Climate Modeling</h6>
+                <p class="event-desc">AI-driven climate prediction models deployed for environmental research.</p>
+              </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+              <div class="timeline-dot-wrapper">
+                <div class="dot active"><i class="fa-solid fa-globe"></i></div>
+              </div>
+              <div class="timeline-content">
+                <time datetime="2026" class="year active">2026</time>
+                <h6 class="timeline-event-title">Global Innovation Summit</h6>
+                <p class="event-desc">Inaugural summit connecting 5,000+ innovators from 124 countries.</p>
+              </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+              <div class="timeline-dot-wrapper">
+                <div class="dot"><i class="fa-solid fa-atom"></i></div>
+              </div>
+              <div class="timeline-content">
+                <time datetime="2027" class="year">2027</time>
+                <h6 class="timeline-event-title">Quantum Integration</h6>
+                <p class="event-desc">Quantum computing tools integrated into the NovaMind platform.</p>
+              </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+              <div class="timeline-dot-wrapper">
+                <div class="dot"><i class="fa-solid fa-leaf"></i></div>
+              </div>
+              <div class="timeline-content">
+                <time datetime="2028" class="year">2028</time>
+                <h6 class="timeline-event-title">Sustainable Tech for All</h6>
+                <p class="event-desc">Open-source green technology solutions accessible worldwide.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Dashboard -->
+    <section id="stats" class="section py-5 bg-light text-dark" aria-label="Global Innovation Statistics">
+      <div class="container">
+        <h2 class="section-title text-center mb-5">Global Innovation Statistics</h2>
+        <div class="row g-4 text-center">
+          <div class="col-6 col-md-3"><div class="counter" data-count="124">0</div><p>Countries</p></div>
+          <div class="col-6 col-md-3"><div class="counter" data-count="8765">0</div><p>Innovators</p></div>
+          <div class="col-6 col-md-3"><div class="counter" data-count="3420">0</div><p>Projects</p></div>
+          <div class="col-6 col-md-3"><div class="counter" data-count="97">0</div><p>Success Rate (%)</p></div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-lg-6 mb-4"><canvas id="lineChart" aria-label="Innovators over years" role="img"></canvas></div>
+          <div class="col-lg-6 mb-4"><canvas id="pieChart" aria-label="Technology distribution" role="img"></canvas></div>
+          <div class="col-lg-6 mb-4"><canvas id="barChart" aria-label="Projects by country" role="img"></canvas></div>
+          <div class="col-lg-6 mb-4"><canvas id="areaChart" aria-label="Success rate timeline" role="img"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- World Innovation Map -->
+    <section id="world-map" class="section py-5 bg-light" aria-label="World Innovation Map">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-3">World Innovation Map</h2>
+        <p class="section-subtitle text-center mb-5">Our global network of innovators, researchers, and partners across 124 countries.</p>
+        
+        <!-- Map Container -->
+        <div class="innovation-map-container" data-aos="fade-up">
+          <div class="map-wrapper position-relative">
+            <img src="assets/images/world-map.svg" alt="World map showing innovation hubs" class="img-fluid w-100" id="world-map-img" loading="lazy" style="border-radius: var(--radius-lg);" />
+            
+            <!-- Hub Markers -->
+            <div class="map-hub" style="top: 28%; left: 20%;" data-region="North America" data-innovators="2,340" data-projects="890">
+              <span class="hub-pulse"></span>
+              <span class="hub-dot"></span>
+              <div class="hub-label">North America</div>
+            </div>
+            <div class="map-hub" style="top: 58%; left: 25%;" data-region="South America" data-innovators="1,120" data-projects="420">
+              <span class="hub-pulse"></span>
+              <span class="hub-dot"></span>
+              <div class="hub-label">South America</div>
+            </div>
+            <div class="map-hub" style="top: 22%; left: 49%;" data-region="Europe" data-innovators="2,100" data-projects="780">
+              <span class="hub-pulse"></span>
+              <span class="hub-dot"></span>
+              <div class="hub-label">Europe</div>
+            </div>
+            <div class="map-hub" style="top: 48%; left: 52%;" data-region="Africa" data-innovators="890" data-projects="310">
+              <span class="hub-pulse"></span>
+              <span class="hub-dot"></span>
+              <div class="hub-label">Africa</div>
+            </div>
+            <div class="map-hub" style="top: 25%; left: 72%;" data-region="Asia" data-innovators="1,850" data-projects="720">
+              <span class="hub-pulse"></span>
+              <span class="hub-dot"></span>
+              <div class="hub-label">Asia</div>
+            </div>
+            <div class="map-hub" style="top: 68%; left: 82%;" data-region="Australia" data-innovators="465" data-projects="300">
+              <span class="hub-pulse"></span>
+              <span class="hub-dot"></span>
+              <div class="hub-label">Australia</div>
+            </div>
+
+            <!-- Tooltip -->
+            <div id="map-tooltip" class="map-tooltip" role="tooltip"></div>
+          </div>
+        </div>
+
+        <!-- Region Stats -->
+        <div class="row g-3 mt-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-6 col-md-2">
+            <div class="region-stat-card text-center">
+              <div class="region-flag"><i class="fa-solid fa-flag-usa"></i></div>
+              <h6 class="region-stat-name">N. America</h6>
+              <span class="region-stat-value">2,340</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-2">
+            <div class="region-stat-card text-center">
+              <div class="region-flag"><i class="fa-solid fa-earth-americas"></i></div>
+              <h6 class="region-stat-name">S. America</h6>
+              <span class="region-stat-value">1,120</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-2">
+            <div class="region-stat-card text-center">
+              <div class="region-flag"><i class="fa-solid fa-earth-europe"></i></div>
+              <h6 class="region-stat-name">Europe</h6>
+              <span class="region-stat-value">2,100</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-2">
+            <div class="region-stat-card text-center">
+              <div class="region-flag"><i class="fa-solid fa-earth-africa"></i></div>
+              <h6 class="region-stat-name">Africa</h6>
+              <span class="region-stat-value">890</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-2">
+            <div class="region-stat-card text-center">
+              <div class="region-flag"><i class="fa-solid fa-earth-asia"></i></div>
+              <h6 class="region-stat-name">Asia</h6>
+              <span class="region-stat-value">1,850</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-2">
+            <div class="region-stat-card text-center">
+              <div class="region-flag"><i class="fa-solid fa-earth-oceania"></i></div>
+              <h6 class="region-stat-name">Australia</h6>
+              <span class="region-stat-value">465</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section id="projects" class="section py-5 bg-light text-dark" aria-label="Featured Projects">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-5">Featured Projects</h2>
+        <div class="swiper projects-swiper" aria-roledescription="carousel">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="card glass p-4 h-100">
+                <i class="fa-solid fa-graduation-cap fa-3x mb-3 text-primary"></i>
+                <h5 class="card-title">AI Learning Assistant</h5>
+                <p class="card-text">An intelligent tutoring system that personalizes learning pathways using adaptive AI algorithms to enhance student outcomes globally.</p>
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#projectModal1">Learn More</button>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card glass p-4 h-100">
+                <i class="fa-solid fa-seedling fa-3x mb-3 text-neutral-icon"></i>
+                <h5 class="card-title">Smart Farming System</h5>
+                <p class="card-text">IoT-powered precision agriculture platform that optimizes crop yields, water usage, and soil health through real-time data analytics.</p>
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#projectModal2">Learn More</button>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card glass p-4 h-100">
+                <i class="fa-solid fa-solar-panel fa-3x mb-3 text-neutral-icon"></i>
+                <h5 class="card-title">Renewable Energy Monitor</h5>
+                <p class="card-text">A comprehensive dashboard tracking solar, wind, and hydroelectric energy generation with AI-driven efficiency optimization.</p>
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#projectModal3">Learn More</button>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card glass p-4 h-100">
+                <i class="fa-solid fa-heartbeat fa-3x mb-3 text-neutral-icon"></i>
+                <h5 class="card-title">Digital Healthcare Platform</h5>
+                <p class="card-text">Telemedicine and AI-assisted diagnostics platform connecting patients with healthcare providers in underserved communities.</p>
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#projectModal4">Learn More</button>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card glass p-4 h-100">
+                <i class="fa-solid fa-car fa-3x mb-3 text-neutral-icon"></i>
+                <h5 class="card-title">Intelligent Transportation Network</h5>
+                <p class="card-text">Smart traffic management system using real-time data and machine learning to reduce congestion and emissions in cities.</p>
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#projectModal5">Learn More</button>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card glass p-4 h-100">
+                <i class="fa-solid fa-globe fa-3x mb-3 text-secondary"></i>
+                <h5 class="card-title">Global Innovation Hub</h5>
+                <p class="card-text">A collaborative digital workspace connecting researchers, entrepreneurs, and institutions across 124 countries for joint innovation.</p>
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#projectModal6">Learn More</button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination" aria-label="Projects pagination"></div>
+          <div class="swiper-button-next" aria-label="Next project"></div>
+          <div class="swiper-button-prev" aria-label="Previous project"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section py-5 bg-light text-dark" aria-label="Gallery">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-5">Gallery</h2>
+        <div class="gallery-grid columns-4 gap-3">
+          <a href="assets/images/placeholder.svg" class="gallery-item" data-lightbox="gallery" aria-label="Open AI Lab image">
+            <img src="assets/images/placeholder.svg" alt="AI Laboratory workspace" loading="lazy" />
+            <div class="overlay"><i class="fa fa-search-plus"></i></div>
+          </a>
+          <a href="assets/images/placeholder.svg" class="gallery-item" data-lightbox="gallery" aria-label="Open Innovation Summit image">
+            <img src="assets/images/placeholder.svg" alt="Global Innovation Summit" loading="lazy" />
+            <div class="overlay"><i class="fa fa-search-plus"></i></div>
+          </a>
+          <a href="assets/images/placeholder.svg" class="gallery-item" data-lightbox="gallery" aria-label="Open Quantum Computing image">
+            <img src="assets/images/placeholder.svg" alt="Quantum Computing Research" loading="lazy" />
+            <div class="overlay"><i class="fa fa-search-plus"></i></div>
+          </a>
+          <a href="assets/images/placeholder.svg" class="gallery-item" data-lightbox="gallery" aria-label="Open Sustainability image">
+            <img src="assets/images/placeholder.svg" alt="Sustainable Technology Projects" loading="lazy" />
+            <div class="overlay"><i class="fa fa-search-plus"></i></div>
+          </a>
+          <a href="assets/images/placeholder.svg" class="gallery-item" data-lightbox="gallery" aria-label="Open Robotics image">
+            <img src="assets/images/placeholder.svg" alt="Robotics and Automation Lab" loading="lazy" />
+            <div class="overlay"><i class="fa fa-search-plus"></i></div>
+          </a>
+          <a href="assets/images/placeholder.svg" class="gallery-item" data-lightbox="gallery" aria-label="Open Collaboration image">
+            <img src="assets/images/placeholder.svg" alt="International Collaboration" loading="lazy" />
+            <div class="overlay"><i class="fa fa-search-plus"></i></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles -->
+    <section id="articles" class="section py-5" aria-label="Latest Articles">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-5">Latest Articles</h2>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="card glass h-100 p-4">
+              <i class="fa-solid fa-brain fa-2x mb-3 text-primary"></i>
+              <h5 class="card-title">The Future of Artificial Intelligence in Global Society</h5>
+              <p class="card-text text-muted">Exploring how AI is reshaping industries, governance, and human interaction on a global scale.</p>
+              <div class="article-meta mb-3"><small><i class="fa-solid fa-calendar me-1"></i> June 2026 · 8 min read</small></div>
+              <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#article1Modal">Read More</button>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card glass h-100 p-4">
+              <i class="fa-solid fa-leaf fa-2x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title">Green Technology for Sustainable Development</h5>
+              <p class="card-text text-muted">How clean energy, circular economies, and eco-innovation are driving global sustainability goals.</p>
+              <div class="article-meta mb-3"><small><i class="fa-solid fa-calendar me-1"></i> May 2026 · 7 min read</small></div>
+              <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#article2Modal">Read More</button>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card glass h-100 p-4">
+              <i class="fa-solid fa-city fa-2x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title">Smart Cities and Intelligent Urban Transformation</h5>
+              <p class="card-text text-muted">The convergence of IoT, AI, and data analytics in building smarter, more livable urban environments.</p>
+              <div class="article-meta mb-3"><small><i class="fa-solid fa-calendar me-1"></i> April 2026 · 6 min read</small></div>
+              <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#article3Modal">Read More</button>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card glass h-100 p-4">
+              <i class="fa-solid fa-users fa-2x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title">The Role of Youth in Global Innovation</h5>
+              <p class="card-text text-muted">How young entrepreneurs and researchers are leading the charge in technological breakthroughs.</p>
+              <div class="article-meta mb-3"><small><i class="fa-solid fa-calendar me-1"></i> March 2026 · 5 min read</small></div>
+              <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#article4Modal">Read More</button>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card glass h-100 p-4">
+              <i class="fa-solid fa-chalkboard-user fa-2x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title">Emerging Technologies in Modern Education</h5>
+              <p class="card-text text-muted">AI tutors, VR classrooms, and adaptive learning platforms transforming education worldwide.</p>
+              <div class="article-meta mb-3"><small><i class="fa-solid fa-calendar me-1"></i> February 2026 · 7 min read</small></div>
+              <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#article5Modal">Read More</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events -->
+    <section id="events" class="section py-5 bg-light text-dark" aria-label="Upcoming Events">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-5">Upcoming Events</h2>
+        <div class="swiper events-swiper" aria-roledescription="carousel">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="card glass p-4 h-100">
+                <h5 class="card-title">Global AI Summit 2027</h5>
+                <p class="card-text"><i class="fa-solid fa-calendar me-2"></i>March 12–15, 2027</p>
+                <p class="card-text"><i class="fa-solid fa-location-dot me-2"></i>San Francisco, CA</p>
+                <p class="card-text">Join 5,000+ innovators for keynotes, workshops, and networking on the future of AI.</p>
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#eventRegisterModal">Register</button>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card glass p-4 h-100">
+                <h5 class="card-title">Green Tech Innovation Forum</h5>
+                <p class="card-text"><i class="fa-solid fa-calendar me-2"></i>June 20–22, 2027</p>
+                <p class="card-text"><i class="fa-solid fa-location-dot me-2"></i>Berlin, Germany</p>
+                <p class="card-text">Explore sustainable technologies and collaborate on solutions for a greener future.</p>
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#eventRegisterModal">Register</button>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card glass p-4 h-100">
+                <h5 class="card-title">Youth Innovation Hackathon</h5>
+                <p class="card-text"><i class="fa-solid fa-calendar me-2"></i>September 5–7, 2027</p>
+                <p class="card-text"><i class="fa-solid fa-location-dot me-2"></i>Virtual (Global)</p>
+                <p class="card-text">A 48-hour hackathon for students and young professionals to build solutions using AI and IoT.</p>
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#eventRegisterModal">Register</button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination" aria-label="Events pagination"></div>
+          <div class="swiper-button-next" aria-label="Next event"></div>
+          <div class="swiper-button-prev" aria-label="Previous event"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Innovation Quiz -->
+    <section id="quiz" class="section py-5" aria-label="Innovation Quiz">
+      <div class="container">
+        <h2 class="section-title text-center mb-5">Innovation Quiz</h2>
+        <div class="quiz-wrapper glass p-5 rounded" role="region" aria-live="polite">
+          <div id="quiz-content"></div>
+          <div class="text-center mt-4">
+            <button class="btn btn-primary btn-lg" id="start-quiz">Start Quiz</button>
+          </div>
+          <div id="quiz-result" class="mt-4 d-none">
+            <h4 class="text-center">Your Score: <span id="quiz-score"></span>/20</h4>
+            <button class="btn btn-success w-100" id="download-certificate">Download Certificate</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section py-5 bg-light text-dark" aria-label="Testimonials">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-5">Testimonials</h2>
+        <div class="swiper testimonials-swiper" aria-roledescription="carousel">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="card glass p-4 h-100">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fa-solid fa-user-circle fa-3x me-3 text-primary"></i>
+                  <div>
+                    <h6 class="mb-0">Samuel Lee</h6>
+                    <small class="text-muted">CTO, TechNova</small>
+                  </div>
+                </div>
+                <p class="card-text">"NovaMind's AI lab transformed our R&amp;D pipeline — speed and accuracy skyrocketed. The platform's collaborative tools are unmatched."</p>
+                <div class="rating text-neutral-icon"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card glass p-4 h-100">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fa-solid fa-user-circle fa-3x me-3 text-neutral-icon"></i>
+                  <div>
+                    <h6 class="mb-0">Dr. Aisha Rahman</h6>
+                    <small class="text-muted">Research Lead, GreenTech Labs</small>
+                  </div>
+                </div>
+                <p class="card-text">"The global collaboration network on NovaMind enabled our team to partner with researchers across 15 countries seamlessly."</p>
+                <div class="rating text-neutral-icon"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="card glass p-4 h-100">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fa-solid fa-user-circle fa-3x me-3 text-neutral-icon"></i>
+                  <div>
+                    <h6 class="mb-0">Marco Fernandez</h6>
+                    <small class="text-muted">Student Innovator, MIT</small>
+                  </div>
+                </div>
+                <p class="card-text">"As a student member, the workshops and mentorship programs gave me the skills and network to launch my first startup."</p>
+                <div class="rating text-neutral-icon"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination" aria-label="Testimonials pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Membership Benefits -->
+    <section id="membership" class="section py-5 bg-light" aria-label="Membership Benefits">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-5">Membership Benefits</h2>
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-4">
+            <div class="card glass h-100 text-center p-4">
+              <i class="fa-solid fa-user-graduate fa-3x mb-3 text-primary"></i>
+              <h5 class="card-title">Student Member</h5>
+              <ul class="list-unstyled text-start mb-4">
+                <li><i class="fa-solid fa-check text-neutral-icon me-2"></i>Free workshops and webinars</li>
+                <li><i class="fa-solid fa-check text-neutral-icon me-2"></i>Innovation newsletters</li>
+                <li><i class="fa-solid fa-check text-neutral-icon me-2"></i>Community access</li>
+                <li><i class="fa-solid fa-check text-neutral-icon me-2"></i>Learning resources</li>
+              </ul>
+              <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#memberStudentModal">Learn More</button>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card glass h-100 text-center p-4">
+              <i class="fa-solid fa-rocket fa-3x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title">Innovator Member</h5>
+              <ul class="list-unstyled text-start mb-4">
+                <li><i class="fa-solid fa-check text-neutral-icon me-2"></i>International collaboration opportunities</li>
+                <li><i class="fa-solid fa-check text-neutral-icon me-2"></i>AI Lab access</li>
+                <li><i class="fa-solid fa-check text-neutral-icon me-2"></i>Project showcase platform</li>
+                <li><i class="fa-solid fa-check text-neutral-icon me-2"></i>Global networking</li>
+              </ul>
+              <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#memberInnovatorModal">Learn More</button>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card glass h-100 text-center p-4">
+              <i class="fa-solid fa-handshake fa-3x mb-3 text-neutral-icon"></i>
+              <h5 class="card-title">Global Partner</h5>
+              <ul class="list-unstyled text-start mb-4">
+                <li><i class="fa-solid fa-check text-neutral-icon me-2"></i>Research collaborations</li>
+                <li><i class="fa-solid fa-check text-neutral-icon me-2"></i>Technology conferences</li>
+                <li><i class="fa-solid fa-check text-neutral-icon me-2"></i>Strategic partnerships</li>
+                <li><i class="fa-solid fa-check text-neutral-icon me-2"></i>International innovation programs</li>
+              </ul>
+              <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#memberPartnerModal">Learn More</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section py-5 bg-light text-dark" aria-label="Frequently Asked Questions">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-5">Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item glass">
+            <h2 class="accordion-header" id="faq-heading-1">
+              <button class="accordion-button collapsed bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-1" aria-expanded="false" aria-controls="faq-collapse-1">What is NovaMind?</button>
+            </h2>
+            <div id="faq-collapse-1" class="accordion-collapse collapse" aria-labelledby="faq-heading-1" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">NovaMind is a global innovation platform that empowers young innovators, students, researchers, and technology enthusiasts to build an intelligent and sustainable future through innovation and collaboration. Our platform provides AI tools, collaborative workspaces, and networking opportunities across 124 countries.</div>
+            </div>
+          </div>
+          <div class="accordion-item glass">
+            <h2 class="accordion-header" id="faq-heading-2">
+              <button class="accordion-button collapsed bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-2" aria-expanded="false" aria-controls="faq-collapse-2">How can I join the NovaMind community?</button>
+            </h2>
+            <div id="faq-collapse-2" class="accordion-collapse collapse" aria-labelledby="faq-heading-2" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Click the"Join Now" button in the navigation bar to get started. We offer three membership tiers: Student Member (free access to workshops and resources), Innovator Member (AI Lab access and collaboration tools), and Global Partner (research collaborations and conference access). Choose the tier that best fits your goals.</div>
+            </div>
+          </div>
+          <div class="accordion-item glass">
+            <h2 class="accordion-header" id="faq-heading-3">
+              <button class="accordion-button collapsed bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-3" aria-expanded="false" aria-controls="faq-collapse-3">What technologies power NovaMind?</button>
+            </h2>
+            <div id="faq-collapse-3" class="accordion-collapse collapse" aria-labelledby="faq-heading-3" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">NovaMind leverages cutting-edge technologies including Artificial Intelligence, Machine Learning, Quantum Computing simulations, Blockchain, Edge Computing, and Internet of Things (IoT). Our platform is built with modern web technologies to deliver interactive demos, real-time collaboration, and data-driven insights.</div>
+            </div>
+          </div>
+          <div class="accordion-item glass">
+            <h2 class="accordion-header" id="faq-heading-4">
+              <button class="accordion-button collapsed bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-4" aria-expanded="false" aria-controls="faq-collapse-4">Is my data safe on NovaMind?</button>
+            </h2>
+            <div id="faq-collapse-4" class="accordion-collapse collapse" aria-labelledby="faq-heading-4" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Absolutely. We adhere to GDPR and industry-standard encryption protocols. All personal data is stored securely using advanced encryption and is never shared with third parties without your explicit consent. We conduct regular security audits and maintain SOC 2 compliance standards.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="newsletter" class="section py-5" aria-label="Newsletter Subscription">
+      <div class="container glass-card">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <h2 class="section-title  mb-3">Stay Updated</h2>
+            <p class="-70">Subscribe to receive the latest AI insights, event updates, and exclusive content from the NovaMind community.</p>
+          </div>
+          <div class="col-lg-6">
+            <form id="newsletter-form" class="d-flex" novalidate>
+              <input type="email" class="form-control me-2" placeholder="Enter your email" required aria-label="Email" aria-describedby="newsletter-submit" />
+              <button type="submit" class="btn btn-primary" id="newsletter-submit">Subscribe</button>
+            </form>
+            <div id="newsletter-feedback" class="mt-2 d-none" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="section py-5 bg-light text-dark" aria-label="Our Team">
+      <div class="container">
+        <h2 class="section-title text-center mb-5">Our Team</h2>
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6 col-lg-3">
+            <div class="card glass text-center p-4">
+              <img src="assets/images/placeholder.svg" alt="Hadi Priono portrait" class="rounded-circle mb-3 mx-auto" width="120" height="120" loading="lazy" />
+              <h6 class="mb-0">Hadi Priono</h6>
+              <small class="text-muted">Front-End Developer</small>
+              <div class="social-links mt-2">
+                <a href="https://instagram.com/novamind.global" target="_blank" rel="noopener" class="me-2" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://linkedin.com/company/novamind" target="_blank" rel="noopener" class="me-2" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://x.com/novamind_global" target="_blank" rel="noopener" aria-label="X/Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card glass text-center p-4">
+              <img src="assets/images/placeholder.svg" alt="UI/UX Designer portrait" class="rounded-circle mb-3 mx-auto" width="120" height="120" loading="lazy" />
+              <h6 class="mb-0">Member 2</h6>
+              <small class="text-muted">UI/UX Designer</small>
+              <div class="social-links mt-2">
+                <a href="https://instagram.com/novamind.global" target="_blank" rel="noopener" class="me-2" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://linkedin.com/company/novamind" target="_blank" rel="noopener" class="me-2" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://x.com/novamind_global" target="_blank" rel="noopener" aria-label="X/Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card glass text-center p-4">
+              <img src="assets/images/placeholder.svg" alt="Content Researcher portrait" class="rounded-circle mb-3 mx-auto" width="120" height="120" loading="lazy" />
+              <h6 class="mb-0">Member 3</h6>
+              <small class="text-muted">Content Researcher</small>
+              <div class="social-links mt-2">
+                <a href="https://instagram.com/novamind.global" target="_blank" rel="noopener" class="me-2" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://linkedin.com/company/novamind" target="_blank" rel="noopener" class="me-2" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://x.com/novamind_global" target="_blank" rel="noopener" aria-label="X/Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card glass text-center p-4">
+              <img src="assets/images/placeholder.svg" alt="Back-End Developer portrait" class="rounded-circle mb-3 mx-auto" width="120" height="120" loading="lazy" />
+              <h6 class="mb-0">Member 4</h6>
+              <small class="text-muted">Back-End Developer</small>
+              <div class="social-links mt-2">
+                <a href="https://instagram.com/novamind.global" target="_blank" rel="noopener" class="me-2" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://linkedin.com/company/novamind" target="_blank" rel="noopener" class="me-2" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://x.com/novamind_global" target="_blank" rel="noopener" aria-label="X/Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section py-5 bg-light" aria-label="Contact Us">
+      <div class="container glass-card">
+        <h2 class="section-title text-center mb-5">Contact Us</h2>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <form id="contact-form" class="glass p-4" novalidate>
+              <div class="mb-3"><label for="contact-name" class="form-label">Name</label><input type="text" class="form-control" id="contact-name" required /></div>
+              <div class="mb-3"><label for="contact-email" class="form-label">Email</label><input type="email" class="form-control" id="contact-email" required /></div>
+              <div class="mb-3"><label for="contact-message" class="form-label">Message</label><textarea class="form-control" id="contact-message" rows="5" required></textarea></div>
+              <button type="submit" class="btn btn-primary w-100">Send Message</button>
+              <div id="contact-feedback" class="mt-2 d-none" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+          <div class="col-lg-6">
+            <div class="glass p-4 h-100 d-flex flex-column justify-content-center">
+              <h5 class="mb-3"><i class="fa-solid fa-building me-2"></i>Our Office</h5>
+              <p><i class="fa-solid fa-location-dot me-2 text-primary"></i>Innovation District, Tech City</p>
+              <p><i class="fa-solid fa-envelope me-2 text-primary"></i>hello@novamind.global</p>
+              <p><i class="fa-solid fa-phone me-2 text-primary"></i>+1 (555) 000-1234</p>
+              <h5 class="mt-4 mb-3"><i class="fa-solid fa-share-nodes me-2"></i>Follow Us</h5>
+              <div class="social-links d-flex gap-3">
+                <a href="https://instagram.com/novamind.global" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram fa-2x"></i></a>
+                <a href="https://linkedin.com/company/novamind" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin fa-2x"></i></a>
+                <a href="https://x.com/novamind_global" target="_blank" rel="noopener" aria-label="X/Twitter"><i class="fa-brands fa-x-twitter fa-2x"></i></a>
+                <a href="https://facebook.com/novamind.global" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook fa-2x"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5 bg-light text-dark glass" role="contentinfo">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <a class="navbar-brand d-flex align-items-center mb-3" href="#hero"><img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32" /><span class="brand-text">NovaMind</span></a>
+            <p>Empowering global innovators for an intelligent future. Connecting brilliant minds across 124 countries to build breakthrough technologies.</p>
+            <div class="social-links d-flex gap-2">
+              <a href="https://instagram.com/novamind.global" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://linkedin.com/company/novamind" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://x.com/novamind_global" target="_blank" rel="noopener" aria-label="X/Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="https://facebook.com/novamind.global" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <h6 class="text-uppercase mb-3">Quick Links</h6>
+            <ul class="list-unstyled">
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#technology">Technology</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <h6 class="text-uppercase mb-3">Resources</h6>
+            <ul class="list-unstyled">
+              <li><a href="#articles">Articles</a></li>
+              <li><a href="#lab">AI Lab</a></li>
+              <li><a href="#membership">Membership</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h6 class="text-uppercase mb-3">Newsletter</h6>
+            <p>Subscribe for the latest updates on innovation, AI, and global collaboration.</p>
+            <form id="footer-newsletter" class="d-flex" novalidate>
+              <input type="email" class="form-control me-2" placeholder="Email" required aria-label="Footer newsletter email" />
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+            <div id="footer-newsletter-feedback" class="mt-2 d-none" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+        <hr class="my-4 border-light-50" />
+        <p class="text-center mb-0">&copy; 2026 NovaMind. All rights reserved. Empowering Global Innovators for an Intelligent Future.</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <button id="back-to-top" class="btn btn-primary rounded-circle" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- JS Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+
+  <script src="js/script.js" defer></script>
+  <script src="js/main.js" defer></script>
+
+  <!-- ======================== BOOTSTRAP MODALS ======================== -->
+
+  <!-- Join Now Modal -->
+  <div class="modal fade" id="joinNowModal" tabindex="-1" aria-labelledby="joinNowModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="joinNowModalLabel">Join NovaMind</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p>Welcome to NovaMind! Join our global community of innovators and gain access to cutting-edge AI tools, collaborative workspaces, and networking opportunities.</p>
+          <form id="join-form" novalidate>
+            <div class="mb-3"><label for="join-name" class="form-label">Full Name</label><input type="text" class="form-control" id="join-name" required /></div>
+            <div class="mb-3"><label for="join-email" class="form-label">Email Address</label><input type="email" class="form-control" id="join-email" required /></div>
+            <div class="mb-3">
+              <label for="join-tier" class="form-label">Membership Tier</label>
+              <select class="form-select" id="join-tier">
+                <option value="student">Student Member</option>
+                <option value="innovator">Innovator Member</option>
+                <option value="partner">Global Partner</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Join Now</button>
+          </form>
+          <div id="join-feedback" class="mt-2 d-none" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Student Member Modal -->
+  <div class="modal fade" id="memberStudentModal" tabindex="-1" aria-labelledby="memberStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="memberStudentModalLabel"><i class="fa-solid fa-user-graduate me-2"></i>Student Member Benefits</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p>The Student Member tier is designed for learners and aspiring innovators who want to explore the world of technology and innovation.</p>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <h6><i class="fa-solid fa-chalkboard me-2 text-primary"></i>Free Workshops &amp; Webinars</h6>
+              <p>Access monthly workshops on AI, machine learning, IoT, and more — led by industry experts and researchers from top institutions worldwide.</p>
+            </div>
+            <div class="col-md-6">
+              <h6><i class="fa-solid fa-newspaper me-2 text-primary"></i>Innovation Newsletters</h6>
+              <p>Receive curated weekly newsletters featuring the latest breakthroughs in technology, research papers, and innovation trends.</p>
+            </div>
+            <div class="col-md-6">
+              <h6><i class="fa-solid fa-people-group me-2 text-primary"></i>Community Access</h6>
+              <p>Join our vibrant community of 8,000+ innovators across 124 countries. Participate in forums, study groups, and collaborative projects.</p>
+            </div>
+            <div class="col-md-6">
+              <h6><i class="fa-solid fa-book-open me-2 text-primary"></i>Learning Resources</h6>
+              <p>Gain access to our curated library of tutorials, course materials, coding exercises, and hands-on project templates.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Innovator Member Modal -->
+  <div class="modal fade" id="memberInnovatorModal" tabindex="-1" aria-labelledby="memberInnovatorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="memberInnovatorModalLabel"><i class="fa-solid fa-rocket me-2"></i>Innovator Member Benefits</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p>The Innovator Member tier empowers active creators and researchers with advanced tools and global networking opportunities.</p>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <h6><i class="fa-solid fa-earth-americas me-2 text-neutral-icon"></i>International Collaboration</h6>
+              <p>Connect with innovators, startups, and research institutions across continents for joint projects, co-authoring papers, and cross-border innovation.</p>
+            </div>
+            <div class="col-md-6">
+              <h6><i class="fa-solid fa-flask me-2 text-neutral-icon"></i>AI Lab Access</h6>
+              <p>Full access to NovaMind's AI Laboratory — including chatbot, sentiment analysis, image classification, and predictive forecasting tools.</p>
+            </div>
+            <div class="col-md-6">
+              <h6><i class="fa-solid fa-display me-2 text-neutral-icon"></i>Project Showcase Platform</h6>
+              <p>Feature your projects on the NovaMind platform, gaining visibility from investors, mentors, and potential collaborators worldwide.</p>
+            </div>
+            <div class="col-md-6">
+              <h6><i class="fa-solid fa-network-wired me-2 text-neutral-icon"></i>Global Networking</h6>
+              <p>Attend exclusive virtual meetups, mentorship sessions, and innovation roundtables with leaders from Fortune 500 companies and top universities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Partner Modal -->
+  <div class="modal fade" id="memberPartnerModal" tabindex="-1" aria-labelledby="memberPartnerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="memberPartnerModalLabel"><i class="fa-solid fa-handshake me-2"></i>Global Partner Benefits</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p>The Global Partner tier is for organizations, research institutions, and industry leaders seeking strategic innovation partnerships.</p>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <h6><i class="fa-solid fa-microscope me-2 text-neutral-icon"></i>Research Collaborations</h6>
+              <p>Partner with NovaMind's global research network to co-develop technologies, publish joint findings, and access cutting-edge data sets.</p>
+            </div>
+            <div class="col-md-6">
+              <h6><i class="fa-solid fa-building-columns me-2 text-neutral-icon"></i>Technology Conferences</h6>
+              <p>VIP access to NovaMind-hosted conferences, including the Global AI Summit, Green Tech Forum, and Innovation Week events.</p>
+            </div>
+            <div class="col-md-6">
+              <h6><i class="fa-solid fa-handshake-angle me-2 text-neutral-icon"></i>Strategic Partnerships</h6>
+              <p>Establish formal partnerships with NovaMind and our 500+ institutional partners for technology transfer and joint ventures.</p>
+            </div>
+            <div class="col-md-6">
+              <h6><i class="fa-solid fa-globe me-2 text-neutral-icon"></i>International Innovation Programs</h6>
+              <p>Co-create and sponsor innovation programs such as hackathons, accelerators, and fellowship opportunities for emerging talent.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article 1 Modal -->
+  <div class="modal fade" id="article1Modal" tabindex="-1" aria-labelledby="article1ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="article1ModalLabel">The Future of Artificial Intelligence in Global Society</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p><strong>Published:</strong> June 2026 · 8 min read</p>
+          <p>Artificial Intelligence is no longer a futuristic concept — it is a transformative force reshaping every facet of global society. From healthcare diagnostics to climate modeling, AI systems are making decisions that were once the exclusive domain of human experts.</p>
+          <h6>AI in Healthcare</h6>
+          <p>Machine learning algorithms can now detect diseases from medical imaging with accuracy that rivals experienced radiologists. AI-powered drug discovery platforms are accelerating the development of new treatments, reducing the timeline from a decade to mere years.</p>
+          <h6>AI in Education</h6>
+          <p>Adaptive learning platforms use AI to personalize educational content for each student, identifying knowledge gaps and adjusting difficulty in real time. Virtual tutors powered by natural language processing can answer questions, provide explanations, and offer encouragement 24/7.</p>
+          <h6>AI in Sustainability</h6>
+          <p>Climate scientists leverage AI to model complex environmental systems, predict weather patterns with greater accuracy, and optimize renewable energy grids. Smart agriculture powered by AI reduces water waste by up to 30% while increasing crop yields.</p>
+          <h6>Ethical Considerations</h6>
+          <p>As AI becomes more powerful, society must address critical questions about bias, transparency, and accountability. NovaMind advocates for responsible AI development that prioritizes human well-being, fairness, and inclusivity in all applications.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article 2 Modal -->
+  <div class="modal fade" id="article2Modal" tabindex="-1" aria-labelledby="article2ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="article2ModalLabel">Green Technology for Sustainable Development</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p><strong>Published:</strong> May 2026 · 7 min read</p>
+          <p>The intersection of technology and sustainability represents one of the most critical frontiers of innovation. Green technology is enabling societies to meet their development goals while preserving the planet for future generations.</p>
+          <h6>Renewable Energy Revolution</h6>
+          <p>Solar panel efficiency has surpassed 25% in commercial applications, while wind energy costs have dropped by 70% over the past decade. AI-optimized energy grids can now balance supply and demand in real-time, reducing waste and maximizing clean energy utilization.</p>
+          <h6>Circular Economy</h6>
+          <p>Advanced recycling technologies powered by machine learning can sort materials with 99% accuracy, enabling true circular economies where waste becomes a resource. Blockchain-based supply chain tracking ensures transparency in sustainable sourcing.</p>
+          <h6>Carbon Capture</h6>
+          <p>Direct air capture technologies, combined with AI optimization, are becoming economically viable at scale. These systems can remove CO₂ from the atmosphere and convert it into useful products like building materials and synthetic fuels.</p>
+          <h6>The Road Ahead</h6>
+          <p>NovaMind's green technology initiatives support innovators developing solutions that address the UN Sustainable Development Goals. Our platform connects researchers with funding, mentorship, and collaborative opportunities to accelerate the green transition.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article 3 Modal -->
+  <div class="modal fade" id="article3Modal" tabindex="-1" aria-labelledby="article3ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="article3ModalLabel">Smart Cities and Intelligent Urban Transformation</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p><strong>Published:</strong> April 2026 · 6 min read</p>
+          <p>By 2030, over 60% of the world's population will live in urban areas. Smart cities leverage IoT, AI, and big data to create more efficient, sustainable, and livable urban environments for billions of people.</p>
+          <h6>Intelligent Transportation</h6>
+          <p>Smart traffic management systems use real-time data from sensors, cameras, and connected vehicles to optimize traffic flow, reducing commute times by up to 25% and emissions by 15%. Autonomous public transit is being piloted in cities across Asia and Europe.</p>
+          <h6>Energy-Efficient Buildings</h6>
+          <p>AI-powered building management systems optimize heating, cooling, and lighting based on occupancy patterns and weather forecasts. Net-zero buildings are becoming the standard in new urban developments, with smart grids enabling energy sharing between buildings.</p>
+          <h6>Public Safety &amp; Services</h6>
+          <p>Predictive analytics help city governments anticipate infrastructure failures, optimize emergency response times, and allocate resources more effectively. Digital citizen services reduce bureaucracy and improve accessibility for all residents.</p>
+          <h6>Digital Inclusion</h6>
+          <p>Smart city initiatives must ensure that technology benefits all citizens equally. NovaMind supports projects that bridge the digital divide through affordable connectivity, accessible interfaces, and community-driven innovation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article 4 Modal -->
+  <div class="modal fade" id="article4Modal" tabindex="-1" aria-labelledby="article4ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="article4ModalLabel">The Role of Youth in Global Innovation</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p><strong>Published:</strong> March 2026 · 5 min read</p>
+          <p>Young innovators are driving some of the most transformative breakthroughs in technology today. With access to global platforms like NovaMind, the next generation of leaders is tackling challenges that were once considered impossible.</p>
+          <h6>Youth-Led Startups</h6>
+          <p>Entrepreneurs under 30 are founding companies in AI, biotech, clean energy, and fintech at unprecedented rates. NovaMind's Innovator Member program has supported over 500 youth-led startups across 80 countries.</p>
+          <h6>Student Research Impact</h6>
+          <p>University students and young researchers are contributing groundbreaking work to fields like quantum computing, gene therapy, and materials science. NovaMind's collaborative tools enable cross-institutional research partnerships that amplify their impact.</p>
+          <h6>Hackathons &amp; Competitions</h6>
+          <p>Global innovation competitions provide young people with opportunities to showcase their talents, receive mentorship from industry leaders, and secure funding for their ideas. NovaMind hosts annual hackathons attracting 10,000+ participants.</p>
+          <h6>Building the Future</h6>
+          <p>NovaMind believes that investing in youth innovation is the most effective way to address global challenges. Our platform provides the tools, community, and resources that young innovators need to turn their ideas into reality.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Article 5 Modal -->
+  <div class="modal fade" id="article5Modal" tabindex="-1" aria-labelledby="article5ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="article5ModalLabel">Emerging Technologies in Modern Education</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p><strong>Published:</strong> February 2026 · 7 min read</p>
+          <p>Education is undergoing a profound transformation driven by emerging technologies. From AI tutors to virtual reality classrooms, the way we learn is evolving to become more personalized, immersive, and accessible than ever before.</p>
+          <h6>AI-Powered Personalization</h6>
+          <p>Adaptive learning platforms analyze student performance data to create individualized learning pathways. These systems identify strengths, weaknesses, and preferred learning styles, then adjust content, pacing, and difficulty accordingly.</p>
+          <h6>Virtual &amp; Augmented Reality</h6>
+          <p>VR classrooms enable students to explore ancient civilizations, conduct virtual chemistry experiments, or practice surgical procedures in safe, immersive environments. AR overlays bring textbook content to life with 3D models and interactive simulations.</p>
+          <h6>Blockchain Credentials</h6>
+          <p>Digital credentials stored on blockchain ensure that academic achievements are verifiable, portable, and tamper-proof. Students can share their credentials globally, enabling recognition across institutions and borders.</p>
+          <h6>Democratizing Access</h6>
+          <p>Technology is breaking down barriers to education. Free online courses, AI-translated content, and mobile-first platforms are making quality education accessible to learners in underserved communities worldwide. NovaMind's Student Member program is part of this mission.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Modals -->
+  <div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="projectModal1Label"><i class="fa-solid fa-graduation-cap me-2"></i>AI Learning Assistant</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p>The AI Learning Assistant is an intelligent tutoring system designed to revolutionize education through adaptive AI algorithms. The system personalizes learning pathways for each student, optimizing comprehension and retention.</p>
+          <h6>Key Features</h6>
+          <ul>
+            <li>Adaptive difficulty adjustment based on real-time performance analysis</li>
+            <li>Natural language processing for interactive Q&amp;A sessions</li>
+            <li>Multi-language support for global accessibility</li>
+            <li>Progress tracking and analytics dashboard for educators</li>
+            <li>Integration with existing Learning Management Systems (LMS)</li>
+          </ul>
+          <h6>Impact</h6>
+          <p>Pilot testing in 15 schools across 5 countries showed a 35% improvement in student test scores and a 40% reduction in learning gaps within one semester.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="projectModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="projectModal2Label"><i class="fa-solid fa-seedling me-2"></i>Smart Farming System</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p>The Smart Farming System leverages IoT sensors and AI analytics to optimize agricultural practices. This precision agriculture platform monitors soil conditions, weather patterns, and crop health in real-time.</p>
+          <h6>Key Features</h6>
+          <ul>
+            <li>IoT soil moisture and nutrient sensors with real-time data streaming</li>
+            <li>AI-driven crop disease detection via satellite and drone imagery</li>
+            <li>Automated irrigation systems that reduce water usage by 30%</li>
+            <li>Weather prediction integration for harvest optimization</li>
+            <li>Mobile dashboard for farmers in remote areas</li>
+          </ul>
+          <h6>Impact</h6>
+          <p>Deployed across 200+ farms in Southeast Asia and Africa, the system has increased crop yields by 25% while reducing water consumption by 30% and chemical fertilizer use by 20%.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="projectModal3" tabindex="-1" aria-labelledby="projectModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="projectModal3Label"><i class="fa-solid fa-solar-panel me-2"></i>Renewable Energy Monitor</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p>The Renewable Energy Monitor provides a comprehensive dashboard for tracking solar, wind, and hydroelectric energy generation. AI-driven analytics optimize energy distribution and predict maintenance needs.</p>
+          <h6>Key Features</h6>
+          <ul>
+            <li>Real-time monitoring of solar, wind, and hydro installations</li>
+            <li>AI-based predictive maintenance reducing downtime by 40%</li>
+            <li>Energy production forecasting using weather data and ML models</li>
+            <li>Grid optimization algorithms for balanced energy distribution</li>
+            <li>Carbon offset calculation and sustainability reporting</li>
+          </ul>
+          <h6>Impact</h6>
+          <p>Currently monitoring 50+ renewable energy installations across 12 countries, the platform has helped increase overall energy efficiency by 18% and prevented over 10,000 tons of CO₂ emissions annually.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="projectModal4" tabindex="-1" aria-labelledby="projectModal4Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="projectModal4Label"><i class="fa-solid fa-heartbeat me-2"></i>Digital Healthcare Platform</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p>The Digital Healthcare Platform connects patients in underserved communities with healthcare providers through telemedicine and AI-assisted diagnostics, bridging the healthcare access gap globally.</p>
+          <h6>Key Features</h6>
+          <ul>
+            <li>Video consultation platform with real-time translation in 20+ languages</li>
+            <li>AI-assisted preliminary diagnostics using symptom analysis</li>
+            <li>Electronic health records with blockchain-secured data privacy</li>
+            <li>Remote patient monitoring through wearable IoT devices</li>
+            <li>Mental health support chatbot with clinical-grade recommendations</li>
+          </ul>
+          <h6>Impact</h6>
+          <p>Serving 50,000+ patients across rural communities in Asia and Sub-Saharan Africa, the platform has reduced average diagnosis time by 60% and increased healthcare access for populations with limited infrastructure.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="projectModal5" tabindex="-1" aria-labelledby="projectModal5Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="projectModal5Label"><i class="fa-solid fa-car me-2"></i>Intelligent Transportation Network</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p>The Intelligent Transportation Network uses real-time data analytics and machine learning to optimize urban traffic management, reducing congestion, emissions, and commute times in metropolitan areas.</p>
+          <h6>Key Features</h6>
+          <ul>
+            <li>Real-time traffic flow analysis using 10,000+ IoT sensors per city</li>
+            <li>AI-optimized signal timing reducing congestion by 25%</li>
+            <li>Predictive incident detection and emergency route planning</li>
+            <li>Integration with public transit for multimodal trip planning</li>
+            <li>Electric vehicle charging network optimization</li>
+          </ul>
+          <h6>Impact</h6>
+          <p>Piloted in 3 major cities, the system has reduced average commute times by 20%, decreased traffic-related emissions by 15%, and improved emergency response times by 30%.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="projectModal6" tabindex="-1" aria-labelledby="projectModal6Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="projectModal6Label"><i class="fa-solid fa-globe me-2"></i>Global Innovation Hub</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p>The Global Innovation Hub is a collaborative digital workspace connecting researchers, entrepreneurs, and institutions across 124 countries for joint innovation projects and knowledge sharing.</p>
+          <h6>Key Features</h6>
+          <ul>
+            <li>Real-time collaboration tools with integrated video conferencing</li>
+            <li>AI-powered matchmaking connecting complementary innovators</li>
+            <li>Shared resource library with 10,000+ research papers and datasets</li>
+            <li>Project management dashboard with milestone tracking</li>
+            <li>Funding directory connecting projects with investors and grants</li>
+          </ul>
+          <h6>Impact</h6>
+          <p>Since launch, the Hub has facilitated 2,000+ cross-border collaborations, produced 500+ joint publications, and helped secure $15M in combined funding for innovative projects worldwide.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Registration Modal -->
+  <div class="modal fade" id="eventRegisterModal" tabindex="-1" aria-labelledby="eventRegisterModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass p-4">
+        <div class="modal-header"><h5 class="modal-title" id="eventRegisterModalLabel"><i class="fa-solid fa-calendar-check me-2"></i>Event Registration</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+        <div class="modal-body">
+          <p>Register for upcoming NovaMind events and be part of the global innovation community.</p>
+          <form id="event-form" novalidate>
+            <div class="mb-3"><label for="event-name" class="form-label">Full Name</label><input type="text" class="form-control" id="event-name" required /></div>
+            <div class="mb-3"><label for="event-email" class="form-label">Email Address</label><input type="email" class="form-control" id="event-email" required /></div>
+            <button type="submit" class="btn btn-primary w-100">Register</button>
+          </form>
+          <div id="event-feedback" class="mt-2 d-none" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Lab Modals (custom, non-Bootstrap) -->
+  <div id="chat-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="chat-modal-title">
+    <div class="modal-content glass p-4">
+      <div class="modal-header d-flex justify-content-between align-items-center">
+        <h5 id="chat-modal-title" class="modal-title">AI Chatbot</h5>
+        <div>
+          <button type="button" class="btn btn-sm btn-outline-light" id="minimize-chat"><i class="fa-solid fa-minus"></i></button>
+          <button type="button" class="btn btn-sm btn-outline-light" id="close-chat"><i class="fa-solid fa-times"></i></button>
+        </div>
+      </div>
+      <div id="chat-messages" class="chat-messages overflow-auto my-3" style="max-height:300px;"></div>
+      <div class="input-group">
+        <input type="text" id="chat-input" class="form-control" placeholder="Type a message..." aria-label="Chat input" />
+        <button class="btn btn-primary" id="send-chat"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="voice-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="voice-modal-title">
+    <div class="modal-content glass p-4">
+      <div class="modal-header d-flex justify-content-between align-items-center">
+        <h5 id="voice-modal-title" class="modal-title">Voice Interaction</h5>
+        <button type="button" class="btn btn-sm btn-outline-light" id="close-voice"><i class="fa-solid fa-times"></i></button>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <button class="btn btn-primary mb-3" id="start-voice"><i class="fa-solid fa-microphone"></i> Start Listening</button>
+        <div id="voice-status" class="mb-2"></div>
+        <div id="voice-transcript" class="border p-2 w-100"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="classify-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="classify-modal-title">
+    <div class="modal-content glass p-4">
+      <div class="modal-header d-flex justify-content-between align-items-center">
+        <h5 id="classify-modal-title" class="modal-title">Image Classification</h5>
+        <button type="button" class="btn btn-sm btn-outline-light" id="close-classify"><i class="fa-solid fa-times"></i></button>
+      </div>
+      <input type="file" accept="image/*" id="classify-image" class="form-control mb-3" aria-label="Upload an image to classify" />
+      <div id="classify-preview" class="mb-3 text-center"></div>
+      <button class="btn btn-primary w-100" id="start-classify">Classify Image</button>
+      <div id="classify-result" class="mt-3"></div>
+    </div>
+  </div>
+
+  <div id="analyze-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="analyze-modal-title">
+    <div class="modal-content glass p-4">
+      <div class="modal-header d-flex justify-content-between align-items-center">
+        <h5 id="analyze-modal-title" class="modal-title">Sentiment Analysis</h5>
+        <button type="button" class="btn btn-sm btn-outline-light" id="close-analyze"><i class="fa-solid fa-times"></i></button>
+      </div>
+      <textarea id="analyze-input" class="form-control mb-3" rows="4" placeholder="Enter text for analysis..."></textarea>
+      <button class="btn btn-primary w-100" id="run-analyze">Analyze Sentiment</button>
+      <div id="analyze-result" class="mt-3"></div>
+    </div>
+  </div>
+
+  <div id="recommendations-section" class="modal" aria-hidden="true" role="dialog" aria-labelledby="recommendations-title">
+    <div class="modal-content glass p-4">
+      <div class="modal-header d-flex justify-content-between align-items-center">
+        <h5 id="recommendations-title" class="modal-title">Recommended Topics</h5>
+        <button type="button" class="btn btn-sm btn-outline-light" id="close-recommendations"><i class="fa-solid fa-times"></i></button>
+      </div>
+      <div id="recommendations-cards" class="row g-3"></div>
+    </div>
+  </div>
+
+  <div id="forecast-section" class="modal" aria-hidden="true" role="dialog" aria-labelledby="forecast-title">
+    <div class="modal-content glass p-4">
+      <div class="modal-header d-flex justify-content-between align-items-center">
+        <h5 id="forecast-title" class="modal-title">Future Technology Forecast</h5>
+        <button type="button" class="btn btn-sm btn-outline-light" id="close-forecast"><i class="fa-solid fa-times"></i></button>
+      </div>
+      <canvas id="forecastChart" aria-label="Future technology trends" role="img" style="max-width:100%;height:300px;"></canvas>
+    </div>
+  </div>
+
+</body>
+</html>
