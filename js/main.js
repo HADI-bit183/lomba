@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const counterObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const target = +entry.target.dataset.count;
+        const target = +(entry.target.dataset.count || entry.target.dataset.target || 0);
         let count = 0;
         const step = target / 120;
         const update = () => {
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     scoreSpan.textContent = score;
   }
 
-  startBtn.addEventListener('click', () => {
+  startBtn?.addEventListener('click', () => {
     startBtn.style.display = 'none';
     renderQuestion();
   });
