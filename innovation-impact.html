@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovation Impact – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+  
+</head>
+<body class="page-impact d-flex flex-column min-vh-100">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item " href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item " href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item " href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item " href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item " href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item active" href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item " href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item " href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item " href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item " href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item " href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item " href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item " href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-gradient mb-3">Innovation Impact Score</h1>
+        <p class="lead text-muted max-w-2xl mx-auto">Calculate the potential real-world impact of your project across multiple dimensions.</p>
+      </div>
+
+      <div class="row justify-content-center g-5">
+        <div class="col-lg-5">
+          <div class="unified-card glass p-4 h-100">
+            <h4 class="fw-bold mb-4">Impact Parameters</h4>
+            <form id="impactForm">
+              <div class="mb-4">
+                <label class="form-label fw-semibold d-flex justify-content-between">Economic Impact <span id="valEco">5</span></label>
+                <input type="range" class="form-range" id="inEco" min="1" max="10" value="5" oninput="document.getElementById('valEco').textContent = this.value">
+              </div>
+              <div class="mb-4">
+                <label class="form-label fw-semibold d-flex justify-content-between">Social Impact <span id="valSoc">5</span></label>
+                <input type="range" class="form-range" id="inSoc" min="1" max="10" value="5" oninput="document.getElementById('valSoc').textContent = this.value">
+              </div>
+              <div class="mb-4">
+                <label class="form-label fw-semibold d-flex justify-content-between">Environmental Impact <span id="valEnv">5</span></label>
+                <input type="range" class="form-range" id="inEnv" min="1" max="10" value="5" oninput="document.getElementById('valEnv').textContent = this.value">
+              </div>
+              <div class="mb-4">
+                <label class="form-label fw-semibold d-flex justify-content-between">Technology Level <span id="valTech">5</span></label>
+                <input type="range" class="form-range" id="inTech" min="1" max="10" value="5" oninput="document.getElementById('valTech').textContent = this.value">
+              </div>
+              <div class="mb-4">
+                <label class="form-label fw-semibold d-flex justify-content-between">Scalability <span id="valScale">5</span></label>
+                <input type="range" class="form-range" id="inScale" min="1" max="10" value="5" oninput="document.getElementById('valScale').textContent = this.value">
+              </div>
+              <button type="submit" class="btn btn-primary w-100 rounded-pill mt-3">Calculate Impact</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="unified-card glass p-4 p-md-5 h-100 d-none" id="resultCard">
+            <h4 class="fw-bold text-center mb-4">Impact Analysis</h4>
+            
+            <div class="gauge-wrapper mb-3">
+              <div class="gauge-bg"></div>
+              <div class="gauge-fill" id="gaugeFill" style="background: conic-gradient(from 270deg, var(--bs-primary) 0deg, var(--bs-secondary-bg) 0deg);"></div>
+              <div class="gauge-mask"></div>
+              <div class="gauge-value" id="overallScore">0</div>
+            </div>
+            <div class="text-center mb-5">
+              <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 fs-6 rounded-pill" id="ratingText">Evaluating...</span>
+            </div>
+
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="d-flex justify-content-between small mb-1"><span>Economic Score</span><span class="fw-bold" id="outEco">0/100</span></div>
+                <div class="bg-secondary bg-opacity-25 rounded-pill overflow-hidden" style="height: 8px;">
+                  <div class="progress-bar-custom bg-success" id="barEco"></div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="d-flex justify-content-between small mb-1"><span>Social Score</span><span class="fw-bold" id="outSoc">0/100</span></div>
+                <div class="bg-secondary bg-opacity-25 rounded-pill overflow-hidden" style="height: 8px;">
+                  <div class="progress-bar-custom bg-info" id="barSoc"></div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="d-flex justify-content-between small mb-1"><span>Environmental Score</span><span class="fw-bold" id="outEnv">0/100</span></div>
+                <div class="bg-secondary bg-opacity-25 rounded-pill overflow-hidden" style="height: 8px;">
+                  <div class="progress-bar-custom bg-warning" id="barEnv"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer py-4 glass text-body mt-auto text-center">
+    <p class="text-muted small mb-0">&copy; 2026 NovaMind. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script src="js/ui-refresh.js"></script>
+  <script>
+    document.getElementById('impactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const eco = parseInt(document.getElementById('inEco').value) * 10;
+      const soc = parseInt(document.getElementById('inSoc').value) * 10;
+      const env = parseInt(document.getElementById('inEnv').value) * 10;
+      const tech = parseInt(document.getElementById('inTech').value) * 10;
+      const scale = parseInt(document.getElementById('inScale').value) * 10;
+      
+      // Calculate overall (max 100)
+      const overall = Math.round((eco*1.5 + soc*1.2 + env*1.2 + tech + scale) / 5.9);
+      
+      const resultCard = document.getElementById('resultCard');
+      resultCard.classList.remove('d-none');
+      
+      // Reset animations
+      document.getElementById('barEco').style.width = '0%';
+      document.getElementById('barSoc').style.width = '0%';
+      document.getElementById('barEnv').style.width = '0%';
+      document.getElementById('gaugeFill').style.background = `conic-gradient(from 270deg, var(--bs-primary) 0deg, var(--bs-secondary-bg) 0deg)`;
+      
+      setTimeout(() => {
+        // Animate progress bars
+        document.getElementById('barEco').style.width = eco + '%';
+        document.getElementById('barSoc').style.width = soc + '%';
+        document.getElementById('barEnv').style.width = env + '%';
+        
+        document.getElementById('outEco').textContent = eco + '/100';
+        document.getElementById('outSoc').textContent = soc + '/100';
+        document.getElementById('outEnv').textContent = env + '/100';
+
+        // Animate gauge (180 degrees max)
+        const degrees = (overall / 100) * 180;
+        document.getElementById('gaugeFill').style.background = `conic-gradient(from 270deg, var(--bs-primary) ${degrees}deg, var(--bs-secondary-bg) 0deg)`;
+        
+        // Counter
+        let current = 0;
+        const timer = setInterval(() => {
+          current++;
+          document.getElementById('overallScore').textContent = current;
+          if(current >= overall) clearInterval(timer);
+        }, 15);
+
+        // Rating Text
+        let rating = "Fair Impact";
+        if(overall > 85) rating = "Exceptional Global Impact";
+        else if(overall > 70) rating = "High Impact Potential";
+        else if(overall > 50) rating = "Moderate Impact";
+        document.getElementById('ratingText').textContent = rating;
+
+      }, 100);
+    });
+  </script>
+  <script defer src="js/bundle.js"></script>
+</body>
+</html>

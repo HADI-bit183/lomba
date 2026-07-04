@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Innovation Map – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+  
+</head>
+<body class="page-map d-flex flex-column min-vh-100">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item " href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item " href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item " href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item " href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item " href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item " href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item " href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item " href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item " href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item " href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item " href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item " href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item active" href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-gradient mb-3">Global Innovation Map</h1>
+        <p class="lead text-muted max-w-2xl mx-auto">Explore innovation trends, top technologies, and active innovators around the world.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="unified-card glass p-2 p-md-4 shadow-sm border-0">
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer py-4 glass text-body mt-auto text-center">
+    <p class="text-muted small mb-0">&copy; 2026 NovaMind. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/ui-refresh.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize map centered on global view
+      const map = L.map('map').setView([20, 0], 2);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+      }).addTo(map);
+
+      // Data Dummy
+      const countries = [
+        { name: "Indonesia", lat: -0.7893, lng: 113.9213, innovators: "15,200", tech: "Mobile Dev & AI", score: 85 },
+        { name: "Japan", lat: 36.2048, lng: 138.2529, innovators: "32,100", tech: "Robotics & AI", score: 95 },
+        { name: "Singapore", lat: 1.3521, lng: 103.8198, innovators: "8,500", tech: "Fintech & Web3", score: 92 },
+        { name: "USA", lat: 37.0902, lng: -95.7129, innovators: "120,500", tech: "AI & Cloud", score: 98 },
+        { name: "Germany", lat: 51.1657, lng: 10.4515, innovators: "45,000", tech: "IoT & AutoTech", score: 94 },
+        { name: "Canada", lat: 56.1304, lng: -106.3468, innovators: "25,300", tech: "AI & BioTech", score: 91 },
+        { name: "Australia", lat: -25.2744, lng: 133.7751, innovators: "18,400", tech: "AgriTech & SaaS", score: 88 }
+      ];
+
+      const customIcon = L.divIcon({
+        className: 'custom-div-icon',
+        html: "<div style='background-color:var(--bs-primary); width:20px; height:20px; border-radius:50%; border:3px solid white; box-shadow:0 0 10px rgba(0,0,0,0.5);'></div>",
+        iconSize: [20, 20],
+        iconAnchor: [10, 10]
+      });
+
+      countries.forEach(c => {
+        const popupContent = `
+          <div class="custom-popup">
+            <div class="title"><i class="fa-solid fa-location-dot me-1"></i> ${c.name}</div>
+            <div class="stat">Innovators: <span>${c.innovators}</span></div>
+            <div class="stat">Top Tech: <span class="text-info">${c.tech}</span></div>
+            <div class="stat">Innovation Score: <span class="text-warning"><i class="fa-solid fa-star"></i> ${c.score}</span></div>
+          </div>
+        `;
+        L.marker([c.lat, c.lng], {icon: customIcon}).addTo(map)
+         .bindPopup(popupContent);
+      });
+      
+      // Fix map rendering issues inside hidden or animating containers
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 500);
+    });
+  </script>
+  <script defer src="js/bundle.js"></script>
+</body>
+</html>

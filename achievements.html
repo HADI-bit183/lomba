@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preload" href="assets/vendor/css/fonts.css" as="style">
+  <link href="assets/vendor/css/fonts.css" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/css/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+  
+</head>
+<body class="page-achievements d-flex flex-column min-vh-100">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item " href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item " href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item " href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item " href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item " href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item " href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item " href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item " href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item " href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item " href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item " href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item active" href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item " href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 py-5">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h1 class="display-4 fw-bold text-gradient mb-3">Your Achievements</h1>
+        <p class="lead text-muted max-w-2xl mx-auto">Collect badges as you progress through your innovation journey.</p>
+      </div>
+
+      <!-- Current Progress -->
+      <div class="row justify-content-center mb-5" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-8">
+          <div class="unified-card glass p-4 text-center">
+            <h5 class="fw-bold mb-3">Next Badge: Pitch Master</h5>
+            <div class="progress-bg mb-2" style="height: 12px;">
+              <div class="progress-bar-custom" style="width: 75%;"></div>
+            </div>
+            <p class="text-muted small mb-0">75% completed. Finish your Pitch Deck to unlock!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges Grid -->
+      <div class="row g-4" id="badges-container">
+        <!-- Will be populated by JS -->
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer py-4 glass text-body mt-auto">
+    <div class="container text-center">
+      <p class="text-muted small mb-0">&copy; 2026 NovaMind. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script defer src="assets/vendor/js/gsap.min.js"></script>
+  <script defer src="js/ui-refresh.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const badges = [
+        { title: "Beginner Innovator", desc: "Started the innovation journey.", icon: "fa-seedling", color: "text-success", unlocked: true },
+        { title: "Creative Thinker", desc: "Submitted the first idea proposal.", icon: "fa-lightbulb", color: "text-warning", unlocked: true },
+        { title: "AI Explorer", desc: "Integrated AI features into the project.", icon: "fa-brain", color: "text-primary", unlocked: true },
+        { title: "Prototype Builder", desc: "Completed the initial MVP.", icon: "fa-cubes", color: "text-info", unlocked: true },
+        { title: "Pitch Master", desc: "Created a compelling pitch deck.", icon: "fa-person-chalkboard", color: "text-danger", unlocked: false },
+        { title: "Future Leader", desc: "Passed the initial validation stage.", icon: "fa-rocket", color: "text-primary", unlocked: false },
+        { title: "Global Innovator", desc: "Selected for the global finals.", icon: "fa-earth-americas", color: "text-success", unlocked: false }
+      ];
+
+      const container = document.getElementById('badges-container');
+      badges.forEach((b, index) => {
+        const lockedClass = b.unlocked ? '' : 'badge-locked';
+        const statusBadge = b.unlocked 
+          ? `<span class="badge bg-success bg-opacity-10 text-success rounded-pill px-2 py-1"><i class="fa-solid fa-unlock small"></i> Unlocked</span>` 
+          : `<span class="badge bg-secondary bg-opacity-10 text-secondary rounded-pill px-2 py-1"><i class="fa-solid fa-lock small"></i> Locked</span>`;
+        
+        container.innerHTML += `
+          <div class="col-md-4 col-lg-3">
+            <div class="unified-card glass p-4 text-center h-100 badge-card ${lockedClass}" data-aos="fade-up" data-aos-delay="${index * 100}">
+              <div class="mb-3">
+                <i class="fa-solid ${b.icon} badge-icon ${b.color}"></i>
+              </div>
+              <h5 class="fw-bold mb-2">${b.title}</h5>
+              <p class="text-muted small mb-3">${b.desc}</p>
+              ${statusBadge}
+            </div>
+          </div>
+        `;
+      });
+    });
+  </script>
+  <script defer src="js/bundle.js"></script>
+</body>
+</html>

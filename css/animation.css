@@ -4,29 +4,16 @@
    ================================================================ */
 
 /* ── Hero Title Entrance ── */
-.hero-title {
-  opacity: 0;
-  animation: fadeUp 0.8s var(--ease-out) forwards;
-  animation-delay: 0.3s;
-}
-
-.hero-section .lead {
-  opacity: 0;
-  animation: fadeUp 0.8s var(--ease-out) forwards;
-  animation-delay: 0.5s;
-}
-
-.hero-section .d-flex {
-  opacity: 0;
-  animation: fadeUp 0.8s var(--ease-out) forwards;
-  animation-delay: 0.7s;
-}
-
+/* ── Hero Title Entrance (Handled by GSAP) ── */
+/* 
+.hero-title,
+.hero-section .lead,
+.hero-section .d-flex,
 .hero-section .scroll-indicator {
   opacity: 0;
   animation: fadeUp 0.8s var(--ease-out) forwards;
-  animation-delay: 0.9s;
 }
+*/
 
 @keyframes fadeUp {
   from {

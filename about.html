@@ -59,15 +59,58 @@
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="competition.html">Competition</a></li>
-          <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
-          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
-          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-          <li class="nav-item"><a class="nav-link" href="innovators.html">Innovators</a></li>
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item " href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item " href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item " href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item " href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item " href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item " href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item " href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item " href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item " href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item " href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item " href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item " href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item " href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
         </ul>
-        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register Now</a>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
         <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
       </div>
     </div>

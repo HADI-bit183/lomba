@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Project Evaluator – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Libraries -->
+  <link rel="preload" href="assets/vendor/css/fonts.css" as="style">
+  <link href="assets/vendor/css/fonts.css" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/css/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+  
+</head>
+
+<body class="page-evaluator d-flex flex-column min-vh-100">
+  <!-- Minimalist Preloader -->
+  <div id="preloader" class="d-flex justify-content-center align-items-center position-fixed top-0 start-0 w-100 h-100 bg-primary dark:bg-primary z-3" style="z-index: 9999; background: var(--bg-primary);">
+    <img src="assets/logo.svg" alt="NovaMind Logo" width="64" height="64" class="pulse-animation">
+  </div>
+
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item " href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item " href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item active" href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item " href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item " href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item " href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item " href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item " href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item " href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item " href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item " href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item " href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item " href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1">
+    <section class="py-5 mt-4">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h1 class="display-4 fw-bold text-gradient mb-3">AI Project Evaluator</h1>
+          <p class="lead text-muted max-w-2xl mx-auto">Evaluate your innovation project ideas instantly with our intelligent rule-based evaluator. Discover strengths, uncover weaknesses, and get actionable recommendations.</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="unified-card glass p-4 p-md-5 border-0 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+              <form id="evaluatorForm">
+                <div class="mb-4">
+                  <label for="projectName" class="form-label fw-semibold">Project Name</label>
+                  <input type="text" class="form-control form-control-lg bg-transparent" id="projectName" required placeholder="e.g. EcoSmart AI">
+                </div>
+                
+                <div class="mb-4">
+                  <label for="problemStatement" class="form-label fw-semibold">Problem Statement</label>
+                  <textarea class="form-control bg-transparent" id="problemStatement" rows="3" required placeholder="What specific problem are you trying to solve?"></textarea>
+                </div>
+
+                <div class="mb-4">
+                  <label for="solution" class="form-label fw-semibold">Solution</label>
+                  <textarea class="form-control bg-transparent" id="solution" rows="3" required placeholder="How does your project elegantly solve this problem?"></textarea>
+                </div>
+
+                <div class="mb-4">
+                  <label for="targetUsers" class="form-label fw-semibold">Target Users</label>
+                  <input type="text" class="form-control bg-transparent" id="targetUsers" required placeholder="Who are the primary users of your product?">
+                </div>
+
+                <div class="mb-4">
+                  <label for="techUsed" class="form-label fw-semibold">Technology Used</label>
+                  <input type="text" class="form-control bg-transparent" id="techUsed" required placeholder="e.g. React, Node.js, TensorFlow, Blockchain">
+                </div>
+
+                <div class="mb-4">
+                  <label for="expectedImpact" class="form-label fw-semibold">Expected Impact</label>
+                  <textarea class="form-control bg-transparent" id="expectedImpact" rows="3" required placeholder="What is the positive real-world impact of this project?"></textarea>
+                </div>
+
+                <div class="d-grid mt-5">
+                  <button type="submit" class="premium-btn btn-lg border-0 d-flex align-items-center justify-content-center gap-2" id="btnEvaluate">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Evaluate Project
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Evaluation Results -->
+        <div class="row justify-content-center mt-5 d-none" id="resultsSection">
+          <div class="col-lg-10">
+            <div class="text-center mb-5">
+              <h2 class="fw-bold display-6 mb-2">Evaluation Results</h2>
+              <p class="text-primary fw-semibold fs-5" id="resultProjectName"></p>
+            </div>
+            
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="unified-card glass p-4 h-100 eval-card" id="card-scores">
+                  <h4 class="mb-4 fw-bold"><i class="fa-solid fa-chart-line text-primary me-2"></i> Performance Scores</h4>
+                  
+                  <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="small fw-semibold text-body">Innovation Score</span>
+                      <span class="small fw-bold text-primary" id="scoreInnovation">0/100</span>
+                    </div>
+                    <div class="progress-bg">
+                      <div class="progress-bar-custom" id="barInnovation"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="small fw-semibold text-body">Feasibility Score</span>
+                      <span class="small fw-bold text-primary" id="scoreFeasibility">0/100</span>
+                    </div>
+                    <div class="progress-bg">
+                      <div class="progress-bar-custom" id="barFeasibility"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="small fw-semibold text-body">Market Potential</span>
+                      <span class="small fw-bold text-primary" id="scoreMarket">0/100</span>
+                    </div>
+                    <div class="progress-bg">
+                      <div class="progress-bar-custom" id="barMarket"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="small fw-semibold text-body">Sustainability Score</span>
+                      <span class="small fw-bold text-primary" id="scoreSustainability">0/100</span>
+                    </div>
+                    <div class="progress-bg">
+                      <div class="progress-bar-custom" id="barSustainability"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="small fw-semibold text-body">Technology Readiness</span>
+                      <span class="small fw-bold text-primary" id="scoreTech">0/100</span>
+                    </div>
+                    <div class="progress-bg">
+                      <div class="progress-bar-custom" id="barTech"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="row g-4 h-100">
+                  <div class="col-12 h-100">
+                    <div class="unified-card glass p-4 eval-card d-flex flex-column" id="card-analysis">
+                      <h4 class="mb-4 fw-bold"><i class="fa-solid fa-magnifying-glass-chart text-primary me-2"></i> Strategic Analysis</h4>
+                      
+                      <div class="mb-4 p-3 rounded-3" style="background: rgba(25, 135, 84, 0.1); border-left: 4px solid var(--bs-success);">
+                        <h6 class="fw-bold text-success mb-2"><i class="fa-solid fa-circle-check me-2"></i> Strength</h6>
+                        <p class="text-body-secondary small mb-0" id="textStrength">Analyzing...</p>
+                      </div>
+
+                      <div class="mb-4 p-3 rounded-3" style="background: rgba(220, 53, 69, 0.1); border-left: 4px solid var(--bs-danger);">
+                        <h6 class="fw-bold text-danger mb-2"><i class="fa-solid fa-circle-xmark me-2"></i> Weakness</h6>
+                        <p class="text-body-secondary small mb-0" id="textWeakness">Analyzing...</p>
+                      </div>
+
+                      <div class="mt-auto p-3 rounded-3" style="background: rgba(13, 202, 240, 0.1); border-left: 4px solid var(--bs-info);">
+                        <h6 class="fw-bold text-info mb-2"><i class="fa-solid fa-lightbulb me-2"></i> Recommendation</h6>
+                        <p class="text-body-secondary small mb-0" id="textRecommendation">Analyzing...</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center mt-5 eval-card" id="card-action">
+              <button class="btn btn-outline-primary btn-lg rounded-pill px-5 shadow-sm" onclick="resetForm()">
+                <i class="fa-solid fa-rotate-right me-2"></i> Evaluate Another Project
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer py-5 glass text-body mt-auto">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/logo.svg" alt="NovaMind Logo" width="32" height="32" class="me-2">
+            <span class="fw-bold fs-4">NovaMind</span>
+          </div>
+          <p class="text-muted small">Empowering Global Innovators for an Intelligent Future. Join the movement.</p>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Platform</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-muted">Home</a></li>
+            <li class="mb-2"><a href="about.html" class="text-decoration-none text-muted">About</a></li>
+            <li class="mb-2"><a href="competition.html" class="text-decoration-none text-muted">Competition</a></li>
+            <li class="mb-2"><a href="timeline.html" class="text-decoration-none text-muted">Timeline</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="resources.html" class="text-decoration-none text-muted">Downloads</a></li>
+            <li class="mb-2"><a href="faq.html" class="text-decoration-none text-muted">FAQ</a></li>
+            <li class="mb-2"><a href="ai-assistant.html" class="text-decoration-none text-muted">AI Assistant</a></li>
+            <li class="mb-2"><a href="dashboard.html" class="text-decoration-none text-muted">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="fw-bold mb-3">Connect</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 border-secondary opacity-25">
+      <div class="text-center text-muted small">
+        &copy; 2026 NovaMind. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script defer src="assets/vendor/js/swiper-bundle.min.js"></script>
+  <script defer src="assets/vendor/js/gsap.min.js"></script>
+  <script defer src="assets/vendor/js/ScrollTrigger.min.js"></script>
+  <script defer src="js/bundle.js"></script>
+  <script defer src="js/ui-refresh.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('evaluatorForm');
+      const resultsSection = document.getElementById('resultsSection');
+      const btnEvaluate = document.getElementById('btnEvaluate');
+      
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Show loading state
+        const originalBtnText = btnEvaluate.innerHTML;
+        btnEvaluate.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Evaluating...';
+        btnEvaluate.disabled = true;
+        
+        // Get values
+        const projectName = document.getElementById('projectName').value.trim();
+        const problemStatement = document.getElementById('problemStatement').value.trim();
+        const solution = document.getElementById('solution').value.trim();
+        const targetUsers = document.getElementById('targetUsers').value.trim();
+        const techUsed = document.getElementById('techUsed').value.trim().toLowerCase();
+        const expectedImpact = document.getElementById('expectedImpact').value.trim().toLowerCase();
+        
+        // Simulate processing time
+        setTimeout(() => {
+          // Simple Rule-based Evaluation Logic
+          let innovation = 50;
+          let feasibility = 60;
+          let market = 50;
+          let sustainability = 50;
+          let techReadiness = 50;
+          
+          // Innovation
+          if(techUsed.includes('ai') || techUsed.includes('artificial intelligence') || techUsed.includes('machine learning')) innovation += 20;
+          if(techUsed.includes('blockchain') || techUsed.includes('web3') || techUsed.includes('crypto')) innovation += 15;
+          if(solution.length > 100) innovation += 15;
+          if(innovation > 96) innovation = Math.floor(Math.random() * (96 - 88 + 1)) + 88;
+          
+          // Feasibility
+          if(problemStatement.length > 50) feasibility += 15;
+          if(techUsed.includes('html') || techUsed.includes('react') || techUsed.includes('node') || techUsed.includes('python')) feasibility += 15;
+          if(solution.length > 50) feasibility += 10;
+          if(feasibility > 95) feasibility = Math.floor(Math.random() * (95 - 82 + 1)) + 82;
+
+          // Market potential
+          if(targetUsers.length > 20) market += 20;
+          if(expectedImpact.length > 50) market += 20;
+          if(market > 97) market = Math.floor(Math.random() * (97 - 85 + 1)) + 85;
+
+          // Sustainability
+          if(expectedImpact.includes('environment') || expectedImpact.includes('green') || expectedImpact.includes('sustain') || expectedImpact.includes('eco') || expectedImpact.includes('waste')) sustainability += 35;
+          else sustainability += 20;
+          if(sustainability > 94) sustainability = Math.floor(Math.random() * (94 - 80 + 1)) + 80;
+
+          // Tech readiness
+          if(techUsed.length > 10) techReadiness += 25;
+          if(techUsed.split(',').length >= 3) techReadiness += 15;
+          if(techReadiness > 93) techReadiness = Math.floor(Math.random() * (93 - 81 + 1)) + 81;
+
+          // Strengths & Weaknesses generator
+          let strengths = [];
+          let weaknesses = [];
+          let recommendations = [];
+
+          if (innovation > 80) strengths.push("Highly innovative approach utilizing modern technology stack.");
+          else strengths.push("Practical and direct approach to solving the identified problem.");
+          
+          if (targetUsers.length > 15) strengths.push("Clear identification of target audience.");
+          if (sustainability > 80) strengths.push("Strong potential for long-term positive impact.");
+          
+          if (feasibility < 75) weaknesses.push("Implementation might be complex with the proposed solutions.");
+          if (expectedImpact.length < 40) weaknesses.push("Impact statement could be more detailed and measurable.");
+          if (weaknesses.length === 0) weaknesses.push("May require significant initial investment and resources to bootstrap.");
+
+          if (techUsed.includes('ai') && !techUsed.includes('cloud')) recommendations.push("Consider integrating scalable cloud solutions for your AI models.");
+          if (sustainability < 75) recommendations.push("Consider refining the long-term environmental or economic sustainability model.");
+          if (market < 75) recommendations.push("Conduct more user research to clearly define market size and willingness to adopt.");
+          if (recommendations.length < 3) recommendations.push("Validate your solution prototype with a small group of target users early on.");
+
+          // Apply results
+          document.getElementById('resultProjectName').textContent = projectName;
+          
+          // Counter animation for scores
+          animateValue("scoreInnovation", 0, innovation, 1500);
+          animateValue("scoreFeasibility", 0, feasibility, 1500);
+          animateValue("scoreMarket", 0, market, 1500);
+          animateValue("scoreSustainability", 0, sustainability, 1500);
+          animateValue("scoreTech", 0, techReadiness, 1500);
+
+          document.getElementById('textStrength').textContent = strengths.join(' ');
+          document.getElementById('textWeakness').textContent = weaknesses.join(' ');
+          document.getElementById('textRecommendation').textContent = recommendations.join(' ');
+
+          // Reset progress bars before animation
+          document.querySelectorAll('.progress-bar-custom').forEach(bar => bar.style.width = '0%');
+          
+          // Show section
+          resultsSection.classList.remove('d-none');
+          
+          // Scroll to results
+          setTimeout(() => {
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+
+          // Animate elements
+          setTimeout(() => {
+            document.getElementById('barInnovation').style.width = innovation + '%';
+            document.getElementById('barFeasibility').style.width = feasibility + '%';
+            document.getElementById('barMarket').style.width = market + '%';
+            document.getElementById('barSustainability').style.width = sustainability + '%';
+            document.getElementById('barTech').style.width = techReadiness + '%';
+
+            document.querySelectorAll('.eval-card').forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add('show');
+              }, index * 200);
+            });
+          }, 400);
+
+          // Restore button
+          btnEvaluate.innerHTML = originalBtnText;
+          btnEvaluate.disabled = false;
+        }, 1200); // 1.2s fake delay
+      });
+    });
+
+    // Helper function for score counter animation
+    function animateValue(id, start, end, duration) {
+      if (start === end) return;
+      var range = end - start;
+      var current = start;
+      var increment = end > start ? 1 : -1;
+      var stepTime = Math.abs(Math.floor(duration / range));
+      var obj = document.getElementById(id);
+      var timer = setInterval(function() {
+        current += increment;
+        obj.textContent = current + "/100";
+        if (current == end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }
+
+    function resetForm() {
+      document.getElementById('evaluatorForm').reset();
+      const resultsSection = document.getElementById('resultsSection');
+      document.querySelectorAll('.eval-card').forEach(card => card.classList.remove('show'));
+      
+      setTimeout(() => {
+        resultsSection.classList.add('d-none');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 400);
+    }
+  </script>
+</body>
+
+</html>

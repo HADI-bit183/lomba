@@ -51,6 +51,7 @@ function initTheme() {
       localStorage.setItem('theme', 'light');
     }
     updateToggleIcon(willBeDark);
+    window.dispatchEvent(new Event('themeChanged'));
   });
 }
 
@@ -99,7 +100,7 @@ function initAnimations() {
     
     // Filter only important elements for storytelling
     const importantElements = Array.from(aosElements).filter(el => {
-      return el.tagName === 'H1' || el.tagName === 'H2' || el.classList.contains('unified-card') || el.classList.contains('card') || el.classList.contains('hero-title');
+      return (el.tagName === 'H1' && !el.classList.contains('hero-title')) || el.tagName === 'H2' || el.classList.contains('unified-card') || el.classList.contains('card');
     });
 
     // Make non-important elements visible immediately to save performance
@@ -183,7 +184,7 @@ function initAnimations() {
   });
 
   // Hero Section Stagger Animation
-  const heroElements = document.querySelectorAll('#hero .badge, #hero .hero-title, #hero .lead, #hero .btn');
+  const heroElements = document.querySelectorAll('#hero .hero-eyebrow, #hero .hero-title, #hero .hero-lead, #hero .hero-actions');
   if (heroElements.length > 0) {
     gsap.from(heroElements, {
       y: 50,
@@ -543,7 +544,7 @@ function initAI() {
         <!-- Header -->
         <div class="bg-gradient text-white p-3 d-flex justify-content-between align-items-center" style="background: var(--gradient-primary) !important;">
           <div class="d-flex align-items-center gap-2">
-            <i class="fa-solid fa-robot"></i>
+            <img src="assets/logo.svg" alt="NovaMind Logo" width="24" height="24">
             <h6 class="mb-0 fw-bold text-white">NovaMind AI</h6>
           </div>
           <button id="close-global-ai" class="btn btn-sm btn-link text-white p-0"><i class="fa-solid fa-xmark fs-5"></i></button>
@@ -620,8 +621,24 @@ function initAI() {
 
       function appendMessage(text, isUser = false) {
         const msg = document.createElement('div');
-        msg.className = isUser ? 'chat-user align-self-end text-end' : 'chat-bot align-self-start';
+        msg.className = isUser ? 'chat-user align-self-end text-end d-flex gap-2' : 'chat-bot align-self-start d-flex gap-2';
         
+        const avatar = document.createElement('div');
+        if (isUser) {
+          const i = document.createElement('i');
+          i.className = 'fa-solid fa-user text-primary';
+          avatar.appendChild(i);
+        } else {
+          avatar.className = 'bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 p-1 border border-primary border-opacity-25';
+          const img = document.createElement('img');
+          img.src = 'assets/logo.svg';
+          img.alt = 'AI';
+          img.style.width = '100%';
+          img.style.height = '100%';
+          img.style.objectFit = 'contain';
+          avatar.appendChild(img);
+        }
+
         const messageStyle = isUser 
           ? `background: var(--color-primary); color: white; padding: 12px; border-radius: 12px; border-bottom-right-radius: 4px; display: inline-block; font-size: 0.9rem; max-width: 85%; box-shadow: 0 2px 8px rgba(37,99,235,0.2);`
           : `background: var(--card-bg); color: var(--color-gray-900); border: 1px solid rgba(0,0,0,0.05); padding: 12px; border-radius: 12px; border-top-left-radius: 4px; display: inline-block; font-size: 0.9rem; max-width: 85%; box-shadow: 0 2px 8px rgba(0,0,0,0.02);`;

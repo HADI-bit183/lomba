@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recommended Resources – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+  
+</head>
+<body class="page-resources d-flex flex-column min-vh-100">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item " href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item " href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item " href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item " href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item " href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item " href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item " href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item active" href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item " href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item " href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item " href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item " href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item " href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-gradient mb-3">Recommended Resources</h1>
+        <p class="lead text-muted max-w-2xl mx-auto">Curated guides, tutorials, and articles to level up your project based on your interests.</p>
+      </div>
+
+      <div class="text-center mb-5" id="filters">
+        <button class="filter-btn active" data-filter="All">All</button>
+        <button class="filter-btn" data-filter="AI">AI</button>
+        <button class="filter-btn" data-filter="Flutter">Flutter</button>
+        <button class="filter-btn" data-filter="UI/UX">UI/UX</button>
+        <button class="filter-btn" data-filter="Cyber Security">Cyber Security</button>
+        <button class="filter-btn" data-filter="Business">Business</button>
+        <button class="filter-btn" data-filter="Cloud">Cloud</button>
+        <button class="filter-btn" data-filter="Startup">Startup</button>
+      </div>
+
+      <div class="row g-4" id="resourcesGrid">
+        <!-- JS populated -->
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer py-4 glass text-body mt-auto text-center">
+    <p class="text-muted small mb-0">&copy; 2026 NovaMind. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script src="js/ui-refresh.js"></script>
+  <script>
+    const resources = [
+      { title: "Introduction to Machine Learning Models", cat: "AI", diff: "Beginner", time: "2 Hours", score: 98, img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500&q=80" },
+      { title: "Building Cross-Platform Apps", cat: "Flutter", diff: "Intermediate", time: "4 Hours", score: 92, img: "https://images.unsplash.com/photo-1617042375876-a13e36732a04?w=500&q=80" },
+      { title: "Design Systems & Figma Mastery", cat: "UI/UX", diff: "Advanced", time: "3 Hours", score: 95, img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&q=80" },
+      { title: "AWS Cloud Architecture Basics", cat: "Cloud", diff: "Beginner", time: "1.5 Hours", score: 88, img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&q=80" },
+      { title: "Pitching Your Startup to Investors", cat: "Business", diff: "Intermediate", time: "1 Hour", score: 99, img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=500&q=80" },
+      { title: "Securing Web Applications", cat: "Cyber Security", diff: "Advanced", time: "5 Hours", score: 94, img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&q=80" },
+      { title: "Zero to One: Startup Mindset", cat: "Startup", diff: "Beginner", time: "3 Hours", score: 97, img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80" },
+      { title: "Advanced State Management", cat: "Flutter", diff: "Advanced", time: "2.5 Hours", score: 89, img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=80" }
+    ];
+
+    function renderResources(filter) {
+      const grid = document.getElementById('resourcesGrid');
+      grid.innerHTML = '';
+      const filtered = filter === 'All' ? resources : resources.filter(r => r.cat === filter);
+      
+      if(filtered.length === 0) {
+        grid.innerHTML = `<div class="col-12 text-center text-muted py-5">No resources found for this category.</div>`;
+        return;
+      }
+
+      filtered.forEach((r, idx) => {
+        let diffColor = r.diff === 'Beginner' ? 'text-success' : (r.diff === 'Intermediate' ? 'text-warning' : 'text-danger');
+        grid.innerHTML += `
+          <div class="col-md-6 col-lg-3">
+            <div class="unified-card glass resource-card position-relative p-0 overflow-hidden" style="animation: fadeIn 0.5s ease ${idx * 0.1}s backwards;">
+              <img src="${r.img}" alt="${r.title}" class="resource-thumb">
+              <div class="score-badge"><i class="fa-solid fa-star text-warning"></i> ${r.score}</div>
+              <div class="p-3">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-2">${r.cat}</span>
+                <h6 class="fw-bold mb-3" style="line-height: 1.4;">${r.title}</h6>
+                <div class="d-flex justify-content-between text-muted small">
+                  <span class="${diffColor} fw-semibold"><i class="fa-solid fa-signal"></i> ${r.diff}</span>
+                  <span><i class="fa-regular fa-clock"></i> ${r.time}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderResources('All');
+      const btns = document.querySelectorAll('.filter-btn');
+      btns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          btns.forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          renderResources(e.target.dataset.filter);
+        });
+      });
+    });
+  </script>
+  <script defer src="js/bundle.js"></script>
+</body>
+</html>

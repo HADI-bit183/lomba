@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovation Canvas – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+
+</head>
+<body class="page-canvas d-flex flex-column min-vh-100">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item " href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item " href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item " href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item " href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item active" href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item " href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item " href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item " href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item " href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item " href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item " href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item " href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item " href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-gradient mb-3">Innovation Canvas</h1>
+        <p class="lead text-muted max-w-2xl mx-auto">Structure your business model and project idea in a simple canvas format.</p>
+      </div>
+
+      <div class="row justify-content-center" id="formSection">
+        <div class="col-lg-10">
+          <div class="unified-card glass p-4 p-md-5">
+            <form id="canvasForm">
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Problem</label>
+                  <textarea id="valProblem" class="form-control bg-transparent" rows="3" required></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Target Users</label>
+                  <textarea id="valUsers" class="form-control bg-transparent" rows="3" required></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Solution</label>
+                  <textarea id="valSolution" class="form-control bg-transparent" rows="3" required></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Unique Value Proposition</label>
+                  <textarea id="valUVP" class="form-control bg-transparent" rows="3" required></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Technology</label>
+                  <textarea id="valTech" class="form-control bg-transparent" rows="2" required></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Competitor</label>
+                  <textarea id="valCompetitor" class="form-control bg-transparent" rows="2" required></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Key Partners</label>
+                  <textarea id="valPartners" class="form-control bg-transparent" rows="2" required></textarea>
+                </div>
+                <div class="col-md-6"></div> <!-- spacer -->
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Cost Structure</label>
+                  <textarea id="valCost" class="form-control bg-transparent" rows="3" required></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Revenue Streams</label>
+                  <textarea id="valRevenue" class="form-control bg-transparent" rows="3" required></textarea>
+                </div>
+              </div>
+              <div class="text-center mt-5">
+                <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5">Generate Summary</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-none mt-5" id="summarySection">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-bold m-0">Your Canvas Summary</h3>
+          <div>
+            <button class="btn btn-outline-secondary me-2" id="btnEdit"><i class="fa-solid fa-pen"></i> Edit</button>
+            <button class="btn btn-primary" onclick="alert('Exporting PDF... (Dummy Feature)')"><i class="fa-solid fa-file-pdf"></i> Export PDF</button>
+          </div>
+        </div>
+
+        <div class="canvas-grid">
+          <!-- Top Row -->
+          <div class="canvas-box c-problem">
+            <div class="box-title">Problem</div>
+            <div class="box-content" id="outProblem"></div>
+          </div>
+          <div class="canvas-box c-solution">
+            <div class="box-title">Solution</div>
+            <div class="box-content" id="outSolution"></div>
+          </div>
+          <div class="canvas-box c-uvp">
+            <div class="box-title">Unique Value Proposition</div>
+            <div class="box-content" id="outUVP"></div>
+          </div>
+          <div class="canvas-box c-tech">
+            <div class="box-title">Technology</div>
+            <div class="box-content" id="outTech"></div>
+          </div>
+          <div class="canvas-box c-users">
+            <div class="box-title">Target Users</div>
+            <div class="box-content" id="outUsers"></div>
+          </div>
+
+          <!-- Middle Row (Partners / Competitor) -->
+          <div class="canvas-box c-partners">
+            <div class="box-title">Key Partners</div>
+            <div class="box-content" id="outPartners"></div>
+          </div>
+          <div class="canvas-box c-competitor">
+            <div class="box-title">Competitors</div>
+            <div class="box-content" id="outCompetitor"></div>
+          </div>
+          <div class="canvas-box c-partners">
+             <!-- Spacer to fill 12 cols if needed, or adjust. 4+4 = 8, missing 4. We can make Partners 6 and Competitor 6 -->
+          </div>
+
+          <!-- Bottom Row -->
+          <div class="canvas-box c-cost">
+            <div class="box-title">Cost Structure</div>
+            <div class="box-content" id="outCost"></div>
+          </div>
+          <div class="canvas-box c-revenue">
+            <div class="box-title">Revenue Streams</div>
+            <div class="box-content" id="outRevenue"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer py-4 glass text-body mt-auto text-center">
+    <p class="text-muted small mb-0">&copy; 2026 NovaMind. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script src="js/ui-refresh.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Fix grid css for middle row dynamically
+      const partners = document.querySelectorAll('.c-partners')[0];
+      const competitor = document.querySelector('.c-competitor');
+      if(partners && competitor) {
+        partners.style.gridColumn = 'span 6';
+        competitor.style.gridColumn = 'span 6';
+      }
+
+      const formSection = document.getElementById('formSection');
+      const summarySection = document.getElementById('summarySection');
+
+      document.getElementById('canvasForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        document.getElementById('outProblem').textContent = document.getElementById('valProblem').value;
+        document.getElementById('outSolution').textContent = document.getElementById('valSolution').value;
+        document.getElementById('outUsers').textContent = document.getElementById('valUsers').value;
+        document.getElementById('outUVP').textContent = document.getElementById('valUVP').value;
+        document.getElementById('outTech').textContent = document.getElementById('valTech').value;
+        document.getElementById('outCompetitor').textContent = document.getElementById('valCompetitor').value;
+        document.getElementById('outPartners').textContent = document.getElementById('valPartners').value;
+        document.getElementById('outCost').textContent = document.getElementById('valCost').value;
+        document.getElementById('outRevenue').textContent = document.getElementById('valRevenue').value;
+
+        formSection.classList.add('d-none');
+        summarySection.classList.remove('d-none');
+      });
+
+      document.getElementById('btnEdit').addEventListener('click', () => {
+        summarySection.classList.add('d-none');
+        formSection.classList.remove('d-none');
+      });
+    });
+  </script>
+  <script defer src="js/bundle.js"></script>
+</body>
+</html>

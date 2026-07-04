@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovation Roadmap – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+  
+</head>
+<body class="page-roadmap d-flex flex-column min-vh-100">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item active" href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item " href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item " href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item " href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item " href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item " href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item " href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item " href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item " href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item " href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item " href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item " href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item " href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-gradient mb-3">Innovation Roadmap</h1>
+        <p class="lead text-muted max-w-2xl mx-auto">Follow the path from a simple idea to a global launch.</p>
+      </div>
+
+      <div class="horizontal-progress-container mx-auto" style="max-width: 800px;">
+        <div class="d-flex justify-content-between mb-2">
+          <span class="fw-bold small">Roadmap Progress</span>
+          <span class="fw-bold small text-primary" id="progressText">0%</span>
+        </div>
+        <div class="bg-secondary bg-opacity-25 rounded-pill overflow-hidden" style="height: 8px;">
+          <div class="progress-bar-custom" id="topProgressBar"></div>
+        </div>
+      </div>
+
+      <div class="timeline" id="timeline">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer py-4 glass text-body mt-auto text-center">
+    <p class="text-muted small mb-0">&copy; 2026 NovaMind. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script src="js/ui-refresh.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const stages = [
+        { title: "Idea", desc: "Brainstorming and conceptualization.", active: true, icon: "fa-lightbulb" },
+        { title: "Research", desc: "Market analysis and validation.", active: true, icon: "fa-magnifying-glass" },
+        { title: "Planning", desc: "Structuring the project and team.", active: true, icon: "fa-list-check" },
+        { title: "Prototype", desc: "Building the initial MVP.", active: true, icon: "fa-cubes" },
+        { title: "Testing", desc: "User testing and gathering feedback.", active: true, icon: "fa-vial" },
+        { title: "Validation", desc: "Refining based on real-world data.", active: false, icon: "fa-check-double" },
+        { title: "Competition", desc: "Pitching at the NovaMind finals.", active: false, icon: "fa-trophy" },
+        { title: "Funding", desc: "Securing seed investment.", active: false, icon: "fa-sack-dollar" },
+        { title: "Global Launch", desc: "Deploying the product worldwide.", active: false, icon: "fa-rocket" }
+      ];
+
+      const timeline = document.getElementById('timeline');
+      let completedCount = 0;
+
+      stages.forEach((stage, index) => {
+        if(stage.active) completedCount++;
+        const position = index % 2 === 0 ? 'left' : 'right';
+        const activeClass = stage.active ? 'active' : '';
+        const iconColor = stage.active ? 'text-primary' : 'text-muted';
+        
+        timeline.innerHTML += `
+          <div class="timeline-item ${position} ${activeClass}">
+            <div class="timeline-card">
+              <h5 class="fw-bold mb-2"><i class="fa-solid ${stage.icon} ${iconColor} me-2"></i> <span>${stage.title}</span></h5>
+              <p class="text-muted small mb-0">${stage.desc}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      // Update Horizontal Progress
+      const percentage = Math.round((completedCount / stages.length) * 100);
+      setTimeout(() => {
+        document.getElementById('topProgressBar').style.width = percentage + '%';
+        document.getElementById('progressText').textContent = percentage + '%';
+      }, 500);
+
+      // Scroll Animation Observer
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.timeline-item').forEach(item => {
+        observer.observe(item);
+      });
+    });
+  </script>
+  <script defer src="js/bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Gap Analysis – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+  
+</head>
+<body class="page-skill-gap d-flex flex-column min-vh-100">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item " href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item " href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item " href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item active" href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item " href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item " href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item " href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item " href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item " href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item " href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item " href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item " href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item " href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-gradient mb-3">Skill Gap Analysis</h1>
+        <p class="lead text-muted max-w-2xl mx-auto">Select the skills you currently possess to find out what you need to learn to become a well-rounded innovator.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="unified-card glass p-4 mb-4">
+            <h4 class="fw-bold mb-4">Your Current Skills</h4>
+            <div id="skillsContainer" class="mb-4">
+              <!-- Checkboxes JS -->
+            </div>
+            <button class="btn btn-primary rounded-pill px-4" id="btnAnalyze">Analyze My Skills</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center d-none" id="resultsSection">
+        <div class="col-lg-8">
+          <div class="unified-card glass p-4 analysis-card" id="analysisCard">
+            <h4 class="fw-bold mb-4 text-primary">Analysis Results</h4>
+            
+            <div class="row g-4 mb-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-10 rounded-3 h-100">
+                  <h6 class="fw-bold"><i class="fa-solid fa-check text-success me-2"></i> Current Skills</h6>
+                  <ul id="currentList" class="small text-muted mb-0 ps-3"></ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-danger bg-opacity-10 rounded-3 h-100">
+                  <h6 class="fw-bold"><i class="fa-solid fa-xmark text-danger me-2"></i> Missing Skills</h6>
+                  <ul id="missingList" class="small text-muted mb-0 ps-3"></ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <h6 class="fw-bold mb-2">Skill Completeness</h6>
+              <div class="progress" style="height: 10px; background-color: var(--bs-secondary-bg);">
+                <div class="progress-bar bg-primary" id="completenessBar" style="width: 0%; transition: width 1s ease;"></div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <h6 class="fw-bold text-warning"><i class="fa-solid fa-triangle-exclamation me-2"></i> Learning Priority</h6>
+              <p class="small text-muted mb-0" id="learningPriority"></p>
+            </div>
+
+            <div>
+              <h6 class="fw-bold text-info"><i class="fa-solid fa-lightbulb me-2"></i> Recommendation</h6>
+              <p class="small text-muted mb-0" id="recommendation"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer py-4 glass text-body mt-auto text-center">
+    <p class="text-muted small mb-0">&copy; 2026 NovaMind. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script src="js/ui-refresh.js"></script>
+  <script>
+    const allSkills = ["HTML", "CSS", "JavaScript", "Flutter", "Python", "Machine Learning", "Firebase", "UI/UX", "Cloud", "Git"];
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('skillsContainer');
+      allSkills.forEach((skill, idx) => {
+        container.innerHTML += `
+          <input type="checkbox" id="skill_${idx}" value="${skill}" class="skill-checkbox">
+          <label for="skill_${idx}" class="skill-label">${skill}</label>
+        `;
+      });
+
+      document.getElementById('btnAnalyze').addEventListener('click', () => {
+        const checkedBoxes = document.querySelectorAll('.skill-checkbox:checked');
+        const currentSkills = Array.from(checkedBoxes).map(cb => cb.value);
+        const missingSkills = allSkills.filter(s => !currentSkills.includes(s));
+        
+        document.getElementById('currentList').innerHTML = currentSkills.length ? currentSkills.map(s => `<li>${s}</li>`).join('') : '<li>None</li>';
+        document.getElementById('missingList').innerHTML = missingSkills.length ? missingSkills.map(s => `<li>${s}</li>`).join('') : '<li>None</li>';
+        
+        const percentage = Math.round((currentSkills.length / allSkills.length) * 100);
+        
+        // Logic for priority and recommendation
+        let priority = "General exploration of new technologies.";
+        let rec = "Keep building small projects to improve your existing stack.";
+        
+        if(!currentSkills.includes("Git")) priority = "Version Control (Git) is essential for collaboration.";
+        else if(currentSkills.includes("Python") && !currentSkills.includes("Machine Learning")) priority = "Since you know Python, Machine Learning is a great next step.";
+        else if(currentSkills.includes("HTML") && !currentSkills.includes("JavaScript")) priority = "JavaScript is needed to make your web pages interactive.";
+        else if(!currentSkills.includes("UI/UX") && currentSkills.length > 3) priority = "UI/UX Design to ensure your functional apps are user-friendly.";
+
+        if(percentage < 30) rec = "Focus on the basics first like HTML, CSS, and Git before moving to advanced topics.";
+        else if(percentage < 70) rec = "You have a solid foundation. Try building a full-stack project utilizing Cloud or Firebase.";
+        else rec = "You are highly skilled! Focus on deep-diving into niche topics like Machine Learning or advanced Cloud Architecture.";
+
+        document.getElementById('learningPriority').textContent = priority;
+        document.getElementById('recommendation').textContent = rec;
+        
+        const resultsSection = document.getElementById('resultsSection');
+        resultsSection.classList.remove('d-none');
+        
+        setTimeout(() => {
+          document.getElementById('analysisCard').classList.add('show');
+          document.getElementById('completenessBar').style.width = percentage + '%';
+        }, 100);
+        
+        resultsSection.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+  <script defer src="js/bundle.js"></script>
+</body>
+</html>

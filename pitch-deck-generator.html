@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pitch Deck Generator – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+  
+</head>
+<body class="page-pitch d-flex flex-column min-vh-100">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item " href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item " href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item " href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item " href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item " href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item " href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item active" href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item " href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item " href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item " href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item " href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item " href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item " href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-gradient mb-3">Pitch Deck Generator</h1>
+        <p class="lead text-muted max-w-2xl mx-auto">Generate a professional 7-slide pitch deck structure instantly based on your project details.</p>
+      </div>
+
+      <div class="row g-5">
+        <!-- Form Side -->
+        <div class="col-lg-5">
+          <div class="unified-card glass p-4 h-100">
+            <h4 class="fw-bold mb-4">Project Details</h4>
+            <form id="deckForm">
+              <div class="mb-3">
+                <label class="form-label small fw-semibold">Project Name</label>
+                <input type="text" class="form-control bg-transparent" id="inName" required placeholder="e.g. EcoSmart">
+              </div>
+              <div class="mb-3">
+                <label class="form-label small fw-semibold">Problem</label>
+                <textarea class="form-control bg-transparent" id="inProblem" rows="2" required placeholder="The problem you solve..."></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label small fw-semibold">Solution</label>
+                <textarea class="form-control bg-transparent" id="inSolution" rows="2" required placeholder="How you solve it..."></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label small fw-semibold">Technology</label>
+                <input type="text" class="form-control bg-transparent" id="inTech" required placeholder="e.g. AI, React, Node.js">
+              </div>
+              <div class="mb-3">
+                <label class="form-label small fw-semibold">Target Market</label>
+                <input type="text" class="form-control bg-transparent" id="inMarket" required placeholder="Who will buy this?">
+              </div>
+              <div class="mb-3">
+                <label class="form-label small fw-semibold">Business Model</label>
+                <input type="text" class="form-control bg-transparent" id="inBusiness" required placeholder="e.g. Subscription ($10/mo)">
+              </div>
+              <div class="mb-3">
+                <label class="form-label small fw-semibold">Impact</label>
+                <textarea class="form-control bg-transparent" id="inImpact" rows="2" required placeholder="Social/Environmental impact..."></textarea>
+              </div>
+              <div class="mb-4">
+                <label class="form-label small fw-semibold">Team Name / Members</label>
+                <input type="text" class="form-control bg-transparent" id="inTeam" required placeholder="Team Alpha">
+              </div>
+              <button type="submit" class="btn btn-primary w-100 rounded-pill"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Slides</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Preview Side -->
+        <div class="col-lg-7">
+          <div class="unified-card glass p-4 h-100 d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h4 class="fw-bold mb-0">Deck Preview</h4>
+              <button class="btn btn-outline-primary btn-sm rounded-pill px-3" onclick="alert('Downloading PDF... (Dummy)')" id="btnDownload" disabled>
+                <i class="fa-solid fa-download"></i> Download PDF
+              </button>
+            </div>
+            
+            <div class="slides-container flex-grow-1" id="slidesContainer">
+              <div class="text-center text-muted py-5 mt-5">
+                <i class="fa-solid fa-layer-group fa-3x mb-3 opacity-50"></i>
+                <h5>Fill the form to generate preview</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer py-4 glass text-body mt-auto text-center">
+    <p class="text-muted small mb-0">&copy; 2026 NovaMind. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script src="js/ui-refresh.js"></script>
+  <script>
+    document.getElementById('deckForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const v = {
+        name: document.getElementById('inName').value,
+        problem: document.getElementById('inProblem').value,
+        solution: document.getElementById('inSolution').value,
+        tech: document.getElementById('inTech').value,
+        market: document.getElementById('inMarket').value,
+        business: document.getElementById('inBusiness').value,
+        impact: document.getElementById('inImpact').value,
+        team: document.getElementById('inTeam').value
+      };
+
+      const container = document.getElementById('slidesContainer');
+      container.innerHTML = `
+        <!-- Slide 1 -->
+        <div class="slide-preview position-relative">
+          <span class="slide-badge">Slide 1: Title</span>
+          <h2 class="slide-title display-4">${v.name}</h2>
+          <p class="slide-content fs-5">By ${v.team}</p>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide-preview light-bg position-relative">
+          <span class="slide-badge">Slide 2: Problem</span>
+          <h2 class="slide-title text-danger">The Problem</h2>
+          <p class="slide-content fw-medium text-body-secondary">${v.problem}</p>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide-preview light-bg position-relative">
+          <span class="slide-badge">Slide 3: Solution</span>
+          <h2 class="slide-title text-success">Our Solution</h2>
+          <p class="slide-content fw-medium text-body-secondary">${v.solution}</p>
+        </div>
+        <!-- Slide 4 -->
+        <div class="slide-preview position-relative">
+          <span class="slide-badge">Slide 4: Technology</span>
+          <h2 class="slide-title">Technology Stack</h2>
+          <div class="slide-content fs-5">
+            <i class="fa-solid fa-microchip fa-2x mb-3"></i><br>
+            ${v.tech}
+          </div>
+        </div>
+        <!-- Slide 5 -->
+        <div class="slide-preview light-bg position-relative">
+          <span class="slide-badge">Slide 5: Business Model</span>
+          <h2 class="slide-title text-primary">Target & Business Model</h2>
+          <p class="slide-content fw-medium text-body-secondary mb-2"><i class="fa-solid fa-users text-info"></i> Market: ${v.market}</p>
+          <p class="slide-content fw-medium text-body-secondary"><i class="fa-solid fa-sack-dollar text-warning"></i> Revenue: ${v.business}</p>
+        </div>
+        <!-- Slide 6 -->
+        <div class="slide-preview light-bg position-relative">
+          <span class="slide-badge">Slide 6: Impact</span>
+          <h2 class="slide-title text-info">Project Impact</h2>
+          <p class="slide-content fw-medium text-body-secondary">${v.impact}</p>
+        </div>
+        <!-- Slide 7 -->
+        <div class="slide-preview position-relative">
+          <span class="slide-badge">Slide 7: Closing</span>
+          <h2 class="slide-title">Thank You!</h2>
+          <p class="slide-content fs-5">Join ${v.name} in making a difference.</p>
+        </div>
+      `;
+
+      document.getElementById('btnDownload').disabled = false;
+    });
+  </script>
+  <script defer src="js/bundle.js"></script>
+</body>
+</html>

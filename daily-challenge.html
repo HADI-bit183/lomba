@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Challenge – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+  
+</head>
+<body class="page-challenge d-flex flex-column min-vh-100">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item " href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item active" href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item " href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item " href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item " href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item " href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item " href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item " href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item " href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item " href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item " href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item " href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item " href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-gradient mb-3">Daily Challenge</h1>
+        <p class="lead text-muted max-w-2xl mx-auto">Complete a small task every day to sharpen your innovation skills and earn XP.</p>
+        <div class="mt-3">
+          <span class="badge bg-warning text-dark fs-6 px-3 py-2 rounded-pill shadow-sm"><i class="fa-solid fa-star me-1"></i> Total XP: <span id="totalXP">0</span></span>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="unified-card glass p-5 text-center position-relative overflow-hidden shadow">
+            
+            <div id="challengeContent">
+              <div class="mb-4 text-primary">
+                <i class="fa-solid fa-calendar-day fa-3x mb-3"></i>
+                <h5 class="fw-bold text-body" id="chDate">Loading...</h5>
+              </div>
+              
+              <h3 class="fw-bold mb-4" id="chTitle">Loading Challenge...</h3>
+              
+              <div class="d-flex justify-content-center gap-3 mb-5">
+                <span class="badge bg-danger bg-opacity-10 text-danger"><i class="fa-solid fa-fire me-1"></i> Difficulty: <span id="chDiff">Medium</span></span>
+                <span class="badge bg-info bg-opacity-10 text-info"><i class="fa-regular fa-clock me-1"></i> <span id="chTime">30 Mins</span></span>
+                <span class="badge bg-warning bg-opacity-10 text-warning"><i class="fa-solid fa-star me-1"></i> +<span id="chReward">10</span> XP</span>
+              </div>
+
+              <div class="position-relative d-inline-block">
+                <button class="btn btn-primary btn-lg rounded-pill px-5 shadow" id="btnComplete">Complete Challenge</button>
+              </div>
+            </div>
+
+            <!-- Success State -->
+            <div id="successContent" class="d-none py-4">
+              <div class="xp-badge mb-4" id="badgeContainer">
+                <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-warning bg-opacity-25" style="width: 100px; height: 100px;">
+                  <i class="fa-solid fa-trophy text-warning fa-3x"></i>
+                </div>
+              </div>
+              <h3 class="fw-bold text-success mb-2">Challenge Completed!</h3>
+              <p class="text-muted">You earned <span class="fw-bold text-warning">+<span id="earnedXP">10</span> XP</span>. Come back tomorrow for a new challenge!</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer py-4 glass text-body mt-auto text-center">
+    <p class="text-muted small mb-0">&copy; 2026 NovaMind. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script src="js/ui-refresh.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const challenges = [
+        { title: "Think of an AI solution for local farmers.", diff: "Medium", time: "30 Mins", xp: 15 },
+        { title: "Improve an existing product's UI on paper.", diff: "Easy", time: "15 Mins", xp: 10 },
+        { title: "Create a startup idea around renewable energy.", diff: "Hard", time: "45 Mins", xp: 20 },
+        { title: "Find a real-world problem in your neighborhood.", diff: "Easy", time: "10 Mins", xp: 5 },
+        { title: "Design a better user flow for a shopping app.", diff: "Medium", time: "30 Mins", xp: 15 }
+      ];
+
+      // Get current date string to use as seed/key
+      const today = new Date().toDateString();
+      document.getElementById('chDate').textContent = today;
+      
+      // Simple hash to pick challenge based on date
+      let hash = 0;
+      for (let i = 0; i < today.length; i++) {
+        hash = today.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      const chIndex = Math.abs(hash) % challenges.length;
+      const todayChallenge = challenges[chIndex];
+
+      document.getElementById('chTitle').textContent = todayChallenge.title;
+      document.getElementById('chDiff').textContent = todayChallenge.diff;
+      document.getElementById('chTime').textContent = todayChallenge.time;
+      document.getElementById('chReward').textContent = todayChallenge.xp;
+      document.getElementById('earnedXP').textContent = todayChallenge.xp;
+
+      // Local Storage Logic
+      let totalXP = parseInt(localStorage.getItem('novamind_xp') || '0');
+      document.getElementById('totalXP').textContent = totalXP;
+
+      const lastCompletedDate = localStorage.getItem('novamind_last_challenge');
+      
+      if (lastCompletedDate === today) {
+        showSuccessState(false);
+      }
+
+      document.getElementById('btnComplete').addEventListener('click', function(e) {
+        // Animation floating XP
+        const rect = this.getBoundingClientRect();
+        const floatEl = document.createElement('div');
+        floatEl.className = 'floating-xp';
+        floatEl.textContent = `+${todayChallenge.xp} XP`;
+        floatEl.style.left = (e.clientX - rect.left) + 'px';
+        floatEl.style.top = (e.clientY - rect.top) + 'px';
+        this.parentElement.appendChild(floatEl);
+
+        setTimeout(() => {
+          totalXP += todayChallenge.xp;
+          localStorage.setItem('novamind_xp', totalXP);
+          localStorage.setItem('novamind_last_challenge', today);
+          document.getElementById('totalXP').textContent = totalXP;
+          showSuccessState(true);
+        }, 800);
+      });
+
+      function showSuccessState(animate) {
+        document.getElementById('challengeContent').classList.add('d-none');
+        document.getElementById('successContent').classList.remove('d-none');
+        if (animate) {
+          setTimeout(() => {
+            document.getElementById('badgeContainer').classList.add('show');
+          }, 100);
+        } else {
+          document.getElementById('badgeContainer').classList.add('show');
+        }
+      }
+    });
+  </script>
+  <script defer src="js/bundle.js"></script>
+</body>
+</html>

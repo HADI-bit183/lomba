@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovation Readiness – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Libraries -->
+  <link rel="preload" href="assets/vendor/css/fonts.css" as="style">
+  <link href="assets/vendor/css/fonts.css" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/css/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+  
+</head>
+
+<body class="page-readiness d-flex flex-column min-vh-100">
+  <!-- Minimalist Preloader -->
+  <div id="preloader" class="d-flex justify-content-center align-items-center position-fixed top-0 start-0 w-100 h-100 bg-primary dark:bg-primary z-3" style="z-index: 9999; background: var(--bg-primary);">
+    <img src="assets/logo.svg" alt="NovaMind Logo" width="64" height="64" class="pulse-animation">
+  </div>
+
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item " href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item " href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item " href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item " href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item " href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item " href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item " href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item " href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item " href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item " href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item active" href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item " href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item " href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1">
+    <section class="py-5 mt-4">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h1 class="display-4 fw-bold text-gradient mb-3">Innovation Readiness</h1>
+          <p class="lead text-muted max-w-2xl mx-auto">Track your project's development progress as you prepare for the competition.</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <!-- Circular Progress Section -->
+            <div class="unified-card glass p-5 mb-5 text-center border-0 shadow-sm position-relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+              <!-- Decorative element -->
+              <div class="position-absolute top-50 start-50 translate-middle w-100 h-100 z-0 opacity-10" style="background: radial-gradient(circle, var(--bs-primary) 0%, transparent 60%); pointer-events: none;"></div>
+              
+              <div class="position-relative z-1 d-flex flex-column align-items-center">
+                <div class="position-relative d-inline-block">
+                  <svg width="240" height="240" viewBox="0 0 240 240" class="circular-progress-svg">
+                    <circle cx="120" cy="120" r="105" fill="none" stroke="var(--bs-secondary-bg)" stroke-width="16" />
+                    <!-- stroke-dasharray = 2 * PI * r = 2 * 3.14159 * 105 = 659.73 -->
+                    <circle cx="120" cy="120" r="105" fill="none" stroke="url(#gradient)" stroke-width="16"
+                            stroke-dasharray="659.73" stroke-dashoffset="659.73"
+                            stroke-linecap="round" class="circular-progress-bar" id="overallProgressBar" />
+                    <defs>
+                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="var(--bs-primary)" />
+                        <stop offset="100%" stop-color="#a855f7" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <div class="position-absolute top-50 start-50 translate-middle text-center w-100">
+                    <h2 class="display-3 fw-bold mb-0 text-body" id="overallProgressText">0%</h2>
+                    <span class="text-muted small fw-semibold text-uppercase tracking-wider">Ready</span>
+                  </div>
+                </div>
+                
+                <h4 class="mt-4 fw-bold">EcoSmart AI Project</h4>
+                <p class="text-muted mb-0">You're making great progress! Complete the remaining steps to reach 100%.</p>
+              </div>
+            </div>
+
+            <!-- Checklist Section -->
+            <div class="row g-4" id="checklistContainer">
+              <!-- Profile -->
+              <div class="col-md-6">
+                <div class="unified-card glass p-4 h-100 checklist-item" data-progress="100">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="item-icon me-3"><i class="fa-solid fa-user-check"></i></div>
+                    <div class="flex-grow-1">
+                      <h5 class="fw-bold mb-1">Profile</h5>
+                      <p class="text-muted small mb-0">Team and individual details.</p>
+                    </div>
+                    <div class="ms-auto text-end">
+                      <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2"><i class="fa-solid fa-check me-1"></i> Done</span>
+                    </div>
+                  </div>
+                  <div class="progress-bg">
+                    <div class="progress-bar-custom" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Idea -->
+              <div class="col-md-6">
+                <div class="unified-card glass p-4 h-100 checklist-item" data-progress="100">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="item-icon me-3"><i class="fa-solid fa-lightbulb"></i></div>
+                    <div class="flex-grow-1">
+                      <h5 class="fw-bold mb-1">Idea</h5>
+                      <p class="text-muted small mb-0">Initial problem & solution statement.</p>
+                    </div>
+                    <div class="ms-auto text-end">
+                      <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2"><i class="fa-solid fa-check me-1"></i> Done</span>
+                    </div>
+                  </div>
+                  <div class="progress-bg">
+                    <div class="progress-bar-custom" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Research -->
+              <div class="col-md-6">
+                <div class="unified-card glass p-4 h-100 checklist-item" data-progress="100">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="item-icon me-3"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <div class="flex-grow-1">
+                      <h5 class="fw-bold mb-1">Research</h5>
+                      <p class="text-muted small mb-0">Market analysis and validation.</p>
+                    </div>
+                    <div class="ms-auto text-end">
+                      <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2"><i class="fa-solid fa-check me-1"></i> Done</span>
+                    </div>
+                  </div>
+                  <div class="progress-bg">
+                    <div class="progress-bar-custom" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Prototype -->
+              <div class="col-md-6">
+                <div class="unified-card glass p-4 h-100 checklist-item" data-progress="100">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="item-icon me-3"><i class="fa-solid fa-cubes"></i></div>
+                    <div class="flex-grow-1">
+                      <h5 class="fw-bold mb-1">Prototype</h5>
+                      <p class="text-muted small mb-0">Functional MVP or UI/UX design.</p>
+                    </div>
+                    <div class="ms-auto text-end">
+                      <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-2"><i class="fa-solid fa-check me-1"></i> Done</span>
+                    </div>
+                  </div>
+                  <div class="progress-bg">
+                    <div class="progress-bar-custom" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Business Model -->
+              <div class="col-md-6">
+                <div class="unified-card glass p-4 h-100 checklist-item" data-progress="80">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="item-icon me-3 text-warning" style="background: rgba(255, 193, 7, 0.1);"><i class="fa-solid fa-chart-pie"></i></div>
+                    <div class="flex-grow-1">
+                      <h5 class="fw-bold mb-1">Business Model</h5>
+                      <p class="text-muted small mb-0">Revenue streams & sustainability.</p>
+                    </div>
+                    <div class="ms-auto text-end">
+                      <span class="badge bg-warning bg-opacity-10 text-warning rounded-pill px-3 py-2 fw-bold">80%</span>
+                    </div>
+                  </div>
+                  <div class="progress-bg">
+                    <div class="progress-bar-custom" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pitch Deck -->
+              <div class="col-md-6">
+                <div class="unified-card glass p-4 h-100 checklist-item" data-progress="60">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="item-icon me-3 text-warning" style="background: rgba(255, 193, 7, 0.1);"><i class="fa-solid fa-file-powerpoint"></i></div>
+                    <div class="flex-grow-1">
+                      <h5 class="fw-bold mb-1">Pitch Deck</h5>
+                      <p class="text-muted small mb-0">Slide deck for the jury.</p>
+                    </div>
+                    <div class="ms-auto text-end">
+                      <span class="badge bg-warning bg-opacity-10 text-warning rounded-pill px-3 py-2 fw-bold">60%</span>
+                    </div>
+                  </div>
+                  <div class="progress-bg">
+                    <div class="progress-bar-custom" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Presentation -->
+              <div class="col-md-6">
+                <div class="unified-card glass p-4 h-100 checklist-item" data-progress="36">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="item-icon me-3 text-info" style="background: rgba(13, 202, 240, 0.1);"><i class="fa-solid fa-person-chalkboard"></i></div>
+                    <div class="flex-grow-1">
+                      <h5 class="fw-bold mb-1">Presentation</h5>
+                      <p class="text-muted small mb-0">Pitch script & rehearsal.</p>
+                    </div>
+                    <div class="ms-auto text-end">
+                      <span class="badge bg-info bg-opacity-10 text-info rounded-pill px-3 py-2 fw-bold">36%</span>
+                    </div>
+                  </div>
+                  <div class="progress-bg">
+                    <div class="progress-bar-custom" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Competition Ready -->
+              <div class="col-md-6">
+                <div class="unified-card glass p-4 h-100 checklist-item" data-progress="0">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="item-icon me-3 text-secondary" style="background: rgba(108, 117, 125, 0.1);"><i class="fa-solid fa-trophy"></i></div>
+                    <div class="flex-grow-1">
+                      <h5 class="fw-bold mb-1">Competition Ready</h5>
+                      <p class="text-muted small mb-0">Final submission & readiness.</p>
+                    </div>
+                    <div class="ms-auto text-end">
+                      <span class="badge bg-secondary bg-opacity-10 text-secondary rounded-pill px-3 py-2 fw-bold">0%</span>
+                    </div>
+                  </div>
+                  <div class="progress-bg">
+                    <div class="progress-bar-custom" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer py-5 glass text-body mt-auto">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/logo.svg" alt="NovaMind Logo" width="32" height="32" class="me-2">
+            <span class="fw-bold fs-4">NovaMind</span>
+          </div>
+          <p class="text-muted small">Empowering Global Innovators for an Intelligent Future. Join the movement.</p>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Platform</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-muted">Home</a></li>
+            <li class="mb-2"><a href="about.html" class="text-decoration-none text-muted">About</a></li>
+            <li class="mb-2"><a href="competition.html" class="text-decoration-none text-muted">Competition</a></li>
+            <li class="mb-2"><a href="timeline.html" class="text-decoration-none text-muted">Timeline</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="resources.html" class="text-decoration-none text-muted">Downloads</a></li>
+            <li class="mb-2"><a href="faq.html" class="text-decoration-none text-muted">FAQ</a></li>
+            <li class="mb-2"><a href="ai-assistant.html" class="text-decoration-none text-muted">AI Assistant</a></li>
+            <li class="mb-2"><a href="dashboard.html" class="text-decoration-none text-muted">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="fw-bold mb-3">Connect</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 border-secondary opacity-25">
+      <div class="text-center text-muted small">
+        &copy; 2026 NovaMind. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script defer src="assets/vendor/js/swiper-bundle.min.js"></script>
+  <script defer src="assets/vendor/js/gsap.min.js"></script>
+  <script defer src="assets/vendor/js/ScrollTrigger.min.js"></script>
+  <script defer src="js/bundle.js"></script>
+  <script defer src="js/ui-refresh.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Configuration
+      const targetOverallPercentage = 72;
+      const circumference = 659.73; // 2 * PI * 105
+      
+      // Delay before starting animations
+      setTimeout(() => {
+        // Animate circular progress
+        const progressBar = document.getElementById('overallProgressBar');
+        const progressText = document.getElementById('overallProgressText');
+        
+        // Calculate offset based on percentage
+        const offset = circumference - (targetOverallPercentage / 100) * circumference;
+        progressBar.style.strokeDashoffset = offset;
+        
+        // Animate percentage text counter
+        animateValue(progressText, 0, targetOverallPercentage, 1800);
+        
+        // Animate checklist items
+        const checklistItems = document.querySelectorAll('.checklist-item');
+        checklistItems.forEach((item, index) => {
+          // Staggered entrance
+          setTimeout(() => {
+            item.classList.add('show');
+            
+            // Animate horizontal progress bar for each item
+            const progress = item.getAttribute('data-progress');
+            const bar = item.querySelector('.progress-bar-custom');
+            
+            // Allow time for CSS transition to trigger after showing card
+            setTimeout(() => {
+              bar.style.width = progress + '%';
+            }, 100);
+            
+          }, index * 150); // Stagger by 150ms
+        });
+        
+      }, 300);
+    });
+
+    // Helper function for score counter animation
+    function animateValue(obj, start, end, duration) {
+      if (start === end) return;
+      var range = end - start;
+      var current = start;
+      var increment = end > start ? 1 : -1;
+      var stepTime = Math.abs(Math.floor(duration / range));
+      
+      var timer = setInterval(function() {
+        current += increment;
+        obj.textContent = current + "%";
+        if (current == end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Mentor – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+  
+</head>
+<body class="page-mentor d-flex flex-column min-vh-100">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item " href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item " href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item " href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item " href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item " href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item " href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item " href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item " href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item active" href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item " href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item " href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item " href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item " href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-gradient mb-3">AI Mentor Recommendation</h1>
+        <p class="lead text-muted max-w-2xl mx-auto">Find the perfect mentor to guide your project to success.</p>
+      </div>
+
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-6 col-lg-4">
+          <select id="fieldSelect" class="form-select form-select-lg bg-transparent shadow-sm">
+            <option value="All">All Fields</option>
+            <option value="Artificial Intelligence">Artificial Intelligence</option>
+            <option value="Mobile Development">Mobile Development</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Cyber Security">Cyber Security</option>
+            <option value="UI/UX">UI/UX</option>
+            <option value="Data Science">Data Science</option>
+            <option value="Cloud Computing">Cloud Computing</option>
+            <option value="Game Development">Game Development</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row g-4" id="mentorsList">
+        <!-- JS populated -->
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer py-4 glass text-body mt-auto text-center">
+    <p class="text-muted small mb-0">&copy; 2026 NovaMind. All rights reserved.</p>
+  </footer>
+
+  <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script src="js/ui-refresh.js"></script>
+  <script>
+    const mentors = [
+      { name: "Dr. Alan Turing", field: "Artificial Intelligence", exp: "15 Years", skills: ["Machine Learning", "Neural Networks"], rating: 4.9, img: "https://i.pravatar.cc/150?img=11" },
+      { name: "Sarah Connor", field: "Cyber Security", exp: "10 Years", skills: ["Pen Testing", "Cryptography"], rating: 4.8, img: "https://i.pravatar.cc/150?img=5" },
+      { name: "Linus Torvalds", field: "Cloud Computing", exp: "20 Years", skills: ["AWS", "Kubernetes", "Linux"], rating: 5.0, img: "https://i.pravatar.cc/150?img=12" },
+      { name: "Ada Lovelace", field: "Data Science", exp: "8 Years", skills: ["Python", "Data Visualization", "SQL"], rating: 4.7, img: "https://i.pravatar.cc/150?img=20" },
+      { name: "Steve Woz", field: "Web Development", exp: "12 Years", skills: ["React", "Node.js", "System Architecture"], rating: 4.9, img: "https://i.pravatar.cc/150?img=15" },
+      { name: "Jony Ive", field: "UI/UX", exp: "18 Years", skills: ["Figma", "User Research", "Interaction Design"], rating: 4.9, img: "https://i.pravatar.cc/150?img=33" },
+      { name: "John Carmack", field: "Game Development", exp: "25 Years", skills: ["C++", "Unreal Engine", "3D Math"], rating: 5.0, img: "https://i.pravatar.cc/150?img=53" },
+      { name: "Grace Hopper", field: "Mobile Development", exp: "9 Years", skills: ["Flutter", "Swift", "Kotlin"], rating: 4.8, img: "https://i.pravatar.cc/150?img=44" }
+    ];
+
+    function renderMentors(filter) {
+      const container = document.getElementById('mentorsList');
+      container.innerHTML = '';
+      
+      const filtered = filter === 'All' ? mentors : mentors.filter(m => m.field === filter);
+      
+      if(filtered.length === 0) {
+        container.innerHTML = `<div class="col-12 text-center text-muted"><p>No mentors found for this field.</p></div>`;
+        return;
+      }
+
+      filtered.forEach((m, index) => {
+        container.innerHTML += `
+          <div class="col-md-6 col-lg-4">
+            <div class="unified-card glass p-4 text-center mentor-card h-100" style="animation-delay: ${index * 0.1}s">
+              <img src="${m.img}" alt="${m.name}" class="avatar mb-3">
+              <h5 class="fw-bold mb-1">${m.name}</h5>
+              <p class="text-primary small fw-semibold mb-2">${m.field}</p>
+              
+              <div class="d-flex justify-content-center gap-2 mb-3">
+                <span class="badge bg-secondary bg-opacity-10 text-body"><i class="fa-solid fa-briefcase me-1"></i> ${m.exp}</span>
+                <span class="badge bg-warning bg-opacity-10 text-warning"><i class="fa-solid fa-star me-1"></i> ${m.rating}</span>
+              </div>
+              
+              <div class="mb-4">
+                ${m.skills.map(s => `<span class="badge bg-primary bg-opacity-10 text-primary me-1 mb-1">${s}</span>`).join('')}
+              </div>
+              
+              <button class="btn btn-outline-primary rounded-pill w-100 mt-auto">Connect</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderMentors('All');
+      document.getElementById('fieldSelect').addEventListener('change', (e) => {
+        renderMentors(e.target.value);
+      });
+    });
+  </script>
+  <script defer src="js/bundle.js"></script>
+</body>
+</html>

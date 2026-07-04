@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isDark = document.body.classList.contains('dark-theme');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
     updateToggleIcon(isDark);
+    window.dispatchEvent(new Event('themeChanged'));
   });
 
   // Back‑to‑top button visibility & click handler

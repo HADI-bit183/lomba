@@ -802,6 +802,10 @@ body:not(.page-home) main > section:first-child .display-6 {
   color: var(--text-muted) !important;
 }
 
+.form-floating > .form-control::placeholder {
+  color: transparent !important;
+}
+
 .form-check-input:checked {
   border-color: var(--primary);
   background-color: var(--primary);
@@ -887,6 +891,13 @@ body:not(.page-home) main > section:first-child .display-6 {
 
 .timeline-content {
   overflow: hidden;
+  flex: none !important;
+}
+
+@media (max-width: 767.98px) {
+  .timeline-content.w-50 {
+    width: 100% !important;
+  }
 }
 
 .timeline-dot-wrapper .rounded-circle,

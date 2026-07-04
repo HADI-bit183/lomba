@@ -59,15 +59,58 @@
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="competition.html">Competition</a></li>
-          <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
-          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
-          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-          <li class="nav-item"><a class="nav-link" href="innovators.html">Innovators</a></li>
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link " href="about.html">About</a></li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item " href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item " href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item " href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item " href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item " href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item " href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item " href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item " href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item " href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item " href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item " href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item " href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item active" href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item " href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item " href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item " href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
         </ul>
-        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register Now</a>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
         <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
       </div>
     </div>
@@ -82,7 +125,7 @@
             <p class="text-body-50 mb-0" id="dashWelcomeSubtitle">Welcome to your NovaMind portal.</p>
           </div>
           <div class="text-md-end" data-aos="fade-left">
-            <div class="d-inline-flex align-items-center gap-3 bg-primary bg-opacity-10 p-3 rounded-4 glass-pill border border-white border-opacity-10">
+            <div class="d-inline-flex align-items-center gap-3 bg-primary bg-opacity-10 p-3 px-4 rounded-pill glass border border-white border-opacity-10">
               <div class="text-start">
                 <span class="d-block text-body-50 small text-uppercase letter-spacing-1">Next Deadline</span>
                 <span class="d-block text-body fw-bold fs-5" id="countdown">Loading...</span>
@@ -109,34 +152,42 @@
             <div class="row g-3 mb-5">
               <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="unified-card glass p-4 h-100 position-relative overflow-hidden">
-                  <div class="position-absolute top-0 start-0 w-100 h-1 bg-success"></div>
+                  <div class="position-absolute top-0 start-0 w-100 bg-success" style="height: 4px;"></div>
                   <div class="d-flex justify-content-between align-items-start mb-3">
                     <h6 class="fw-bold m-0">Registration</h6>
                     <i class="fa-solid fa-circle-check text-success"></i>
                   </div>
-                  <h2 class="display-6 fw-bold text-success mb-0 counter-up" data-target="100">0</h2><span class="text-success h4">%</span>
+                  <div class="d-flex align-items-baseline gap-1">
+                    <h2 class="display-6 fw-bold text-success mb-0 counter-up" data-target="100">0</h2>
+                    <span class="text-success h4 mb-0">%</span>
+                  </div>
                   <p class="text-muted small mt-2 mb-0">Verified & Approved</p>
                 </div>
               </div>
               <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="unified-card glass p-4 h-100 position-relative overflow-hidden">
-                  <div class="position-absolute top-0 start-0 w-100 h-1 bg-primary" style="width: 80%;"></div>
+                  <div class="position-absolute top-0 start-0 w-100 bg-primary" style="height: 4px; width: 80%;"></div>
                   <div class="d-flex justify-content-between align-items-start mb-3">
                     <h6 class="fw-bold m-0">Submission</h6>
                     <i class="fa-solid fa-spinner fa-spin text-primary"></i>
                   </div>
-                  <h2 class="display-6 fw-bold text-primary mb-0 counter-up" data-target="80">0</h2><span class="text-primary h4">%</span>
+                  <div class="d-flex align-items-baseline gap-1">
+                    <h2 class="display-6 fw-bold text-primary mb-0 counter-up" data-target="80">0</h2>
+                    <span class="text-primary h4 mb-0">%</span>
+                  </div>
                   <p class="text-muted small mt-2 mb-0">Awaiting Final Files</p>
                 </div>
               </div>
               <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="unified-card glass p-4 h-100 position-relative overflow-hidden">
-                  <div class="position-absolute top-0 start-0 w-100 h-1 bg-secondary" style="width: 0%;"></div>
+                  <div class="position-absolute top-0 start-0 w-100 bg-secondary" style="height: 4px; width: 0%;"></div>
                   <div class="d-flex justify-content-between align-items-start mb-3">
                     <h6 class="fw-bold m-0 text-muted">Presentation</h6>
                     <i class="fa-solid fa-lock text-muted"></i>
                   </div>
-                  <h2 class="display-6 fw-bold text-muted mb-0">Pending</h2>
+                  <div class="d-flex align-items-baseline gap-1">
+                    <h2 class="display-6 fw-bold text-muted mb-0">Pending</h2>
+                  </div>
                   <p class="text-muted small mt-2 mb-0">Locked until Top 10</p>
                 </div>
               </div>
@@ -152,7 +203,7 @@
               <div class="list-group list-group-flush bg-transparent">
                 
                 <!-- Project ZIP -->
-                <div class="list-group-item bg-transparent p-4 hover-bg-subtle transition-all">
+                <div class="list-group-item bg-transparent p-4 hover-bg-subtle transition-all border-bottom border-secondary border-opacity-25">
                   <div class="row align-items-center">
                     <div class="col-md-5 d-flex align-items-center gap-3 mb-3 mb-md-0">
                       <div class="bg-primary bg-opacity-10 p-3 rounded-3 text-primary">
@@ -173,7 +224,7 @@
                 </div>
 
                 <!-- Report -->
-                <div class="list-group-item bg-transparent p-4 hover-bg-subtle transition-all">
+                <div class="list-group-item bg-transparent p-4 hover-bg-subtle transition-all border-bottom border-secondary border-opacity-25">
                   <div class="row align-items-center">
                     <div class="col-md-5 d-flex align-items-center gap-3 mb-3 mb-md-0">
                       <div class="bg-danger bg-opacity-10 p-3 rounded-3 text-danger">
@@ -194,7 +245,7 @@
                 </div>
 
                 <!-- Demo Video -->
-                <div class="list-group-item bg-transparent p-4 hover-bg-subtle transition-all">
+                <div class="list-group-item bg-transparent p-4 hover-bg-subtle transition-all border-bottom border-secondary border-opacity-25">
                   <div class="row align-items-center">
                     <div class="col-md-5 d-flex align-items-center gap-3 mb-3 mb-md-0">
                       <div class="bg-success bg-opacity-10 p-3 rounded-3 text-success">
@@ -267,15 +318,17 @@
 
             <h4 class="fw-bold mb-3 section-title fs-5 mt-4">Intelligent Insights</h4>
             <div class="unified-card glass p-4 mb-4" data-aos="fade-left" data-aos-delay="150">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <p class="small text-muted mb-0">AI Prediction: Readiness</p>
+              <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+                <p class="small text-muted mb-0 fw-medium">AI Prediction: Readiness</p>
                 <div class="btn-group btn-group-sm" role="group">
                   <button type="button" class="btn btn-outline-primary active" id="filter-daily">Harian</button>
                   <button type="button" class="btn btn-outline-primary" id="filter-monthly">Bulanan</button>
                   <button type="button" class="btn btn-outline-primary" id="filter-yearly">Tahunan</button>
                 </div>
               </div>
-              <canvas id="teamActivityChart" height="200"></canvas>
+              <div style="position: relative; height: 230px; width: 100%;">
+                <canvas id="teamActivityChart"></canvas>
+              </div>
             </div>
 
             <h4 class="fw-bold mb-3 section-title fs-5">Notifications</h4>
