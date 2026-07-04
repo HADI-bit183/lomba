@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register – NovaMind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Libraries -->
+  <link rel="preload" href="assets/vendor/css/fonts.css" as="style">
+    <link href="assets/vendor/css/fonts.css" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/css/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <meta name="description" content="NovaMind - Empowering Global Innovators for an Intelligent Future. Join the premier global innovation competition.">
+  <meta property="og:title" content="NovaMind Hub">
+  <meta property="og:description" content="Empowering Global Innovators for an Intelligent Future.">
+  <meta property="og:image" content="https://novamind.com/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://novamind.com">
+  <meta property="og:type" content="website">
+  <link rel="manifest" href="manifest.json">  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body class="page-register">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="competition.html">Competition</a></li>
+          <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="innovators.html">Innovators</a></li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register Now</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+<main>
+    <!-- REGISTER HERO -->
+    <section class="py-6 mt-5 position-relative overflow-hidden">
+            <div class="container position-relative z-1 pt-5">
+        
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="text-center mb-5" data-aos="fade-up">
+              <h1 class="display-4 fw-bold mb-3">Join the Future</h1>
+              <p class="lead text-muted">Complete the 7-step registration process to secure your team's spot.</p>
+            </div>
+            
+            <div class="unified-card glass p-0 overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+              
+              <!-- Progress Bar -->
+              <div class="bg-secondary bg-opacity-10 w-100 position-relative" style="height: 6px;">
+                <div id="formProgress" class="bg-primary position-absolute top-0 start-0 h-100 transition-all" style="width: 14.28%;"></div>
+              </div>
+
+              <div class="p-4 p-md-5">
+                <form id="multiStepForm" action="dashboard.html" method="GET">
+                  
+                  <!-- STEP 1: Personal Information -->
+                  <div class="form-step active" id="step1">
+                    <h3 class="fw-bold mb-4">1. Team Leader Information</h3>
+                    <div class="form-floating mb-4">
+                      <input type="text" class="form-control bg-transparent border-secondary" id="leaderName" placeholder="Full Name" required>
+                      <label for="leaderName" class="text-muted">Full Name</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                      <input type="email" class="form-control bg-transparent border-secondary" id="leaderEmail" placeholder="Email Address" autocomplete="email" required>
+                      <label for="leaderEmail" class="text-muted">Email Address</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                      <input type="tel" class="form-control bg-transparent border-secondary" id="leaderPhone"
+                        placeholder="Phone Number" autocomplete="tel" inputmode="tel"
+                        pattern="(?:\+62|62|0)8[1-9](?:[ -]?[0-9]){6,11}"
+                        title="Use an Indonesian mobile number, for example 081234567890 or +6281234567890."
+                        required>
+                      <label for="leaderPhone" class="text-muted">Phone Number (WhatsApp)</label>
+                    </div>
+                  </div>
+
+                  <!-- STEP 2: University Information -->
+                  <div class="form-step d-none" id="step2">
+                    <h3 class="fw-bold mb-4">2. Academic Information</h3>
+                    <div class="form-floating mb-4">
+                      <input type="text" class="form-control bg-transparent border-secondary" id="univName" placeholder="University Name" required>
+                      <label for="univName" class="text-muted">University Name</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                      <input type="text" class="form-control bg-transparent border-secondary" id="facultyName" placeholder="Faculty / Department" required>
+                      <label for="facultyName" class="text-muted">Faculty / Department</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                      <input type="text" class="form-control bg-transparent border-secondary" id="teamName" placeholder="Team Name" required>
+                      <label for="teamName" class="text-muted">Team Name</label>
+                    </div>
+                  </div>
+
+                  <!-- STEP 3: Competition Category -->
+                  <div class="form-step d-none" id="step3">
+                    <h3 class="fw-bold mb-4">3. Select Category</h3>
+                    <div class="row g-3">
+                      <div class="col-12">
+                        <input type="radio" class="btn-check" name="category" id="cat1" value="static" checked>
+                        <label class="btn btn-outline-primary w-100 text-start p-4 rounded-3 d-flex align-items-center gap-3" for="cat1">
+                          <i class="fa-solid fa-code fs-3"></i>
+                          <div>
+                            <span class="d-block fw-bold fs-5">Static Website</span>
+                            <span class="small opacity-75">HTML, CSS, JS Only</span>
+                          </div>
+                        </label>
+                      </div>
+                      <div class="col-12">
+                        <input type="radio" class="btn-check" name="category" id="cat2" value="dynamic">
+                        <label class="btn btn-outline-info w-100 text-start p-4 rounded-3 d-flex align-items-center gap-3" for="cat2">
+                          <i class="fa-solid fa-database fs-3"></i>
+                          <div>
+                            <span class="d-block fw-bold fs-5">Dynamic Website</span>
+                            <span class="small opacity-75">Full-stack with Database</span>
+                          </div>
+                        </label>
+                      </div>
+                      <div class="col-12">
+                        <input type="radio" class="btn-check" name="category" id="cat3" value="framework">
+                        <label class="btn btn-outline-success w-100 text-start p-4 rounded-3 d-flex align-items-center gap-3" for="cat3">
+                          <i class="fa-brands fa-react fs-3"></i>
+                          <div>
+                            <span class="d-block fw-bold fs-5">Modern Framework</span>
+                            <span class="small opacity-75">React, Next.js, Vue, etc.</span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- STEP 4: Upload KTM -->
+                  <div class="form-step d-none" id="step4">
+                    <h3 class="fw-bold mb-4">4. Identity Verification</h3>
+                    <p class="text-muted mb-4">Please upload a scanned copy or clear photo of your Student ID (KTM).</p>
+                    <div class="border border-2 border-dashed border-primary rounded-4 p-5 text-center bg-primary bg-opacity-10 position-relative hover-bg-subtle transition-all">
+                      <i class="fa-solid fa-id-card fs-1 text-primary mb-3"></i>
+                      <h5 class="fw-bold">Drag & Drop KTM Here</h5>
+                      <p class="text-muted small mb-0">or click to browse files (PDF, JPG, PNG)</p>
+                      <input type="file" id="ktmInput" class="position-absolute top-0 start-0 w-100 h-100 opacity-0 cursor-pointer" required>
+                      <p id="ktmFeedback" class="mt-2 text-success fw-bold d-none mb-0 z-1 position-relative"><i class="fa-solid fa-check-circle me-1"></i> <span class="filename"></span></p>
+                    </div>
+                  </div>
+
+                  <!-- STEP 5: Payment Proof -->
+                  <div class="form-step d-none" id="step5">
+                    <h3 class="fw-bold mb-4">5. Payment Verification</h3>
+                    <div class="alert alert-info border-0 bg-info bg-opacity-10 text-info d-flex gap-3 mb-4">
+                      <i class="fa-solid fa-circle-info fs-4 mt-1"></i>
+                      <div>
+                        <h6 class="fw-bold mb-1">Registration Fee: Rp 150.000</h6>
+                        <p class="small mb-0">Transfer to BCA: 1234567890 a.n. NovaMind</p>
+                      </div>
+                    </div>
+                    <div class="border border-2 border-dashed border-info rounded-4 p-5 text-center bg-info bg-opacity-10 position-relative hover-bg-subtle transition-all">
+                      <i class="fa-solid fa-receipt fs-1 text-info mb-3"></i>
+                      <h5 class="fw-bold">Upload Payment Proof</h5>
+                      <p class="text-muted small mb-0">Max file size 5MB (JPG, PNG, PDF)</p>
+                      <input type="file" id="paymentInput" class="position-absolute top-0 start-0 w-100 h-100 opacity-0 cursor-pointer" required>
+                      <p id="paymentFeedback" class="mt-2 text-success fw-bold d-none mb-0 z-1 position-relative"><i class="fa-solid fa-check-circle me-1"></i> <span class="filename"></span></p>
+                    </div>
+                  </div>
+
+                  <!-- STEP 6: Review -->
+                  <div class="form-step d-none" id="step6">
+                    <h3 class="fw-bold mb-4">6. Review Submission</h3>
+                    <div class="bg-secondary bg-opacity-10 p-4 rounded-3 mb-4">
+                      <div class="row g-3">
+                        <div class="col-6 text-muted small">Team Leader:</div>
+                        <div class="col-6 fw-bold text-end" id="reviewName">-</div>
+                        
+                        <div class="col-6 text-muted small">University:</div>
+                        <div class="col-6 fw-bold text-end" id="reviewUniv">-</div>
+                        
+                        <div class="col-6 text-muted small">Category:</div>
+                        <div class="col-6 fw-bold text-end text-primary" id="reviewCat">-</div>
+                      </div>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                      <label class="form-check-label text-muted small" for="flexCheckDefault">
+                        I confirm that all information provided is accurate and I agree to the <a href="javascript:void(0)">Terms & Conditions</a>.
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- STEP 7: Processing -->
+                  <div class="form-step d-none text-center py-5" id="step7">
+                    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h3 class="fw-bold mt-4 mb-2">Processing Registration</h3>
+                    <p class="text-muted">Please wait while we secure your spot...</p>
+                  </div>
+
+                  <!-- Navigation Buttons -->
+                  <div class="d-flex justify-content-between mt-5 pt-3 border-top border-secondary border-opacity-25" id="formNav">
+                    <button type="button" class="btn btn-outline-secondary px-4 d-none" id="prevBtn">Back</button>
+                    <button type="button" class="btn btn-primary px-5 ms-auto" id="nextBtn">Continue</button>
+                    <button type="submit" class="btn btn-success px-5 d-none" id="submitBtn">Submit Registration</button>
+                  </div>
+                  
+                </form>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Custom Script for Multi-step Form -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const steps = document.querySelectorAll('.form-step');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const formNav = document.getElementById('formNav');
+        const progressBar = document.getElementById('formProgress');
+        
+        let currentStep = 0;
+        const totalSteps = steps.length;
+        const phoneInput = document.getElementById('leaderPhone');
+
+        function updatePhoneValidity() {
+          if (!phoneInput) return;
+
+          const normalizedPhone = phoneInput.value.replace(/[\s-]/g, '');
+          const isValidPhone = /^(?:\+62|62|0)8[1-9][0-9]{6,11}$/.test(normalizedPhone);
+
+          phoneInput.setCustomValidity(
+            phoneInput.value && !isValidPhone
+              ? 'Use an Indonesian mobile number, for example 081234567890 or +6281234567890.'
+              : ''
+          );
+        }
+
+        phoneInput?.addEventListener('input', updatePhoneValidity);
+
+        function updateForm() {
+          steps.forEach((step, index) => {
+            if (index === currentStep) {
+              step.classList.remove('d-none');
+              // trigger a reflow
+              void step.offsetWidth;
+              step.classList.add('active');
+            } else {
+              step.classList.remove('active');
+              step.classList.add('d-none');
+            }
+          });
+
+          // Update Progress Bar
+          const progress = ((currentStep + 1) / totalSteps) * 100;
+          progressBar.style.width = progress + '%';
+
+          // Buttons
+          if (currentStep === 0) {
+            prevBtn.classList.add('d-none');
+          } else {
+            prevBtn.classList.remove('d-none');
+          }
+
+          if (currentStep === totalSteps - 2) { // Review step
+            nextBtn.classList.add('d-none');
+            submitBtn.classList.remove('d-none');
+            submitBtn.classList.remove('ms-auto');
+            
+            // Populate review data
+            const nameInput = document.getElementById('leaderName')?.value || '';
+            const univInput = document.getElementById('univName')?.value || '';
+            const catInput = document.querySelector('input[name="category"]:checked');
+            
+            document.getElementById('reviewName').textContent = nameInput || 'Not Provided';
+            document.getElementById('reviewUniv').textContent = univInput || 'Not Provided';
+            document.getElementById('reviewCat').textContent = catInput ? catInput.nextElementSibling.querySelector('.fw-bold').textContent : 'Not Selected';
+            
+          } else if (currentStep === totalSteps - 1) { // Processing step
+            formNav.classList.add('d-none');
+            // Auto redirect to dashboard after 2 seconds
+            setTimeout(() => {
+              window.location.href = 'dashboard.html';
+            }, 2000);
+          } else {
+            nextBtn.classList.remove('d-none');
+            submitBtn.classList.add('d-none');
+          }
+        }
+
+        nextBtn.addEventListener('click', () => {
+          updatePhoneValidity();
+
+          const currentInputs = steps[currentStep].querySelectorAll('input[required]');
+          let isValid = true;
+          let firstInvalidInput = null;
+
+          currentInputs.forEach(input => {
+            if (!input.checkValidity()) {
+              input.classList.add('is-invalid');
+              isValid = false;
+              firstInvalidInput ||= input;
+            } else {
+              input.classList.remove('is-invalid');
+            }
+          });
+
+          if (firstInvalidInput) {
+            firstInvalidInput.reportValidity();
+            return;
+          }
+
+          if (isValid && currentStep < totalSteps - 1) {
+            currentStep++;
+            updateForm();
+          }
+        });
+
+        prevBtn.addEventListener('click', () => {
+          if (currentStep > 0) {
+            currentStep--;
+            updateForm();
+          }
+        });
+
+        document.getElementById('multiStepForm').addEventListener('submit', (e) => {
+          e.preventDefault();
+          const nameInput = document.getElementById('leaderName')?.value || 'Not Provided';
+          const teamNameInput = document.getElementById('teamName')?.value || 'Nova Team';
+          const catInput = document.querySelector('input[name="category"]:checked');
+          const categoryName = catInput ? catInput.nextElementSibling.querySelector('.fw-bold').textContent : 'Static Website';
+          
+          localStorage.setItem('novaMindUser', JSON.stringify({ 
+            leaderName: nameInput, 
+            teamName: teamNameInput || 'Nova Team', 
+            category: categoryName 
+          }));
+
+          currentStep++;
+          updateForm();
+        });
+
+        // File upload feedback
+        const ktmInput = document.getElementById('ktmInput');
+        const ktmFeedback = document.getElementById('ktmFeedback');
+        if (ktmInput && ktmFeedback) {
+          ktmInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+              ktmFeedback.querySelector('.filename').textContent = e.target.files[0].name;
+              ktmFeedback.classList.remove('d-none');
+            } else {
+              ktmFeedback.classList.add('d-none');
+            }
+          });
+        }
+        
+        const paymentInput = document.getElementById('paymentInput');
+        const paymentFeedback = document.getElementById('paymentFeedback');
+        if (paymentInput && paymentFeedback) {
+          paymentInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+              paymentFeedback.querySelector('.filename').textContent = e.target.files[0].name;
+              paymentFeedback.classList.remove('d-none');
+            } else {
+              paymentFeedback.classList.add('d-none');
+            }
+          });
+        }
+      });
+    </script>
+</main>
+  <footer class="footer py-5 glass text-body">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/logo.svg" alt="NovaMind Logo" width="32" height="32" class="me-2">
+            <span class="fw-bold fs-4">NovaMind</span>
+          </div>
+          <p class="text-muted small">Empowering Global Innovators for an Intelligent Future. Join the movement.</p>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Platform</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-muted">Home</a></li>
+            <li class="mb-2"><a href="about.html" class="text-decoration-none text-muted">About</a></li>
+            <li class="mb-2"><a href="competition.html" class="text-decoration-none text-muted">Competition</a></li>
+            <li class="mb-2"><a href="timeline.html" class="text-decoration-none text-muted">Timeline</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="resources.html" class="text-decoration-none text-muted">Downloads</a></li>
+            <li class="mb-2"><a href="faq.html" class="text-decoration-none text-muted">FAQ</a></li>
+            <li class="mb-2"><a href="ai-assistant.html" class="text-decoration-none text-muted">AI Assistant</a></li>
+            <li class="mb-2"><a href="dashboard.html" class="text-decoration-none text-muted">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="fw-bold mb-3">Connect</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 border-secondary opacity-25">
+      <div class="text-center text-muted small">
+        &copy; 2026 NovaMind. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+          <script defer src="assets/vendor/js/gsap.min.js"></script>
+  <script defer src="assets/vendor/js/ScrollTrigger.min.js"></script>
+  <script defer src="js/bundle.js"></script>
+  <script defer src="js/ui-refresh.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.log('SW registration failed: ', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

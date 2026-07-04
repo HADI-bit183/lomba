@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – NovaMind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Libraries -->
+  <link rel="preload" href="assets/vendor/css/fonts.css" as="style">
+    <link href="assets/vendor/css/fonts.css" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/css/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <meta name="description" content="NovaMind - Empowering Global Innovators for an Intelligent Future. Join the premier global innovation competition.">
+  <meta property="og:title" content="NovaMind Hub">
+  <meta property="og:description" content="Empowering Global Innovators for an Intelligent Future.">
+  <meta property="og:image" content="https://novamind.com/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://novamind.com">
+  <meta property="og:type" content="website">
+  <link rel="manifest" href="manifest.json">  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body class="page-dashboard">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="competition.html">Competition</a></li>
+          <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="innovators.html">Innovators</a></li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register Now</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+<main>
+    <!-- DASHBOARD HEADER -->
+    <section class="py-5 mt-5 bg-gradient position-relative overflow-hidden">
+      <div class="container position-relative z-1 pt-4">
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-4">
+          <div data-aos="fade-right">
+            <h1 class="display-6 fw-bold text-body mb-2" id="dashWelcomeTitle">Hello, Future Innovator.</h1>
+            <p class="text-body-50 mb-0" id="dashWelcomeSubtitle">Welcome to your NovaMind portal.</p>
+          </div>
+          <div class="text-md-end" data-aos="fade-left">
+            <div class="d-inline-flex align-items-center gap-3 bg-primary bg-opacity-10 p-3 rounded-4 glass-pill border border-white border-opacity-10">
+              <div class="text-start">
+                <span class="d-block text-body-50 small text-uppercase letter-spacing-1">Next Deadline</span>
+                <span class="d-block text-body fw-bold fs-5" id="countdown">Loading...</span>
+              </div>
+              <div class="bg-primary bg-opacity-25 p-3 rounded-circle d-flex align-items-center justify-content-center">
+                <i class="fa-regular fa-clock text-primary fs-4"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD CONTENT -->
+    <section class="py-5 bg-secondary min-vh-100">
+      <div class="container">
+        
+        <div class="row g-4">
+          <!-- LEFT COLUMN: Progress & Uploads -->
+          <div class="col-lg-8">
+            
+            <!-- Overall Progress -->
+            <h4 class="fw-bold mb-3 section-title fs-5">Journey Progress</h4>
+            <div class="row g-3 mb-5">
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="unified-card glass p-4 h-100 position-relative overflow-hidden">
+                  <div class="position-absolute top-0 start-0 w-100 h-1 bg-success"></div>
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h6 class="fw-bold m-0">Registration</h6>
+                    <i class="fa-solid fa-circle-check text-success"></i>
+                  </div>
+                  <h2 class="display-6 fw-bold text-success mb-0 counter-up" data-target="100">0</h2><span class="text-success h4">%</span>
+                  <p class="text-muted small mt-2 mb-0">Verified & Approved</p>
+                </div>
+              </div>
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="unified-card glass p-4 h-100 position-relative overflow-hidden">
+                  <div class="position-absolute top-0 start-0 w-100 h-1 bg-primary" style="width: 80%;"></div>
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h6 class="fw-bold m-0">Submission</h6>
+                    <i class="fa-solid fa-spinner fa-spin text-primary"></i>
+                  </div>
+                  <h2 class="display-6 fw-bold text-primary mb-0 counter-up" data-target="80">0</h2><span class="text-primary h4">%</span>
+                  <p class="text-muted small mt-2 mb-0">Awaiting Final Files</p>
+                </div>
+              </div>
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="unified-card glass p-4 h-100 position-relative overflow-hidden">
+                  <div class="position-absolute top-0 start-0 w-100 h-1 bg-secondary" style="width: 0%;"></div>
+                  <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h6 class="fw-bold m-0 text-muted">Presentation</h6>
+                    <i class="fa-solid fa-lock text-muted"></i>
+                  </div>
+                  <h2 class="display-6 fw-bold text-muted mb-0">Pending</h2>
+                  <p class="text-muted small mt-2 mb-0">Locked until Top 10</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Upload Center -->
+            <div class="d-flex justify-content-between align-items-end mb-3">
+              <h4 class="fw-bold m-0 section-title fs-5">Upload Center</h4>
+              <button class="btn btn-sm btn-primary rounded-pill">Submit All</button>
+            </div>
+            
+            <div class="unified-card glass p-0 overflow-hidden mb-4" data-aos="fade-up" data-aos-delay="400">
+              <div class="list-group list-group-flush bg-transparent">
+                
+                <!-- Project ZIP -->
+                <div class="list-group-item bg-transparent p-4 hover-bg-subtle transition-all">
+                  <div class="row align-items-center">
+                    <div class="col-md-5 d-flex align-items-center gap-3 mb-3 mb-md-0">
+                      <div class="bg-primary bg-opacity-10 p-3 rounded-3 text-primary">
+                        <i class="fa-solid fa-file-zipper fs-4"></i>
+                      </div>
+                      <div>
+                        <h6 class="fw-bold mb-1">Source Code (ZIP)</h6>
+                        <p class="text-muted small mb-0">Max 50MB</p>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="uploadZip" aria-describedby="uploadZipBtn">
+                        <button class="btn btn-outline-primary" type="button" id="uploadZipBtn">Upload</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Report -->
+                <div class="list-group-item bg-transparent p-4 hover-bg-subtle transition-all">
+                  <div class="row align-items-center">
+                    <div class="col-md-5 d-flex align-items-center gap-3 mb-3 mb-md-0">
+                      <div class="bg-danger bg-opacity-10 p-3 rounded-3 text-danger">
+                        <i class="fa-solid fa-file-pdf fs-4"></i>
+                      </div>
+                      <div>
+                        <h6 class="fw-bold mb-1">Technical Report</h6>
+                        <p class="text-muted small mb-0">PDF Format</p>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="uploadPdf" aria-describedby="uploadPdfBtn">
+                        <button class="btn btn-outline-danger" type="button" id="uploadPdfBtn">Upload</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Demo Video -->
+                <div class="list-group-item bg-transparent p-4 hover-bg-subtle transition-all">
+                  <div class="row align-items-center">
+                    <div class="col-md-5 d-flex align-items-center gap-3 mb-3 mb-md-0">
+                      <div class="bg-success bg-opacity-10 p-3 rounded-3 text-success">
+                        <i class="fa-brands fa-youtube fs-4"></i>
+                      </div>
+                      <div>
+                        <h6 class="fw-bold mb-1">Demo Video Link</h6>
+                        <p class="text-muted small mb-0">YouTube or Drive URL</p>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="input-group">
+                        <input type="url" class="form-control" placeholder="https://youtube.com/watch?v=..." id="uploadVid">
+                        <button class="btn btn-outline-success" type="button">Save</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PPT -->
+                <div class="list-group-item bg-transparent p-4 hover-bg-subtle transition-all">
+                  <div class="row align-items-center">
+                    <div class="col-md-5 d-flex align-items-center gap-3 mb-3 mb-md-0">
+                      <div class="bg-warning bg-opacity-10 p-3 rounded-3 text-warning">
+                        <i class="fa-solid fa-file-powerpoint fs-4"></i>
+                      </div>
+                      <div>
+                        <h6 class="fw-bold mb-1">Pitch Deck (PPTX)</h6>
+                        <p class="text-muted small mb-0">Only for Top 10</p>
+                      </div>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="input-group">
+                        <input type="file" class="form-control" disabled>
+                        <button class="btn btn-outline-secondary" type="button" disabled>Locked</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Status & Notifications -->
+          <div class="col-lg-4">
+            
+            <h4 class="fw-bold mb-3 section-title fs-5">Status Overview</h4>
+            <div class="unified-card glass p-4 mb-4" data-aos="fade-left" data-aos-delay="100">
+              <ul class="list-unstyled m-0">
+                <li class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="text-muted">Account Status</span>
+                  <span class="badge bg-success rounded-pill px-3 py-2">Active</span>
+                </li>
+                <li class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom border-secondary border-opacity-25">
+                  <span class="text-muted">Payment</span>
+                  <span class="badge bg-success rounded-pill px-3 py-2">Verified</span>
+                </li>
+                <li class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="text-muted">Submission</span>
+                  <span class="badge bg-warning rounded-pill text-dark px-3 py-2">Incomplete</span>
+                </li>
+                <li class="d-flex justify-content-between align-items-center">
+                  <span class="text-muted">Finalist Status</span>
+                  <span class="badge bg-secondary rounded-pill px-3 py-2">TBD</span>
+                </li>
+              </ul>
+            </div>
+
+            <h4 class="fw-bold mb-3 section-title fs-5 mt-4">Intelligent Insights</h4>
+            <div class="unified-card glass p-4 mb-4" data-aos="fade-left" data-aos-delay="150">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="small text-muted mb-0">AI Prediction: Readiness</p>
+                <div class="btn-group btn-group-sm" role="group">
+                  <button type="button" class="btn btn-outline-primary active" id="filter-daily">Harian</button>
+                  <button type="button" class="btn btn-outline-primary" id="filter-monthly">Bulanan</button>
+                  <button type="button" class="btn btn-outline-primary" id="filter-yearly">Tahunan</button>
+                </div>
+              </div>
+              <canvas id="teamActivityChart" height="200"></canvas>
+            </div>
+
+            <h4 class="fw-bold mb-3 section-title fs-5">Notifications</h4>
+            <div class="unified-card glass p-0 overflow-hidden" data-aos="fade-left" data-aos-delay="200">
+              <div class="list-group list-group-flush bg-transparent">
+                
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action bg-transparent p-3 hover-bg-subtle transition-all">
+                  <div class="d-flex gap-3">
+                    <div class="mt-1"><i class="fa-solid fa-circle-exclamation text-warning"></i></div>
+                    <div>
+                      <h6 class="fw-bold mb-1 text-body">Submission Deadline Approaching</h6>
+                      <p class="small text-muted mb-1">You have 5 days left to upload your source code and tech report.</p>
+                      <small class="text-muted opacity-75">2 hours ago</small>
+                    </div>
+                  </div>
+                </a>
+
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action bg-transparent p-3 hover-bg-subtle transition-all">
+                  <div class="d-flex gap-3">
+                    <div class="mt-1"><i class="fa-solid fa-check-circle text-success"></i></div>
+                    <div>
+                      <h6 class="fw-bold mb-1 text-body">Payment Verified</h6>
+                      <p class="small text-muted mb-1">Your registration fee has been confirmed. Welcome to NovaMind!</p>
+                      <small class="text-muted opacity-75">Oct 12, 2026</small>
+                    </div>
+                  </div>
+                </a>
+
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action bg-transparent p-3 hover-bg-subtle transition-all">
+                  <div class="d-flex gap-3">
+                    <div class="mt-1"><i class="fa-solid fa-envelope text-primary"></i></div>
+                    <div>
+                      <h6 class="fw-bold mb-1 text-body" id="notificationWelcome">Welcome, Future Innovator</h6>
+                      <p class="small text-muted mb-1">Thank you for registering. Please read the guidebook to get started.</p>
+                      <small class="text-muted opacity-75">Oct 10, 2026</small>
+                    </div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+</main>
+  <footer class="footer py-5 glass text-body">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/logo.svg" alt="NovaMind Logo" width="32" height="32" class="me-2">
+            <span class="fw-bold fs-4">NovaMind</span>
+          </div>
+          <p class="text-muted small">Empowering Global Innovators for an Intelligent Future. Join the movement.</p>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Platform</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-muted">Home</a></li>
+            <li class="mb-2"><a href="about.html" class="text-decoration-none text-muted">About</a></li>
+            <li class="mb-2"><a href="competition.html" class="text-decoration-none text-muted">Competition</a></li>
+            <li class="mb-2"><a href="timeline.html" class="text-decoration-none text-muted">Timeline</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="resources.html" class="text-decoration-none text-muted">Downloads</a></li>
+            <li class="mb-2"><a href="faq.html" class="text-decoration-none text-muted">FAQ</a></li>
+            <li class="mb-2"><a href="ai-assistant.html" class="text-decoration-none text-muted">AI Assistant</a></li>
+            <li class="mb-2"><a href="dashboard.html" class="text-decoration-none text-muted">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="fw-bold mb-3">Connect</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 border-secondary opacity-25">
+      <div class="text-center text-muted small">
+        &copy; 2026 NovaMind. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+
+  <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+      <script defer src="assets/vendor/js/chart.js"></script>
+    <script defer src="assets/vendor/js/gsap.min.js"></script>
+  <script defer src="assets/vendor/js/ScrollTrigger.min.js"></script>
+  <script defer src="js/bundle.js"></script>
+  <script defer src="js/ui-refresh.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.log('SW registration failed: ', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

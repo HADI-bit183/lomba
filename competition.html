@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competition – NovaMind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Libraries -->
+  <link rel="preload" href="assets/vendor/css/fonts.css" as="style">
+    <link href="assets/vendor/css/fonts.css" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/css/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <meta name="description" content="NovaMind - Empowering Global Innovators for an Intelligent Future. Join the premier global innovation competition.">
+  <meta property="og:title" content="NovaMind Hub">
+  <meta property="og:description" content="Empowering Global Innovators for an Intelligent Future.">
+  <meta property="og:image" content="https://novamind.com/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://novamind.com">
+  <meta property="og:type" content="website">
+  <link rel="manifest" href="manifest.json">  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body class="page-competition">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="competition.html">Competition</a></li>
+          <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="innovators.html">Innovators</a></li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register Now</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+<main>
+    <!-- COMPETITION HERO -->
+    <section class="py-6 mt-5 bg-gradient position-relative overflow-hidden text-center">
+            <div class="container position-relative z-1 pt-5">
+        <span class="badge bg-primary rounded-pill mb-3 px-3 py-2" data-aos="fade-down">The Challenge</span>
+        <h1 class="display-3 fw-bold text-body mb-4" data-aos="fade-up">Competition Details</h1>
+        <p class="lead text-body-50 mx-auto max-w-2xl" data-aos="fade-up" data-aos-delay="100">
+          Everything you need to know to build, submit, and win NovaMind 2026.
+        </p>
+      </div>
+    </section>
+
+    <!-- COMPETITION CATEGORIES -->
+    <section class="py-6 section-padding">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-5 fw-bold mb-3 section-title">Competition Categories</h2>
+          <p class="lead text-muted mx-auto max-w-2xl">Choose your path and showcase your expertise.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="unified-card p-4 h-100 glass hover-lift border-primary">
+              <div class="feature-icon mb-4"><i class="fa-solid fa-code fs-3 text-primary"></i></div>
+              <h4 class="h5 fw-bold mb-3">Static Website</h4>
+              <p class="text-muted mb-0">For front-end purists focusing on HTML, CSS, Vanilla JS, accessibility, and pixel-perfect design.</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="unified-card p-4 h-100 glass hover-lift border-info">
+              <div class="feature-icon mb-4"><i class="fa-solid fa-database fs-3 text-info"></i></div>
+              <h4 class="h5 fw-bold mb-3">Dynamic Website</h4>
+              <p class="text-muted mb-0">For full-stack developers integrating databases, server-side logic, and complex state management.</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="unified-card p-4 h-100 glass hover-lift border-success">
+              <div class="feature-icon mb-4"><i class="fa-brands fa-react fs-3 text-success"></i></div>
+              <h4 class="h5 fw-bold mb-3">Modern Framework</h4>
+              <p class="text-muted mb-0">For advanced engineers utilizing modern stacks like React, Vue, Next.js, or Svelte with headless CMS.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REQUIREMENTS CHECKLIST -->
+    <section class="py-6 bg-secondary border-y border-dark-subtle position-relative">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-5 fw-bold mb-3 section-title">Requirements Checklist</h2>
+          <p class="lead text-muted mx-auto max-w-2xl">Ensure you have everything ready before registering.</p>
+        </div>
+        
+        <div class="row justify-content-center">
+          <div class="col-lg-8" data-aos="fade-up">
+            <div class="unified-card p-0 overflow-hidden glass">
+              <ul class="list-group list-group-flush bg-transparent">
+                <li class="list-group-item bg-transparent p-4 d-flex align-items-center gap-3 hover-bg-subtle transition-all">
+                  <div class="form-check fs-4 m-0 p-0">
+                    <input class="form-check-input ms-0 me-3" type="checkbox" id="check1" aria-label="Student ID requirement">
+                  </div>
+                  <div>
+                    <h5 class="fw-bold mb-1">Active Student ID (KTM)</h5>
+                    <p class="text-muted small mb-0">Must be currently enrolled in an Indonesian university.</p>
+                  </div>
+                </li>
+                <li class="list-group-item bg-transparent p-4 d-flex align-items-center gap-3 hover-bg-subtle transition-all">
+                  <div class="form-check fs-4 m-0 p-0">
+                    <input class="form-check-input ms-0 me-3" type="checkbox" id="check2" aria-label="Registration requirement">
+                  </div>
+                  <div>
+                    <h5 class="fw-bold mb-1">Team Registration</h5>
+                    <p class="text-muted small mb-0">Teams can consist of 1 to 3 members from the same university.</p>
+                  </div>
+                </li>
+                <li class="list-group-item bg-transparent p-4 d-flex align-items-center gap-3 hover-bg-subtle transition-all">
+                  <div class="form-check fs-4 m-0 p-0">
+                    <input class="form-check-input ms-0 me-3" type="checkbox" id="check3" aria-label="Payment requirement">
+                  </div>
+                  <div>
+                    <h5 class="fw-bold mb-1">Registration Fee Payment</h5>
+                    <p class="text-muted small mb-0">Upload valid payment proof during the registration process.</p>
+                  </div>
+                </li>
+                <li class="list-group-item bg-transparent p-4 d-flex align-items-center gap-3 hover-bg-subtle transition-all">
+                  <div class="form-check fs-4 m-0 p-0">
+                    <input class="form-check-input ms-0 me-3" type="checkbox" id="check4" aria-label="Original Work requirement">
+                  </div>
+                  <div>
+                    <h5 class="fw-bold mb-1">Statement of Originality</h5>
+                    <p class="text-muted small mb-0">Signed document stating the codebase is your team's original work.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JUDGING CRITERIA -->
+    <section class="py-6 section-padding">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-5 fw-bold mb-3 section-title">Judging Criteria</h2>
+          <p class="lead text-muted mx-auto max-w-2xl">How your project will be evaluated by our expert panel.</p>
+        </div>
+        
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-5" data-aos="fade-right">
+            <!-- Animated Canvas Chart -->
+            <div class="unified-card p-4 glass text-center">
+              <canvas id="criteriaChart" style="max-width: 100%; height: 350px;"></canvas>
+            </div>
+          </div>
+          <div class="col-lg-7" data-aos="fade-left">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="p-3 border rounded-3 position-relative overflow-hidden">
+                  <div class="position-absolute top-0 start-0 h-100 bg-primary opacity-25" style="width: 20%;"></div>
+                  <h5 class="fw-bold mb-1">Theme Alignment <span class="badge bg-primary ms-2">20%</span></h5>
+                  <p class="text-muted small mb-0">How well the project embodies "Intelligent Future".</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 border rounded-3 position-relative overflow-hidden">
+                  <div class="position-absolute top-0 start-0 h-100 bg-info opacity-25" style="width: 20%;"></div>
+                  <h5 class="fw-bold mb-1">UI/UX Design <span class="badge bg-info ms-2">20%</span></h5>
+                  <p class="text-muted small mb-0">Aesthetics, accessibility, and user journey flow.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 border rounded-3 position-relative overflow-hidden">
+                  <div class="position-absolute top-0 start-0 h-100 bg-success opacity-25" style="width: 25%;"></div>
+                  <h5 class="fw-bold mb-1">Technology & Code <span class="badge bg-success ms-2">25%</span></h5>
+                  <p class="text-muted small mb-0">Architecture, optimization, clean code, and logic.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 border rounded-3 position-relative overflow-hidden">
+                  <div class="position-absolute top-0 start-0 h-100 bg-warning opacity-25" style="width: 15%;"></div>
+                  <h5 class="fw-bold mb-1">Content Strategy <span class="badge bg-warning ms-2 text-dark">15%</span></h5>
+                  <p class="text-muted small mb-0">Copywriting, messaging, and relevance of data.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 border rounded-3 position-relative overflow-hidden">
+                  <div class="position-absolute top-0 start-0 h-100 bg-danger opacity-25" style="width: 10%;"></div>
+                  <h5 class="fw-bold mb-1">Documentation <span class="badge bg-danger ms-2">10%</span></h5>
+                  <p class="text-muted small mb-0">Clarity of the technical report and setup guide.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 border rounded-3 position-relative overflow-hidden">
+                  <div class="position-absolute top-0 start-0 h-100 bg-secondary opacity-25" style="width: 10%;"></div>
+                  <h5 class="fw-bold mb-1">Live Presentation <span class="badge bg-secondary ms-2">10%</span></h5>
+                  <p class="text-muted small mb-0">Pitching skills and Q&A handling (Top 10 only).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DELIVERABLES -->
+    <section class="py-6 bg-gradient position-relative overflow-hidden">
+      <!-- Decorative element -->
+      <div class="position-absolute top-50 start-50 translate-middle w-100 h-100 z-0 opacity-25" style="background: radial-gradient(circle, var(--primary) 0%, transparent 70%);"></div>
+      
+      <div class="container position-relative z-1">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-5 fw-bold mb-3 text-body">Final Deliverables</h2>
+          <p class="lead text-body-50 mx-auto max-w-2xl">What you must submit before the deadline.</p>
+        </div>
+        
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="100">
+            <div class="unified-card glass p-3 text-center h-100 hover-lift border-0">
+              <i class="fa-solid fa-file-zipper fs-1 text-primary mb-3"></i>
+              <h6 class="fw-bold text-body mb-0">Project ZIP</h6>
+              <p class="small text-body-50 mt-2 mb-0">Source code</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="200">
+            <div class="unified-card glass p-3 text-center h-100 hover-lift border-0">
+              <i class="fa-solid fa-file-signature fs-1 text-info mb-3"></i>
+              <h6 class="fw-bold text-body mb-0">Originality</h6>
+              <p class="small text-body-50 mt-2 mb-0">Signed PDF</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="300">
+            <div class="unified-card glass p-3 text-center h-100 hover-lift border-0">
+              <i class="fa-solid fa-file-pdf fs-1 text-danger mb-3"></i>
+              <h6 class="fw-bold text-body mb-0">Tech Report</h6>
+              <p class="small text-body-50 mt-2 mb-0">PDF Document</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="400">
+            <div class="unified-card glass p-3 text-center h-100 hover-lift border-0">
+              <i class="fa-solid fa-video fs-1 text-success mb-3"></i>
+              <h6 class="fw-bold text-body mb-0">Demo Video</h6>
+              <p class="small text-body-50 mt-2 mb-0">YouTube Link</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="500">
+            <div class="unified-card glass p-3 text-center h-100 hover-lift border-0">
+              <i class="fa-solid fa-file-powerpoint fs-1 text-warning mb-3"></i>
+              <h6 class="fw-bold text-body mb-0">Slides</h6>
+              <p class="small text-body-50 mt-2 mb-0">PPTX or PDF</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="600">
+          <a href="register.html" class="btn btn-primary btn-lg rounded-pill px-5 shadow-lg">Start Submission</a>
+        </div>
+      </div>
+    </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Criteria Chart if it exists
+      const ctx = document.getElementById('criteriaChart');
+      if (ctx && typeof Chart !== 'undefined') {
+        new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Technology', 'Theme', 'Design', 'Content', 'Docs', 'Pitch'],
+            datasets: [{
+              data: [25, 20, 20, 15, 10, 10],
+              backgroundColor: [
+                'var(--success)', // success
+                window.getThemeToken('--primary'),
+                window.getThemeToken('--primary'),
+                'var(--warning)', // warning
+                window.getThemeToken('--danger'),
+                window.getThemeToken('--text-muted')
+              ],
+              borderWidth: 0,
+              hoverOffset: 10
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '70%',
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  color: document.body.classList.contains('dark-theme') ? 'var(--border)' : 'var(--surface)',
+                  font: {
+                    family: "'Inter', sans-serif",
+                    size: 13
+                  },
+                  padding: 20
+                }
+              }
+            }
+          }
+        });
+      }
+    });
+  </script>
+</main>
+  <footer class="footer py-5 glass text-body">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/logo.svg" alt="NovaMind Logo" width="32" height="32" class="me-2">
+            <span class="fw-bold fs-4">NovaMind</span>
+          </div>
+          <p class="text-muted small">Empowering Global Innovators for an Intelligent Future. Join the movement.</p>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Platform</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-muted">Home</a></li>
+            <li class="mb-2"><a href="about.html" class="text-decoration-none text-muted">About</a></li>
+            <li class="mb-2"><a href="competition.html" class="text-decoration-none text-muted">Competition</a></li>
+            <li class="mb-2"><a href="timeline.html" class="text-decoration-none text-muted">Timeline</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="resources.html" class="text-decoration-none text-muted">Downloads</a></li>
+            <li class="mb-2"><a href="faq.html" class="text-decoration-none text-muted">FAQ</a></li>
+            <li class="mb-2"><a href="ai-assistant.html" class="text-decoration-none text-muted">AI Assistant</a></li>
+            <li class="mb-2"><a href="dashboard.html" class="text-decoration-none text-muted">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="fw-bold mb-3">Connect</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 border-secondary opacity-25">
+      <div class="text-center text-muted small">
+        &copy; 2026 NovaMind. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+          <script defer src="assets/vendor/js/gsap.min.js"></script>
+  <script defer src="assets/vendor/js/ScrollTrigger.min.js"></script>
+  <script defer src="assets/vendor/js/chart.js"></script>
+  <script defer src="js/bundle.js"></script>
+  <script defer src="js/ui-refresh.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.log('SW registration failed: ', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

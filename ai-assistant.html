@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Assistant – NovaMind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Libraries -->
+  <link rel="preload" href="assets/vendor/css/fonts.css" as="style">
+    <link href="assets/vendor/css/fonts.css" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/css/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <meta name="description" content="NovaMind - Empowering Global Innovators for an Intelligent Future. Join the premier global innovation competition.">
+  <meta property="og:title" content="NovaMind Hub">
+  <meta property="og:description" content="Empowering Global Innovators for an Intelligent Future.">
+  <meta property="og:image" content="https://novamind.com/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://novamind.com">
+  <meta property="og:type" content="website">
+  <link rel="manifest" href="manifest.json">  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body class="page-ai-assistant">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="competition.html">Competition</a></li>
+          <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="innovators.html">Innovators</a></li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register Now</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+<main>
+    <!-- AI ASSISTANT -->
+    <section class="min-vh-100 d-flex flex-column pt-5 mt-4 position-relative overflow-hidden bg-secondary">
+            
+      <div class="container flex-grow-1 d-flex flex-column position-relative z-1 py-4" style="max-width: 900px;">
+        
+        <!-- Header -->
+        <div class="text-center mb-4" data-aos="fade-down">
+          <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary rounded-circle mb-3" style="width: 60px; height: 60px;">
+            <i class="fa-solid fa-robot fs-3"></i>
+          </div>
+          <h2 class="fw-bold">NovaMind AI</h2>
+          <p class="text-muted small">Your intelligent guide to the future.</p>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="unified-card glass flex-grow-1 d-flex flex-column overflow-hidden shadow-lg border-primary border-opacity-25" style="max-height: 60vh;">
+          
+          <!-- Messages Area -->
+          <div id="chatMessages" class="p-4 overflow-auto d-flex flex-column gap-4" style="flex: 1 1 auto; height: 0;">
+            
+            <!-- AI Welcome Message -->
+            <div class="d-flex gap-3 align-items-start">
+              <div class="bg-primary text-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 shadow-sm" style="width: 40px; height: 40px;">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <div class="bg-secondary bg-opacity-10 p-3 rounded-4 rounded-top-start-0" style="max-width: 80%;">
+                <p class="mb-0 text-body" style="line-height: 1.6;">
+                  Hello, Future Innovator! 👋 I'm the NovaMind AI Assistant.<br><br>
+                  I'm here to help you navigate the competition. You can ask me questions like:
+                </p>
+                <ul class="mb-0 mt-2 text-primary small list-unstyled" style="cursor: pointer;">
+                  <li class="mb-1 hover-text-primary suggestion-chip">"How do I register?"</li>
+                  <li class="mb-1 hover-text-primary suggestion-chip">"What frameworks are allowed?"</li>
+                  <li class="mb-1 hover-text-primary suggestion-chip">"What are the judging criteria?"</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Input Area -->
+          <div class="p-3 bg-primary border-top border-secondary border-opacity-25">
+            <form id="chatForm" class="position-relative">
+              <input type="text" id="chatInput" class="form-control form-control-lg rounded-pill pe-5 py-3 border-secondary border-opacity-50 focus-ring" placeholder="Ask NovaMind AI anything..." autocomplete="off">
+              <button type="submit" class="btn btn-primary rounded-circle position-absolute top-50 end-0 translate-middle-y me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;" id="sendBtn">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+            <div class="text-center mt-2">
+              <span class="small text-muted" style="font-size: 0.75rem;">NovaMind AI can make mistakes. Check the Guidebook for official rules.</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <style>
+      .suggestion-chip {
+        display: inline-block;
+        padding: 5px 12px;
+        background: var(--color-primary-light, var(--primary));
+        border-radius: 20px;
+        margin-right: 5px;
+        transition: all 0.2s;
+      }
+      .suggestion-chip:hover {
+        background: var(--primary);
+        color: white !important;
+      }
+      
+      .typing-indicator {
+        display: inline-flex;
+        gap: 4px;
+      }
+      .typing-indicator span {
+        width: 8px;
+        height: 8px;
+        background-color: var(--primary);
+        border-radius: 50%;
+        animation: typing 1.4s infinite ease-in-out both;
+      }
+      .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+      .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+      
+      @keyframes typing {
+        0%, 80%, 100% { transform: scale(0); }
+        40% { transform: scale(1); }
+      }
+    </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const chatForm = document.getElementById('chatForm');
+        const chatInput = document.getElementById('chatInput');
+        const chatMessages = document.getElementById('chatMessages');
+        const suggestionChips = document.querySelectorAll('.suggestion-chip');
+        const sendButton = document.getElementById('sendBtn');
+        const chatHistory = [];
+
+        function appendMessage(text, isUser = false) {
+          const div = document.createElement('div');
+          div.className = `d-flex gap-3 align-items-start ${isUser ? 'flex-row-reverse' : ''}`;
+
+          const avatar = document.createElement('div');
+          avatar.className = 'bg-primary text-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 shadow-sm';
+          avatar.style.width = '40px';
+          avatar.style.height = '40px';
+
+          const avatarIcon = document.createElement('i');
+          avatarIcon.className = isUser ? 'fa-solid fa-user' : 'fa-solid fa-robot';
+          avatar.appendChild(avatarIcon);
+
+          const bubble = document.createElement('div');
+          bubble.className = isUser
+            ? 'bg-primary text-primary p-3 rounded-4 rounded-top-end-0'
+            : 'bg-secondary bg-opacity-10 p-3 rounded-4 rounded-top-start-0 text-body';
+          bubble.style.maxWidth = '80%';
+
+          const messageText = document.createElement('p');
+          messageText.className = 'mb-0';
+          messageText.style.lineHeight = '1.6';
+          messageText.textContent = text;
+
+          bubble.appendChild(messageText);
+          div.append(avatar, bubble);
+          
+          chatMessages.appendChild(div);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function appendTyping() {
+          const div = document.createElement('div');
+          div.id = 'typingIndicator';
+          div.className = 'd-flex gap-3 align-items-start';
+          div.innerHTML = `
+            <div class="bg-primary text-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 shadow-sm" style="width: 40px; height: 40px;"><i class="fa-solid fa-robot"></i></div>
+            <div class="bg-secondary bg-opacity-10 p-3 rounded-4 rounded-top-start-0 d-flex align-items-center" style="height: 48px;">
+              <div class="typing-indicator">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+          `;
+          chatMessages.appendChild(div);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTyping() {
+          const indicator = document.getElementById('typingIndicator');
+          if(indicator) indicator.remove();
+        }
+
+        async function requestAI(text) {
+          const controller = new AbortController();
+          const timeout = window.setTimeout(() => controller.abort(), 50_000);
+
+          try {
+            const response = await fetch('api/chat', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                message: text,
+                history: chatHistory.slice(-10)
+              }),
+              signal: controller.signal
+            });
+            const data = await response.json().catch(() => ({}));
+
+            if (!response.ok || !data.answer) {
+              throw new Error(data.error || 'AI belum dapat menjawab.');
+            }
+
+            return data.answer;
+          } finally {
+            window.clearTimeout(timeout);
+          }
+        }
+
+        async function handleSend(text) {
+          if (!text || chatInput.disabled) return;
+
+          appendMessage(text, true);
+          chatInput.value = '';
+          chatInput.disabled = true;
+          sendButton.disabled = true;
+          suggestionChips.forEach(chip => chip.setAttribute('aria-disabled', 'true'));
+          appendTyping();
+
+          try {
+            const answer = await requestAI(text);
+            removeTyping();
+            appendMessage(answer, false);
+            chatHistory.push(
+              { role: 'user', content: text },
+              { role: 'assistant', content: answer }
+            );
+          } catch (error) {
+            removeTyping();
+            const message = error.name === 'AbortError'
+              ? 'Jawaban AI terlalu lama. Silakan coba lagi.'
+              : error.message;
+            appendMessage(message, false);
+          } finally {
+            chatInput.disabled = false;
+            sendButton.disabled = false;
+            suggestionChips.forEach(chip => chip.removeAttribute('aria-disabled'));
+            chatInput.focus();
+          }
+        }
+
+        chatForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          handleSend(chatInput.value.trim());
+        });
+
+        suggestionChips.forEach(chip => {
+          chip.addEventListener('click', () => {
+            if (chip.getAttribute('aria-disabled') === 'true') return;
+            handleSend(chip.textContent.replace(/"/g, ''));
+          });
+        });
+      });
+    </script>
+
+    <!-- AI COLOR CLASSIFIER DEMO -->
+    <section class="py-6 section-padding bg-gradient position-relative overflow-hidden" id="ai-demo">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <span class="badge bg-primary rounded-pill mb-3 px-3 py-2">Tech Demo</span>
+          <h2 class="display-5 fw-bold mb-3 section-title">AI Image Color Classifier</h2>
+          <p class="lead text-muted mx-auto max-w-2xl">Experience "Intelligent Future" technology firsthand. Upload any image, and our client-side AI will extract its dominant color palette instantly.</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+            <div class="unified-card glass p-4 text-center">
+              
+              <!-- Upload Area -->
+              <div id="uploadArea" class="border border-2 border-dashed border-primary rounded-4 p-5 mb-4 position-relative hover-bg-subtle transition-all cursor-pointer bg-primary bg-opacity-10">
+                <i class="fa-solid fa-cloud-arrow-up fs-1 text-primary mb-3"></i>
+                <h5 class="fw-bold">Upload an Image</h5>
+                <p class="text-muted small mb-0">JPG, PNG (Max 5MB)</p>
+                <input type="file" id="imageInput" accept="image/*" class="position-absolute top-0 start-0 w-100 h-100 opacity-0" style="cursor:pointer;">
+              </div>
+
+              <!-- Preview & Canvas -->
+              <div class="d-none" id="previewArea">
+                <img id="imagePreview" class="img-fluid rounded-3 mb-4 shadow-sm" style="max-height: 300px; object-fit: contain;">
+                <canvas id="imageCanvas" class="d-none"></canvas>
+                
+                <h6 class="fw-bold mb-3">Dominant Color Palette</h6>
+                <div id="colorPalette" class="d-flex justify-content-center gap-3 flex-wrap mb-4">
+                  <!-- Colors will be injected here -->
+                </div>
+                
+                <button class="btn btn-outline-secondary rounded-pill px-4" id="resetBtn"><i class="fa-solid fa-rotate-right me-2"></i> Try Another Image</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const imageInput = document.getElementById('imageInput');
+        const uploadArea = document.getElementById('uploadArea');
+        const previewArea = document.getElementById('previewArea');
+        const imagePreview = document.getElementById('imagePreview');
+        const imageCanvas = document.getElementById('imageCanvas');
+        const colorPalette = document.getElementById('colorPalette');
+        const resetBtn = document.getElementById('resetBtn');
+
+        imageInput.addEventListener('change', function(e) {
+          const file = e.target.files[0];
+          if (!file) return;
+          
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            imagePreview.src = event.target.result;
+            uploadArea.classList.add('d-none');
+            previewArea.classList.remove('d-none');
+            
+            imagePreview.onload = function() {
+              extractColors();
+            }
+          };
+          reader.readAsDataURL(file);
+        });
+
+        resetBtn.addEventListener('click', () => {
+          imageInput.value = '';
+          uploadArea.classList.remove('d-none');
+          previewArea.classList.add('d-none');
+          colorPalette.innerHTML = '';
+        });
+
+        function extractColors() {
+          const ctx = imageCanvas.getContext('2d', { willReadFrequently: true });
+          const img = imagePreview;
+          
+          // Downscale for performance
+          const MAX_SIZE = 200;
+          let width = img.naturalWidth;
+          let height = img.naturalHeight;
+          if (width > height && width > MAX_SIZE) {
+            height *= MAX_SIZE / width;
+            width = MAX_SIZE;
+          } else if (height > MAX_SIZE) {
+            width *= MAX_SIZE / height;
+            height = MAX_SIZE;
+          }
+          
+          imageCanvas.width = width;
+          imageCanvas.height = height;
+          ctx.drawImage(img, 0, 0, width, height);
+          
+          const imageData = ctx.getImageData(0, 0, width, height).data;
+          
+          // Simple clustering (grouping by rough RGB buckets)
+          const colorCounts = {};
+          const clampRgb = value => Math.max(0, Math.min(255, Math.round(value)));
+          const quantizeRgb = value => clampRgb(Math.round(value / 24) * 24);
+
+          for (let i = 0; i < imageData.length; i += 16) { // skip every 4th pixel for speed
+            if (imageData[i + 3] < 128) continue;
+
+            const r = quantizeRgb(imageData[i]);
+            const g = quantizeRgb(imageData[i + 1]);
+            const b = quantizeRgb(imageData[i + 2]);
+            const rgb = r+','+g+','+b;
+            colorCounts[rgb] = (colorCounts[rgb] || 0) + 1;
+          }
+          
+          const sortedColors = Object.entries(colorCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+          
+          colorPalette.innerHTML = '';
+          sortedColors.forEach(colorStr => {
+            const rgb = colorStr[0];
+            const hex = rgbToHex(...rgb.split(',').map(Number));
+            
+            const colorDiv = document.createElement('div');
+            colorDiv.className = 'text-center shadow-sm rounded-3 overflow-hidden transition-all hover-lift';
+            colorDiv.innerHTML = `
+              <div style="background-color: rgb(${rgb}); width: 80px; height: 60px;"></div>
+              <div class="bg-primary p-2 small fw-bold" style="font-size:0.75rem;">${hex}</div>
+            `;
+            colorPalette.appendChild(colorDiv);
+          });
+        }
+        
+        function rgbToHex(r, g, b) {
+          const clamp = value => Math.max(0, Math.min(255, Math.round(Number(value) || 0)));
+          const channels = [r, g, b]
+            .map(clamp)
+            .map(value => value.toString(16).padStart(2, '0'));
+
+          return `#${channels.join('')}`.toUpperCase();
+        }
+      });
+    </script>
+</main>
+  <footer class="footer py-5 glass text-body">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/logo.svg" alt="NovaMind Logo" width="32" height="32" class="me-2">
+            <span class="fw-bold fs-4">NovaMind</span>
+          </div>
+          <p class="text-muted small">Empowering Global Innovators for an Intelligent Future. Join the movement.</p>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Platform</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-muted">Home</a></li>
+            <li class="mb-2"><a href="about.html" class="text-decoration-none text-muted">About</a></li>
+            <li class="mb-2"><a href="competition.html" class="text-decoration-none text-muted">Competition</a></li>
+            <li class="mb-2"><a href="timeline.html" class="text-decoration-none text-muted">Timeline</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="resources.html" class="text-decoration-none text-muted">Downloads</a></li>
+            <li class="mb-2"><a href="faq.html" class="text-decoration-none text-muted">FAQ</a></li>
+            <li class="mb-2"><a href="ai-assistant.html" class="text-decoration-none text-muted">AI Assistant</a></li>
+            <li class="mb-2"><a href="dashboard.html" class="text-decoration-none text-muted">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="fw-bold mb-3">Connect</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 border-secondary opacity-25">
+      <div class="text-center text-muted small">
+        &copy; 2026 NovaMind. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+          <script defer src="assets/vendor/js/gsap.min.js"></script>
+  <script defer src="assets/vendor/js/ScrollTrigger.min.js"></script>
+  <script defer src="js/bundle.js"></script>
+  <script defer src="js/ui-refresh.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.log('SW registration failed: ', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

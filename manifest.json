@@ -1,0 +1,17 @@
+{
+  "name": "NovaMind Competition Platform",
+  "short_name": "NovaMind",
+  "description": "Global Innovators for an Intelligent Future",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080b14",
+  "theme_color": "#6758f3",
+  "icons": [
+    {
+      "src": "assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

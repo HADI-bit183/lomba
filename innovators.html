@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovators – NovaMind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Libraries -->
+  <link rel="preload" href="assets/vendor/css/fonts.css" as="style">
+    <link href="assets/vendor/css/fonts.css" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/css/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <meta name="description" content="NovaMind - Empowering Global Innovators for an Intelligent Future. Join the premier global innovation competition.">
+  <meta property="og:title" content="NovaMind Hub">
+  <meta property="og:description" content="Empowering Global Innovators for an Intelligent Future.">
+  <meta property="og:image" content="https://novamind.com/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://novamind.com">
+  <meta property="og:type" content="website">
+  <link rel="manifest" href="manifest.json">  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+
+  
+</head>
+
+<body class="page-innovators">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="competition.html">Competition</a></li>
+          <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="innovators.html">Innovators</a></li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register Now</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+<main>
+    <!-- INNOVATORS HERO -->
+    <section class="py-5 mt-4 bg-gradient position-relative overflow-hidden text-center">
+      <div class="position-absolute w-100 h-100 top-0 start-0 z-0 opacity-25" style="background: url('assets/images/world-map.svg') no-repeat center center; background-size: cover;"></div>
+      <div class="container position-relative z-1 pt-5">
+        <span class="badge bg-primary rounded-pill mb-3 px-3 py-2" data-aos="fade-down">The Network</span>
+        <h1 class="display-3 fw-bold text-body mb-4" data-aos="fade-up">Global Innovators</h1>
+        <p class="lead text-body-50 mx-auto max-w-2xl" data-aos="fade-up" data-aos-delay="100">
+          Join a movement of forward-thinking digital creators pushing the boundaries of web technology.
+        </p>
+      </div>
+    </section>
+
+    
+    <!-- INTERACTIVE MAP & STATS -->
+    <section class="py-5 bg-transparent text-body position-relative overflow-hidden" id="world-innovation-map">
+      <div class="container-fluid px-4 px-lg-5">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-6 fw-bold mb-3 text-uppercase" style="letter-spacing: 2px; color: var(--text-primary);">WORLD INNOVATION MAP: MENGHUBUNGKAN IDE, MENCIPTAKAN MASA DEPAN</h2>
+          <p class="lead text-body-50 mx-auto max-w-3xl">Jelajahi ekosistem inovasi global kami. Klik setiap titik untuk melihat teknologi yang sedang dikembangkan.</p>
+        </div>
+
+        <div class="map-container position-relative mx-auto" style="max-width: 1400px; background: var(--surface); border-radius: 20px; box-shadow: var(--shadow-glow); border: 1px solid var(--border); overflow: hidden;">
+          
+          <!-- Aspect ratio wrapper -->
+          <div style="position: relative; width: 100%; padding-bottom: 50%;">
+            <!-- The Base Map -->
+            <img src="assets/images/world-map.svg" class="position-absolute top-0 start-0 w-100 h-100 object-fit-contain opacity-50" alt="World Map" style="filter: drop-shadow(0 0 10px var(--primary));">
+            
+            <!-- Global Innovator Pulses -->
+            <div class="map-pulse" style="top: 30%; left: 20%; animation-delay: 0s;"></div>
+            <div class="map-pulse" style="top: 45%; left: 45%; animation-delay: 0.5s;"></div>
+            <div class="map-pulse" style="top: 25%; left: 55%; animation-delay: 1s;"></div>
+            <div class="map-pulse" style="top: 60%; left: 70%; animation-delay: 1.5s;"></div>
+            <div class="map-pulse" style="top: 35%; left: 85%; animation-delay: 0.8s;"></div>
+            
+            <!-- SVG Overlay for Connecting Lines -->
+            <svg class="position-absolute top-0 start-0 w-100 h-100 z-1" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice">
+              <!-- Glow Definitions -->
+              <defs>
+                <filter id="glow-line" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <linearGradient id="line-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="var(--primary)" />
+                  <stop offset="100%" stop-color="var(--primary)" />
+                </linearGradient>
+                <linearGradient id="line-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="var(--success)" />
+                  <stop offset="100%" stop-color="var(--primary)" />
+                </linearGradient>
+              </defs>
+
+              <!-- Arcs (Connections) -->
+              <!-- North America to Europe -->
+              <path d="M 220 180 Q 350 120 480 160" fill="none" stroke="url(#line-grad-1)" stroke-width="2" filter="url(#glow-line)" opacity="0.7" class="map-path-anim"/>
+              <!-- North America to South America -->
+              <path d="M 200 220 Q 250 300 280 350" fill="none" stroke="url(#line-grad-2)" stroke-width="2" filter="url(#glow-line)" opacity="0.6" class="map-path-anim"/>
+              <!-- Europe to Asia -->
+              <path d="M 520 160 Q 650 140 750 200" fill="none" stroke="url(#line-grad-1)" stroke-width="2" filter="url(#glow-line)" opacity="0.7" class="map-path-anim"/>
+              <!-- Europe to Africa -->
+              <path d="M 490 190 Q 510 280 520 300" fill="none" stroke="var(--warning)" stroke-width="2" filter="url(#glow-line)" opacity="0.5" class="map-path-anim"/>
+              <!-- Asia to Australia -->
+              <path d="M 780 230 Q 820 300 840 380" fill="none" stroke="var(--primary)" stroke-width="2" filter="url(#glow-line)" opacity="0.6" class="map-path-anim"/>
+              <!-- South America to Africa -->
+              <path d="M 320 350 Q 420 400 510 330" fill="none" stroke="url(#line-grad-1)" stroke-width="2" filter="url(#glow-line)" opacity="0.5" class="map-path-anim"/>
+            </svg>
+
+            <!-- Interactive Map Nodes -->
+            
+            <!-- North America -->
+            <div class="map-node" style="top: 35%; left: 15%;" data-bs-toggle="tooltip" title="Silicon Valley Startups">
+              <div class="node-pulse bg-primary"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">Silicon Valley Startups</span>
+            </div>
+            <div class="map-node" style="top: 25%; left: 22%;" data-bs-toggle="tooltip" title="Space Exploration">
+              <div class="node-pulse bg-danger"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">Space Exploration</span>
+            </div>
+            <div class="map-node" style="top: 40%; left: 25%;" data-bs-toggle="tooltip" title="Quantum Computing">
+              <div class="node-pulse bg-info"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">Quantum Computing</span>
+            </div>
+
+            <!-- South America -->
+            <div class="map-node" style="top: 65%; left: 28%;" data-bs-toggle="tooltip" title="Tropical Biotechnology">
+              <div class="node-pulse bg-success"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">Tropical Biotechnology</span>
+            </div>
+            <div class="map-node" style="top: 80%; left: 32%;" data-bs-toggle="tooltip" title="Sustainable Development">
+              <div class="node-pulse bg-warning"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">Sustainable Development</span>
+            </div>
+
+            <!-- Europe -->
+            <div class="map-node" style="top: 25%; left: 48%;" data-bs-toggle="tooltip" title="Scientific Advances (CERN)">
+              <div class="node-pulse bg-primary"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">Scientific Advances</span>
+            </div>
+            <div class="map-node" style="top: 35%; left: 52%;" data-bs-toggle="tooltip" title="Renewable Energy">
+              <div class="node-pulse bg-success"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">Renewable Energy</span>
+            </div>
+
+            <!-- Africa -->
+            <div class="map-node" style="top: 55%; left: 48%;" data-bs-toggle="tooltip" title="Mobile Payments">
+              <div class="node-pulse bg-warning"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">Mobile Payments</span>
+            </div>
+            <div class="map-node" style="top: 70%; left: 55%;" data-bs-toggle="tooltip" title="Clean Energy">
+              <div class="node-pulse bg-info"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">Clean Energy</span>
+            </div>
+
+            <!-- Asia -->
+            <div class="map-node" style="top: 35%; left: 70%;" data-bs-toggle="tooltip" title="AI Research">
+              <div class="node-pulse bg-danger"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">AI Research</span>
+            </div>
+            <div class="map-node" style="top: 45%; left: 82%;" data-bs-toggle="tooltip" title="Smart Cities">
+              <div class="node-pulse bg-primary"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">Smart Cities</span>
+            </div>
+            <div class="map-node" style="top: 25%; left: 78%;" data-bs-toggle="tooltip" title="Tech Manufacturing">
+              <div class="node-pulse bg-secondary"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">Tech Manufacturing</span>
+            </div>
+
+            <!-- Australia -->
+            <div class="map-node" style="top: 75%; left: 82%;" data-bs-toggle="tooltip" title="Oceanography Research">
+              <div class="node-pulse bg-info"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">Oceanography Research</span>
+            </div>
+            <div class="map-node" style="top: 85%; left: 88%;" data-bs-toggle="tooltip" title="Astronomy">
+              <div class="node-pulse bg-primary"></div><div class="node-core bg-primary"></div>
+              <span class="node-label">Astronomy</span>
+            </div>
+            
+            <!-- Antarctica -->
+            <div class="map-node" style="top: 92%; left: 45%;" data-bs-toggle="tooltip" title="Climate Science">
+              <div class="node-pulse bg-primary"></div><div class="node-core bg-info"></div>
+              <span class="node-label">Climate Science</span>
+            </div>
+            <div class="map-node" style="top: 92%; left: 60%;" data-bs-toggle="tooltip" title="International Cooperation">
+              <div class="node-pulse bg-primary"></div><div class="node-core bg-warning"></div>
+              <span class="node-label">International Cooperation</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Map CSS -->
+      <style>
+        .map-node {
+          position: absolute;
+          z-index: 10;
+          cursor: pointer;
+          transform: translate(-50%, -50%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          transition: transform 0.3s ease;
+        }
+        .map-node:hover {
+          transform: translate(-50%, -50%) scale(1.1);
+          z-index: 20;
+        }
+        .node-pulse {
+          position: absolute;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          opacity: 0.6;
+          animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        .node-core {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          z-index: 2;
+          box-shadow: 0 0 10px var(--surface-hover);
+        }
+        .node-label {
+          margin-top: 8px;
+          background: var(--bg-primary);
+          backdrop-filter: blur(4px);
+          padding: 4px 10px;
+          border-radius: 6px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: var(--border);
+          white-space: nowrap;
+          border: 1px solid var(--primary);
+          box-shadow: 0 4px 15px var(--shadow);
+          pointer-events: none;
+        }
+        .map-path-anim {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          animation: dash 4s linear infinite;
+        }
+        @keyframes pulse-ring {
+          0% { transform: scale(0.5); opacity: 0.8; }
+          100% { transform: scale(2.5); opacity: 0; }
+        }
+        @keyframes dash {
+          0% { stroke-dashoffset: 1000; }
+          100% { stroke-dashoffset: 0; }
+        }
+      </style>
+    </section>
+
+    <!-- THE INNOVATORS TEAM -->
+    <section class="py-6 bg-secondary section-padding position-relative">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-5 fw-bold mb-3 section-title">Meet the Vanguard</h2>
+          <p class="lead text-muted mx-auto max-w-2xl">The brilliant minds leading the charge into our intelligent future.</p>
+        </div>
+        
+        <div class="row g-4">
+          <!-- Innovator 1 -->
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="team-card rounded-4 overflow-hidden position-relative group">
+              <div class="team-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600&auto=format&fit=crop&grayscale=1" class="w-100 h-100 object-fit-cover team-img transition-transform duration-500 group-hover:scale-110" alt="Sarah Chen">
+              </div>
+              <div class="mt-4">
+                <h4 class="team-name">Sarah Chen</h4>
+                <p class="small text-muted mb-0">Lead UI/UX Architect</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Innovator 2 -->
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-card rounded-4 overflow-hidden position-relative group">
+              <div class="team-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop&grayscale=1" class="w-100 h-100 object-fit-cover team-img transition-transform duration-500 group-hover:scale-110" alt="Marcus Johnson">
+              </div>
+              <div class="mt-4">
+                <h4 class="team-name">Marcus Johnson</h4>
+                <p class="small text-muted mb-0">AI Systems Engineer</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Innovator 3 -->
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="team-card rounded-4 overflow-hidden position-relative group">
+              <div class="team-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop&grayscale=1" class="w-100 h-100 object-fit-cover team-img transition-transform duration-500 group-hover:scale-110" alt="Elena Rodriguez">
+              </div>
+              <div class="mt-4">
+                <h4 class="team-name">Elena Rodriguez</h4>
+                <p class="small text-muted mb-0">Full-Stack Lead</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Innovator 4 -->
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-card rounded-4 overflow-hidden position-relative group">
+              <div class="team-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop&grayscale=1" class="w-100 h-100 object-fit-cover team-img transition-transform duration-500 group-hover:scale-110" alt="David Kim">
+              </div>
+              <div class="mt-4">
+                <h4 class="team-name">David Kim</h4>
+                <p class="small text-muted mb-0">Security Researcher</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUTURE TECHNOLOGY SECTION -->
+    <section class="py-6 section-padding">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h2 class="display-5 fw-bold mb-3 section-title">Pioneering the Future</h2>
+          <p class="lead text-muted mx-auto max-w-2xl">Topics and technologies shaping the next generation of the web.</p>
+        </div>
+        
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="unified-card p-4 h-100 text-center glass border-0 hover-lift">
+              <div class="mb-4 text-primary"><i class="fa-solid fa-brain fs-1"></i></div>
+              <h5 class="fw-bold mb-3">AI Integration</h5>
+              <p class="text-muted small mb-0">Implementing machine learning models, natural language processing, and generative AI directly into web interfaces.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="unified-card p-4 h-100 text-center glass border-0 hover-lift">
+              <div class="mb-4 text-info"><i class="fa-solid fa-code fs-1"></i></div>
+              <h5 class="fw-bold mb-3">Modern Web Dev</h5>
+              <p class="text-muted small mb-0">Pushing the boundaries of performance with Server-Side Rendering, Edge Computing, and Micro-frontends.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="unified-card p-4 h-100 text-center glass border-0 hover-lift">
+              <div class="mb-4 text-success"><i class="fa-solid fa-vr-cardboard fs-1"></i></div>
+              <h5 class="fw-bold mb-3">Digital Innovation</h5>
+              <p class="text-muted small mb-0">Exploring immersive 3D web experiences, WebGL, AR/VR, and highly interactive user interfaces.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="unified-card p-4 h-100 text-center glass border-0 hover-lift">
+              <div class="mb-4 text-warning"><i class="fa-solid fa-earth-americas fs-1"></i></div>
+              <h5 class="fw-bold mb-3">Global Collaboration</h5>
+              <p class="text-muted small mb-0">Building tools that break down geographical barriers and foster real-time, cross-border teamwork.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .ping-animation {
+        box-shadow: 0 0 0 0 var(--primary);
+        animation: ping 2s infinite cubic-bezier(0.66, 0, 0, 1);
+      }
+      @keyframes ping {
+        to {
+          box-shadow: 0 0 0 20px var(--primary);
+        }
+      }
+    </style>
+</main>
+  <footer class="footer py-5 glass text-body">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/logo.svg" alt="NovaMind Logo" width="32" height="32" class="me-2">
+            <span class="fw-bold fs-4">NovaMind</span>
+          </div>
+          <p class="text-muted small">Empowering Global Innovators for an Intelligent Future. Join the movement.</p>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Platform</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-muted">Home</a></li>
+            <li class="mb-2"><a href="about.html" class="text-decoration-none text-muted">About</a></li>
+            <li class="mb-2"><a href="competition.html" class="text-decoration-none text-muted">Competition</a></li>
+            <li class="mb-2"><a href="timeline.html" class="text-decoration-none text-muted">Timeline</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="resources.html" class="text-decoration-none text-muted">Downloads</a></li>
+            <li class="mb-2"><a href="faq.html" class="text-decoration-none text-muted">FAQ</a></li>
+            <li class="mb-2"><a href="ai-assistant.html" class="text-decoration-none text-muted">AI Assistant</a></li>
+            <li class="mb-2"><a href="dashboard.html" class="text-decoration-none text-muted">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="fw-bold mb-3">Connect</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 border-secondary opacity-25">
+      <div class="text-center text-muted small">
+        &copy; 2026 NovaMind. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+          <script defer src="assets/vendor/js/gsap.min.js"></script>
+  <script defer src="assets/vendor/js/ScrollTrigger.min.js"></script>
+  <script defer src="js/bundle.js"></script>
+  <script defer src="js/ui-refresh.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.log('SW registration failed: ', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

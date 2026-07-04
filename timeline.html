@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline – NovaMind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Libraries -->
+  <link rel="preload" href="assets/vendor/css/fonts.css" as="style">
+    <link href="assets/vendor/css/fonts.css" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/css/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <meta name="description" content="NovaMind - Empowering Global Innovators for an Intelligent Future. Join the premier global innovation competition.">
+  <meta property="og:title" content="NovaMind Hub">
+  <meta property="og:description" content="Empowering Global Innovators for an Intelligent Future.">
+  <meta property="og:image" content="https://novamind.com/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://novamind.com">
+  <meta property="og:type" content="website">
+  <link rel="manifest" href="manifest.json">  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body class="page-timeline">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="competition.html">Competition</a></li>
+          <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="innovators.html">Innovators</a></li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register Now</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+<main>
+    <!-- TIMELINE HERO -->
+    <section class="py-6 mt-5 bg-gradient position-relative overflow-hidden text-center">
+            <div class="container position-relative z-1 pt-5">
+        <span class="badge bg-primary rounded-pill mb-3 px-3 py-2" data-aos="fade-down">Road to the Finals</span>
+        <h1 class="display-3 fw-bold text-body mb-4" data-aos="fade-up">Competition Timeline</h1>
+        <p class="lead text-body-50 mx-auto max-w-2xl" data-aos="fade-up" data-aos-delay="100">
+          Mark your calendars. Here is the complete journey from registration to the Grand Final.
+        </p>
+      </div>
+    </section>    <!-- INTERACTIVE HORIZONTAL TIMELINE -->
+    <section class="py-6 section-padding position-relative">
+      <div class="container">
+        <div class="timeline-wrapper position-relative">
+          <div class="timeline-line position-absolute top-0 bottom-0 bg-primary opacity-25" style="width: 4px; left: 50%; transform: translateX(-50%);"></div>
+          <div class="timeline-items d-flex flex-column gap-5">
+            
+            <!-- Registration -->
+            <div class="timeline-item d-flex align-items-center justify-content-center w-100 position-relative">
+              <div class="timeline-content card glass border-0 shadow-sm p-4 w-50" style="margin-right: auto; padding-right: 3rem;">
+                <h4 class="timeline-event-title fw-bold text-gradient mb-2">Registration Opens</h4>
+                <p class="event-desc mb-0">Early bird registration begins for all regions.</p>
+                <div class="year text-primary fw-bold mt-2">Sep 1</div>
+              </div>
+              <div class="timeline-dot-wrapper position-absolute start-50 translate-middle text-center" style="width: 44px;">
+                <div class="dot bg-primary border border-4 border-primary rounded-circle shadow" style="width: 24px; height: 24px; margin: 0 auto;"></div>
+              </div>
+            </div>
+
+            <!-- Submission -->
+            <div class="timeline-item d-flex align-items-center justify-content-center w-100 position-relative flex-row-reverse">
+              <div class="timeline-content card glass border-0 shadow-sm p-4 w-50" style="margin-left: auto; padding-left: 3rem;">
+                <h4 class="timeline-event-title fw-bold text-gradient mb-2">Proposal Submission</h4>
+                <p class="event-desc mb-0">Deadline for initial idea pitches and documentation.</p>
+                <div class="year text-primary fw-bold mt-2">Oct 15</div>
+              </div>
+              <div class="timeline-dot-wrapper position-absolute start-50 translate-middle text-center" style="width: 44px;">
+                <div class="dot bg-primary border border-4 border-primary rounded-circle shadow" style="width: 24px; height: 24px; margin: 0 auto;"></div>
+              </div>
+            </div>
+
+            <!-- Grand Final -->
+            <div class="timeline-item d-flex align-items-center justify-content-center w-100 position-relative">
+              <div class="timeline-content card glass border-0 shadow-sm p-4 w-50" style="margin-right: auto; padding-right: 3rem;">
+                <h4 class="timeline-event-title fw-bold text-gradient mb-2" style="font-size: 1.5rem;">Grand Final</h4>
+                <p class="event-desc mb-0">Live pitching in front of industry judges and the awards ceremony.</p>
+                <div class="year text-primary fw-bold mt-2">Nov 28</div>
+              </div>
+              <div class="timeline-dot-wrapper position-absolute start-50 translate-middle text-center" style="width: 44px;">
+                <div class="dot active bg-primary border border-4 border-white rounded-circle shadow-lg" style="width: 32px; height: 32px; margin: 0 auto; box-shadow: 0 0 20px var(--primary) !important;"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+</main>
+  <footer class="footer py-5 glass text-body">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/logo.svg" alt="NovaMind Logo" width="32" height="32" class="me-2">
+            <span class="fw-bold fs-4">NovaMind</span>
+          </div>
+          <p class="text-muted small">Empowering Global Innovators for an Intelligent Future. Join the movement.</p>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Platform</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-muted">Home</a></li>
+            <li class="mb-2"><a href="about.html" class="text-decoration-none text-muted">About</a></li>
+            <li class="mb-2"><a href="competition.html" class="text-decoration-none text-muted">Competition</a></li>
+            <li class="mb-2"><a href="timeline.html" class="text-decoration-none text-muted">Timeline</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="resources.html" class="text-decoration-none text-muted">Downloads</a></li>
+            <li class="mb-2"><a href="faq.html" class="text-decoration-none text-muted">FAQ</a></li>
+            <li class="mb-2"><a href="ai-assistant.html" class="text-decoration-none text-muted">AI Assistant</a></li>
+            <li class="mb-2"><a href="dashboard.html" class="text-decoration-none text-muted">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="fw-bold mb-3">Connect</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 border-secondary opacity-25">
+      <div class="text-center text-muted small">
+        &copy; 2026 NovaMind. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+          <script defer src="assets/vendor/js/gsap.min.js"></script>
+  <script defer src="assets/vendor/js/ScrollTrigger.min.js"></script>
+  <script defer src="js/bundle.js"></script>
+  <script defer src="js/ui-refresh.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.log('SW registration failed: ', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

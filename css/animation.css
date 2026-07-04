@@ -47,8 +47,8 @@
 
 /* ── Subtle Glow for dots/indicators ── */
 @keyframes softPulse {
-  0%, 100% { box-shadow: 0 0 8px rgba(37, 99, 235, 0.2); }
-  50% { box-shadow: 0 0 16px rgba(37, 99, 235, 0.4); }
+  0%, 100% { box-shadow: 0 0 8px var(--shadow); }
+  50% { box-shadow: 0 0 16px var(--shadow); }
 }
 
 .timeline-item .dot {
@@ -57,12 +57,9 @@
 
 /* ── Card hover lift — handled via CSS transitions in style.css ── */
 
-/* ── Disable AOS forced opacity ── */
-[data-aos] {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
-}
+/* data-aos attributes are used as semantic hooks by the GSAP bundle.
+   Do not force their opacity here: doing so previously disabled every
+   scroll entrance animation. */
 
 /* ── Focus Ring for Accessibility ── */
 :focus-visible {

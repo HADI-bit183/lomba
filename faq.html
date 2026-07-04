@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ – NovaMind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Libraries -->
+  <link rel="preload" href="assets/vendor/css/fonts.css" as="style">
+    <link href="assets/vendor/css/fonts.css" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/css/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <meta name="description" content="NovaMind - Empowering Global Innovators for an Intelligent Future. Join the premier global innovation competition.">
+  <meta property="og:title" content="NovaMind Hub">
+  <meta property="og:description" content="Empowering Global Innovators for an Intelligent Future.">
+  <meta property="og:image" content="https://novamind.com/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://novamind.com">
+  <meta property="og:type" content="website">
+  <link rel="manifest" href="manifest.json">  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body class="page-faq">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="competition.html">Competition</a></li>
+          <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
+          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="innovators.html">Innovators</a></li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register Now</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+<main>
+    <!-- FAQ HERO -->
+    <section class="py-6 mt-5 bg-gradient position-relative overflow-hidden text-center">
+            <div class="container position-relative z-1 pt-5">
+        <span class="badge bg-primary rounded-pill mb-3 px-3 py-2" data-aos="fade-down">Help Center</span>
+        <h1 class="display-3 fw-bold text-body mb-4" data-aos="fade-up">How can we help?</h1>
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-6">
+            <div class="position-relative">
+              <input type="text" id="faqSearchInput" class="form-control form-control-lg rounded-pill ps-5 py-3 border-0 shadow-lg" placeholder="Search for answers (e.g., Payment, Requirements...)">
+              <i class="fa-solid fa-search position-absolute top-50 start-0 translate-middle-y ms-4 text-muted"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ CARDS -->
+    <section class="py-6 bg-secondary min-vh-100">
+      <div class="container">
+        
+        <!-- Filter Tags -->
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-5" id="faqFilters" data-aos="fade-up">
+          <button class="btn btn-outline-primary rounded-pill active" data-filter="all">All Questions</button>
+          <button class="btn btn-outline-primary rounded-pill" data-filter="registration">Registration</button>
+          <button class="btn btn-outline-primary rounded-pill" data-filter="payment">Payment</button>
+          <button class="btn btn-outline-primary rounded-pill" data-filter="requirements">Requirements</button>
+          <button class="btn btn-outline-primary rounded-pill" data-filter="submission">Submission</button>
+        </div>
+
+        <!-- Smart Grid -->
+        <div class="row g-4" id="faqGrid">
+          
+          <!-- Q1 -->
+          <div class="col-md-6 col-lg-4 faq-item" data-category="registration">
+            <div class="unified-card glass p-4 h-100 hover-lift transition-all">
+              <span class="badge bg-primary bg-opacity-10 text-primary mb-3">Registration</span>
+              <h5 class="fw-bold mb-3">Can I register individually without a team?</h5>
+              <p class="text-muted small mb-0">Yes! You can register individually or form a team of up to 3 members. Individual participants will be judged on the exact same criteria as teams.</p>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="col-md-6 col-lg-4 faq-item" data-category="requirements">
+            <div class="unified-card glass p-4 h-100 hover-lift transition-all">
+              <span class="badge bg-info bg-opacity-10 text-info mb-3">Requirements</span>
+              <h5 class="fw-bold mb-3">Do I need to be a Computer Science student?</h5>
+              <p class="text-muted small mb-0">No, NovaMind is open to all active university students in Indonesia regardless of their major, as long as they can develop web applications.</p>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="col-md-6 col-lg-4 faq-item" data-category="payment">
+            <div class="unified-card glass p-4 h-100 hover-lift transition-all">
+              <span class="badge bg-success bg-opacity-10 text-success mb-3">Payment</span>
+              <h5 class="fw-bold mb-3">What payment methods are accepted?</h5>
+              <p class="text-muted small mb-0">We accept bank transfers (BCA, Mandiri, BNI, BRI) and popular e-wallets like GoPay, OVO, and Dana. Please upload the receipt during registration.</p>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="col-md-6 col-lg-4 faq-item" data-category="submission">
+            <div class="unified-card glass p-4 h-100 hover-lift transition-all">
+              <span class="badge bg-warning bg-opacity-10 text-warning mb-3">Submission</span>
+              <h5 class="fw-bold mb-3">Where do we host our live website?</h5>
+              <p class="text-muted small mb-0">You can use any free hosting provider like Vercel, Netlify, GitHub Pages, or a custom VPS. Ensure the link is accessible without a password.</p>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="col-md-6 col-lg-4 faq-item" data-category="requirements">
+            <div class="unified-card glass p-4 h-100 hover-lift transition-all">
+              <span class="badge bg-info bg-opacity-10 text-info mb-3">Requirements</span>
+              <h5 class="fw-bold mb-3">Can we use CSS frameworks like Tailwind?</h5>
+              <p class="text-muted small mb-0">For the Dynamic and Framework categories, yes. However, for the Static Website category, you are expected to write raw CSS to demonstrate foundational skills.</p>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="col-md-6 col-lg-4 faq-item" data-category="registration">
+            <div class="unified-card glass p-4 h-100 hover-lift transition-all">
+              <span class="badge bg-primary bg-opacity-10 text-primary mb-3">Registration</span>
+              <h5 class="fw-bold mb-3">What happens if we miss Batch 1?</h5>
+              <p class="text-muted small mb-0">You can still register in Batch 2. The main difference is the registration fee, which may be slightly higher in Batch 2.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- No Results -->
+        <div id="noResults" class="text-center py-5 d-none">
+          <i class="fa-solid fa-ghost fs-1 text-muted opacity-50 mb-3"></i>
+          <h4 class="fw-bold text-muted">No questions found</h4>
+          <p class="text-muted">Try using different keywords or clear the search filter.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Smart Search Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('faqSearchInput');
+        const filterBtns = document.querySelectorAll('#faqFilters button');
+        const faqItems = document.querySelectorAll('.faq-item');
+        const noResults = document.getElementById('noResults');
+
+        let currentFilter = 'all';
+
+        function filterFaqs() {
+          const query = searchInput.value.toLowerCase().trim();
+          let visibleCount = 0;
+
+          faqItems.forEach(item => {
+            const text = item.textContent.toLowerCase();
+            const category = item.getAttribute('data-category');
+            
+            const matchesSearch = text.includes(query);
+            const matchesFilter = (currentFilter === 'all' || category === currentFilter);
+
+            if (matchesSearch && matchesFilter) {
+              item.style.display = 'block';
+              // Add a tiny animation delay for staggered effect
+              item.style.animation = 'fadeInUp 0.4s ease forwards';
+              visibleCount++;
+            } else {
+              item.style.display = 'none';
+              item.style.animation = 'none';
+            }
+          });
+
+          if (visibleCount === 0) {
+            noResults.classList.remove('d-none');
+          } else {
+            noResults.classList.add('d-none');
+          }
+        }
+
+        searchInput.addEventListener('input', filterFaqs);
+
+        filterBtns.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            // Update active state
+            filterBtns.forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            
+            currentFilter = e.target.getAttribute('data-filter');
+            filterFaqs();
+          });
+        });
+      });
+    </script>
+</main>
+  <footer class="footer py-5 glass text-body">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/logo.svg" alt="NovaMind Logo" width="32" height="32" class="me-2">
+            <span class="fw-bold fs-4">NovaMind</span>
+          </div>
+          <p class="text-muted small">Empowering Global Innovators for an Intelligent Future. Join the movement.</p>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Platform</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-muted">Home</a></li>
+            <li class="mb-2"><a href="about.html" class="text-decoration-none text-muted">About</a></li>
+            <li class="mb-2"><a href="competition.html" class="text-decoration-none text-muted">Competition</a></li>
+            <li class="mb-2"><a href="timeline.html" class="text-decoration-none text-muted">Timeline</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="resources.html" class="text-decoration-none text-muted">Downloads</a></li>
+            <li class="mb-2"><a href="faq.html" class="text-decoration-none text-muted">FAQ</a></li>
+            <li class="mb-2"><a href="ai-assistant.html" class="text-decoration-none text-muted">AI Assistant</a></li>
+            <li class="mb-2"><a href="dashboard.html" class="text-decoration-none text-muted">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="fw-bold mb-3">Connect</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 border-secondary opacity-25">
+      <div class="text-center text-muted small">
+        &copy; 2026 NovaMind. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+          <script defer src="assets/vendor/js/gsap.min.js"></script>
+  <script defer src="assets/vendor/js/ScrollTrigger.min.js"></script>
+  <script defer src="js/bundle.js"></script>
+  <script defer src="js/ui-refresh.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.log('SW registration failed: ', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
