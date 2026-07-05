@@ -1,5 +1,5 @@
 # NovaMind Hub
-![Version](https://img.shields.io/badge/version-1.1.0-blue.svg) ![Node.js](https://img.shields.io/badge/Node.js-Vanilla-green.svg) ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple.svg) ![Supabase](https://img.shields.io/badge/Supabase-DB%20%26%20Auth-3ecf8e.svg) ![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o--mini-white.svg)
+![Version](https://img.shields.io/badge/version-1.1.0-blue.svg) ![Node.js](https://img.shields.io/badge/Node.js-Vanilla-green.svg) ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple.svg) ![Supabase](https://img.shields.io/badge/Supabase-DB%20%26%20Auth-3ecf8e.svg) ![Gemini](https://img.shields.io/badge/Gemini-3.5--flash-blue.svg)
 
 NovaMind Hub adalah platform kompetisi dan pembelajaran inovasi untuk mahasiswa. Proyek ini membantu peserta mendaftarkan tim, memakai mentor AI, memantau aktivitas, mengembangkan kesiapan inovasi, dan mengakses sumber belajar melalui satu pengalaman web yang konsisten.
 
@@ -30,7 +30,7 @@ graph TD
     Controllers --> Services
     
     Services <-->|PostgreSQL API| Supabase[(Supabase Database)]
-    Services <-->|REST API| OpenAI[OpenAI API]
+    Services <-->|REST API| Gemini[Gemini API]
 ```
 
 Sistem ini menggunakan arsitektur *Monolithic* sederhana berbasis Node.js murni (tanpa framework seperti Express), yang melayani konten statis (HTML/CSS/JS) sekaligus menyediakan RESTful API backend di port yang sama. Frontend melakukan komunikasi secara dinamis ke backend melalui Fetch API.
@@ -101,7 +101,7 @@ NovaMind/
 | Backend | Node.js (Vanilla HTTP module) |
 | Database | Supabase PostgreSQL |
 | Authentication | Supabase Auth (JWT, HttpOnly cookies) |
-| Integrasi AI | OpenAI API (gpt-4o-mini) |
+| Integrasi AI | Gemini Interactions API (gemini-3.5-flash) |
 
 ## Database Supabase
 Skema tersimpan di `database/schema.sql`. Tabel utama:
@@ -154,8 +154,8 @@ Sistem secara proaktif memantau aktivitas pengguna dan akan membuka kunci *badge
 
 ## Konfigurasi `.env.local`
 ```env
-OPENAI_API_KEY=your_openai_api_key_here
-OPENAI_MODEL=gpt-5.4-mini
+GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_MODEL=gemini-3.5-flash
 
 SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_ANON_KEY=your_anon_key_here
@@ -163,7 +163,7 @@ SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
 SESSION_SECRET=minimal_32_karakter_acak_dan_panjang
 AUTH_REDIRECT_URL=http://localhost:4173/
 ```
-> **Catatan**: Jika `OPENAI_API_KEY` tidak diisi, server tetap akan berjalan, namun fitur AI Assistant akan dinonaktifkan secara otomatis.
+> **Catatan**: Jika `GEMINI_API_KEY` tidak diisi, server tetap akan berjalan, namun fitur AI Assistant akan dinonaktifkan secara otomatis.
 
 ## REST API & Dokumentasi (API Docs)
 Setelah server berjalan, dokumentasi OpenAPI (Swagger style) dapat diakses dengan melakukan request ke:

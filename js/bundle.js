@@ -713,10 +713,35 @@ function initAI() {
         gsap.to(fab, { scale: 1, rotate: 0, duration: 0.3 });
       });
 
-      // OpenAI-backed chat logic. The browser only calls our local endpoint;
+      // Gemini-backed chat logic. The browser only calls our local endpoint;
       // the API key remains on the server.
       const chatHistory = [];
       const submitButton = form.querySelector('button[type="submit"]');
+
+      function renderChatText(element, text) {
+        const lines = String(text || '')
+          .replace(/\*{3,}/g, '')
+          .split(/\r?\n/);
+
+        lines.forEach((line, lineIndex) => {
+          const normalizedLine = line.replace(/^\s*[-*•]\s+/, '• ');
+          const parts = normalizedLine.split(/(\*\*[^*]+\*\*)/g);
+
+          parts.forEach(part => {
+            if (part.startsWith('**') && part.endsWith('**')) {
+              const strong = document.createElement('strong');
+              strong.textContent = part.slice(2, -2);
+              element.appendChild(strong);
+            } else {
+              element.appendChild(document.createTextNode(part));
+            }
+          });
+
+          if (lineIndex < lines.length - 1) {
+            element.appendChild(document.createElement('br'));
+          }
+        });
+      }
 
       function appendMessage(text, isUser = false) {
         const msg = document.createElement('div');
@@ -745,7 +770,7 @@ function initAI() {
         const messageText = document.createElement('span');
         messageText.className = 'chat-text';
         messageText.style.cssText = messageStyle;
-        messageText.textContent = text;
+        renderChatText(messageText, text);
 
         msg.appendChild(messageText);
         messages.appendChild(msg);

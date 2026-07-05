@@ -3,6 +3,7 @@ const {
   sendJson,
   sendNoContent
 } = require('../http/http-utils');
+const { AppError } = require('../database/errors');
 const { assertNotRateLimited } = require('../middleware/rate-limit');
 const { generateAnswer } = require('../services/ai-service');
 const {
@@ -26,9 +27,12 @@ async function create(request, response) {
   assertNotRateLimited(request);
   const input = await readJsonBody(request);
   const session = getOrCreateSession(request, response);
-  const profileId = request.auth.profileId;
+  const profileId = request.auth?.profileId || null;
 
   if (isDirectChatCreate(input)) {
+    if (!profileId) {
+      throw new AppError('Autentikasi diperlukan.', 401, 'UNAUTHORIZED');
+    }
     const chat = await saveChat({
       prompt: input.prompt,
       response: input.response,
@@ -40,9 +44,17 @@ async function create(request, response) {
     return;
   }
 
-  const { message } = validateAiChatInput(input);
-  const chats = await listChats(profileId, 5);
-  const answer = await generateAnswer(message, chatsToAiHistory(chats));
+  const { history, message } = validateAiChatInput(input);
+  const aiHistory = profileId
+    ? chatsToAiHistory(await listChats(profileId, 5))
+    : history;
+  const answer = await generateAnswer(message, aiHistory);
+
+  if (!profileId) {
+    sendJson(response, 200, { answer });
+    return;
+  }
+
   const chat = await saveChat({
     prompt: message,
     response: answer,

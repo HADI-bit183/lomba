@@ -1,11 +1,11 @@
 const chatController = require('../controllers/chat-controller');
-const { requireAuth } = require('../middleware/auth');
+const { optionalAuth, requireAuth } = require('../middleware/auth');
 
 module.exports = [
   {
     method: 'POST',
     pattern: /^\/api\/chat$/,
-    middleware: [requireAuth],
+    middleware: [optionalAuth],
     handler: chatController.create
   },
   {
