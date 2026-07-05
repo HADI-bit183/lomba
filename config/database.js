@@ -1,20 +1,30 @@
 const { createClient } = require('@supabase/supabase-js');
 const env = require('./env');
+const { AppError } = require('../database/errors');
 
 let client;
 
-class DatabaseConfigurationError extends Error {
+class DatabaseConfigurationError extends AppError {
   constructor() {
     super(
-      'Supabase belum dikonfigurasi. Isi SUPABASE_URL dan SUPABASE_SERVICE_ROLE_KEY di .env.local.'
+      'Supabase belum dikonfigurasi. Isi SUPABASE_URL, SUPABASE_ANON_KEY, dan SUPABASE_SERVICE_ROLE_KEY di .env.local.',
+      503,
+      'DATABASE_NOT_CONFIGURED'
     );
     this.name = 'DatabaseConfigurationError';
-    this.statusCode = 503;
   }
 }
 
 function isDatabaseConfigured() {
   return Boolean(env.supabaseUrl && env.supabaseServiceRoleKey);
+}
+
+function isAuthConfigured() {
+  return Boolean(
+    env.supabaseUrl &&
+    env.supabaseAnonKey &&
+    env.supabaseServiceRoleKey
+  );
 }
 
 function getDatabase() {
@@ -36,8 +46,24 @@ function getDatabase() {
   return client;
 }
 
+function createAuthClient() {
+  if (!isAuthConfigured()) {
+    throw new DatabaseConfigurationError();
+  }
+
+  return createClient(env.supabaseUrl, env.supabaseAnonKey, {
+    auth: {
+      autoRefreshToken: false,
+      detectSessionInUrl: false,
+      persistSession: false
+    }
+  });
+}
+
 module.exports = {
+  createAuthClient,
   DatabaseConfigurationError,
   getDatabase,
+  isAuthConfigured,
   isDatabaseConfigured
 };

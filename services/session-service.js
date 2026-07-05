@@ -1,5 +1,10 @@
 const crypto = require('crypto');
 const env = require('../config/env');
+const {
+  appendSetCookie,
+  parseCookies,
+  serializeCookie
+} = require('./cookie-service');
 
 const COOKIE_NAME = 'novamind_session';
 const SESSION_MAX_AGE = 60 * 60 * 24 * 365;
@@ -16,22 +21,6 @@ function sign(payload) {
     .update(encoded)
     .digest('base64url');
   return `${encoded}.${signature}`;
-}
-
-function parseCookies(request) {
-  return String(request.headers.cookie || '')
-    .split(';')
-    .map(value => value.trim().split('='))
-    .reduce((cookies, [key, ...value]) => {
-      if (key) {
-        try {
-          cookies[key] = decodeURIComponent(value.join('='));
-        } catch {
-          cookies[key] = '';
-        }
-      }
-      return cookies;
-    }, {});
 }
 
 function isUuid(value) {
@@ -64,11 +53,10 @@ function verify(token) {
 }
 
 function setSessionCookie(response, session) {
-  const secure = process.env.NODE_ENV === 'production' ? '; Secure' : '';
-  response.setHeader(
-    'Set-Cookie',
-    `${COOKIE_NAME}=${encodeURIComponent(sign(session))}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${SESSION_MAX_AGE}${secure}`
-  );
+  appendSetCookie(response, serializeCookie(COOKIE_NAME, sign(session), {
+    maxAge: SESSION_MAX_AGE,
+    secure: process.env.NODE_ENV === 'production'
+  }));
 }
 
 function getOrCreateSession(request, response) {
@@ -88,5 +76,6 @@ function attachUser(response, session, userId) {
 
 module.exports = {
   attachUser,
-  getOrCreateSession
+  getOrCreateSession,
+  parseCookies
 };
