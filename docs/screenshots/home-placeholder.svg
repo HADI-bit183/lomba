@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">NovaMind screenshot placeholder</title>
+  <desc id="desc">Placeholder for the NovaMind production homepage screenshot.</desc>
+  <rect width="1280" height="720" fill="#07111f"/>
+  <rect x="48" y="40" width="1184" height="640" rx="24" fill="#0e1d30" stroke="#36d1dc" stroke-width="2"/>
+  <circle cx="118" cy="102" r="24" fill="#36d1dc"/>
+  <rect x="166" y="84" width="240" height="20" rx="10" fill="#e8f8ff" opacity=".9"/>
+  <rect x="166" y="116" width="150" height="12" rx="6" fill="#8aa4bd"/>
+  <rect x="88" y="196" width="700" height="56" rx="12" fill="#e8f8ff" opacity=".92"/>
+  <rect x="88" y="278" width="560" height="22" rx="11" fill="#8aa4bd"/>
+  <rect x="88" y="316" width="500" height="22" rx="11" fill="#8aa4bd" opacity=".7"/>
+  <rect x="88" y="376" width="184" height="52" rx="26" fill="#36d1dc"/>
+  <rect x="820" y="180" width="340" height="340" rx="170" fill="#162c48" stroke="#36d1dc" stroke-width="3"/>
+  <path d="M875 385c95-155 180-155 235 0M890 335c80 100 150 100 205 0M990 205v290" fill="none" stroke="#36d1dc" stroke-width="4" opacity=".75"/>
+  <text x="640" y="622" text-anchor="middle" fill="#e8f8ff" font-family="Arial, sans-serif" font-size="28" font-weight="700">NovaMind Hub — Production Screenshot Placeholder</text>
+</svg>

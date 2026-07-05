@@ -53,7 +53,7 @@ async function createUser(input) {
   const { data, error } = await db
     .from('users')
     .insert({ ...user, password_hash: null })
-    .select('id, fullname, email, avatar, role, last_login_at, total_chat, created_at')
+    .select('id, fullname, email, avatar, role, last_login_at, total_chat, total_login, created_at')
     .single();
   throwDatabaseError(error, 'Gagal menyimpan data pengguna.');
 
@@ -75,6 +75,7 @@ async function getUserById(userId) {
       role,
       last_login_at,
       total_chat,
+      total_login,
       created_at,
       auth_user_id,
       registrations (
@@ -197,7 +198,7 @@ async function updateUser(userId, input) {
     .from('users')
     .update(update)
     .eq('id', userId)
-    .select('id, fullname, email, avatar, role, last_login_at, total_chat, created_at')
+    .select('id, fullname, email, avatar, role, last_login_at, total_chat, total_login, created_at')
     .maybeSingle();
   throwDatabaseError(error, 'Gagal memperbarui data pengguna.');
 
@@ -210,10 +211,10 @@ async function updateUser(userId, input) {
 
 async function recordLastLogin(userId, occurredAt = new Date().toISOString()) {
   const db = getDatabase();
-  const { error } = await db
-    .from('users')
-    .update({ last_login_at: occurredAt })
-    .eq('id', userId);
+  const { error } = await db.rpc('record_user_login', {
+    p_logged_in_at: occurredAt,
+    p_user_id: userId
+  });
   throwDatabaseError(error, 'Gagal menyimpan waktu login terakhir.');
   return getUserById(userId);
 }

@@ -25,6 +25,37 @@ window.getTokenRgba = function(tokenName, alpha = 1) {
 (function() {
 // NovaMind Global Bundle
 
+// --- CSRF Fetch Interceptor ---
+let csrfToken = null;
+const originalFetch = window.fetch;
+window.fetch = async function(resource, config = {}) {
+  const method = (config.method || 'GET').toUpperCase();
+  
+  if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) {
+    if (!csrfToken) {
+      try {
+        const res = await originalFetch('/api/csrf-token');
+        if (res.ok) {
+          const data = await res.json();
+          csrfToken = data.token;
+        }
+      } catch (err) {
+        console.warn('Failed to fetch CSRF token:', err);
+      }
+    }
+    
+    if (csrfToken) {
+      config.headers = {
+        ...config.headers,
+        'X-CSRF-Token': csrfToken
+      };
+    }
+  }
+  
+  return originalFetch(resource, config);
+};
+// ------------------------------
+
 /* --- theme.js --- */
 function initTheme() {
   const toggle = document.getElementById('dark-mode-toggle');
@@ -57,15 +88,58 @@ function initTheme() {
 
 
 /* --- animations.js --- */
-function initAnimations() {
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-    console.warn('GSAP or ScrollTrigger not loaded.');
-    // Simple fallback for data-aos so they don't remain hidden
-    const aosElements = document.querySelectorAll('[data-aos]');
-    aosElements.forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; });
+async function initAnimations() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const needsAnimations = document.querySelector('[data-aos], .unified-card, .hover-lift, .team-illustration, .team-img, .map-pulse, .counter-up, #preloader, #back-to-top, .home-swiper, .hero-title');
+  
+  if (prefersReducedMotion || !needsAnimations) {
+    document.querySelectorAll('[data-aos], .hero-title, .hero-eyebrow, .hero-lead, .hero-actions').forEach(el => { 
+      el.style.opacity = 1; 
+      el.style.transform = 'none'; 
+      el.style.visibility = 'visible';
+    });
+    const preloader = document.getElementById('preloader');
+    if (preloader) preloader.remove();
+    
+    // Fallback for Swiper if animations are disabled
+    if (typeof Swiper !== 'undefined' && document.querySelector('.home-swiper')) {
+      new Swiper('.home-swiper', {
+        loop: !prefersReducedMotion,
+        autoplay: !prefersReducedMotion ? { delay: 5000 } : false,
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        autoHeight: true
+      });
+    }
     return;
   }
-  
+
+  const loadScript = (src) => new Promise((resolve, reject) => {
+    if (document.querySelector(`script[src="${src}"]`)) return resolve();
+    const script = document.createElement('script');
+    script.src = src;
+    script.defer = true;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+
+  if (typeof gsap === 'undefined') {
+    try {
+      await loadScript('assets/vendor/js/gsap.min.js');
+      await loadScript('assets/vendor/js/ScrollTrigger.min.js');
+    } catch (e) {
+      console.warn('Failed to dynamically load GSAP:', e);
+      document.querySelectorAll('[data-aos]').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; });
+      return;
+    }
+  }
+
+  runGSAPAnimations();
+}
+
+function runGSAPAnimations() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
 
   // Initialize Swiper Carousel
@@ -345,6 +419,11 @@ function initValidation() {
 
 /* --- dashboard.js --- */
 function initDashboard() {
+  const isDashboard = window.location.pathname.includes('dashboard');
+  if (isDashboard && typeof window.showLoading === 'function') {
+    window.showLoading('Loading Dashboard...');
+  }
+  
   // Load persisted user data from the server without blocking the dashboard.
   fetch('/api/users/me')
     .then(response => response.ok ? response.json() : null)
@@ -371,6 +450,11 @@ function initDashboard() {
     })
     .catch(() => {
       // The static dashboard remains usable when profile data cannot be loaded.
+    })
+    .finally(() => {
+      if (isDashboard && typeof window.hideLoading === 'function') {
+        window.hideLoading();
+      }
     });
 
   // Single source of truth for the next submission deadline.
@@ -744,6 +828,62 @@ function initAI() {
 }
 
 
+/* --- auth.js --- */
+function initAuth() {
+  fetch('/api/auth/me')
+    .then(response => response.ok ? response.json() : null)
+    .then(data => {
+      const user = data?.user;
+      const isAdmin = user && user.role === 'admin';
+      const isDashboardPage = window.location.pathname.includes('admin-dashboard.html');
+
+      if (isAdmin) {
+        // Append Admin Dashboard to Navbar
+        const navMenu = document.querySelector('#navMenu .navbar-nav');
+        if (navMenu && !document.getElementById('admin-nav-item')) {
+          const li = document.createElement('li');
+          li.className = 'nav-item';
+          li.id = 'admin-nav-item';
+          li.innerHTML = `<a class="nav-link text-primary fw-bold" href="admin-dashboard.html">
+            <i class="fa-solid fa-shield-halved me-1"></i> Admin Dashboard
+          </a>`;
+          navMenu.appendChild(li);
+        }
+      } else if (isDashboardPage) {
+        // Non-admin trying to access admin dashboard
+        window.location.href = 'index.html?error=access_denied';
+      }
+    })
+    .catch(() => {
+      if (window.location.pathname.includes('admin-dashboard.html')) {
+        window.location.href = 'index.html?error=access_denied';
+      }
+    });
+
+  // Access Denied message
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('error') === 'access_denied') {
+    // Show a toast
+    const toastHtml = `
+      <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1060">
+        <div class="toast show align-items-center text-white bg-danger border-0 shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body fw-medium">
+              <i class="fa-solid fa-triangle-exclamation me-2"></i> Access Denied. Administrator only.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close" onclick="this.closest('.toast').remove()"></button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', toastHtml);
+    
+    // Clean URL
+    const cleanUrl = window.location.pathname;
+    window.history.replaceState({}, document.title, cleanUrl);
+  }
+}
+
 /* --- app.js --- */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -752,6 +892,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initValidation();
   initDashboard();
   initAI();
+  initAuth();
 });
 
 

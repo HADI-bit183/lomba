@@ -3,7 +3,8 @@ const { AppError } = require('../database/errors');
 const rateLimits = new Map();
 
 function assertNotRateLimited(request) {
-  const forwarded = request.headers['x-forwarded-for'];
+  const useProxy = process.env.TRUST_PROXY === 'true';
+  const forwarded = useProxy ? request.headers['x-forwarded-for'] : null;
   const clientId = String(forwarded || request.socket.remoteAddress || 'local')
     .split(',')[0]
     .trim();

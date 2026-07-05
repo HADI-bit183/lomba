@@ -1,13 +1,23 @@
 const { AppError } = require('../database/errors');
 const { sendError } = require('../http/http-utils');
+const { csrfMiddleware, getCsrfToken } = require('../middleware/csrf');
+const achievementRoutes = require('./achievement-routes');
+const adminRoutes = require('./admin-routes');
 const authRoutes = require('./auth-routes');
 const challengeRoutes = require('./challenge-routes');
 const chatRoutes = require('./chat-routes');
+const docsRoutes = require('./docs-routes');
 const healthRoutes = require('./health-routes');
+const statisticsRoutes = require('./statistics-routes');
 const userRoutes = require('./user-routes');
 
 const routes = [
+  { method: 'GET', pattern: /^\/api\/csrf-token$/, handler: getCsrfToken },
   ...authRoutes,
+  ...adminRoutes,
+  ...achievementRoutes,
+  ...statisticsRoutes,
+  ...docsRoutes,
   ...userRoutes,
   ...chatRoutes,
   ...challengeRoutes,
@@ -28,6 +38,8 @@ function matchRoute(route, pathname) {
 async function routeApiRequest(request, response, requestUrl) {
   if (!requestUrl.pathname.startsWith('/api/')) return false;
 
+  response.setHeader('Cache-Control', 'no-store');
+
   try {
     const pathMatches = routes
       .map(route => ({ route, params: matchRoute(route, requestUrl.pathname) }))
@@ -46,6 +58,10 @@ async function routeApiRequest(request, response, requestUrl) {
         sendError(response, new AppError('Endpoint API tidak ditemukan.', 404, 'NOT_FOUND'));
       }
       return true;
+    }
+
+    if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(request.method)) {
+      await csrfMiddleware(request, response);
     }
 
     for (const middleware of selected.route.middleware || []) {

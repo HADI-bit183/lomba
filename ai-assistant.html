@@ -283,6 +283,7 @@
         }
 
         async function loadChatHistory() {
+          if (typeof window.showLoading === 'function') window.showLoading('Loading History...');
           try {
             const response = await fetch('/api/chat-history');
             if (!response.ok) return;
@@ -296,8 +297,21 @@
                 { role: 'assistant', content: chat.response }
               );
             });
+            
+            // Empty State
+            if (data.chats && data.chats.length === 0) {
+              chatMessages.innerHTML = `
+                <div class="empty-state">
+                  <i class="fa-solid fa-comments"></i>
+                  <h5>Belum ada riwayat chat</h5>
+                  <p>Ayo mulai percakapan pertama Anda.</p>
+                </div>
+              `;
+            }
           } catch {
             // The assistant can still start a new conversation if history is unavailable.
+          } finally {
+            if (typeof window.hideLoading === 'function') window.hideLoading();
           }
         }
 
@@ -329,6 +343,9 @@
 
         async function handleSend(text) {
           if (!text || chatInput.disabled) return;
+          
+          const emptyState = chatMessages.querySelector('.empty-state');
+          if (emptyState) emptyState.remove();
 
           appendMessage(text, true);
           chatInput.value = '';
@@ -336,6 +353,7 @@
           sendButton.disabled = true;
           suggestionChips.forEach(chip => chip.setAttribute('aria-disabled', 'true'));
           appendTyping();
+          if (typeof window.showLoading === 'function') window.showLoading('Generating AI Response...');
 
           try {
             const answer = await requestAI(text);
@@ -356,6 +374,7 @@
             sendButton.disabled = false;
             suggestionChips.forEach(chip => chip.removeAttribute('aria-disabled'));
             chatInput.focus();
+            if (typeof window.hideLoading === 'function') window.hideLoading();
           }
         }
 
@@ -561,9 +580,7 @@
 
   <!-- Scripts -->
   <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
-          <script defer src="assets/vendor/js/gsap.min.js"></script>
-  <script defer src="assets/vendor/js/ScrollTrigger.min.js"></script>
-  <script defer src="js/bundle.js"></script>
+          <script defer src="js/bundle.js"></script>
   <script defer src="js/ui-refresh.js"></script>
 
   <script>

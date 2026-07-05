@@ -22,7 +22,20 @@ function validateLimit(value, fallback = 20) {
   return limit;
 }
 
+function validateOffset(value) {
+  if (value === null || value === undefined || value === '') return 0;
+  if (!/^\d+$/.test(String(value))) {
+    throw new AppError('Offset tidak valid.', 400, 'VALIDATION_ERROR');
+  }
+  const offset = Number(value);
+  if (!Number.isSafeInteger(offset) || offset > 100_000) {
+    throw new AppError('Offset terlalu besar.', 400, 'VALIDATION_ERROR');
+  }
+  return offset;
+}
+
 module.exports = {
   validateLimit,
+  validateOffset,
   validateUuid
 };

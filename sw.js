@@ -34,12 +34,36 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   const request = event.request;
-
   if (request.method !== 'GET') return;
 
   const requestUrl = new URL(request.url);
   if (requestUrl.origin !== self.location.origin) return;
 
+  // No Cache for API
+  if (requestUrl.pathname.startsWith('/api/')) {
+    return; // Fallback to default network behavior
+  }
+
+  // Cache First for Assets (CSS, JS, Images, Fonts, etc)
+  const isAsset = requestUrl.pathname.match(/\.(css|js|png|jpg|jpeg|svg|woff2?|ttf|eot)$/i);
+  
+  if (isAsset) {
+    event.respondWith(
+      caches.match(request).then(cached => {
+        if (cached) return cached;
+        return fetch(request).then(response => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+          }
+          return response;
+        });
+      })
+    );
+    return;
+  }
+
+  // Network First for HTML and others
   event.respondWith(
     fetch(request)
       .then(response => {
@@ -56,7 +80,6 @@ self.addEventListener('fetch', event => {
         if (request.mode === 'navigate') {
           return caches.match(new URL('index.html', self.registration.scope));
         }
-
         return Response.error();
       })
   );

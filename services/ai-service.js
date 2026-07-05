@@ -31,11 +31,7 @@ function extractResponseText(apiResponse) {
 
 async function generateAnswer(message, history) {
   if (!env.openAiApiKey) {
-    throw new AppError(
-      'AI service is not configured. Add OPENAI_API_KEY to .env.local.',
-      503,
-      'AI_NOT_CONFIGURED'
-    );
+    return 'Layanan AI saat ini sedang dalam pemeliharaan atau belum dikonfigurasi. Mohon maaf atas ketidaknyamanan ini dan silakan coba beberapa saat lagi.';
   }
 
   const input = [...normalizeHistory(history), { role: 'user', content: message }];

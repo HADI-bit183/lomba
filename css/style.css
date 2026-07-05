@@ -16,6 +16,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* ── Accessibility ── */
@@ -3223,7 +3224,18 @@ body.modal-open {
 /* ── NOVA-PREMIUM OVERRIDES (V2.5) ── */
 
 /* Anti-Flicker & Smooth Transitions */
-body,
+body {
+  background-color: var(--surface);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
 .unified-card,
 .list-group-item,
 .navbar,
@@ -4283,3 +4295,23 @@ body {
     .analysis-card.show {
       opacity: 1; transform: translateY(0);
     }
+
+/* ==========================================================================
+   ACCESSIBILITY: REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .floating, .floating-xp, .map-pulse::after, .team-img::before {
+    animation: none !important;
+  }
+  
+  .unified-card:hover, .hover-lift:hover {
+    transform: none !important;
+  }
+}

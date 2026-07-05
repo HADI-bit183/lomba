@@ -411,6 +411,10 @@
           e.preventDefault();
           const catInput = document.querySelector('input[name="category"]:checked');
           submitBtn.disabled = true;
+          
+          if (typeof window.showLoading === 'function') {
+            window.showLoading('Registering Team...');
+          }
 
           try {
             const response = await fetch('/api/users', {
@@ -437,6 +441,7 @@
             window.alert(error.message);
           } finally {
             submitBtn.disabled = false;
+            if (typeof window.hideLoading === 'function') window.hideLoading();
           }
         });
 
@@ -516,9 +521,7 @@
 
   <!-- Scripts -->
   <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
-          <script defer src="assets/vendor/js/gsap.min.js"></script>
-  <script defer src="assets/vendor/js/ScrollTrigger.min.js"></script>
-  <script defer src="js/bundle.js"></script>
+          <script defer src="js/bundle.js"></script>
   <script defer src="js/ui-refresh.js"></script>
 
   <script>

@@ -321,3 +321,28 @@
     ready();
   }
 })();
+
+// Global Loading Utilities
+window.showLoading = function(text = 'Loading...') {
+  let loader = document.getElementById('global-loader');
+  if (!loader) {
+    loader = document.createElement('div');
+    loader.id = 'global-loader';
+    loader.innerHTML = `
+      <div class="spinner-modern"></div>
+      <div class="fw-medium text-primary mt-2" id="global-loader-text"></div>
+    `;
+    document.body.appendChild(loader);
+  }
+  document.getElementById('global-loader-text').textContent = text;
+  // Trigger reflow
+  void loader.offsetWidth;
+  loader.classList.add('show');
+};
+
+window.hideLoading = function() {
+  const loader = document.getElementById('global-loader');
+  if (loader) {
+    loader.classList.remove('show');
+  }
+};
