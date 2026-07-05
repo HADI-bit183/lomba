@@ -5,7 +5,7 @@ const { AppError } = require('../database/errors');
 const scrypt = promisify(crypto.scrypt);
 
 async function hashPassword(password) {
-  if (password === undefined || password === null || password === '') return null;
+  if (password === undefined || password === null) return null;
   if (typeof password !== 'string' || password.length < 8 || password.length > 128) {
     throw new AppError(
       'Password harus berisi 8–128 karakter.',

@@ -7,6 +7,27 @@ class AppError extends Error {
   }
 }
 
+class NotFoundError extends AppError {
+  constructor(message) {
+    super(message, 404, 'NOT_FOUND');
+    this.name = 'NotFoundError';
+  }
+}
+
+class UnauthorizedError extends AppError {
+  constructor(message = 'Autentikasi diperlukan.') {
+    super(message, 401, 'UNAUTHORIZED');
+    this.name = 'UnauthorizedError';
+  }
+}
+
+class ForbiddenError extends AppError {
+  constructor(message = 'Anda tidak memiliki izin untuk mengakses data ini.') {
+    super(message, 403, 'FORBIDDEN');
+    this.name = 'ForbiddenError';
+  }
+}
+
 function throwDatabaseError(error, fallbackMessage) {
   if (!error) return;
 
@@ -25,5 +46,8 @@ function throwDatabaseError(error, fallbackMessage) {
 
 module.exports = {
   AppError,
+  ForbiddenError,
+  NotFoundError,
+  UnauthorizedError,
   throwDatabaseError
 };

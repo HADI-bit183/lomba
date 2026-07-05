@@ -3,7 +3,11 @@ const assert = require('node:assert/strict');
 const { AppError } = require('../database/errors');
 const { createChatHistoryModel } = require('../models/chat-history');
 const { createRegistrationModel } = require('../models/registration');
-const { createUserModel, toPublicUser } = require('../models/user');
+const {
+  createUserModel,
+  createUserUpdateModel,
+  toPublicUser
+} = require('../models/user');
 const { hashPassword } = require('../services/password-service');
 
 test('user model normalizes public registration data', () => {
@@ -64,4 +68,20 @@ test('password service hashes supplied passwords and permits absent passwords', 
   const hash = await hashPassword('correct horse battery staple');
   assert.match(hash, /^scrypt\$[0-9a-f]{32}\$[0-9a-f]{128}$/);
   assert.equal(hash.includes('correct horse'), false);
+});
+
+test('user update model supports partial updates', () => {
+  assert.deepEqual(
+    createUserUpdateModel({ fullname: '  Nama Baru  ' }),
+    {
+      hasPassword: false,
+      update: { fullname: 'Nama Baru' }
+    }
+  );
+});
+
+test('user update model rejects role changes and empty updates', () => {
+  assert.throws(() => createUserUpdateModel({ role: 'admin' }), AppError);
+  assert.throws(() => createUserUpdateModel({}), AppError);
+  assert.throws(() => createUserUpdateModel({ password: null }), AppError);
 });

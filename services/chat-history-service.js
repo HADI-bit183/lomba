@@ -1,13 +1,13 @@
 const { getDatabase } = require('../config/database');
-const { throwDatabaseError } = require('../database/errors');
+const { NotFoundError, throwDatabaseError } = require('../database/errors');
 const {
   createChatHistoryModel,
   toPublicChat
 } = require('../models/chat-history');
 
 async function saveChat(entry) {
-  const db = getDatabase();
   const record = createChatHistoryModel(entry);
+  const db = getDatabase();
   const { data, error } = await db
     .from('chat_history')
     .insert(record)
@@ -31,6 +31,22 @@ async function listChats(visitorId, limit = 10) {
   return (data || []).reverse().map(toPublicChat);
 }
 
+async function deleteChat(chatId, visitorId) {
+  const db = getDatabase();
+  const { data, error } = await db
+    .from('chat_history')
+    .delete()
+    .eq('id', chatId)
+    .eq('visitor_id', visitorId)
+    .select('id')
+    .maybeSingle();
+  throwDatabaseError(error, 'Gagal menghapus riwayat chat.');
+
+  if (!data) {
+    throw new NotFoundError('Chat tidak ditemukan.');
+  }
+}
+
 function chatsToAiHistory(chats) {
   return chats.flatMap(chat => [
     { role: 'user', content: chat.prompt },
@@ -40,6 +56,7 @@ function chatsToAiHistory(chats) {
 
 module.exports = {
   chatsToAiHistory,
+  deleteChat,
   listChats,
   saveChat
 };
