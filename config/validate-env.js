@@ -19,8 +19,8 @@ function validateEnvironment() {
     throw new Error('CRITICAL: AUTH_REDIRECT_URL harus menggunakan HTTPS di production.');
   }
 
-  if (!env.openAiApiKey) {
-    console.warn('WARNING: OPENAI_API_KEY belum diisi; fitur AI assistant akan nonaktif. Server tetap berjalan tanpa AI.');
+  if (!env.geminiApiKey) {
+    console.warn('WARNING: GEMINI_API_KEY belum diisi; fitur AI assistant akan nonaktif. Server tetap berjalan tanpa AI.');
   }
 }
 

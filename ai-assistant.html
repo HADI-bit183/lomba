@@ -250,13 +250,38 @@
           const messageText = document.createElement('p');
           messageText.className = 'mb-0';
           messageText.style.lineHeight = '1.6';
-          messageText.textContent = text;
+          renderChatText(messageText, text);
 
           bubble.appendChild(messageText);
           div.append(avatar, bubble);
           
           chatMessages.appendChild(div);
           chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function renderChatText(element, text) {
+          const lines = String(text || '')
+            .replace(/\*{3,}/g, '')
+            .split(/\r?\n/);
+
+          lines.forEach((line, lineIndex) => {
+            const normalizedLine = line.replace(/^\s*[-*•]\s+/, '• ');
+            const parts = normalizedLine.split(/(\*\*[^*]+\*\*)/g);
+
+            parts.forEach(part => {
+              if (part.startsWith('**') && part.endsWith('**')) {
+                const strong = document.createElement('strong');
+                strong.textContent = part.slice(2, -2);
+                element.appendChild(strong);
+              } else {
+                element.appendChild(document.createTextNode(part));
+              }
+            });
+
+            if (lineIndex < lines.length - 1) {
+              element.appendChild(document.createElement('br'));
+            }
+          });
         }
 
         function appendTyping() {

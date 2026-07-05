@@ -2,7 +2,7 @@
   "name": "novamind-hub",
   "version": "1.0.0",
   "private": true,
-  "description": "NovaMind competition website with a secure OpenAI-powered assistant.",
+  "description": "NovaMind competition website with a secure Gemini-powered assistant.",
   "scripts": {
     "start": "node server.js",
     "migrate": "node scripts/migrate.js",

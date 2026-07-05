@@ -32,8 +32,8 @@ module.exports = {
   port: Number(process.env.PORT || 4173),
   databaseUrl: process.env.DATABASE_URL || '',
   databaseSsl: process.env.DATABASE_SSL !== 'false',
-  openAiApiKey: process.env.OPENAI_API_KEY || '',
-  openAiModel: process.env.OPENAI_MODEL || 'gpt-5.4-mini',
+  geminiApiKey: process.env.GEMINI_API_KEY || '',
+  geminiModel: process.env.GEMINI_MODEL || 'gemini-3.5-flash',
   sessionSecret: process.env.SESSION_SECRET || process.env.SUPABASE_SERVICE_ROLE_KEY || '',
   authRedirectUrl: process.env.AUTH_REDIRECT_URL ||
     `http://localhost:${Number(process.env.PORT || 4173)}/`,
