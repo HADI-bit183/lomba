@@ -407,21 +407,37 @@
           }
         });
 
-        document.getElementById('multiStepForm').addEventListener('submit', (e) => {
+        document.getElementById('multiStepForm').addEventListener('submit', async (e) => {
           e.preventDefault();
-          const nameInput = document.getElementById('leaderName')?.value || 'Not Provided';
-          const teamNameInput = document.getElementById('teamName')?.value || 'Nova Team';
           const catInput = document.querySelector('input[name="category"]:checked');
-          const categoryName = catInput ? catInput.nextElementSibling.querySelector('.fw-bold').textContent : 'Static Website';
-          
-          localStorage.setItem('novaMindUser', JSON.stringify({ 
-            leaderName: nameInput, 
-            teamName: teamNameInput || 'Nova Team', 
-            category: categoryName 
-          }));
+          submitBtn.disabled = true;
 
-          currentStep++;
-          updateForm();
+          try {
+            const response = await fetch('/api/users', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                fullname: document.getElementById('leaderName')?.value,
+                email: document.getElementById('leaderEmail')?.value,
+                phone: document.getElementById('leaderPhone')?.value,
+                university: document.getElementById('univName')?.value,
+                faculty: document.getElementById('facultyName')?.value,
+                teamName: document.getElementById('teamName')?.value,
+                category: catInput?.value
+              })
+            });
+            const data = await response.json().catch(() => ({}));
+            if (!response.ok) {
+              throw new Error(data.error || 'Registration could not be saved.');
+            }
+
+            currentStep++;
+            updateForm();
+          } catch (error) {
+            window.alert(error.message);
+          } finally {
+            submitBtn.disabled = false;
+          }
         });
 
         // File upload feedback

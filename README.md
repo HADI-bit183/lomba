@@ -20,6 +20,14 @@ NovaMind/
 ├─ resources.html
 ├─ sitemap.xml
 ├─ server.js
+├─ config/
+│  ├─ env.js
+│  └─ database.js
+├─ database/
+│  ├─ errors.js
+│  └─ schema.sql
+├─ models/
+├─ services/
 ├─ package.json
 ├─ .env.example
 ├─ css/
@@ -39,19 +47,18 @@ NovaMind/
 - **Multi-Page Architecture**: 10 dedicated HTML pages interconnected with unified styling and logic.
 - **Dynamic Theming (Dark/Light)**: A robust, centrally managed theme toggler synchronized perfectly with Bootstrap 5.3 Color Modes and user `localStorage` preferences.
 - **Interactive AI Demos**: Try our built-in Image Color Classifier directly in your browser.
-- **OpenAI-Powered Assistant**: A server-side Responses API integration with short conversation memory and web search for current factual questions.
+- **OpenAI-Powered Assistant**: A server-side Responses API integration with persistent Supabase chat history and web search for current factual questions.
+- **Supabase PostgreSQL Persistence**: Registration profiles, chat history, and daily challenge progress are stored through server-only data services.
 - **Modern Animations**: Powered by GSAP, AOS, and Swiper.js to bring the UI to life smoothly.
 - **Responsive Layout**: Optimized for mobile, tablet, and desktop viewing.
 
-## Important Note on Functionality
-Most competition flows remain a **Frontend Simulation**.
-- The registration flow (e.g., `register.html` submitting to `dashboard.html` via `GET`) is intended purely to demonstrate the user journey and interface state changes. 
-- There is no database processing registration data.
-- The AI assistant requires the included Node server so the API key stays private.
-
 ## Development & Usage
-- Copy `.env.example` to `.env.local` and set `OPENAI_API_KEY`. The secure Codex setup flow can do this without exposing the key.
+- Create a Supabase project and run [`database/schema.sql`](database/schema.sql) in its SQL Editor.
+- Copy `.env.example` to `.env.local`, then set `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, and a long random `SESSION_SECRET`.
+- Set `OPENAI_API_KEY` to enable the AI assistant.
+- Keep the Supabase service-role key server-side; never place it in HTML or browser JavaScript.
+- Install dependencies with `npm install`.
 - Run `npm start`, then open `http://localhost:4173`.
-- Do not open the HTML files directly when testing the AI assistant; `/api/chat` is provided by `server.js`.
+- Do not open the HTML files directly when testing database or AI features; their `/api/*` routes are provided by `server.js`.
 - Styling is primarily handled in `css/style.css`, utilizing a strict Design System with custom properties defined in `css/variables.css` (Design tokens for colors, typography, spacing).
 - Core logic, animations, and theme interactivity have been refactored and consolidated into a single, efficient `js/bundle.js` file.

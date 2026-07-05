@@ -345,18 +345,33 @@ function initValidation() {
 
 /* --- dashboard.js --- */
 function initDashboard() {
-  // Load user data from localStorage
-  const userData = JSON.parse(localStorage.getItem('novaMindUser'));
-  if (userData) {
-    const dashWelcomeTitle = document.getElementById('dashWelcomeTitle');
-    if (dashWelcomeTitle) dashWelcomeTitle.textContent = `Hello, ${userData.leaderName}.`;
-    
-    const dashWelcomeSubtitle = document.getElementById('dashWelcomeSubtitle');
-    if (dashWelcomeSubtitle) dashWelcomeSubtitle.textContent = `Welcome to your NovaMind portal. ${userData.teamName} (${userData.category})`;
-    
-    const notifWelcome = document.getElementById('notificationWelcome');
-    if (notifWelcome) notifWelcome.textContent = `Welcome, ${userData.teamName}`;
-  }
+  // Load persisted user data from the server without blocking the dashboard.
+  fetch('/api/users/me')
+    .then(response => response.ok ? response.json() : null)
+    .then(data => {
+      if (!data?.user) return;
+
+      const dashWelcomeTitle = document.getElementById('dashWelcomeTitle');
+      if (dashWelcomeTitle) dashWelcomeTitle.textContent = `Hello, ${data.user.fullname}.`;
+
+      const teamName = data.registration?.teamName || 'Nova Team';
+      const categoryLabels = {
+        static: 'Static Website',
+        dynamic: 'Dynamic Website',
+        framework: 'Modern Framework'
+      };
+      const category = categoryLabels[data.registration?.category] || 'participant';
+      const dashWelcomeSubtitle = document.getElementById('dashWelcomeSubtitle');
+      if (dashWelcomeSubtitle) {
+        dashWelcomeSubtitle.textContent = `Welcome to your NovaMind portal. ${teamName} (${category})`;
+      }
+
+      const notifWelcome = document.getElementById('notificationWelcome');
+      if (notifWelcome) notifWelcome.textContent = `Welcome, ${teamName}`;
+    })
+    .catch(() => {
+      // The static dashboard remains usable when profile data cannot be loaded.
+    });
 
   // Single source of truth for the next submission deadline.
   const countdownEl = document.getElementById('countdown');

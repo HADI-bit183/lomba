@@ -1,35 +1,33 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const env = require('./config/env');
+const { isDatabaseConfigured } = require('./config/database');
+const { AppError } = require('./database/errors');
+const {
+  chatsToAiHistory,
+  listChats,
+  saveChat
+} = require('./services/chat-history-service');
+const {
+  completeChallenge,
+  getProgress
+} = require('./services/challenge-service');
+const {
+  attachUser,
+  getOrCreateSession
+} = require('./services/session-service');
+const {
+  getUserWithRegistration,
+  registerUser
+} = require('./services/user-service');
 
-const ROOT = __dirname;
-const PORT = Number(process.env.PORT || 4173);
+const ROOT = env.ROOT;
+const PORT = env.port;
 const MAX_BODY_BYTES = 24 * 1024;
 const MAX_MESSAGE_LENGTH = 1500;
 const MAX_HISTORY_ITEMS = 10;
 const REQUEST_TIMEOUT_MS = 45_000;
-
-function loadLocalEnv() {
-  const envPath = path.join(ROOT, '.env.local');
-  if (!fs.existsSync(envPath)) return;
-
-  const lines = fs.readFileSync(envPath, 'utf8').split(/\r?\n/);
-  for (const line of lines) {
-    const match = line.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.*)\s*$/i);
-    if (!match || process.env[match[1]]) continue;
-
-    let value = match[2];
-    if (
-      (value.startsWith('"') && value.endsWith('"')) ||
-      (value.startsWith("'") && value.endsWith("'"))
-    ) {
-      value = value.slice(1, -1);
-    }
-    process.env[match[1]] = value;
-  }
-}
-
-loadLocalEnv();
 
 const MIME_TYPES = {
   '.css': 'text/css; charset=utf-8',
@@ -63,6 +61,19 @@ function sendJson(response, statusCode, payload) {
     'Content-Length': Buffer.byteLength(body)
   });
   response.end(body);
+}
+
+function sendError(response, error, fallbackMessage = 'Terjadi kesalahan pada server.') {
+  const statusCode = Number(error?.statusCode) || 500;
+  if (statusCode >= 500) {
+    console.error(error?.message || fallbackMessage);
+  }
+  sendJson(response, statusCode, {
+    error: statusCode >= 500 && !(error instanceof AppError)
+      ? fallbackMessage
+      : error.message,
+    code: error?.code || 'INTERNAL_ERROR'
+  });
 }
 
 function readJsonBody(request) {
@@ -137,7 +148,7 @@ function extractResponseText(apiResponse) {
 }
 
 async function handleChat(request, response) {
-  if (!process.env.OPENAI_API_KEY) {
+  if (!env.openAiApiKey) {
     sendJson(response, 503, {
       error: 'AI service is not configured. Add OPENAI_API_KEY to .env.local.'
     });
@@ -168,10 +179,19 @@ async function handleChat(request, response) {
     return;
   }
 
-  const input = [
-    ...normalizeHistory(body.history),
-    { role: 'user', content: message }
-  ];
+  const session = getOrCreateSession(request, response);
+  let priorHistory = normalizeHistory(body.history);
+
+  if (isDatabaseConfigured()) {
+    try {
+      const savedChats = await listChats(session.visitorId, MAX_HISTORY_ITEMS / 2);
+      priorHistory = chatsToAiHistory(savedChats);
+    } catch (error) {
+      console.error('Chat history could not be loaded:', error.message);
+    }
+  }
+
+  const input = [...priorHistory, { role: 'user', content: message }];
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
@@ -180,11 +200,11 @@ async function handleChat(request, response) {
     const apiResponse = await fetch('https://api.openai.com/v1/responses', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        Authorization: `Bearer ${env.openAiApiKey}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: process.env.OPENAI_MODEL || 'gpt-5.4-mini',
+        model: env.openAiModel,
         instructions: [
           'You are NovaMind AI, a helpful bilingual assistant for an Indonesian student innovation competition.',
           'Answer in the same language as the user, using concise and natural wording.',
@@ -219,6 +239,19 @@ async function handleChat(request, response) {
       return;
     }
 
+    if (isDatabaseConfigured()) {
+      try {
+        await saveChat({
+          prompt: message,
+          response: answer,
+          userId: session.userId,
+          visitorId: session.visitorId
+        });
+      } catch (error) {
+        console.error('Chat history could not be saved:', error.message);
+      }
+    }
+
     sendJson(response, 200, { answer });
   } catch (error) {
     const timedOut = error.name === 'AbortError';
@@ -230,6 +263,88 @@ async function handleChat(request, response) {
     });
   } finally {
     clearTimeout(timeout);
+  }
+}
+
+async function handleRegistration(request, response) {
+  if (isRateLimited(request)) {
+    sendJson(response, 429, {
+      error: 'Terlalu banyak permintaan. Tunggu sebentar lalu coba lagi.'
+    });
+    return;
+  }
+
+  try {
+    const body = await readJsonBody(request);
+    const session = getOrCreateSession(request, response);
+    const result = await registerUser(body);
+    attachUser(response, session, result.user.id);
+    sendJson(response, 201, result);
+  } catch (error) {
+    if (error.message === 'PAYLOAD_TOO_LARGE' || error.message === 'INVALID_JSON') {
+      sendJson(response, error.message === 'PAYLOAD_TOO_LARGE' ? 413 : 400, {
+        error: 'Format permintaan tidak valid.'
+      });
+      return;
+    }
+    sendError(response, error, 'Registrasi belum dapat disimpan.');
+  }
+}
+
+async function handleCurrentUser(request, response) {
+  try {
+    const session = getOrCreateSession(request, response);
+    if (!session.userId) {
+      sendJson(response, 401, { error: 'Belum ada pengguna yang terdaftar pada sesi ini.' });
+      return;
+    }
+
+    const result = await getUserWithRegistration(session.userId);
+    if (!result) {
+      sendJson(response, 404, { error: 'Data pengguna tidak ditemukan.' });
+      return;
+    }
+    sendJson(response, 200, result);
+  } catch (error) {
+    sendError(response, error, 'Data pengguna belum dapat dimuat.');
+  }
+}
+
+async function handleChatHistory(request, response) {
+  try {
+    const session = getOrCreateSession(request, response);
+    const chats = await listChats(session.visitorId, 20);
+    sendJson(response, 200, { chats });
+  } catch (error) {
+    sendError(response, error, 'Riwayat chat belum dapat dimuat.');
+  }
+}
+
+async function handleChallengeProgress(request, response) {
+  try {
+    const session = getOrCreateSession(request, response);
+    if (request.method === 'GET') {
+      const progress = await getProgress(session.visitorId);
+      sendJson(response, 200, progress);
+      return;
+    }
+
+    const body = await readJsonBody(request);
+    const progress = await completeChallenge({
+      challengeDate: body.challengeDate,
+      userId: session.userId,
+      visitorId: session.visitorId,
+      xp: body.xp
+    });
+    sendJson(response, 200, progress);
+  } catch (error) {
+    if (error.message === 'PAYLOAD_TOO_LARGE' || error.message === 'INVALID_JSON') {
+      sendJson(response, error.message === 'PAYLOAD_TOO_LARGE' ? 413 : 400, {
+        error: 'Format permintaan tidak valid.'
+      });
+      return;
+    }
+    sendError(response, error, 'Progres tantangan belum dapat disimpan.');
   }
 }
 
@@ -278,16 +393,40 @@ function serveStatic(request, response) {
 const server = http.createServer(async (request, response) => {
   const requestUrl = new URL(request.url, `http://${request.headers.host || 'localhost'}`);
 
+  if (request.method === 'POST' && requestUrl.pathname === '/api/users') {
+    await handleRegistration(request, response);
+    return;
+  }
+
+  if (request.method === 'GET' && requestUrl.pathname === '/api/users/me') {
+    await handleCurrentUser(request, response);
+    return;
+  }
+
   if (request.method === 'POST' && requestUrl.pathname === '/api/chat') {
     await handleChat(request, response);
+    return;
+  }
+
+  if (request.method === 'GET' && requestUrl.pathname === '/api/chat-history') {
+    await handleChatHistory(request, response);
+    return;
+  }
+
+  if (
+    ['GET', 'POST'].includes(request.method) &&
+    requestUrl.pathname === '/api/challenge-progress'
+  ) {
+    await handleChallengeProgress(request, response);
     return;
   }
 
   if (request.method === 'GET' && requestUrl.pathname === '/api/health') {
     sendJson(response, 200, {
       status: 'ok',
-      aiConfigured: Boolean(process.env.OPENAI_API_KEY),
-      model: process.env.OPENAI_MODEL || 'gpt-5.4-mini'
+      aiConfigured: Boolean(env.openAiApiKey),
+      databaseConfigured: isDatabaseConfigured(),
+      model: env.openAiModel
     });
     return;
   }
@@ -303,4 +442,7 @@ const server = http.createServer(async (request, response) => {
 
 server.listen(PORT, () => {
   console.log(`NovaMind server running at http://localhost:${PORT}`);
+  if (!isDatabaseConfigured()) {
+    console.warn('Supabase is not configured; database-backed features will return 503.');
+  }
 });
