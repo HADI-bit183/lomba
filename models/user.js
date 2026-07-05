@@ -73,16 +73,9 @@ function createUserUpdateModel(input) {
   }
 
   const hasPassword = Object.hasOwn(input, 'password');
-  if (
-    hasPassword &&
-    (
-      typeof input.password !== 'string' ||
-      input.password.length < 8 ||
-      input.password.length > 128
-    )
-  ) {
+  if (hasPassword) {
     throw new AppError(
-      'Password harus berisi 8–128 karakter.',
+      'Gunakan endpoint /api/auth/reset-password untuk mengubah password.',
       400,
       'VALIDATION_ERROR'
     );
@@ -105,6 +98,8 @@ function toPublicUser(record) {
     email: record.email,
     avatar: record.avatar,
     role: record.role,
+    lastLoginAt: record.last_login_at || null,
+    totalChat: Number(record.total_chat || 0),
     createdAt: record.created_at
   };
 }

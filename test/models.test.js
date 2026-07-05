@@ -33,10 +33,14 @@ test('public user never includes password_hash', () => {
     password_hash: 'secret',
     avatar: null,
     role: 'participant',
+    last_login_at: '2026-07-05T01:00:00Z',
+    total_chat: 7,
     created_at: '2026-07-05T00:00:00Z'
   });
 
   assert.equal(output.password_hash, undefined);
+  assert.equal(output.lastLoginAt, '2026-07-05T01:00:00Z');
+  assert.equal(output.totalChat, 7);
 });
 
 test('registration model accepts only known competition categories', () => {

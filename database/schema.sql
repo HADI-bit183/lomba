@@ -12,6 +12,23 @@ create table if not exists public.users (
   created_at timestamptz not null default now()
 );
 
+alter table public.users
+  add column if not exists auth_user_id uuid unique
+  references auth.users(id) on delete cascade;
+
+alter table public.users
+  add column if not exists last_login_at timestamptz;
+
+alter table public.users
+  add column if not exists total_chat bigint not null default 0;
+
+create unique index if not exists users_auth_user_id_key
+  on public.users (auth_user_id)
+  where auth_user_id is not null;
+
+comment on column public.users.password_hash is
+  'Legacy nullable field. Supabase Auth owns password hashes for authenticated users.';
+
 create table if not exists public.chat_history (
   id uuid primary key default gen_random_uuid(),
   user_id uuid references public.users(id) on delete set null,
@@ -25,6 +42,44 @@ create index if not exists chat_history_user_created_idx
   on public.chat_history (user_id, created_at desc);
 create index if not exists chat_history_visitor_created_idx
   on public.chat_history (visitor_id, created_at desc);
+
+create or replace function public.sync_user_total_chat()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  if tg_op = 'INSERT' and new.user_id is not null then
+    update public.users
+    set total_chat = total_chat + 1
+    where id = new.user_id;
+    return new;
+  end if;
+
+  if tg_op = 'DELETE' and old.user_id is not null then
+    update public.users
+    set total_chat = greatest(total_chat - 1, 0)
+    where id = old.user_id;
+    return old;
+  end if;
+
+  return null;
+end;
+$$;
+
+drop trigger if exists chat_history_total_chat_trigger
+  on public.chat_history;
+create trigger chat_history_total_chat_trigger
+after insert or delete on public.chat_history
+for each row execute function public.sync_user_total_chat();
+
+update public.users as app_user
+set total_chat = (
+  select count(*)
+  from public.chat_history
+  where chat_history.user_id = app_user.id
+);
 
 create table if not exists public.registrations (
   id uuid primary key default gen_random_uuid(),
@@ -163,6 +218,8 @@ revoke all on table public.challenge_progress from anon, authenticated;
 revoke all on function public.register_participant(
   text, text, text, text, text, text, text, text, text
 ) from public, anon, authenticated;
+revoke all on function public.sync_user_total_chat()
+  from public, anon, authenticated;
 revoke all on function public.complete_daily_challenge(uuid, uuid, date, integer)
   from public, anon, authenticated;
 grant execute on function public.register_participant(

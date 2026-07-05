@@ -8,6 +8,7 @@ const { generateAnswer } = require('../services/ai-service');
 const {
   chatsToAiHistory,
   deleteChat,
+  deleteChatHistory,
   listChats,
   saveChat
 } = require('../services/chat-history-service');
@@ -25,12 +26,13 @@ async function create(request, response) {
   assertNotRateLimited(request);
   const input = await readJsonBody(request);
   const session = getOrCreateSession(request, response);
+  const profileId = request.auth.profileId;
 
   if (isDirectChatCreate(input)) {
     const chat = await saveChat({
       prompt: input.prompt,
       response: input.response,
-      userId: session.userId,
+      userId: profileId,
       visitorId: session.visitorId
     });
     response.setHeader('Location', `/api/chat/${chat.id}`);
@@ -39,12 +41,12 @@ async function create(request, response) {
   }
 
   const { message } = validateAiChatInput(input);
-  const chats = await listChats(session.visitorId, 5);
+  const chats = await listChats(profileId, 5);
   const answer = await generateAnswer(message, chatsToAiHistory(chats));
   const chat = await saveChat({
     prompt: message,
     response: answer,
-    userId: session.userId,
+    userId: profileId,
     visitorId: session.visitorId
   });
   response.setHeader('Location', `/api/chat/${chat.id}`);
@@ -52,21 +54,25 @@ async function create(request, response) {
 }
 
 async function history(request, response, params, requestUrl) {
-  const session = getOrCreateSession(request, response);
   const limit = validateLimit(requestUrl.searchParams.get('limit'), 20);
-  const chats = await listChats(session.visitorId, limit);
+  const chats = await listChats(request.auth.profileId, limit);
   sendJson(response, 200, { chats });
 }
 
 async function remove(request, response, params) {
   const chatId = validateUuid(params.id, 'ID chat');
-  const session = getOrCreateSession(request, response);
-  await deleteChat(chatId, session.visitorId);
+  await deleteChat(chatId, request.auth.profileId);
+  sendNoContent(response);
+}
+
+async function clearHistory(request, response) {
+  await deleteChatHistory(request.auth.profileId);
   sendNoContent(response);
 }
 
 module.exports = {
   create,
+  clearHistory,
   history,
   remove
 };

@@ -8,7 +8,9 @@ function createChatHistoryModel({ prompt, response, userId, visitorId }) {
     !normalizedPrompt ||
     normalizedPrompt.length > 1500 ||
     !normalizedResponse ||
-    normalizedResponse.length > 20_000
+    normalizedResponse.length > 20_000 ||
+    !userId ||
+    !visitorId
   ) {
     throw new AppError('Riwayat chat tidak valid.', 400, 'VALIDATION_ERROR');
   }
@@ -16,7 +18,7 @@ function createChatHistoryModel({ prompt, response, userId, visitorId }) {
   return {
     prompt: normalizedPrompt,
     response: normalizedResponse,
-    user_id: userId || null,
+    user_id: userId,
     visitor_id: visitorId
   };
 }

@@ -18,7 +18,7 @@ async function complete(request, response) {
   const input = await readJsonBody(request);
   const progress = await completeChallenge({
     challengeDate: input.challengeDate,
-    userId: session.userId,
+    userId: request.auth?.profileId || session.userId,
     visitorId: session.visitorId,
     xp: input.xp
   });

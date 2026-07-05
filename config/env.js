@@ -31,6 +31,9 @@ module.exports = {
   openAiApiKey: process.env.OPENAI_API_KEY || '',
   openAiModel: process.env.OPENAI_MODEL || 'gpt-5.4-mini',
   sessionSecret: process.env.SESSION_SECRET || process.env.SUPABASE_SERVICE_ROLE_KEY || '',
+  authRedirectUrl: process.env.AUTH_REDIRECT_URL ||
+    `http://localhost:${Number(process.env.PORT || 4173)}/`,
+  supabaseAnonKey: process.env.SUPABASE_ANON_KEY || '',
   supabaseUrl: process.env.SUPABASE_URL || '',
   supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || ''
 };

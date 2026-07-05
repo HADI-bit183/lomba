@@ -56,7 +56,9 @@ NovaMind/
 
 ## Development & Usage
 - Create a Supabase project and run [`database/schema.sql`](database/schema.sql) in its SQL Editor.
-- Copy `.env.example` to `.env.local`, then set `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, and a long random `SESSION_SECRET`.
+- Copy `.env.example` to `.env.local`, then set `SUPABASE_URL`,
+  `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `AUTH_REDIRECT_URL`, and a
+  long random `SESSION_SECRET`.
 - Set `OPENAI_API_KEY` to enable the AI assistant.
 - Keep the Supabase service-role key server-side; never place it in HTML or browser JavaScript.
 - Install dependencies with `npm install`.
@@ -76,7 +78,33 @@ the service layer.
 - `DELETE /api/users/:id` — delete the current session's user
 - `POST /api/chat` — create a stored chat, directly or through the AI assistant
 - `GET /api/chat/history` — read stored chat history
+- `DELETE /api/chat/history` — delete all chat history owned by the current user
 - `DELETE /api/chat/:id` — delete a stored chat
+- `GET /api/users/profile` — read the authenticated user's database profile
+- `PUT /api/users/profile` — update the authenticated user's profile
+
+Supabase Auth endpoints:
+
+- `POST /api/auth/register` — register and send email verification
+- `POST /api/auth/login` — login and create secure cookie session
+- `POST /api/auth/logout` — revoke and clear the current session
+- `GET /api/auth/me` — read the authenticated user
+- `POST /api/auth/verify-email` — verify an email OTP or token hash
+- `POST /api/auth/resend-verification` — resend signup verification
+- `POST /api/auth/forgot-password` — send password recovery email
+- `POST /api/auth/verify-recovery` — exchange a recovery OTP or token hash for
+  a session
+- `POST /api/auth/reset-password` — set a new password using an authenticated
+  or recovery JWT
+
+Auth access and refresh tokens are stored in `HttpOnly`, `SameSite=Lax` cookies.
+Set `remember: true` during register or login to persist the refresh cookie for
+30 days; otherwise it remains a browser-session cookie. Passwords are handled
+only by Supabase Auth and are never written to `public.users`.
 
 The legacy `GET /api/users/me` and `GET /api/chat-history` routes remain available
 for the existing frontend.
+
+Authenticated profiles include `lastLoginAt`, `totalChat`, and `createdAt`.
+Chat creation, history reads, and deletion are scoped exclusively by the
+authenticated profile ID supplied by the server-side middleware.

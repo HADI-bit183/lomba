@@ -14,6 +14,10 @@ class MockResponse {
     this.headers[name.toLowerCase()] = value;
   }
 
+  getHeader(name) {
+    return this.headers[name.toLowerCase()];
+  }
+
   writeHead(statusCode, headers = {}) {
     this.statusCode = statusCode;
     Object.entries(headers).forEach(([name, value]) => this.setHeader(name, value));
@@ -48,7 +52,18 @@ test('router exposes all required CRUD endpoints', () => {
   assert.equal(hasRoute('DELETE', `/api/users/${userId}`), true);
   assert.equal(hasRoute('POST', '/api/chat'), true);
   assert.equal(hasRoute('GET', '/api/chat/history'), true);
+  assert.equal(hasRoute('DELETE', '/api/chat/history'), true);
   assert.equal(hasRoute('DELETE', `/api/chat/${chatId}`), true);
+  assert.equal(hasRoute('GET', '/api/users/profile'), true);
+  assert.equal(hasRoute('PUT', '/api/users/profile'), true);
+  assert.equal(hasRoute('POST', '/api/auth/register'), true);
+  assert.equal(hasRoute('POST', '/api/auth/login'), true);
+  assert.equal(hasRoute('POST', '/api/auth/logout'), true);
+  assert.equal(hasRoute('GET', '/api/auth/me'), true);
+  assert.equal(hasRoute('POST', '/api/auth/verify-email'), true);
+  assert.equal(hasRoute('POST', '/api/auth/forgot-password'), true);
+  assert.equal(hasRoute('POST', '/api/auth/verify-recovery'), true);
+  assert.equal(hasRoute('POST', '/api/auth/reset-password'), true);
 });
 
 test('router returns 405 and Allow for unsupported methods', async () => {
@@ -78,7 +93,7 @@ test('router returns 404 for unknown API paths', async () => {
   assert.equal(JSON.parse(response.body).code, 'NOT_FOUND');
 });
 
-test('user ID route rejects malformed UUIDs before database access', async () => {
+test('protected user routes reject unauthenticated requests', async () => {
   const response = new MockResponse();
   await routeApiRequest(
     createRequest('GET'),
@@ -86,8 +101,8 @@ test('user ID route rejects malformed UUIDs before database access', async () =>
     new URL('http://localhost/api/users/not-a-uuid')
   );
 
-  assert.equal(response.statusCode, 400);
-  assert.equal(JSON.parse(response.body).code, 'VALIDATION_ERROR');
+  assert.equal(response.statusCode, 401);
+  assert.equal(JSON.parse(response.body).code, 'UNAUTHORIZED');
 });
 
 test('create user validates request body before database access', async () => {
@@ -102,14 +117,95 @@ test('create user validates request body before database access', async () => {
   assert.equal(JSON.parse(response.body).code, 'VALIDATION_ERROR');
 });
 
-test('direct chat creation validates prompt and response before database access', async () => {
+test('chat creation and history require authentication', async () => {
+  for (const [method, path, body] of [
+    ['POST', '/api/chat', { prompt: '', response: 'Jawaban' }],
+    ['GET', '/api/chat/history'],
+    ['DELETE', '/api/chat/history']
+  ]) {
+    const response = new MockResponse();
+    await routeApiRequest(
+      createRequest(method, body),
+      response,
+      new URL(`http://localhost${path}`)
+    );
+
+    assert.equal(response.statusCode, 401);
+    assert.equal(JSON.parse(response.body).code, 'UNAUTHORIZED');
+  }
+});
+
+test('profile endpoints require authentication', async () => {
+  for (const [method, body] of [
+    ['GET'],
+    ['PUT', { fullname: 'Updated User' }]
+  ]) {
+    const response = new MockResponse();
+    await routeApiRequest(
+      createRequest(method, body),
+      response,
+      new URL('http://localhost/api/users/profile')
+    );
+
+    assert.equal(response.statusCode, 401);
+    assert.equal(JSON.parse(response.body).code, 'UNAUTHORIZED');
+  }
+});
+
+test('chat model validates prompt and response before database access', async () => {
+  const { saveChat } = require('../services/chat-history-service');
+  await assert.rejects(
+    () => saveChat({
+      prompt: '',
+      response: 'Jawaban',
+      userId: '123e4567-e89b-42d3-a456-426614174000',
+      visitorId: '123e4567-e89b-42d3-a456-426614174001'
+    }),
+    error => error.code === 'VALIDATION_ERROR'
+  );
+});
+
+test('auth me and reset password require authentication', async () => {
+  for (const [method, path, body] of [
+    ['GET', '/api/auth/me'],
+    ['POST', '/api/auth/reset-password', { password: 'new-password-123' }]
+  ]) {
+    const response = new MockResponse();
+    await routeApiRequest(
+      createRequest(method, body),
+      response,
+      new URL(`http://localhost${path}`)
+    );
+    assert.equal(response.statusCode, 401);
+    assert.equal(JSON.parse(response.body).code, 'UNAUTHORIZED');
+  }
+});
+
+test('auth register validates credentials before Supabase access', async () => {
   const response = new MockResponse();
   await routeApiRequest(
-    createRequest('POST', { prompt: '', response: 'Jawaban' }),
+    createRequest('POST', {
+      email: 'invalid',
+      fullname: 'Nova User',
+      password: 'short'
+    }),
     response,
-    new URL('http://localhost/api/chat')
+    new URL('http://localhost/api/auth/register')
   );
 
   assert.equal(response.statusCode, 400);
   assert.equal(JSON.parse(response.body).code, 'VALIDATION_ERROR');
+});
+
+test('logout is idempotent and clears auth cookies', async () => {
+  const response = new MockResponse();
+  await routeApiRequest(
+    createRequest('POST'),
+    response,
+    new URL('http://localhost/api/auth/logout')
+  );
+
+  assert.equal(response.statusCode, 204);
+  assert.equal(Array.isArray(response.headers['set-cookie']), true);
+  assert.equal(response.headers['set-cookie'].length, 3);
 });

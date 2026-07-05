@@ -1,11 +1,13 @@
 const { AppError } = require('../database/errors');
 const { sendError } = require('../http/http-utils');
+const authRoutes = require('./auth-routes');
 const challengeRoutes = require('./challenge-routes');
 const chatRoutes = require('./chat-routes');
 const healthRoutes = require('./health-routes');
 const userRoutes = require('./user-routes');
 
 const routes = [
+  ...authRoutes,
   ...userRoutes,
   ...chatRoutes,
   ...challengeRoutes,
@@ -46,6 +48,9 @@ async function routeApiRequest(request, response, requestUrl) {
       return true;
     }
 
+    for (const middleware of selected.route.middleware || []) {
+      await middleware(request, response, selected.params, requestUrl);
+    }
     await selected.route.handler(request, response, selected.params, requestUrl);
   } catch (error) {
     const malformedPath = error instanceof URIError
