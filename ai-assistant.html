@@ -282,6 +282,25 @@
           if(indicator) indicator.remove();
         }
 
+        async function loadChatHistory() {
+          try {
+            const response = await fetch('/api/chat-history');
+            if (!response.ok) return;
+            const data = await response.json();
+
+            (data.chats || []).forEach(chat => {
+              appendMessage(chat.prompt, true);
+              appendMessage(chat.response, false);
+              chatHistory.push(
+                { role: 'user', content: chat.prompt },
+                { role: 'assistant', content: chat.response }
+              );
+            });
+          } catch {
+            // The assistant can still start a new conversation if history is unavailable.
+          }
+        }
+
         async function requestAI(text) {
           const controller = new AbortController();
           const timeout = window.setTimeout(() => controller.abort(), 50_000);
@@ -351,6 +370,8 @@
             handleSend(chip.textContent.replace(/"/g, ''));
           });
         });
+
+        loadChatHistory();
       });
     </script>
 

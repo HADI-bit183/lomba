@@ -165,14 +165,31 @@
         { title: "Design a better user flow for a shopping app.", diff: "Medium", time: "30 Mins", xp: 15 }
       ];
 
-      // Get current date string to use as seed/key
+      const jakartaParts = Object.fromEntries(
+        new Intl.DateTimeFormat('en-US', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          timeZone: 'Asia/Jakarta'
+        }).formatToParts(new Date()).map(part => [part.type, part.value])
+      );
+      const challengeDate = `${jakartaParts.year}-${jakartaParts.month}-${jakartaParts.day}`;
+      const challengeDay = new Date(`${challengeDate}T00:00:00Z`);
+      const challengeSeed = [
+        ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][challengeDay.getUTCDay()],
+        ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][challengeDay.getUTCMonth()],
+        String(challengeDay.getUTCDate()).padStart(2, '0'),
+        challengeDay.getUTCFullYear()
+      ].join(' ');
+
+      // Get current date string to display to the user
       const today = new Date().toDateString();
       document.getElementById('chDate').textContent = today;
       
       // Simple hash to pick challenge based on date
       let hash = 0;
-      for (let i = 0; i < today.length; i++) {
-        hash = today.charCodeAt(i) + ((hash << 5) - hash);
+      for (let i = 0; i < challengeSeed.length; i++) {
+        hash = challengeSeed.charCodeAt(i) + ((hash << 5) - hash);
       }
       const chIndex = Math.abs(hash) % challenges.length;
       const todayChallenge = challenges[chIndex];
@@ -183,17 +200,26 @@
       document.getElementById('chReward').textContent = todayChallenge.xp;
       document.getElementById('earnedXP').textContent = todayChallenge.xp;
 
-      // Local Storage Logic
-      let totalXP = parseInt(localStorage.getItem('novamind_xp') || '0');
-      document.getElementById('totalXP').textContent = totalXP;
+      let totalXP = 0;
 
-      const lastCompletedDate = localStorage.getItem('novamind_last_challenge');
-      
-      if (lastCompletedDate === today) {
-        showSuccessState(false);
-      }
+      fetch('/api/challenge-progress')
+        .then(response => response.ok ? response.json() : null)
+        .then(progress => {
+          if (!progress) return;
+          totalXP = Number(progress.totalXP) || 0;
+          document.getElementById('totalXP').textContent = totalXP;
+          if (progress.lastCompletedDate === challengeDate) {
+            showSuccessState(false);
+          }
+        })
+        .catch(() => {
+          // Keep the challenge visible so the user can retry.
+        });
 
-      document.getElementById('btnComplete').addEventListener('click', function(e) {
+      document.getElementById('btnComplete').addEventListener('click', async function(e) {
+        if (this.disabled) return;
+        this.disabled = true;
+
         // Animation floating XP
         const rect = this.getBoundingClientRect();
         const floatEl = document.createElement('div');
@@ -203,13 +229,29 @@
         floatEl.style.top = (e.clientY - rect.top) + 'px';
         this.parentElement.appendChild(floatEl);
 
-        setTimeout(() => {
-          totalXP += todayChallenge.xp;
-          localStorage.setItem('novamind_xp', totalXP);
-          localStorage.setItem('novamind_last_challenge', today);
-          document.getElementById('totalXP').textContent = totalXP;
-          showSuccessState(true);
-        }, 800);
+        try {
+          const response = await fetch('/api/challenge-progress', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              challengeDate,
+              xp: todayChallenge.xp
+            })
+          });
+          const progress = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            throw new Error(progress.error || 'Progress could not be saved.');
+          }
+
+          window.setTimeout(() => {
+            totalXP = Number(progress.totalXP) || totalXP;
+            document.getElementById('totalXP').textContent = totalXP;
+            showSuccessState(true);
+          }, 800);
+        } catch (error) {
+          this.disabled = false;
+          window.alert(error.message);
+        }
       });
 
       function showSuccessState(animate) {
