@@ -5,12 +5,14 @@
   "description": "NovaMind competition website with a secure OpenAI-powered assistant.",
   "scripts": {
     "start": "node server.js",
-    "check": "node --check server.js && node --check js/bundle.js && node --check js/ui-refresh.js && node --test"
+    "migrate": "node scripts/migrate.js",
+    "check": "node --check server.js && node --check js/bundle.js && node --check js/ui-refresh.js && NODE_ENV=test node --test"
   },
   "engines": {
     "node": ">=18"
   },
   "dependencies": {
-    "@supabase/supabase-js": "2.50.0"
+    "@supabase/supabase-js": "2.50.0",
+    "pg": "8.16.3"
   }
 }

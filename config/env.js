@@ -27,7 +27,11 @@ loadLocalEnv();
 
 module.exports = {
   ROOT,
+  host: process.env.HOST || '0.0.0.0',
+  nodeEnv: process.env.NODE_ENV || 'development',
   port: Number(process.env.PORT || 4173),
+  databaseUrl: process.env.DATABASE_URL || '',
+  databaseSsl: process.env.DATABASE_SSL !== 'false',
   openAiApiKey: process.env.OPENAI_API_KEY || '',
   openAiModel: process.env.OPENAI_MODEL || 'gpt-5.4-mini',
   sessionSecret: process.env.SESSION_SECRET || process.env.SUPABASE_SERVICE_ROLE_KEY || '',

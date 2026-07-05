@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard – NovaMind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Libraries -->
+  <link rel="preload" href="assets/vendor/css/fonts.css" as="style">
+    <link href="assets/vendor/css/fonts.css" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/css/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body class="page-dashboard">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind Admin</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="admin-dashboard.html">Admin Dashboard</a></li>
+        </ul>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- DASHBOARD HEADER -->
+    <section class="py-5 mt-5 bg-gradient position-relative overflow-hidden">
+      <div class="container position-relative z-1 pt-4">
+        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-4">
+          <div>
+            <h1 class="display-6 fw-bold text-body mb-2">Admin Dashboard</h1>
+            <p class="text-body-50 mb-0">System Overview & Monitoring</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD CONTENT -->
+    <section class="py-5 bg-secondary min-vh-100">
+      <div class="container">
+        
+        <div class="row g-4 mb-4" id="statsCards">
+          <!-- Loading state for cards -->
+          <div class="col-12 text-center text-muted py-5" id="statsLoading">
+            <i class="fa-solid fa-spinner fa-spin fs-2"></i>
+            <p class="mt-2">Loading statistics...</p>
+          </div>
+        </div>
+
+        <div class="row g-4" id="mainContent" style="display: none;">
+          <div class="col-lg-8">
+            <h4 class="fw-bold mb-3 section-title fs-5">Recent Chats</h4>
+            <div class="unified-card glass p-0 overflow-hidden mb-4">
+              <div class="table-responsive">
+                <table class="table table-borderless table-hover mb-0">
+                  <thead class="border-bottom border-secondary border-opacity-25 text-muted small">
+                    <tr>
+                      <th class="ps-4 py-3 fw-medium">User</th>
+                      <th class="py-3 fw-medium">Prompt</th>
+                      <th class="py-3 fw-medium">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recentChatsTable">
+                    <!-- Chats will be injected here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <h4 class="fw-bold mb-3 section-title fs-5">Recent Users</h4>
+            <div class="unified-card glass p-0 overflow-hidden mb-4">
+              <div class="table-responsive">
+                <table class="table table-borderless table-hover mb-0">
+                  <thead class="border-bottom border-secondary border-opacity-25 text-muted small">
+                    <tr>
+                      <th class="ps-4 py-3 fw-medium">User</th>
+                      <th class="py-3 fw-medium">Role</th>
+                      <th class="py-3 fw-medium">Date Joined</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recentUsersTable">
+                    <!-- Users will be injected here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <h4 class="fw-bold mb-3 section-title fs-5">Activity Chart</h4>
+            <div class="unified-card glass p-4 mb-4">
+              <div style="position: relative; height: 230px; width: 100%;">
+                <canvas id="adminChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer py-5 glass text-body">
+    <div class="container">
+      <hr class="my-4 border-secondary opacity-25">
+      <div class="text-center text-muted small">
+        &copy; 2026 NovaMind. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script defer src="assets/vendor/js/chart.js"></script>
+  <script defer src="js/bundle.js"></script>
+  <script defer src="js/ui-refresh.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (typeof window.showLoading === 'function') window.showLoading('Verifying Admin Access...');
+      try {
+        const response = await fetch('/api/auth/me');
+        if (!response.ok) {
+          window.location.href = 'index.html?error=access_denied';
+          return;
+        }
+        const result = await response.json();
+        const user = result?.data;
+        
+        if (!user || user.role !== 'admin') {
+          window.location.href = 'index.html?error=access_denied'; // Redirect if not admin
+          return;
+        }
+      } catch (err) {
+        window.location.href = 'index.html?error=access_denied';
+        return;
+      } finally {
+        if (typeof window.hideLoading === 'function') window.hideLoading();
+      }
+
+      // XSS Protection Helper
+      const escapeHTML = (str) => {
+        if (typeof str !== 'string') return str;
+        return str.replace(/[&<>'"]/g, 
+          tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+          }[tag] || tag)
+        );
+      };
+
+      // 2. Fetch Admin Statistics
+      try {
+        const statsRes = await fetch('/api/admin/statistics');
+        if (!statsRes.ok) throw new Error('Failed to fetch stats');
+        const statsData = await statsRes.json();
+        const stats = statsData.data;
+
+        // Render Cards
+        const cardsHtml = `
+          <div class="col-md-3">
+            <div class="unified-card glass p-4 h-100 position-relative overflow-hidden">
+              <div class="position-absolute top-0 start-0 w-100 bg-primary" style="height: 4px;"></div>
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h6 class="fw-bold m-0">Total Users</h6>
+                <i class="fa-solid fa-users text-primary"></i>
+              </div>
+              <h2 class="display-6 fw-bold text-primary mb-0">${stats.totalUsers}</h2>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="unified-card glass p-4 h-100 position-relative overflow-hidden">
+              <div class="position-absolute top-0 start-0 w-100 bg-success" style="height: 4px;"></div>
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h6 class="fw-bold m-0">Total Logins</h6>
+                <i class="fa-solid fa-sign-in-alt text-success"></i>
+              </div>
+              <h2 class="display-6 fw-bold text-success mb-0">${stats.totalLogins}</h2>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="unified-card glass p-4 h-100 position-relative overflow-hidden">
+              <div class="position-absolute top-0 start-0 w-100 bg-warning" style="height: 4px;"></div>
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h6 class="fw-bold m-0">Total Chats</h6>
+                <i class="fa-solid fa-comments text-warning"></i>
+              </div>
+              <h2 class="display-6 fw-bold text-warning mb-0">${stats.totalChats}</h2>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="unified-card glass p-4 h-100 position-relative overflow-hidden">
+              <div class="position-absolute top-0 start-0 w-100 bg-info" style="height: 4px;"></div>
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h6 class="fw-bold m-0">Chats Today</h6>
+                <i class="fa-solid fa-clock text-info"></i>
+              </div>
+              <h2 class="display-6 fw-bold text-info mb-0">${stats.totalChatsToday}</h2>
+            </div>
+          </div>
+        `;
+        document.getElementById('statsLoading').style.display = 'none';
+        document.getElementById('statsCards').innerHTML = cardsHtml;
+        document.getElementById('mainContent').style.display = 'flex';
+
+        // Render Recent Chats
+        const chatsHtml = stats.recentChats.map(chat => `
+          <tr class="align-middle">
+            <td class="ps-4">
+              <div class="fw-medium text-body">${escapeHTML(chat.user ? chat.user.fullname : 'Unknown')}</div>
+              <div class="small text-muted">${escapeHTML(chat.user ? chat.user.email : '')}</div>
+            </td>
+            <td><div class="text-truncate" style="max-width: 200px;" title="${escapeHTML(chat.prompt)}">${escapeHTML(chat.prompt)}</div></td>
+            <td class="text-muted small">${new Date(chat.created_at).toLocaleDateString()}</td>
+          </tr>
+        `).join('');
+        document.getElementById('recentChatsTable').innerHTML = chatsHtml;
+
+        // Render Recent Users
+        const usersHtml = stats.recentUsers.map(user => `
+          <tr class="align-middle">
+            <td class="ps-4">
+              <div class="fw-medium text-body">${escapeHTML(user.fullname)}</div>
+              <div class="small text-muted">${escapeHTML(user.email)}</div>
+            </td>
+            <td><span class="badge ${user.role === 'admin' ? 'bg-danger' : 'bg-secondary'} rounded-pill px-3 py-1">${escapeHTML(user.role)}</span></td>
+            <td class="text-muted small">${new Date(user.created_at).toLocaleDateString()}</td>
+          </tr>
+        `).join('');
+        document.getElementById('recentUsersTable').innerHTML = usersHtml;
+
+        // Render Chart
+        const ctx = document.getElementById('adminChart');
+        if (ctx && typeof Chart !== 'undefined') {
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['Users', 'Logins', 'Chats (Total)', 'Chats (Today)'],
+              datasets: [{
+                label: 'System Activity',
+                data: [stats.totalUsers, stats.totalLogins, stats.totalChats, stats.totalChatsToday],
+                backgroundColor: [
+                  'rgba(59, 130, 246, 0.5)',
+                  'rgba(16, 185, 129, 0.5)',
+                  'rgba(245, 158, 11, 0.5)',
+                  'rgba(6, 182, 212, 0.5)'
+                ],
+                borderColor: [
+                  'rgb(59, 130, 246)',
+                  'rgb(16, 185, 129)',
+                  'rgb(245, 158, 11)',
+                  'rgb(6, 182, 212)'
+                ],
+                borderWidth: 1,
+                borderRadius: 4
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } },
+              scales: {
+                y: { beginAtZero: true, grid: { color: 'rgba(128, 128, 128, 0.1)' } },
+                x: { grid: { display: false } }
+              }
+            }
+          });
+        }
+
+      } catch (err) {
+        console.error('Failed to load admin dashboard:', err);
+      }
+    });
+  </script>
+</body>
+</html>

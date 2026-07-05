@@ -1,110 +1,177 @@
 # NovaMind Hub
+![Version](https://img.shields.io/badge/version-1.1.0-blue.svg) ![Node.js](https://img.shields.io/badge/Node.js-Vanilla-green.svg) ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple.svg) ![Supabase](https://img.shields.io/badge/Supabase-DB%20%26%20Auth-3ecf8e.svg) ![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o--mini-white.svg)
 
-Welcome to **NovaMind Hub**, a premium futuristic website showcasing global innovation and artificial intelligence.
+NovaMind Hub adalah platform kompetisi dan pembelajaran inovasi untuk mahasiswa. Proyek ini membantu peserta mendaftarkan tim, memakai mentor AI, memantau aktivitas, mengembangkan kesiapan inovasi, dan mengakses sumber belajar melalui satu pengalaman web yang konsisten.
 
-## Project Structure
+![NovaMind Dashboard Screenshot](docs/screenshots/dashboard-placeholder.svg)
+> *Placeholder: Ganti dengan screenshot halaman Dashboard asli sebelum presentasi.*
 
-This project is built as a **Multi-Page Application (MPA)** with 10 distinct routes, each optimized for seamless navigation, SEO, and an enhanced user experience. 
+## Tujuan Proyek
+NovaMind dirancang untuk menjembatani ide mahasiswa dengan proses inovasi yang terstruktur. Platform menggabungkan informasi kompetisi, alat evaluasi, pendampingan AI, pelacakan progres, gamifikasi, dan administrasi data dalam arsitektur *full-stack* yang aman dan siap untuk *deployment* (Production-Ready).
 
+## Arsitektur Sistem
+
+```mermaid
+graph TD
+    Client[Web Browser Client] -->|HTTP / API Requests| Server[Node.js Server]
+    
+    subgraph Server [Backend Node.js]
+        Router[API Router]
+        Static[Static File Server]
+        Middleware[Auth & Rate Limiting]
+        Controllers[API Controllers]
+        Services[Business Logic & External APIs]
+    end
+    
+    Server -->|Serves HTML/CSS/JS| Client
+    Client --> Middleware
+    Middleware --> Router
+    Router --> Controllers
+    Controllers --> Services
+    
+    Services <-->|PostgreSQL API| Supabase[(Supabase Database)]
+    Services <-->|REST API| OpenAI[OpenAI API]
 ```
+
+Sistem ini menggunakan arsitektur *Monolithic* sederhana berbasis Node.js murni (tanpa framework seperti Express), yang melayani konten statis (HTML/CSS/JS) sekaligus menyediakan RESTful API backend di port yang sama. Frontend melakukan komunikasi secara dinamis ke backend melalui Fetch API.
+
+## Entity Relationship Diagram (ERD)
+
+```mermaid
+erDiagram
+    USERS {
+        uuid id PK
+        string email
+        string fullname
+        string role
+        timestamp last_login
+        int login_count
+    }
+    
+    CHAT_HISTORY {
+        uuid id PK
+        uuid user_id FK
+        string prompt
+        text response
+        timestamp created_at
+    }
+    
+    ACHIEVEMENTS {
+        uuid id PK
+        uuid user_id FK
+        string badge_name
+        timestamp unlocked_at
+    }
+    
+    TEAM_REGISTRATIONS {
+        uuid id PK
+        uuid user_id FK
+        string team_name
+        string category
+    }
+
+    USERS ||--o{ CHAT_HISTORY : "memiliki"
+    USERS ||--o{ ACHIEVEMENTS : "mendapatkan"
+    USERS ||--o| TEAM_REGISTRATIONS : "mendaftar"
+```
+
+## Struktur Folder
+```text
 NovaMind/
-├─ index.html
-├─ about.html
-├─ ai-assistant.html
-├─ competition.html
-├─ contact.html
-├─ dashboard.html
-├─ faq.html
-├─ innovators.html
-├─ register.html
-├─ resources.html
-├─ sitemap.xml
-├─ server.js
-├─ config/
-│  ├─ env.js
-│  └─ database.js
-├─ database/
-│  ├─ errors.js
-│  └─ schema.sql
-├─ controllers/
-├─ routes/
-├─ models/
-├─ services/
-├─ package.json
-├─ .env.example
-├─ css/
-│  ├─ variables.css
-│  ├─ style.css
-│  ├─ responsive.css
-│  └─ animation.css
-├─ js/
-│  └─ bundle.js
-├─ assets/
-│  ├─ vendor/
-│  └─ images/
-└─ README.md
+├── assets/              # Logo, gambar, dan file dependency (CSS/JS vendor)
+├── config/              # Validasi environment dan konfigurasi DB
+├── controllers/         # Logika HTTP request dan response API
+├── database/            # Skema SQL Supabase & sistem penanganan error
+├── docs/                # OpenAPI dan dokumentasi gambar
+├── http/                # Helper untuk static file dan JSON routing
+├── middleware/          # Otentikasi, Admin Guard, dan Rate Limiting
+├── models/              # Struktur data dan pemetaan tabel
+├── routes/              # Pendaftaran endpoint API
+├── services/            # Komunikasi ke database Supabase & integrasi AI
+├── *.html               # Halaman UI Frontend
+├── server.js            # Entry point backend utama
+└── README.md            # Dokumentasi utama proyek
 ```
 
-## Features
-- **Multi-Page Architecture**: 10 dedicated HTML pages interconnected with unified styling and logic.
-- **Dynamic Theming (Dark/Light)**: A robust, centrally managed theme toggler synchronized perfectly with Bootstrap 5.3 Color Modes and user `localStorage` preferences.
-- **Interactive AI Demos**: Try our built-in Image Color Classifier directly in your browser.
-- **OpenAI-Powered Assistant**: A server-side Responses API integration with persistent Supabase chat history and web search for current factual questions.
-- **Supabase PostgreSQL Persistence**: Registration profiles, chat history, and daily challenge progress are stored through server-only data services.
-- **Modern Animations**: Powered by GSAP, AOS, and Swiper.js to bring the UI to life smoothly.
-- **Responsive Layout**: Optimized for mobile, tablet, and desktop viewing.
+## Teknologi
+| Lapisan | Teknologi |
+|---|---|
+| Frontend | HTML5, CSS, Bootstrap 5, Vanilla JavaScript |
+| Animasi/Visual | GSAP, ScrollTrigger, Swiper, Chart.js |
+| Backend | Node.js (Vanilla HTTP module) |
+| Database | Supabase PostgreSQL |
+| Authentication | Supabase Auth (JWT, HttpOnly cookies) |
+| Integrasi AI | OpenAI API (gpt-4o-mini) |
 
-## Development & Usage
-- Create a Supabase project and run [`database/schema.sql`](database/schema.sql) in its SQL Editor.
-- Copy `.env.example` to `.env.local`, then set `SUPABASE_URL`,
-  `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `AUTH_REDIRECT_URL`, and a
-  long random `SESSION_SECRET`.
-- Set `OPENAI_API_KEY` to enable the AI assistant.
-- Keep the Supabase service-role key server-side; never place it in HTML or browser JavaScript.
-- Install dependencies with `npm install`.
-- Run `npm start`, then open `http://localhost:4173`.
-- Do not open the HTML files directly when testing database or AI features; their `/api/*` routes are provided by `server.js`.
-- Styling is primarily handled in `css/style.css`, utilizing a strict Design System with custom properties defined in `css/variables.css` (Design tokens for colors, typography, spacing).
-- Core logic, animations, and theme interactivity have been refactored and consolidated into a single, efficient `js/bundle.js` file.
+## Database Supabase
+Skema tersimpan di `database/schema.sql`. Tabel utama:
+- `users`: Profil pengguna, *role*, jumlah akses, waktu login.
+- `chat_history`: Riwayat lengkap dialog AI.
+- `achievements`: Sistem *badge* gamifikasi.
 
-## Backend API
+## Authentication & API Flow
+```mermaid
+sequenceDiagram
+    participant User as Web Client
+    participant API as Node.js API
+    participant Supabase as Supabase Auth
+    
+    User->>API: POST /api/users (Login/Register)
+    API->>Supabase: Verifikasi/Buat User
+    Supabase-->>API: Kembalikan Session JWT
+    API-->>User: Set HttpOnly Cookie (session) + JSON Response
+    
+    User->>API: GET /api/auth/me (Akses Dashboard)
+    API->>API: Middleware baca Cookie Session
+    API-->>User: Data Profil User
+```
 
-Routes delegate HTTP handling to controllers, while all Supabase queries stay in
-the service layer.
+Menggunakan sistem *Session & Cookies*. Autentikasi dilakukan via Supabase, lalu backend mengeluarkan *HttpOnly cookies* (Aman terhadap serangan XSS) ke browser pengguna untuk menjaga sesi login.
 
-- `POST /api/users` — create a user
-- `GET /api/users/:id` — read the current session's user
-- `PUT /api/users/:id` — update the current session's user
-- `DELETE /api/users/:id` — delete the current session's user
-- `POST /api/chat` — create a stored chat, directly or through the AI assistant
-- `GET /api/chat/history` — read stored chat history
-- `DELETE /api/chat/history` — delete all chat history owned by the current user
-- `DELETE /api/chat/:id` — delete a stored chat
-- `GET /api/users/profile` — read the authenticated user's database profile
-- `PUT /api/users/profile` — update the authenticated user's profile
+## Admin Dashboard
+Tersedia halaman khusus Administrator di `admin-dashboard.html`. Halaman ini **hanya** dapat diakses oleh akun yang memiliki hak `role = 'admin'`. Di dalamnya terdapat:
+- Visualisasi metrik total pengguna, total chats, dll (Menggunakan Chart.js).
+- Tabel transparan pengguna terbaru dan interaksi AI terbaru.
 
-Supabase Auth endpoints:
+## Achievement System
+Sistem secara proaktif memantau aktivitas pengguna dan akan membuka kunci *badge* (seperti *First Login*, *Active Learner*, dsb.) saat syarat terpenuhi.
 
-- `POST /api/auth/register` — register and send email verification
-- `POST /api/auth/login` — login and create secure cookie session
-- `POST /api/auth/logout` — revoke and clear the current session
-- `GET /api/auth/me` — read the authenticated user
-- `POST /api/auth/verify-email` — verify an email OTP or token hash
-- `POST /api/auth/resend-verification` — resend signup verification
-- `POST /api/auth/forgot-password` — send password recovery email
-- `POST /api/auth/verify-recovery` — exchange a recovery OTP or token hash for
-  a session
-- `POST /api/auth/reset-password` — set a new password using an authenticated
-  or recovery JWT
+## Cara Install dan Menjalankan (Lokal)
+1. Instal dependensi:
+   ```bash
+   npm install
+   ```
+2. Duplikat file environment:
+   ```bash
+   cp .env.example .env.local
+   ```
+3. Konfigurasi `.env.local` (lihat panduan di bawah).
+4. Mulai server:
+   ```bash
+   npm start
+   ```
+5. Akses di browser: `http://localhost:4173/`
 
-Auth access and refresh tokens are stored in `HttpOnly`, `SameSite=Lax` cookies.
-Set `remember: true` during register or login to persist the refresh cookie for
-30 days; otherwise it remains a browser-session cookie. Passwords are handled
-only by Supabase Auth and are never written to `public.users`.
+## Konfigurasi `.env.local`
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_MODEL=gpt-5.4-mini
 
-The legacy `GET /api/users/me` and `GET /api/chat-history` routes remain available
-for the existing frontend.
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_ANON_KEY=your_anon_key_here
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
+SESSION_SECRET=minimal_32_karakter_acak_dan_panjang
+AUTH_REDIRECT_URL=http://localhost:4173/
+```
+> **Catatan**: Jika `OPENAI_API_KEY` tidak diisi, server tetap akan berjalan, namun fitur AI Assistant akan dinonaktifkan secara otomatis.
 
-Authenticated profiles include `lastLoginAt`, `totalChat`, and `createdAt`.
-Chat creation, history reads, and deletion are scoped exclusively by the
-authenticated profile ID supplied by the server-side middleware.
+## REST API & Dokumentasi (API Docs)
+Setelah server berjalan, dokumentasi OpenAPI (Swagger style) dapat diakses dengan melakukan request ke:
+```text
+GET http://localhost:4173/api/docs
+```
+
+### Security Notes (PENTING)
+1. **Dilarang keras** mengunggah file `.env.local` atau kunci `.env` apapun ke repository publik (GitHub/GitLab). File ini sudah diatur dalam `.gitignore`.
+2. Jika **Supabase Service Role Key** Anda pernah secara tidak sengaja ter-push ke GitHub, segera lakukan rotasi/revoke key tersebut melalui *Dashboard* Supabase -> *Settings* -> *API*.
+3. **Session Secret** wajib menggunakan kata sandi/string acak sepanjang minimal 32 karakter.

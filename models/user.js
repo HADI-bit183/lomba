@@ -100,6 +100,7 @@ function toPublicUser(record) {
     role: record.role,
     lastLoginAt: record.last_login_at || null,
     totalChat: Number(record.total_chat || 0),
+    totalLogin: Number(record.total_login || 0),
     createdAt: record.created_at
   };
 }

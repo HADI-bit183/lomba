@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internal Server Error – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Libraries -->
+  <link rel="preload" href="assets/vendor/css/fonts.css" as="style">
+  <link href="assets/vendor/css/fonts.css" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body class="page-500 d-flex flex-column min-vh-100">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="btn btn-outline-dark ms-auto" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 d-flex align-items-center py-5">
+    <div class="container text-center">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+          <div class="mb-4 text-danger position-relative d-inline-block" style="font-size: 8rem;">
+            <i class="fa-solid fa-server"></i>
+            <i class="fa-solid fa-bolt position-absolute text-warning" style="top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; animation: pulse 2s infinite;"></i>
+          </div>
+          <h1 class="display-1 fw-bold text-body mb-2" style="font-size: 6rem; letter-spacing: -2px;">500</h1>
+          <h2 class="h3 fw-bold mb-3">Internal Server Error</h2>
+          <p class="text-muted mb-5">
+            Oops! Our servers encountered an unexpected issue while processing your request. Please try again later.
+          </p>
+          <div class="d-flex justify-content-center gap-3">
+            <button onclick="window.location.reload()" class="btn btn-outline-primary btn-lg rounded-pill px-4 shadow-sm hover-lift">
+              <i class="fa-solid fa-rotate-right me-2"></i> Reload
+            </button>
+            <a href="index.html" class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm hover-lift">
+              <i class="fa-solid fa-home me-2"></i> Back to Home
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer py-4 glass text-body mt-auto">
+    <div class="container text-center text-muted small">
+      &copy; 2026 NovaMind. All rights reserved.
+    </div>
+  </footer>
+
+  <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script defer src="js/ui-refresh.js"></script>
+  <style>
+    @keyframes pulse {
+      0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+      100% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+    }
+  </style>
+</body>
+</html>

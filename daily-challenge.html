@@ -202,6 +202,8 @@
 
       let totalXP = 0;
 
+      if (typeof window.showLoading === 'function') window.showLoading('Loading Challenge...');
+
       fetch('/api/challenge-progress')
         .then(response => response.ok ? response.json() : null)
         .then(progress => {
@@ -214,6 +216,9 @@
         })
         .catch(() => {
           // Keep the challenge visible so the user can retry.
+        })
+        .finally(() => {
+          if (typeof window.hideLoading === 'function') window.hideLoading();
         });
 
       document.getElementById('btnComplete').addEventListener('click', async function(e) {
@@ -228,6 +233,8 @@
         floatEl.style.left = (e.clientX - rect.left) + 'px';
         floatEl.style.top = (e.clientY - rect.top) + 'px';
         this.parentElement.appendChild(floatEl);
+
+        if (typeof window.showLoading === 'function') window.showLoading('Saving Progress...');
 
         try {
           const response = await fetch('/api/challenge-progress', {
@@ -247,10 +254,12 @@
             totalXP = Number(progress.totalXP) || totalXP;
             document.getElementById('totalXP').textContent = totalXP;
             showSuccessState(true);
+            if (typeof window.hideLoading === 'function') window.hideLoading();
           }, 800);
         } catch (error) {
           this.disabled = false;
           window.alert(error.message);
+          if (typeof window.hideLoading === 'function') window.hideLoading();
         }
       });
 

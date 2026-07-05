@@ -1,6 +1,12 @@
 .DS_Store
+__MACOSX
 .env
+.env.local
+.env.production
 .env.*
 !.env.example
 node_modules/
 npm-debug.log*
+*.log
+cache/
+tmp/

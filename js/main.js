@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const overlay = document.createElement('div');
       overlay.className = 'lightbox-overlay';
-      overlay.innerHTML = `<img src="${item.href}" class="lightbox-img"><span class="close-lightbox">&times;</span>`;
+      overlay.innerHTML = `<img src="${item.href}" class="lightbox-img" alt="Lightbox Image"><span class="close-lightbox">&times;</span>`;
       document.body.appendChild(overlay);
       overlay.querySelector('.close-lightbox').addEventListener('click', () => overlay.remove());
       overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
@@ -221,19 +221,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============ FORM HANDLERS WITH TOAST NOTIFICATIONS ============
-
-  // Toast notification utility
   function showToast(message, type = 'success') {
     // Remove existing toasts
     document.querySelectorAll('.novamind-toast').forEach(t => t.remove());
     
     const toast = document.createElement('div');
     toast.className = `novamind-toast novamind-toast-${type}`;
+    
+    const escapeHTML = (str) => {
+      if (typeof str !== 'string') return str;
+      return str.replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+      }[tag] || tag));
+    };
+
+    const iconClass = type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation';
+    
     toast.innerHTML = `
       <div class="toast-icon">
-        <i class="fa-solid ${type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation'}"></i>
+        <i class="fa-solid ${iconClass}"></i>
       </div>
-      <div class="toast-message">${message}</div>
+      <div class="toast-message">${escapeHTML(message)}</div>
       <button class="toast-close" aria-label="Close notification">&times;</button>
     `;
     document.body.appendChild(toast);
@@ -249,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Auto-dismiss after 4s
     setTimeout(() => {
-      if (toast.parentNode) {
+      if (document.body.contains(toast)) {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 300);
       }

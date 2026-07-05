@@ -64,6 +64,15 @@ test('router exposes all required CRUD endpoints', () => {
   assert.equal(hasRoute('POST', '/api/auth/forgot-password'), true);
   assert.equal(hasRoute('POST', '/api/auth/verify-recovery'), true);
   assert.equal(hasRoute('POST', '/api/auth/reset-password'), true);
+  assert.equal(hasRoute('GET', '/api/health'), true);
+  assert.equal(hasRoute('GET', '/api/ready'), true);
+  assert.equal(hasRoute('GET', '/api/docs'), true);
+  assert.equal(hasRoute('GET', '/api/admin/statistics'), true);
+  assert.equal(hasRoute('GET', '/api/admin/users'), true);
+  assert.equal(hasRoute('GET', '/api/admin/chats'), true);
+  assert.equal(hasRoute('GET', '/api/achievements'), true);
+  assert.equal(hasRoute('POST', '/api/achievements/check'), true);
+  assert.equal(hasRoute('GET', '/api/users/statistics'), true);
 });
 
 test('router returns 405 and Allow for unsupported methods', async () => {
@@ -208,4 +217,39 @@ test('logout is idempotent and clears auth cookies', async () => {
   assert.equal(response.statusCode, 204);
   assert.equal(Array.isArray(response.headers['set-cookie']), true);
   assert.equal(response.headers['set-cookie'].length, 3);
+});
+
+test('API docs are public OpenAPI JSON', async () => {
+  const response = new MockResponse();
+  await routeApiRequest(
+    createRequest('GET'),
+    response,
+    new URL('http://localhost/api/docs')
+  );
+
+  const document = JSON.parse(response.body);
+  assert.equal(response.statusCode, 200);
+  assert.equal(document.openapi, '3.0.3');
+  assert.ok(document.paths['/api/admin/statistics']);
+  assert.ok(document.paths['/api/achievements']);
+  assert.ok(document.paths['/api/users/statistics']);
+});
+
+test('admin, achievement, and statistics endpoints require authentication', async () => {
+  for (const path of [
+    '/api/admin/statistics',
+    '/api/admin/users',
+    '/api/admin/chats',
+    '/api/achievements',
+    '/api/users/statistics'
+  ]) {
+    const response = new MockResponse();
+    await routeApiRequest(
+      createRequest('GET'),
+      response,
+      new URL(`http://localhost${path}`)
+    );
+    assert.equal(response.statusCode, 401);
+    assert.equal(JSON.parse(response.body).code, 'UNAUTHORIZED');
+  }
 });

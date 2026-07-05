@@ -154,7 +154,7 @@
           <div class="unified-card glass p-4 h-100 d-flex flex-column">
             <div class="d-flex justify-content-between align-items-center mb-4">
               <h4 class="fw-bold mb-0">Deck Preview</h4>
-              <button class="btn btn-outline-primary btn-sm rounded-pill px-3" onclick="alert('Downloading PDF... (Dummy)')" id="btnDownload" disabled>
+              <button class="btn btn-secondary" disabled title="Fitur ini sedang dalam tahap pengembangan akhir.">
                 <i class="fa-solid fa-download"></i> Download PDF
               </button>
             </div>
@@ -178,18 +178,30 @@
   <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
   <script src="js/ui-refresh.js"></script>
   <script>
+    function escapeHTML(str) {
+      return str.replace(/[&<>"']/g, function(m) {
+        return {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;'
+        }[m];
+      });
+    }
+
     document.getElementById('deckForm').addEventListener('submit', (e) => {
       e.preventDefault();
       
       const v = {
-        name: document.getElementById('inName').value,
-        problem: document.getElementById('inProblem').value,
-        solution: document.getElementById('inSolution').value,
-        tech: document.getElementById('inTech').value,
-        market: document.getElementById('inMarket').value,
-        business: document.getElementById('inBusiness').value,
-        impact: document.getElementById('inImpact').value,
-        team: document.getElementById('inTeam').value
+        name: escapeHTML(document.getElementById('inName').value),
+        problem: escapeHTML(document.getElementById('inProblem').value),
+        solution: escapeHTML(document.getElementById('inSolution').value),
+        tech: escapeHTML(document.getElementById('inTech').value),
+        market: escapeHTML(document.getElementById('inMarket').value),
+        business: escapeHTML(document.getElementById('inBusiness').value),
+        impact: escapeHTML(document.getElementById('inImpact').value),
+        team: escapeHTML(document.getElementById('inTeam').value)
       };
 
       const container = document.getElementById('slidesContainer');

@@ -116,13 +116,20 @@ if (chatModal) {
   });
   observer.observe(chatModal, { attributes: true, attributeFilter: ['aria-hidden'] });
 }
+function escapeHTML(str) {
+  if (typeof str !== 'string') return str;
+  return str.replace(/[&<>'"]/g, tag => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+  }[tag] || tag));
+}
+
 function appendChatMessage(content, sender = 'bot') {
   const container = document.getElementById('chat-messages');
   if (!container) return;
   const msg = document.createElement('div');
   msg.className = `chat-${sender}`;
   const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  msg.innerHTML = `<span class="chat-text">${content}</span> <span class="chat-time text-muted small">${time}</span>`;
+  msg.innerHTML = `<span class="chat-text">${escapeHTML(content)}</span> <span class="chat-time text-muted small">${time}</span>`;
   container.appendChild(msg);
   container.scrollTop = container.scrollHeight;
 }
