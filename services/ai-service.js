@@ -19,6 +19,17 @@ function normalizeHistory(history) {
 }
 
 function extractResponseText(apiResponse) {
+  const interactionText = String(apiResponse.output_text || '').trim();
+  if (interactionText) return interactionText;
+
+  const generateContentText = (apiResponse.candidates || [])
+    .flatMap(candidate => candidate.content?.parts || [])
+    .map(part => part.text)
+    .filter(Boolean)
+    .join('\n')
+    .trim();
+  if (generateContentText) return generateContentText;
+
   return (apiResponse.steps || [])
     .filter(step => step.type === 'model_output')
     .flatMap(step => step.content || [])
