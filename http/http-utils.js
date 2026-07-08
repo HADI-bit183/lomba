@@ -1,12 +1,41 @@
 const { AppError } = require('../database/errors');
+const env = require('../config/env');
 
 const MAX_BODY_BYTES = 24 * 1024;
+
+function buildContentSecurityPolicy() {
+  const directives = [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "object-src 'none'",
+    "frame-ancestors 'self'",
+    "form-action 'self'",
+    "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com",
+    "font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com",
+    "img-src 'self' data: blob: https:",
+    "connect-src 'self' https://*.supabase.co https://generativelanguage.googleapis.com https://*.googleapis.com",
+    "worker-src 'self'",
+    "manifest-src 'self'"
+  ];
+
+  if (env.nodeEnv === 'production') {
+    directives.push('upgrade-insecure-requests');
+  }
+
+  return directives.join('; ');
+}
 
 function setSecurityHeaders(response) {
   response.setHeader('X-Content-Type-Options', 'nosniff');
   response.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  response.setHeader('Content-Security-Policy', buildContentSecurityPolicy());
   response.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   response.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+
+  if (env.nodeEnv === 'production') {
+    response.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  }
 }
 
 function sendJson(response, statusCode, payload) {
@@ -77,6 +106,7 @@ function readJsonBody(request) {
 }
 
 module.exports = {
+  buildContentSecurityPolicy,
   readJsonBody,
   sendError,
   sendJson,

@@ -29,7 +29,7 @@
   <link href="../css/style.css" rel="stylesheet" />
   <link href="../css/responsive.css" rel="stylesheet" />
   <link href="../css/animation.css" rel="stylesheet" />
-  <link href="../css/refresh.css" rel="stylesheet" />
+  <link href="../css/refresh.css?v=20260708-motion-idle" rel="stylesheet" />
 </head>
 <body>
   <!-- Preloader -->
@@ -59,7 +59,7 @@
           <li class="nav-item"><a class="nav-link" href="#stats">Stats</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
-        <button class="premium-btn ms-3" id="cta-navbar">Join Now</button>
+        <button class="premium-btn ms-3" id="cta-navbar" data-target="#community">Join Now</button>
         <button class="btn btn-outline-light ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
       </div>
     </div>
@@ -73,8 +73,8 @@
         <h1 class="display-4 fw-bold mb-3 hero-title" data-aos="zoom-in">Empowering Global Innovators for an Intelligent Future</h1>
         <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200">Connecting brilliant minds worldwide to create intelligent technologies, sustainable solutions, and a better future for humanity.</p>
         <div class="d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="400">
-          <button class="premium-btn btn-lg" id="cta-hero-primary">Explore Innovations</button>
-          <button class="btn btn-outline-light btn-lg" id="cta-hero-secondary">Join Community</button>
+          <button class="premium-btn btn-lg" id="cta-hero-primary" data-target="#projects">Explore Innovations</button>
+          <button class="btn btn-outline-light btn-lg" id="cta-hero-secondary" data-target="#community">Join Community</button>
         </div>
       </div>
     </section>
@@ -391,7 +391,7 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <!-- Custom JS -->
-  <script src="../js/main.js"></script>
+  <script src="js/experience.js"></script>
   <script src="../js/ui-refresh.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'novamind-cache-v5-ai';
+const CACHE_NAME = 'novamind-cache-v10-recommended-layout';
 const APP_SHELL = [
   './',
   './index.html',
@@ -44,9 +44,27 @@ self.addEventListener('fetch', event => {
     return; // Fallback to default network behavior
   }
 
-  // Cache First for Assets (CSS, JS, Images, Fonts, etc)
-  const isAsset = requestUrl.pathname.match(/\.(css|js|png|jpg|jpeg|svg|woff2?|ttf|eot)$/i);
-  
+  // Network First for CSS/JS so UI fixes are visible immediately after reload.
+  const isCodeAsset = requestUrl.pathname.match(/\.(css|js)$/i);
+
+  if (isCodeAsset) {
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+          }
+          return response;
+        })
+        .catch(() => caches.match(request))
+    );
+    return;
+  }
+
+  // Cache First for static media/fonts.
+  const isAsset = requestUrl.pathname.match(/\.(png|jpg|jpeg|svg|woff2?|ttf|eot)$/i);
+
   if (isAsset) {
     event.respondWith(
       caches.match(request).then(cached => {
