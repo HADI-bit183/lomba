@@ -1,62 +1,85 @@
-const { AppError } = require('../database/errors');
+const { z } = require('zod');
+const { parseOrThrow, validationError } = require('./zod-utils');
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailSchema = z.preprocess(
+  value => typeof value === 'string' ? value.trim().toLowerCase() : value,
+  z.string({
+    invalid_type_error: 'Alamat email tidak valid.',
+    required_error: 'Alamat email tidak valid.'
+  })
+    .email('Alamat email tidak valid.')
+    .max(254, 'Alamat email tidak valid.')
+);
+
+const passwordSchema = z.string({
+  invalid_type_error: 'Password harus berisi 8-128 karakter.',
+  required_error: 'Password harus berisi 8-128 karakter.'
+})
+  .min(8, 'Password harus berisi 8-128 karakter.')
+  .max(128, 'Password harus berisi 8-128 karakter.');
+
+const rememberSchema = z.preprocess(
+  value => value === undefined ? false : value,
+  z.boolean({
+    invalid_type_error: 'Nilai remember harus berupa boolean.'
+  })
+);
+
+const registerSchema = z.object({
+  email: emailSchema,
+  fullname: z.preprocess(
+    value => typeof value === 'string' ? value.trim() : value,
+    z.string({
+      invalid_type_error: 'Nama lengkap tidak valid.',
+      required_error: 'Nama lengkap tidak valid.'
+    })
+      .min(2, 'Nama lengkap tidak valid.')
+      .max(120, 'Nama lengkap tidak valid.')
+  ),
+  password: passwordSchema,
+  remember: rememberSchema
+});
+
+const loginSchema = z.object({
+  email: emailSchema,
+  password: passwordSchema,
+  remember: rememberSchema
+});
+
+const forgotPasswordSchema = z.object({
+  email: emailSchema
+});
+
+const resetPasswordSchema = z.object({
+  password: passwordSchema
+});
 
 function validateEmail(value) {
-  const email = typeof value === 'string' ? value.trim().toLowerCase() : '';
-  if (!EMAIL_PATTERN.test(email) || email.length > 254) {
-    throw new AppError('Alamat email tidak valid.', 400, 'VALIDATION_ERROR');
-  }
-  return email;
+  return parseOrThrow(emailSchema, value);
 }
 
 function validatePassword(value) {
-  if (typeof value !== 'string' || value.length < 8 || value.length > 128) {
-    throw new AppError(
-      'Password harus berisi 8–128 karakter.',
-      400,
-      'VALIDATION_ERROR'
-    );
-  }
-  return value;
+  return parseOrThrow(passwordSchema, value);
 }
 
 function validateRemember(value) {
-  if (value === undefined) return false;
-  if (typeof value !== 'boolean') {
-    throw new AppError('Nilai remember harus berupa boolean.', 400, 'VALIDATION_ERROR');
-  }
-  return value;
+  return parseOrThrow(rememberSchema, value);
 }
 
 function validateRegister(input) {
-  const fullname = typeof input?.fullname === 'string' ? input.fullname.trim() : '';
-  if (fullname.length < 2 || fullname.length > 120) {
-    throw new AppError('Nama lengkap tidak valid.', 400, 'VALIDATION_ERROR');
-  }
-
-  return {
-    email: validateEmail(input.email),
-    fullname,
-    password: validatePassword(input.password),
-    remember: validateRemember(input.remember)
-  };
+  return parseOrThrow(registerSchema, input);
 }
 
 function validateLogin(input) {
-  return {
-    email: validateEmail(input?.email),
-    password: validatePassword(input?.password),
-    remember: validateRemember(input?.remember)
-  };
+  return parseOrThrow(loginSchema, input);
 }
 
 function validateForgotPassword(input) {
-  return { email: validateEmail(input?.email) };
+  return parseOrThrow(forgotPasswordSchema, input);
 }
 
 function validateResetPassword(input) {
-  return { password: validatePassword(input?.password) };
+  return parseOrThrow(resetPasswordSchema, input);
 }
 
 function validateEmailVerification(input) {
@@ -65,12 +88,9 @@ function validateEmailVerification(input) {
   const tokenHash = typeof input?.tokenHash === 'string' ? input.tokenHash.trim() : '';
 
   if ((!email || !token) && !tokenHash) {
-    throw new AppError(
-      'Email dan token, atau tokenHash, wajib diisi.',
-      400,
-      'VALIDATION_ERROR'
-    );
+    throw validationError('Email dan token, atau tokenHash, wajib diisi.');
   }
+
   return {
     email,
     remember: validateRemember(input?.remember),
@@ -84,6 +104,8 @@ module.exports = {
   validateEmailVerification,
   validateForgotPassword,
   validateLogin,
+  validatePassword,
   validateRegister,
+  validateRemember,
   validateResetPassword
 };

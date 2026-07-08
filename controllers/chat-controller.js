@@ -24,7 +24,7 @@ const {
 } = require('../validators/common-validator');
 
 async function create(request, response) {
-  assertNotRateLimited(request);
+  await assertNotRateLimited(request);
   const input = await readJsonBody(request);
   const session = getOrCreateSession(request, response);
   const profileId = request.auth?.profileId || null;
