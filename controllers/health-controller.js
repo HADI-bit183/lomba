@@ -9,10 +9,10 @@ const { sendJson } = require('../http/http-utils');
 function read(request, response) {
   sendJson(response, 200, {
     status: 'ok',
-    aiConfigured: Boolean(env.openAiApiKey),
+    aiConfigured: Boolean(env.geminiApiKey),
     authConfigured: isAuthConfigured(),
     databaseConfigured: isDatabaseConfigured(),
-    model: env.openAiModel
+    model: env.geminiModel
   });
 }
 
@@ -71,7 +71,7 @@ async function readiness(request, response) {
   sendJson(response, ready ? 200 : 503, {
     status: ready ? 'ready' : 'not_ready',
     checks,
-    aiConfigured: Boolean(env.openAiApiKey)
+    aiConfigured: Boolean(env.geminiApiKey)
   });
 }
 

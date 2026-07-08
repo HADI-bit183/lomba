@@ -31,7 +31,7 @@ const {
 } = require('../validators/auth-validator');
 
 async function registerAccount(request, response) {
-  assertNotRateLimited(request);
+  await assertNotRateLimited(request);
   const input = validateRegister(await readJsonBody(request));
   const result = await register(input);
 
@@ -48,7 +48,7 @@ async function registerAccount(request, response) {
 }
 
 async function loginAccount(request, response) {
-  assertNotRateLimited(request);
+  await assertNotRateLimited(request);
   const input = validateLogin(await readJsonBody(request));
   const result = await login(input);
   setAuthSession(response, result.session, input.remember);
@@ -82,7 +82,7 @@ async function me(request, response) {
 }
 
 async function verifyEmailAddress(request, response) {
-  assertNotRateLimited(request);
+  await assertNotRateLimited(request);
   const input = validateEmailVerification(await readJsonBody(request));
   const result = await verifyEmail(input);
   if (result.session) {
@@ -96,7 +96,7 @@ async function verifyEmailAddress(request, response) {
 }
 
 async function resendEmailVerification(request, response) {
-  assertNotRateLimited(request);
+  await assertNotRateLimited(request);
   const { email } = await readJsonBody(request);
   await resendVerification(validateEmail(email));
   sendJson(response, 202, {
@@ -105,7 +105,7 @@ async function resendEmailVerification(request, response) {
 }
 
 async function verifyRecovery(request, response) {
-  assertNotRateLimited(request);
+  await assertNotRateLimited(request);
   const input = validateEmailVerification(await readJsonBody(request));
   const result = await verifyPasswordRecovery(input);
   setAuthSession(response, result.session, input.remember);
@@ -116,7 +116,7 @@ async function verifyRecovery(request, response) {
 }
 
 async function forgotPassword(request, response) {
-  assertNotRateLimited(request);
+  await assertNotRateLimited(request);
   const { email } = validateForgotPassword(await readJsonBody(request));
   await requestPasswordReset(email);
   sendJson(response, 202, {

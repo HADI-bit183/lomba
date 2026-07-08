@@ -38,6 +38,10 @@ module.exports = {
   sessionSecret: process.env.SESSION_SECRET || '',
   authRedirectUrl: process.env.AUTH_REDIRECT_URL ||
     `http://localhost:${Number(process.env.PORT || 4173)}/`,
+  rateLimitMax: Number(process.env.RATE_LIMIT_MAX || 20),
+  rateLimitWindowMs: Number(process.env.RATE_LIMIT_WINDOW_MS || 60_000),
+  redisRestToken: process.env.REDIS_REST_TOKEN || '',
+  redisRestUrl: process.env.REDIS_REST_URL || '',
   supabaseAnonKey: process.env.SUPABASE_ANON_KEY || '',
   supabaseUrl: process.env.SUPABASE_URL || '',
   supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || ''

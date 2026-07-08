@@ -57,12 +57,30 @@ ERROR_WEBHOOK_URL=https://alerts.example/webhook
 When set, server `ERROR` and `FATAL` logs are still written locally and are also
 sent as JSON to the webhook with a short timeout.
 
+Optional shared rate limiting for multi-instance deployments:
+
+```env
+REDIS_REST_URL=https://your-redis-rest-endpoint
+REDIS_REST_TOKEN=...
+RATE_LIMIT_MAX=20
+RATE_LIMIT_WINDOW_MS=60000
+```
+
+If Redis REST is configured, auth/chat/user write endpoints use Redis counters
+so every app instance shares the same rate limit window. Without Redis, the app
+falls back to the in-memory limiter, which is suitable only for one instance.
+
 ## 4. Docker deployment
 
 ```bash
 docker build -t novamind-hub .
 docker run --rm -p 4173:4173 --env-file .env.production novamind-hub
 ```
+
+Migrations are applied from `database/migrations/*.sql` in filename order and
+recorded in `public.schema_migrations`. Keep `database/schema.sql` as the
+readable full-schema snapshot, and add future production changes as new
+versioned files such as `002_add_profile_columns.sql`.
 
 For a Git-based Node host without Docker:
 

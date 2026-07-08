@@ -34,7 +34,7 @@ function requireOwnUser(auth, userId) {
 }
 
 async function create(request, response) {
-  assertNotRateLimited(request);
+  await assertNotRateLimited(request);
   const input = await readJsonBody(request);
   const session = getOrCreateSession(request, response);
   const result = await createUser(input);
