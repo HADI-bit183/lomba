@@ -11,6 +11,7 @@ test('static server allows website pages and required assets', () => {
     '/js/bundle.js',
     '/Administrasi/Guidebook.pdf',
     '/FutureInnovators/index.html',
+    '/FutureInnovators/js/experience.js',
     '/manifest.json',
     '/sw.js'
   ].forEach(pathname => assert.equal(isPublicStaticPath(pathname), true));

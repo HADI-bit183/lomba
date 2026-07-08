@@ -32,9 +32,10 @@ module.exports = {
   port: Number(process.env.PORT || 4173),
   databaseUrl: process.env.DATABASE_URL || '',
   databaseSsl: process.env.DATABASE_SSL !== 'false',
+  errorWebhookUrl: process.env.ERROR_WEBHOOK_URL || '',
   geminiApiKey: process.env.GEMINI_API_KEY || '',
   geminiModel: process.env.GEMINI_MODEL || 'gemini-3.5-flash',
-  sessionSecret: process.env.SESSION_SECRET || process.env.SUPABASE_SERVICE_ROLE_KEY || '',
+  sessionSecret: process.env.SESSION_SECRET || '',
   authRedirectUrl: process.env.AUTH_REDIRECT_URL ||
     `http://localhost:${Number(process.env.PORT || 4173)}/`,
   supabaseAnonKey: process.env.SUPABASE_ANON_KEY || '',

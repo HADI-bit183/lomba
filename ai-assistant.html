@@ -21,7 +21,7 @@
   <link href="css/style.css" rel="stylesheet">
   <link href="css/responsive.css" rel="stylesheet">
   <link href="css/animation.css" rel="stylesheet">
-  <link href="css/refresh.css" rel="stylesheet">
+  <link href="css/refresh.css?v=20260708-motion-idle" rel="stylesheet">
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
@@ -117,12 +117,12 @@
   </nav>
 <main>
     <!-- AI ASSISTANT -->
-    <section class="min-vh-100 d-flex flex-column pt-5 mt-4 position-relative overflow-hidden bg-secondary">
+    <section class="ai-assistant-section d-flex flex-column position-relative">
             
-      <div class="container flex-grow-1 d-flex flex-column position-relative z-1 py-4" style="max-width: 900px;">
+      <div class="ai-assistant-container container flex-grow-1 d-flex flex-column position-relative z-1">
         
         <!-- Header -->
-        <div class="text-center mb-4" data-aos="fade-down">
+        <div class="ai-assistant-header text-center" data-aos="fade-down">
           <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary rounded-circle mb-3 p-2" style="width: 60px; height: 60px;">
             <img src="assets/logo.svg" alt="NovaMind Logo" style="width: 100%; height: auto; object-fit: contain;">
           </div>
@@ -131,17 +131,17 @@
         </div>
 
         <!-- Chat Container -->
-        <div class="unified-card glass flex-grow-1 d-flex flex-column overflow-hidden shadow-lg border-primary border-opacity-25" style="max-height: 60vh;">
+        <div class="ai-chat-card unified-card glass d-flex flex-column overflow-hidden shadow-lg border-primary border-opacity-25">
           
           <!-- Messages Area -->
-          <div id="chatMessages" class="p-4 overflow-auto d-flex flex-column gap-4" style="flex: 1 1 auto; height: 0;">
+          <div id="chatMessages" class="ai-chat-messages overflow-auto d-flex flex-column gap-4">
             
             <!-- AI Welcome Message -->
             <div class="d-flex gap-3 align-items-start">
               <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 p-2 border border-primary border-opacity-25" style="width: 40px; height: 40px;">
                 <img src="assets/logo.svg" alt="NovaMind AI" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
-              <div class="bg-secondary bg-opacity-10 p-3 rounded-4 rounded-top-start-0" style="max-width: 80%;">
+              <div class="ai-message-bubble p-3 rounded-4 rounded-top-start-0">
                 <p class="mb-0 text-body" style="line-height: 1.6;">
                   Hello, Future Innovator! 👋 I'm the NovaMind AI Assistant.<br><br>
                   I'm here to help you navigate the competition. You can ask me questions like:
@@ -157,10 +157,10 @@
           </div>
 
           <!-- Input Area -->
-          <div class="p-3 bg-primary border-top border-secondary border-opacity-25">
-            <form id="chatForm" class="position-relative">
-              <input type="text" id="chatInput" class="form-control form-control-lg rounded-pill pe-5 py-3 border-secondary border-opacity-50 focus-ring" placeholder="Ask NovaMind AI anything..." autocomplete="off">
-              <button type="submit" class="btn btn-primary rounded-circle position-absolute top-50 end-0 translate-middle-y me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;" id="sendBtn">
+          <div class="ai-chat-input-panel border-top border-secondary border-opacity-25">
+            <form id="chatForm" class="ai-chat-form position-relative">
+              <input type="text" id="chatInput" class="ai-chat-input form-control form-control-lg rounded-pill pe-5 py-3 border-secondary border-opacity-50 focus-ring" placeholder="Ask NovaMind AI anything..." autocomplete="off">
+              <button type="submit" class="ai-send-btn btn btn-primary rounded-circle position-absolute top-50 end-0 translate-middle-y me-2 d-flex align-items-center justify-content-center" id="sendBtn">
                 <i class="fa-solid fa-paper-plane"></i>
               </button>
             </form>
@@ -175,17 +175,132 @@
     </section>
 
     <style>
+      .ai-assistant-section {
+        background:
+          radial-gradient(circle at 18% 16%, rgba(101, 88, 245, 0.22), transparent 34%),
+          radial-gradient(circle at 86% 22%, rgba(8, 185, 199, 0.18), transparent 32%),
+          var(--gradient-hero);
+        min-height: calc(100vh - 104px);
+        overflow-x: hidden;
+        padding: clamp(0.5rem, 1.4vw, 1.25rem) 0 clamp(2.5rem, 5vw, 4rem);
+      }
+
+      .ai-assistant-container {
+        max-width: 900px;
+        padding-top: clamp(0.25rem, 1.2vw, 1rem);
+        padding-bottom: 1rem;
+      }
+
+      .ai-assistant-header {
+        margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+      }
+
+      .ai-chat-card {
+        flex: 0 0 auto;
+        height: clamp(560px, calc(100vh - 250px), 760px);
+        min-height: 0;
+      }
+
+      .ai-chat-messages {
+        flex: 1 1 auto;
+        min-height: 0;
+        overscroll-behavior: contain;
+        padding: clamp(1rem, 2.6vw, 1.5rem);
+      }
+
+      .ai-message-bubble {
+        background: color-mix(in srgb, var(--surface) 74%, transparent);
+        border: 1px solid var(--border);
+        color: var(--text-primary) !important;
+        max-width: min(80%, 620px);
+      }
+
+      .ai-message-bubble p,
+      .ai-message-bubble li,
+      .ai-message-bubble strong {
+        color: inherit !important;
+      }
+
+      :root.dark-theme .ai-message-bubble {
+        background: rgba(245, 244, 251, 0.08);
+        border-color: rgba(188, 188, 218, 0.18);
+        color: #f5f4fb !important;
+      }
+
+      .ai-user-bubble {
+        background: var(--gradient-primary);
+        box-shadow: 0 10px 26px rgba(101, 88, 245, 0.22);
+        color: var(--text-on-accent);
+        max-width: min(80%, 620px);
+      }
+
+      .ai-user-bubble p {
+        color: inherit;
+      }
+
+      .ai-chat-input-panel {
+        background: color-mix(in srgb, var(--surface) 88%, transparent);
+        flex: 0 0 auto;
+        padding: 1rem clamp(1rem, 2.6vw, 1.5rem) 1.1rem;
+      }
+
+      .ai-chat-form {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-full);
+        box-shadow: var(--shadow-sm);
+        padding: 0.35rem;
+      }
+
+      .ai-chat-input {
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        color: var(--text-primary) !important;
+        min-height: 54px;
+      }
+
+      .ai-chat-input::placeholder {
+        color: var(--text-muted);
+      }
+
+      .ai-send-btn {
+        height: 44px;
+        width: 44px;
+      }
+
       .suggestion-chip {
         display: inline-block;
         padding: 5px 12px;
-        background: var(--color-primary-light, var(--primary));
+        background: var(--primary-soft);
+        border: 1px solid color-mix(in srgb, var(--primary) 34%, transparent);
         border-radius: 20px;
         margin-right: 5px;
+        margin-top: 0.35rem;
         transition: all 0.2s;
       }
       .suggestion-chip:hover {
         background: var(--primary);
         color: white !important;
+      }
+
+      @media (max-width: 575.98px) {
+        .ai-assistant-section {
+          min-height: calc(100vh - 88px);
+          padding-top: 1rem;
+        }
+
+        .ai-chat-card {
+          height: clamp(540px, calc(100vh - 190px), 700px);
+        }
+
+        .ai-message-bubble {
+          max-width: calc(100% - 52px);
+        }
+
+        .ai-chat-input-panel {
+          padding: 0.85rem;
+        }
       }
       
       .typing-indicator {
@@ -243,8 +358,8 @@
 
           const bubble = document.createElement('div');
           bubble.className = isUser
-            ? 'bg-primary text-primary p-3 rounded-4 rounded-top-end-0'
-            : 'bg-secondary bg-opacity-10 p-3 rounded-4 rounded-top-start-0 text-body';
+            ? 'ai-user-bubble p-3 rounded-4 rounded-top-end-0'
+            : 'ai-message-bubble p-3 rounded-4 rounded-top-start-0';
           bubble.style.maxWidth = '80%';
 
           const messageText = document.createElement('p');
@@ -292,7 +407,7 @@
             <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 p-2 border border-primary border-opacity-25" style="width: 40px; height: 40px;">
               <img src="assets/logo.svg" alt="AI" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
-            <div class="bg-secondary bg-opacity-10 p-3 rounded-4 rounded-top-start-0 d-flex align-items-center" style="height: 48px;">
+            <div class="ai-message-bubble p-3 rounded-4 rounded-top-start-0 d-flex align-items-center" style="height: 48px;">
               <div class="typing-indicator">
                 <span></span><span></span><span></span>
               </div>

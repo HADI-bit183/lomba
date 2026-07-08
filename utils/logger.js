@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const env = require('../config/env');
 
 const logDir = path.join(__dirname, '..', 'logs');
 if (!fs.existsSync(logDir)) {
@@ -31,6 +32,39 @@ function writeLog(level, message, meta) {
   fs.appendFile(logFile, formatted, (err) => {
     if (err) process.stderr.write(`Failed to write to log file: ${err.message}\n`);
   });
+
+  if ((level === 'ERROR' || level === 'FATAL') && env.errorWebhookUrl) {
+    notifyErrorWebhook(level, message, meta).catch(error => {
+      process.stderr.write(`Failed to notify error webhook: ${error.message}\n`);
+    });
+  }
+}
+
+async function notifyErrorWebhook(level, message, meta) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 3000);
+
+  try {
+    const response = await fetch(env.errorWebhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        service: 'novamind-hub',
+        environment: env.nodeEnv,
+        level,
+        message,
+        meta,
+        timestamp: getTimestamp()
+      }),
+      signal: controller.signal
+    });
+
+    if (!response.ok) {
+      throw new Error(`Webhook responded with ${response.status}`);
+    }
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 const logger = {

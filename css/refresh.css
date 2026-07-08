@@ -807,6 +807,21 @@ body:not(.page-home) main > section:first-child .display-6 {
   color: transparent !important;
 }
 
+#faqSearchInput {
+  background: var(--surface) !important;
+  color: var(--text-primary) !important;
+  caret-color: var(--primary);
+}
+
+#faqSearchInput::placeholder {
+  color: var(--text-muted) !important;
+}
+
+:root.dark-theme #faqSearchInput {
+  background: rgba(21, 22, 36, 0.92) !important;
+  color: #f5f4fb !important;
+}
+
 .form-check-input:checked {
   border-color: var(--primary);
   background-color: var(--primary);
@@ -1020,6 +1035,61 @@ body:not(.page-home) main > section:first-child .display-6 {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  position: relative;
+  transition: background var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), color var(--transition-base), transform var(--transition-base);
+}
+
+.footer .social-links a::before,
+.footer .d-flex.gap-3 a::before {
+  background: linear-gradient(135deg, rgba(101, 88, 245, 0.92), rgba(8, 185, 199, 0.82));
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  opacity: 0;
+  position: absolute;
+  transform: scale(0.72) rotate(-10deg);
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.footer .social-links a i,
+.footer .d-flex.gap-3 a i {
+  position: relative;
+  z-index: 1;
+  transition: transform var(--transition-base), color var(--transition-base);
+}
+
+.footer .social-links a:hover,
+.footer .social-links a:focus-visible,
+.footer .d-flex.gap-3 a:hover,
+.footer .d-flex.gap-3 a:focus-visible {
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 14px 34px rgba(101, 88, 245, 0.28);
+  color: #ffffff !important;
+  transform: translateY(-4px);
+}
+
+.footer .social-links a:hover::before,
+.footer .social-links a:focus-visible::before,
+.footer .d-flex.gap-3 a:hover::before,
+.footer .d-flex.gap-3 a:focus-visible::before {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.footer .social-links a:hover i,
+.footer .social-links a:focus-visible i,
+.footer .d-flex.gap-3 a:hover i,
+.footer .d-flex.gap-3 a:focus-visible i {
+  animation: social-icon-pop 520ms var(--ease-spring);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+@keyframes social-icon-pop {
+  0% { transform: scale(0.86) rotate(-8deg); }
+  60% { transform: scale(1.18) rotate(5deg); }
+  100% { transform: scale(1.08) rotate(0deg); }
 }
 
 /* Preloader */
@@ -2396,15 +2466,56 @@ input[type="file"]::file-selector-button {
   transition:
     color var(--transition-fast),
     border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
     background var(--transition-fast),
     transform var(--transition-fast);
 }
 
 .footer .social-links a:hover,
-.footer .d-flex.gap-3 a:hover {
+.footer .social-links a:focus-visible,
+.footer .d-flex.gap-3 a:hover,
+.footer .d-flex.gap-3 a:focus-visible {
   border-color: rgba(54, 209, 216, 0.4);
   background: rgba(54, 209, 216, 0.1);
+  box-shadow: 0 14px 34px rgba(54, 209, 216, 0.22);
+  color: #ffffff !important;
   transform: translateY(-4px) rotate(-3deg);
+}
+
+.footer .social-links a:hover i,
+.footer .social-links a:focus-visible i,
+.footer .d-flex.gap-3 a:hover i,
+.footer .d-flex.gap-3 a:focus-visible i {
+  animation: social-icon-pop 520ms var(--ease-spring);
+}
+
+.footer a[aria-label*="Discord"]:hover,
+.footer a[aria-label*="Discord"]:focus-visible {
+  border-color: rgba(88, 101, 242, 0.72);
+  background: rgba(88, 101, 242, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(88, 101, 242, 0.26),
+    0 14px 34px rgba(88, 101, 242, 0.34);
+}
+
+.footer a[aria-label*="Discord"]:hover::before,
+.footer a[aria-label*="Discord"]:focus-visible::before {
+  background: linear-gradient(135deg, #5865f2, #8a7eff);
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.footer a[aria-label*="Discord"]:hover i,
+.footer a[aria-label*="Discord"]:focus-visible i {
+  animation: discord-bounce 720ms var(--ease-spring);
+  color: #ffffff;
+}
+
+@keyframes discord-bounce {
+  0% { transform: translateY(0) scale(0.9) rotate(-6deg); }
+  45% { transform: translateY(-3px) scale(1.18) rotate(4deg); }
+  72% { transform: translateY(1px) scale(1.04) rotate(-2deg); }
+  100% { transform: translateY(0) scale(1.1) rotate(0deg); }
 }
 
 /* Progressive reveal */
@@ -2502,6 +2613,308 @@ input[type="file"]::file-selector-button {
 
 @keyframes nm-rule-grow {
   from { width: 0; opacity: 0; }
+}
+
+/* Global motion pack */
+main .row > [class*="col"] > .unified-card,
+main .row > [class*="col"] > .card,
+main .row > [class*="col"] > .glass-card,
+main .row > [class*="col"] > .pricing-card,
+main .row > [class*="col"] > .pricing-card-pro,
+main .row > [class*="col"] > .region-stat-card,
+main .row > [class*="col"] > .timeline-content,
+main .resource-card,
+main .category-card,
+main .team-card,
+main .membership-card,
+main .testimonial-card,
+main .stat-card,
+main .eval-card,
+main .analysis-card,
+main .quiz-card,
+main .badge-card {
+  animation: nm-card-enter 720ms var(--ease-out) both;
+  transform-origin: center bottom;
+}
+
+main .row > [class*="col"]:nth-child(2) > .unified-card,
+main .row > [class*="col"]:nth-child(2) > .card,
+main .row > [class*="col"]:nth-child(2) > .glass-card,
+main .row > [class*="col"]:nth-child(2) > .pricing-card,
+main .row > [class*="col"]:nth-child(2) > .pricing-card-pro,
+main .row > [class*="col"]:nth-child(2) > .region-stat-card,
+main .row > [class*="col"]:nth-child(2) > .timeline-content { animation-delay: 70ms; }
+
+main .row > [class*="col"]:nth-child(3) > .unified-card,
+main .row > [class*="col"]:nth-child(3) > .card,
+main .row > [class*="col"]:nth-child(3) > .glass-card,
+main .row > [class*="col"]:nth-child(3) > .pricing-card,
+main .row > [class*="col"]:nth-child(3) > .pricing-card-pro,
+main .row > [class*="col"]:nth-child(3) > .region-stat-card,
+main .row > [class*="col"]:nth-child(3) > .timeline-content { animation-delay: 140ms; }
+
+main .row > [class*="col"]:nth-child(4) > .unified-card,
+main .row > [class*="col"]:nth-child(4) > .card,
+main .row > [class*="col"]:nth-child(4) > .glass-card,
+main .row > [class*="col"]:nth-child(4) > .pricing-card,
+main .row > [class*="col"]:nth-child(4) > .pricing-card-pro,
+main .row > [class*="col"]:nth-child(4) > .region-stat-card,
+main .row > [class*="col"]:nth-child(4) > .timeline-content { animation-delay: 210ms; }
+
+main .row > [class*="col"]:nth-child(5) > .unified-card,
+main .row > [class*="col"]:nth-child(5) > .card,
+main .row > [class*="col"]:nth-child(5) > .glass-card,
+main .row > [class*="col"]:nth-child(5) > .pricing-card,
+main .row > [class*="col"]:nth-child(5) > .pricing-card-pro,
+main .row > [class*="col"]:nth-child(5) > .region-stat-card,
+main .row > [class*="col"]:nth-child(5) > .timeline-content { animation-delay: 280ms; }
+
+main .row > [class*="col"]:nth-child(6) > .unified-card,
+main .row > [class*="col"]:nth-child(6) > .card,
+main .row > [class*="col"]:nth-child(6) > .glass-card,
+main .row > [class*="col"]:nth-child(6) > .pricing-card,
+main .row > [class*="col"]:nth-child(6) > .pricing-card-pro,
+main .row > [class*="col"]:nth-child(6) > .region-stat-card,
+main .row > [class*="col"]:nth-child(6) > .timeline-content { animation-delay: 350ms; }
+
+main .row > [class*="col"] > .unified-card:hover,
+main .row > [class*="col"] > .card:hover,
+main .row > [class*="col"] > .glass-card:hover,
+main .resource-card:hover,
+main .category-card:hover,
+main .team-card:hover,
+main .membership-card:hover,
+main .testimonial-card:hover,
+main .stat-card:hover,
+main .eval-card:hover,
+main .analysis-card:hover,
+main .quiz-card:hover,
+main .badge-card:hover {
+  border-color: color-mix(in srgb, var(--primary) 42%, var(--border)) !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 28px 68px rgba(101, 88, 245, 0.18) !important;
+  transform: translateY(-9px);
+}
+
+main .unified-card i[class*="fa-"],
+main .card i[class*="fa-"],
+main .glass-card i[class*="fa-"],
+main .resource-card i[class*="fa-"],
+main .category-card i[class*="fa-"],
+main .team-card i[class*="fa-"],
+main .membership-card i[class*="fa-"],
+main .stat-card i[class*="fa-"],
+main .badge-card i[class*="fa-"] {
+  transition: filter var(--transition-base), transform var(--transition-base);
+}
+
+main .unified-card:hover i[class*="fa-"],
+main .card:hover i[class*="fa-"],
+main .glass-card:hover i[class*="fa-"],
+main .resource-card:hover i[class*="fa-"],
+main .category-card:hover i[class*="fa-"],
+main .team-card:hover i[class*="fa-"],
+main .membership-card:hover i[class*="fa-"],
+main .stat-card:hover i[class*="fa-"],
+main .badge-card:hover i[class*="fa-"] {
+  filter: drop-shadow(0 16px 24px rgba(101, 88, 245, 0.26));
+  transform: translateY(-4px) scale(1.1) rotate(-3deg);
+}
+
+main .btn-primary,
+main .premium-btn,
+main .btn-gradient,
+main .btn.bg-primary {
+  overflow: hidden;
+  position: relative;
+}
+
+main .btn-primary::after,
+main .premium-btn::after,
+main .btn-gradient::after,
+main .btn.bg-primary::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), transparent);
+  content: "";
+  inset: 0 auto 0 -58%;
+  position: absolute;
+  transform: skewX(-18deg);
+  transition: left 720ms var(--ease-out);
+  width: 44%;
+}
+
+main .btn-primary:hover::after,
+main .premium-btn:hover::after,
+main .btn-gradient:hover::after,
+main .btn.bg-primary:hover::after {
+  left: 120%;
+}
+
+main .form-control,
+main .form-select,
+main .filter-btn,
+main .btn-outline-primary {
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    color var(--transition-base),
+    background var(--transition-base),
+    transform var(--transition-base);
+}
+
+main .form-control:hover,
+main .form-select:hover,
+main .filter-btn:hover,
+main .btn-outline-primary:hover {
+  transform: translateY(-2px);
+}
+
+main .progress-bg,
+main .progress,
+main .quiz-progress-track {
+  overflow: hidden;
+  position: relative;
+}
+
+main .progress-bg::after,
+main .progress::after,
+main .quiz-progress-track::after {
+  animation: nm-progress-shine 3.2s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  content: "";
+  inset: 0 auto 0 -38%;
+  position: absolute;
+  width: 34%;
+}
+
+main .unified-card::after,
+main .card::after,
+main .glass-card::after,
+main .resource-card::after,
+main .category-card::after,
+main .team-card::after,
+main .membership-card::after,
+main .testimonial-card::after,
+main .stat-card::after,
+main .badge-card::after {
+  animation: nm-surface-glow 6.5s ease-in-out infinite;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(101, 88, 245, 0.16), transparent 34%),
+    radial-gradient(circle at 84% 20%, rgba(8, 185, 199, 0.12), transparent 30%);
+  content: "";
+  inset: 0;
+  opacity: 0.28;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+  z-index: 0;
+}
+
+main .unified-card:hover::after,
+main .card:hover::after,
+main .glass-card:hover::after,
+main .resource-card:hover::after,
+main .category-card:hover::after,
+main .team-card:hover::after,
+main .membership-card:hover::after,
+main .testimonial-card:hover::after,
+main .stat-card:hover::after,
+main .badge-card:hover::after {
+  opacity: 0.52;
+  transform: scale(1.04);
+}
+
+main .unified-card > *,
+main .card > *,
+main .glass-card > *,
+main .resource-card > *,
+main .category-card > *,
+main .team-card > *,
+main .membership-card > *,
+main .testimonial-card > *,
+main .stat-card > *,
+main .badge-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+main .feature-icon,
+main .contact-icon-wrapper,
+main .resource-icon,
+main .category-icon,
+main .badge-icon,
+main .unified-card > i[class*="fa-"],
+main .card > i[class*="fa-"],
+main .glass-card > i[class*="fa-"],
+main .resource-card > i[class*="fa-"],
+main .category-card > i[class*="fa-"],
+main .stat-card > i[class*="fa-"] {
+  animation: nm-idle-float 3.8s ease-in-out infinite;
+}
+
+main .row > [class*="col"]:nth-child(2n) .feature-icon,
+main .row > [class*="col"]:nth-child(2n) .contact-icon-wrapper,
+main .row > [class*="col"]:nth-child(2n) .resource-icon,
+main .row > [class*="col"]:nth-child(2n) .category-icon,
+main .row > [class*="col"]:nth-child(2n) .badge-icon,
+main .row > [class*="col"]:nth-child(2n) > .unified-card > i[class*="fa-"],
+main .row > [class*="col"]:nth-child(2n) > .card > i[class*="fa-"] {
+  animation-delay: -1.3s;
+}
+
+main .row > [class*="col"]:nth-child(3n) .feature-icon,
+main .row > [class*="col"]:nth-child(3n) .contact-icon-wrapper,
+main .row > [class*="col"]:nth-child(3n) .resource-icon,
+main .row > [class*="col"]:nth-child(3n) .category-icon,
+main .row > [class*="col"]:nth-child(3n) .badge-icon,
+main .row > [class*="col"]:nth-child(3n) > .unified-card > i[class*="fa-"],
+main .row > [class*="col"]:nth-child(3n) > .card > i[class*="fa-"] {
+  animation-delay: -2.4s;
+}
+
+main .feature-icon::before,
+main .contact-icon-wrapper::before,
+main .resource-icon::before,
+main .category-icon::before {
+  animation: nm-icon-aura 2.8s ease-in-out infinite;
+}
+
+@keyframes nm-card-enter {
+  from { opacity: 0; transform: translateY(32px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes nm-progress-shine {
+  0%, 46% { left: -38%; }
+  78%, 100% { left: 124%; }
+}
+
+@keyframes nm-surface-glow {
+  0%, 100% { opacity: 0.18; transform: translate3d(0, 0, 0) scale(1); }
+  50% { opacity: 0.36; transform: translate3d(0, -6px, 0) scale(1.02); }
+}
+
+@keyframes nm-idle-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(-2deg); }
+}
+
+@keyframes nm-icon-aura {
+  0%, 100% { opacity: 0.18; transform: scale(0.92); }
+  50% { opacity: 0.42; transform: scale(1.08); }
+}
+
+:root:not(.dark-theme) main .unified-card::after,
+:root:not(.dark-theme) main .card::after,
+:root:not(.dark-theme) main .glass-card::after,
+:root:not(.dark-theme) main .resource-card::after,
+:root:not(.dark-theme) main .category-card::after,
+:root:not(.dark-theme) main .team-card::after,
+:root:not(.dark-theme) main .membership-card::after,
+:root:not(.dark-theme) main .testimonial-card::after,
+:root:not(.dark-theme) main .stat-card::after,
+:root:not(.dark-theme) main .badge-card::after {
+  opacity: 0.14;
 }
 
 /* Responsive experience */

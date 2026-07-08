@@ -14,7 +14,7 @@
   <link href="css/style.css" rel="stylesheet">
   <link href="css/responsive.css" rel="stylesheet">
   <link href="css/animation.css" rel="stylesheet">
-  <link href="css/refresh.css" rel="stylesheet">
+  <link href="css/refresh.css?v=20260708-motion-idle" rel="stylesheet">
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -108,7 +108,7 @@
 
       <div class="row justify-content-center mb-5">
         <div class="col-md-6 col-lg-4">
-          <select id="fieldSelect" class="form-select form-select-lg bg-transparent shadow-sm">
+          <select id="fieldSelect" class="mentor-filter form-select form-select-lg bg-transparent shadow-sm">
             <option value="All">All Fields</option>
             <option value="Artificial Intelligence">Artificial Intelligence</option>
             <option value="Mobile Development">Mobile Development</option>
@@ -134,6 +134,199 @@
 
   <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
   <script src="js/ui-refresh.js"></script>
+  <style>
+    .page-mentor main .text-center.mb-5 {
+      animation: mentorHeroIn 720ms var(--ease-out) both;
+    }
+
+    .mentor-filter {
+      transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+    }
+
+    .mentor-filter:hover,
+    .mentor-filter:focus {
+      border-color: var(--primary) !important;
+      box-shadow: 0 16px 34px rgba(101, 88, 245, 0.16) !important;
+      transform: translateY(-2px);
+    }
+
+    .mentor-card-premium {
+      animation: mentorCardIn 720ms var(--ease-out) both;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      position: relative;
+      transform-origin: center bottom;
+      transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+    }
+
+    .mentor-card-premium::before {
+      background: radial-gradient(circle at 50% 0%, rgba(101, 88, 245, 0.18), transparent 58%);
+      content: "";
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      transition: opacity var(--transition-base);
+    }
+
+    .mentor-card-premium:hover {
+      border-color: color-mix(in srgb, var(--primary) 42%, var(--border));
+      box-shadow: 0 26px 60px rgba(101, 88, 245, 0.2);
+      transform: translateY(-10px);
+    }
+
+    .mentor-card-premium:hover::before {
+      opacity: 1;
+    }
+
+    .mentor-card-strip {
+      background: var(--gradient-primary);
+      height: 80px;
+      inset: 0 0 auto;
+      opacity: 0.1;
+      position: absolute;
+      transition: opacity var(--transition-base), transform var(--transition-base);
+    }
+
+    .mentor-card-premium:hover .mentor-card-strip {
+      opacity: 0.18;
+      transform: scaleY(1.08);
+    }
+
+    .mentor-avatar-ring {
+      animation: mentorRingPulse 3.4s ease-in-out infinite;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: inline-block;
+      padding: 3px;
+      transition: transform var(--transition-base), filter var(--transition-base);
+    }
+
+    .mentor-card-premium:hover .mentor-avatar-ring {
+      filter: drop-shadow(0 14px 22px rgba(101, 88, 245, 0.32));
+      transform: translateY(-5px) scale(1.04) rotate(-2deg);
+    }
+
+    .mentor-avatar-img {
+      border: 4px solid var(--surface);
+      height: 104px;
+      object-fit: cover;
+      position: relative;
+      width: 104px;
+      z-index: 1;
+    }
+
+    .mentor-online-dot {
+      animation: mentorOnlinePulse 2.2s ease-out infinite;
+      background-color: var(--success);
+      border: 4px solid var(--surface);
+      height: 22px;
+      width: 22px;
+      z-index: 2;
+    }
+
+    .mentor-field {
+      color: var(--primary);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .mentor-meta-pill,
+    .mentor-rating-pill,
+    .mentor-skill-chip {
+      transition: background var(--transition-base), border-color var(--transition-base), color var(--transition-base), transform var(--transition-base);
+    }
+
+    .mentor-meta-pill {
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .mentor-rating-pill {
+      background: rgba(233, 162, 59, 0.15);
+      color: var(--warning);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .mentor-skill-chip {
+      background: var(--primary-soft);
+      border: 1px solid rgba(101, 88, 245, 0.2);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .mentor-card-premium:hover .mentor-meta-pill,
+    .mentor-card-premium:hover .mentor-rating-pill,
+    .mentor-card-premium:hover .mentor-skill-chip {
+      transform: translateY(-2px);
+    }
+
+    .mentor-connect-btn {
+      background: var(--gradient-primary);
+      border: none;
+      color: white;
+      overflow: hidden;
+      padding: 0.75rem 1.5rem;
+      position: relative;
+      transition: box-shadow var(--transition-base), transform var(--transition-base), opacity var(--transition-base);
+    }
+
+    .mentor-connect-btn::after {
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.38), transparent);
+      content: "";
+      inset: 0 auto 0 -60%;
+      position: absolute;
+      transform: skewX(-18deg);
+      transition: left 700ms var(--ease-out);
+      width: 42%;
+    }
+
+    .mentor-connect-btn:hover {
+      box-shadow: 0 18px 34px rgba(101, 88, 245, 0.28);
+      opacity: 0.96;
+      transform: translateY(-3px);
+    }
+
+    .mentor-connect-btn:hover::after {
+      left: 120%;
+    }
+
+    @keyframes mentorHeroIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes mentorCardIn {
+      from { opacity: 0; transform: translateY(34px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes mentorRingPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(101, 88, 245, 0.28); }
+      50% { box-shadow: 0 0 0 8px rgba(101, 88, 245, 0); }
+    }
+
+    @keyframes mentorOnlinePulse {
+      0% { box-shadow: 0 0 0 0 rgba(22, 167, 120, 0.42); }
+      70%, 100% { box-shadow: 0 0 0 10px rgba(22, 167, 120, 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .page-mentor main .text-center.mb-5,
+      .mentor-card-premium,
+      .mentor-avatar-ring,
+      .mentor-online-dot {
+        animation: none !important;
+      }
+    }
+  </style>
   <script>
     const mentors = [
       { name: "Dr. Alan Turing", field: "Artificial Intelligence", exp: "15 Years", skills: ["Machine Learning", "Neural Networks"], rating: 4.9, img: "https://i.pravatar.cc/150?img=11" },
@@ -160,21 +353,33 @@
       filtered.forEach((m, index) => {
         container.innerHTML += `
           <div class="col-md-6 col-lg-4">
-            <div class="unified-card glass p-4 text-center mentor-card h-100" style="animation-delay: ${index * 0.1}s">
-              <img src="${m.img}" alt="${m.name}" class="avatar mb-3">
-              <h5 class="fw-bold mb-1">${m.name}</h5>
-              <p class="text-primary small fw-semibold mb-2">${m.field}</p>
+            <div class="p-4 text-center h-100 d-flex flex-column mentor-card-premium" style="animation-delay: ${index * 0.1}s;">
+              <div class="mentor-card-strip"></div>
+
+              <div class="position-relative d-inline-block mx-auto mb-3 mt-3">
+                <div class="mentor-avatar-ring">
+                  <img src="${m.img}" alt="${m.name}" class="mentor-avatar-img rounded-circle shadow-sm">
+                </div>
+                <span class="mentor-online-dot position-absolute bottom-0 end-0 rounded-circle" title="Online"></span>
+              </div>
+
+              <h5 class="fw-bold mb-1" style="color: var(--text-primary); font-size: 1.25rem;">${m.name}</h5>
+              <p class="mentor-field mb-3">${m.field}</p>
               
-              <div class="d-flex justify-content-center gap-2 mb-3">
-                <span class="badge bg-secondary bg-opacity-10 text-body"><i class="fa-solid fa-briefcase me-1"></i> ${m.exp}</span>
-                <span class="badge bg-warning bg-opacity-10 text-warning"><i class="fa-solid fa-star me-1"></i> ${m.rating}</span>
+              <div class="d-flex justify-content-center gap-3 mb-4">
+                <div class="mentor-meta-pill d-flex align-items-center px-3 py-1 rounded-pill">
+                  <i class="fa-solid fa-briefcase text-muted me-2"></i> ${m.exp}
+                </div>
+                <div class="mentor-rating-pill d-flex align-items-center px-3 py-1 rounded-pill">
+                  <i class="fa-solid fa-star me-2"></i> ${m.rating}
+                </div>
               </div>
               
-              <div class="mb-4">
-                ${m.skills.map(s => `<span class="badge bg-primary bg-opacity-10 text-primary me-1 mb-1">${s}</span>`).join('')}
+              <div class="mb-4 d-flex flex-wrap justify-content-center gap-2">
+                ${m.skills.map(s => `<span class="mentor-skill-chip px-3 py-1 rounded-pill">${s}</span>`).join('')}
               </div>
               
-              <button class="btn btn-outline-primary rounded-pill w-100 mt-auto">Connect</button>
+              <button class="mentor-connect-btn btn w-100 mt-auto rounded-pill fw-semibold shadow-sm">Connect with Mentor</button>
             </div>
           </div>
         `;

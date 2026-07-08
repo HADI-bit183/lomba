@@ -19,7 +19,7 @@
   <link href="css/style.css" rel="stylesheet">
   <link href="css/responsive.css" rel="stylesheet">
   <link href="css/animation.css" rel="stylesheet">
-  <link href="css/refresh.css" rel="stylesheet">
+  <link href="css/refresh.css?v=20260708-motion-idle" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
   <script>
     (function() {
@@ -126,7 +126,7 @@
       </div>
 
       <!-- Badges Grid -->
-      <div class="row g-4" id="badges-container">
+      <div class="row g-4 justify-content-center" id="badges-container">
         <!-- Will be populated by JS -->
       </div>
     </div>
@@ -140,6 +140,219 @@
 
   <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
   <script defer src="js/ui-refresh.js"></script>
+  <style>
+    .page-achievements .text-center.mb-5,
+    .page-achievements .row.justify-content-center.mb-5 {
+      animation: achievementRise 720ms var(--ease-out) both;
+    }
+
+    .page-achievements .row.justify-content-center.mb-5 {
+      animation-delay: 120ms;
+    }
+
+    .page-achievements .progress-bg {
+      background: color-mix(in srgb, var(--surface) 74%, var(--bg-secondary));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .page-achievements .progress-bg::after {
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+      content: "";
+      inset: 0 auto 0 -35%;
+      position: absolute;
+      width: 30%;
+      animation: achievementProgressShine 2.8s ease-in-out infinite;
+    }
+
+    .page-achievements .progress-bar-custom {
+      animation: achievementProgressFill 900ms var(--ease-out) both;
+      background: linear-gradient(90deg, var(--success), var(--accent), var(--primary));
+      box-shadow: 0 0 22px rgba(22, 167, 120, 0.3);
+    }
+
+    .achievement-badge-card {
+      animation: achievementCardIn 720ms var(--ease-out) both;
+      display: flex;
+      flex-direction: column;
+      isolation: isolate;
+      min-height: 320px;
+      overflow: hidden;
+      position: relative;
+      transform-origin: center bottom;
+      transition: border-color var(--transition-base), box-shadow var(--transition-base), filter var(--transition-base), opacity var(--transition-base), transform var(--transition-base);
+    }
+
+    .achievement-badge-card::before {
+      background: radial-gradient(circle at 50% 0%, rgba(101, 88, 245, 0.22), transparent 62%);
+      content: "";
+      inset: 0;
+      opacity: 0;
+      position: absolute;
+      transition: opacity var(--transition-base), transform var(--transition-base);
+      z-index: -1;
+    }
+
+    .achievement-badge-card:hover {
+      border-color: color-mix(in srgb, var(--primary) 42%, var(--border)) !important;
+      box-shadow: 0 28px 64px rgba(101, 88, 245, 0.22) !important;
+      transform: translateY(-10px);
+    }
+
+    .achievement-badge-card:hover::before {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+
+    .achievement-badge-icon-wrap {
+      display: inline-grid;
+      min-height: 76px;
+      place-items: center;
+      position: relative;
+    }
+
+    .achievement-badge-icon-wrap::before {
+      background: currentColor;
+      border-radius: 50%;
+      content: "";
+      filter: blur(18px);
+      height: 54px;
+      opacity: 0.16;
+      position: absolute;
+      width: 54px;
+    }
+
+    .achievement-badge-card .badge-icon {
+      animation: achievementIconFloat 3.4s ease-in-out infinite;
+      filter: drop-shadow(0 14px 22px rgba(101, 88, 245, 0.12));
+      position: relative;
+      transition: filter var(--transition-base), transform var(--transition-base);
+      z-index: 1;
+    }
+
+    .achievement-badge-card:hover .badge-icon {
+      animation: achievementIconPop 680ms var(--ease-spring);
+      filter: drop-shadow(0 18px 26px rgba(101, 88, 245, 0.28));
+      transform: scale(1.16) rotate(-5deg);
+    }
+
+    .achievement-desc {
+      line-height: 1.55;
+      min-height: 48px;
+    }
+
+    .achievement-status {
+      align-self: center;
+      margin-top: auto;
+      transition: background var(--transition-base), border-color var(--transition-base), color var(--transition-base), transform var(--transition-base);
+    }
+
+    .achievement-status-unlocked {
+      background: linear-gradient(135deg, var(--success), #11b88d) !important;
+      border-color: rgba(255, 255, 255, 0.18) !important;
+      color: #ffffff !important;
+      min-width: 108px;
+    }
+
+    .achievement-status-locked {
+      background: rgba(255, 255, 255, 0.06) !important;
+      border-color: rgba(255, 255, 255, 0.14) !important;
+      color: #d7d8e6 !important;
+      min-width: 92px;
+    }
+
+    .achievement-status i {
+      color: inherit !important;
+    }
+
+    .achievement-badge-card:hover .achievement-status {
+      transform: translateY(-2px);
+    }
+
+    .achievement-unlocked .achievement-status {
+      box-shadow: 0 8px 20px rgba(22, 167, 120, 0.16);
+    }
+
+    .achievement-locked {
+      filter: grayscale(85%);
+      opacity: 0.72;
+    }
+
+    .achievement-locked::after {
+      background:
+        linear-gradient(135deg, transparent 0 42%, rgba(255, 255, 255, 0.08) 48%, transparent 56%),
+        rgba(0, 0, 0, 0.08);
+      content: "";
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      transition: opacity var(--transition-base);
+    }
+
+    .achievement-locked:hover {
+      filter: grayscale(35%);
+      opacity: 0.92;
+    }
+
+    .achievement-locked:hover::after {
+      opacity: 1;
+    }
+
+    .achievement-locked .badge-icon {
+      animation: achievementLockedBreathe 3.8s ease-in-out infinite;
+    }
+
+    @keyframes achievementRise {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes achievementCardIn {
+      from { opacity: 0; transform: translateY(34px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes achievementIconFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes achievementIconPop {
+      0% { transform: scale(0.92) rotate(-8deg); }
+      58% { transform: scale(1.22) rotate(5deg); }
+      100% { transform: scale(1.16) rotate(-5deg); }
+    }
+
+    @keyframes achievementLockedBreathe {
+      0%, 100% { opacity: 0.56; transform: scale(1); }
+      50% { opacity: 0.86; transform: scale(1.04); }
+    }
+
+    @keyframes achievementProgressFill {
+      from { width: 0; }
+    }
+
+    @keyframes achievementProgressShine {
+      0%, 42% { left: -35%; }
+      78%, 100% { left: 120%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .page-achievements .text-center.mb-5,
+      .page-achievements .row.justify-content-center.mb-5,
+      .achievement-badge-card,
+      .achievement-badge-card .badge-icon,
+      .achievement-locked .badge-icon,
+      .page-achievements .progress-bg::after,
+      .page-achievements .progress-bar-custom {
+        animation: none !important;
+      }
+    }
+  </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const badges = [
@@ -154,19 +367,19 @@
 
       const container = document.getElementById('badges-container');
       badges.forEach((b, index) => {
-        const lockedClass = b.unlocked ? '' : 'badge-locked';
-        const statusBadge = b.unlocked 
-          ? `<span class="badge bg-success bg-opacity-10 text-success rounded-pill px-2 py-1"><i class="fa-solid fa-unlock small"></i> Unlocked</span>` 
-          : `<span class="badge bg-secondary bg-opacity-10 text-secondary rounded-pill px-2 py-1"><i class="fa-solid fa-lock small"></i> Locked</span>`;
+        const lockedClass = b.unlocked ? 'achievement-unlocked' : 'achievement-locked badge-locked';
+        const statusBadge = b.unlocked
+          ? `<span class="achievement-status achievement-status-unlocked badge rounded-pill px-3 py-1"><i class="fa-solid fa-unlock small me-1"></i> Unlocked</span>`
+          : `<span class="achievement-status achievement-status-locked badge rounded-pill px-3 py-1"><i class="fa-solid fa-lock small me-1"></i> Locked</span>`;
         
         container.innerHTML += `
           <div class="col-md-4 col-lg-3">
-            <div class="unified-card glass p-4 text-center h-100 badge-card ${lockedClass}" data-aos="fade-up" data-aos-delay="${index * 100}">
-              <div class="mb-3">
+            <div class="achievement-badge-card unified-card glass p-4 text-center h-100 badge-card ${lockedClass}" style="animation-delay: ${index * 90}ms;" data-aos="fade-up" data-aos-delay="${index * 100}">
+              <div class="achievement-badge-icon-wrap mb-3 ${b.color}">
                 <i class="fa-solid ${b.icon} badge-icon ${b.color}"></i>
               </div>
               <h5 class="fw-bold mb-2">${b.title}</h5>
-              <p class="text-muted small mb-3">${b.desc}</p>
+              <p class="achievement-desc text-muted small mb-4">${b.desc}</p>
               ${statusBadge}
             </div>
           </div>

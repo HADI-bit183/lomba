@@ -48,6 +48,15 @@ GEMINI_MODEL=gemini-3.5-flash
 `DATABASE_URL` is needed only by the migration command and should not be added
 to the runtime container unless migrations run there.
 
+Optional production alerting:
+
+```env
+ERROR_WEBHOOK_URL=https://alerts.example/webhook
+```
+
+When set, server `ERROR` and `FATAL` logs are still written locally and are also
+sent as JSON to the webhook with a short timeout.
+
 ## 4. Docker deployment
 
 ```bash
@@ -65,6 +74,10 @@ For a Git-based Node host without Docker:
 
 The readiness endpoint returns `503` until Supabase Auth, the database, and the
 latest required columns are reachable.
+
+Do not deploy this project to GitHub Pages as the production target. GitHub Pages
+can only serve static files, while NovaMind requires the Node.js server for
+`/api/*`, authentication, sessions, AI chat, and database access.
 
 ## 5. Verify
 
