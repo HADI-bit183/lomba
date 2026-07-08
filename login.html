@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login – NovaMind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Libraries -->
+  <link rel="preload" href="assets/vendor/css/fonts.css" as="style">
+  <link href="assets/vendor/css/fonts.css" rel="stylesheet">
+  <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/css/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link href="css/variables.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
+  <link href="css/refresh.css?v=20260708-motion-idle" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <meta name="description" content="Login to your NovaMind account to access the dashboard, AI tools, and competition features.">
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+      }
+    })();
+  </script>
+
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .auth-hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .auth-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-hero);
+      z-index: 0;
+    }
+    :root.dark-theme .auth-hero::before {
+      background:
+        radial-gradient(circle at 16% 18%, rgba(101, 88, 245, 0.12), transparent 31%),
+        radial-gradient(circle at 82% 24%, rgba(8, 185, 199, 0.09), transparent 29%),
+        radial-gradient(circle at 68% 76%, rgba(255, 114, 94, 0.06), transparent 25%),
+        linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    }
+    .auth-card {
+      width: 100%;
+      max-width: 460px;
+      position: relative;
+      z-index: 1;
+    }
+    .auth-card .unified-card {
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .auth-tabs {
+      display: flex;
+      border-bottom: 2px solid var(--border);
+      margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+      padding: 0;
+    }
+    .auth-tab {
+      flex: 1;
+      text-align: center;
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .auth-tab::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-primary);
+      border-radius: 3px 3px 0 0;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    .auth-tab.active {
+      color: var(--primary);
+    }
+    .auth-tab.active::after {
+      transform: scaleX(1);
+    }
+    .auth-tab:hover:not(.active) {
+      color: var(--text-secondary);
+      background: var(--primary-soft);
+    }
+    .auth-form {
+      display: none;
+    }
+    .auth-form.active {
+      display: block;
+      animation: authFadeIn 0.35s ease;
+    }
+    @keyframes authFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .input-icon-wrapper {
+      position: relative;
+    }
+    .input-icon-wrapper .input-icon {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      pointer-events: none;
+      transition: color 0.25s;
+    }
+    .input-icon-wrapper input:focus ~ .input-icon {
+      color: var(--primary);
+    }
+    .input-icon-wrapper input {
+      padding-left: 2.75rem;
+    }
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0;
+      font-size: 0.9rem;
+      transition: color 0.25s;
+    }
+    .toggle-password:hover {
+      color: var(--primary);
+    }
+    .auth-btn {
+      width: 100%;
+      padding: 0.85rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 12px;
+      background: var(--gradient-primary);
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .auth-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-glow);
+    }
+    .auth-btn:active:not(:disabled) {
+      transform: translateY(0);
+    }
+    .auth-btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+    .auth-btn .spinner-border {
+      width: 1.1rem;
+      height: 1.1rem;
+      border-width: 2px;
+    }
+    .auth-alert {
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      display: none;
+      align-items: flex-start;
+      gap: 0.6rem;
+      animation: authFadeIn 0.3s ease;
+    }
+    .auth-alert.show {
+      display: flex;
+    }
+    .auth-alert.alert-danger {
+      background: rgba(233, 88, 101, 0.1);
+      color: var(--danger);
+      border: 1px solid rgba(233, 88, 101, 0.2);
+    }
+    .auth-alert.alert-success {
+      background: rgba(22, 167, 120, 0.1);
+      color: var(--success);
+      border: 1px solid rgba(22, 167, 120, 0.2);
+    }
+    .auth-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .auth-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+    .auth-feature i {
+      font-size: 0.7rem;
+      color: var(--success);
+    }
+    .floating-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      pointer-events: none;
+      animation: orbFloat 20s ease-in-out infinite alternate;
+    }
+    .floating-orb.orb-1 {
+      width: 300px;
+      height: 300px;
+      background: var(--primary);
+      top: -80px;
+      right: -100px;
+    }
+    .floating-orb.orb-2 {
+      width: 250px;
+      height: 250px;
+      background: var(--accent);
+      bottom: -60px;
+      left: -80px;
+      animation-delay: -10s;
+    }
+    @keyframes orbFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -20px) scale(1.05); }
+      66% { transform: translate(-20px, 15px) scale(0.95); }
+      100% { transform: translate(10px, -10px) scale(1.02); }
+    }
+    .forgot-link {
+      font-size: 0.82rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .forgot-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="auth-page">
+  <nav id="navbar" class="navbar navbar-expand-lg sticky-top glass py-2" role="navigation" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/logo.svg" alt="NovaMind Logo" class="logo me-2" width="32" height="32">
+        <span class="brand-text">NovaMind</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Programs <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="programsDropdown">
+              <li><a class="dropdown-item" href="competition.html">Competition</a></li>
+              <li><a class="dropdown-item" href="timeline.html">Timeline</a></li>
+              <li><a class="dropdown-item" href="innovation-roadmap.html">Innovation Roadmap</a></li>
+              <li><a class="dropdown-item" href="daily-challenge.html">Daily Challenge</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tools <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="toolsDropdown">
+              <li><a class="dropdown-item" href="ai-evaluator.html">AI Project Evaluator</a></li>
+              <li><a class="dropdown-item" href="skill-gap.html">Skill Gap Analysis</a></li>
+              <li><a class="dropdown-item" href="innovation-canvas.html">Innovation Canvas</a></li>
+              <li><a class="dropdown-item" href="innovation-impact.html">Innovation Impact Score</a></li>
+              <li><a class="dropdown-item" href="pitch-deck-generator.html">Pitch Deck Generator</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="resourcesDropdown">
+              <li><a class="dropdown-item" href="resources.html">Learning Resources</a></li>
+              <li><a class="dropdown-item" href="recommended-resources.html">Recommended Resources</a></li>
+              <li><a class="dropdown-item" href="ai-mentor.html">AI Mentor</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dashboardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard <i class="fa-solid fa-chevron-down ms-1" style="font-size: 0.75em;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end glass border-0 shadow-sm" aria-labelledby="dashboardDropdown">
+              <li><a class="dropdown-item" href="dashboard.html">Dashboard Overview</a></li>
+              <li><a class="dropdown-item" href="innovation-readiness.html">Innovation Readiness</a></li>
+              <li><a class="dropdown-item" href="achievements.html">Achievements</a></li>
+              <li><a class="dropdown-item" href="global-innovation-map.html">Global Innovation Map</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
+      </div>
+    </div>
+  </nav>
+
+<main>
+  <section class="auth-hero">
+    <!-- Floating decorative orbs -->
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+
+    <div class="auth-card">
+      <!-- Logo header -->
+      <div class="text-center mb-4">
+        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 64px; height: 64px; background: var(--gradient-primary); box-shadow: var(--shadow-glow);">
+          <i class="fa-solid fa-rocket fs-4 text-white"></i>
+        </div>
+        <h1 class="h4 fw-bold mb-1">Welcome to NovaMind</h1>
+        <p class="text-muted small mb-0">Access your innovation workspace</p>
+      </div>
+
+      <div class="unified-card glass p-4 p-md-5" style="padding-top: 1.5rem !important;">
+        <!-- Tabs -->
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-target="login-form" id="tab-login">
+            <i class="fa-solid fa-right-to-bracket me-1"></i> Login
+          </button>
+          <button class="auth-tab" data-target="register-form" id="tab-register">
+            <i class="fa-solid fa-user-plus me-1"></i> Create Account
+          </button>
+        </div>
+
+        <!-- Alert message -->
+        <div class="auth-alert" id="auth-alert" role="alert">
+          <i class="fa-solid fa-circle-exclamation mt-1"></i>
+          <span id="auth-alert-text"></span>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form class="auth-form active" id="login-form" novalidate>
+          <div class="mb-3">
+            <label for="login-email" class="form-label small fw-medium text-muted">Email Address</label>
+            <div class="input-icon-wrapper">
+              <input type="email" class="form-control bg-transparent border-secondary py-3" id="login-email" placeholder="you@example.com" autocomplete="email" required>
+              <i class="fa-solid fa-envelope input-icon"></i>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <label for="login-password" class="form-label small fw-medium text-muted mb-0">Password</label>
+              <a href="javascript:void(0)" class="forgot-link" id="forgot-password-link">Forgot password?</a>
+            </div>
+            <div class="input-icon-wrapper">
+              <input type="password" class="form-control bg-transparent border-secondary py-3" id="login-password" placeholder="••••••••" autocomplete="current-password" required minlength="8">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <button type="button" class="toggle-password" data-target="login-password" aria-label="Toggle password visibility">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="login-remember" checked>
+              <label class="form-check-label small text-muted" for="login-remember">Remember me</label>
+            </div>
+          </div>
+
+          <button type="submit" class="auth-btn" id="login-submit">
+            <span class="btn-text">Sign In</span>
+            <span class="btn-loading d-none">
+              <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              Signing in...
+            </span>
+          </button>
+
+          <div class="auth-features">
+            <div class="auth-feature"><i class="fa-solid fa-check-circle"></i> AI-powered innovation tools</div>
+            <div class="auth-feature"><i class="fa-solid fa-check-circle"></i> Personal dashboard & analytics</div>
+            <div class="auth-feature"><i class="fa-solid fa-check-circle"></i> Competition tracking & mentoring</div>
+          </div>
+        </form>
+
+        <!-- REGISTER FORM -->
+        <form class="auth-form" id="register-form" novalidate>
+          <div class="mb-3">
+            <label for="register-name" class="form-label small fw-medium text-muted">Full Name</label>
+            <div class="input-icon-wrapper">
+              <input type="text" class="form-control bg-transparent border-secondary py-3" id="register-name" placeholder="Hadi Priono" autocomplete="name" required minlength="2" maxlength="120">
+              <i class="fa-solid fa-user input-icon"></i>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="register-email" class="form-label small fw-medium text-muted">Email Address</label>
+            <div class="input-icon-wrapper">
+              <input type="email" class="form-control bg-transparent border-secondary py-3" id="register-email" placeholder="you@example.com" autocomplete="email" required>
+              <i class="fa-solid fa-envelope input-icon"></i>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="register-password" class="form-label small fw-medium text-muted">Password</label>
+            <div class="input-icon-wrapper">
+              <input type="password" class="form-control bg-transparent border-secondary py-3" id="register-password" placeholder="Min. 8 characters" autocomplete="new-password" required minlength="8" maxlength="128">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <button type="button" class="toggle-password" data-target="register-password" aria-label="Toggle password visibility">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <!-- Password strength indicator -->
+            <div class="mt-2" id="password-strength-bar" style="display: none;">
+              <div class="d-flex gap-1 mb-1">
+                <div class="flex-fill rounded-pill" style="height: 3px; background: var(--border);" id="str-1"></div>
+                <div class="flex-fill rounded-pill" style="height: 3px; background: var(--border);" id="str-2"></div>
+                <div class="flex-fill rounded-pill" style="height: 3px; background: var(--border);" id="str-3"></div>
+                <div class="flex-fill rounded-pill" style="height: 3px; background: var(--border);" id="str-4"></div>
+              </div>
+              <small class="text-muted" id="password-strength-text"></small>
+            </div>
+          </div>
+
+          <div class="form-check mb-4">
+            <input class="form-check-input" type="checkbox" id="register-remember" checked>
+            <label class="form-check-label small text-muted" for="register-remember">Keep me signed in</label>
+          </div>
+
+          <button type="submit" class="auth-btn" id="register-submit">
+            <span class="btn-text">Create Account</span>
+            <span class="btn-loading d-none">
+              <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              Creating account...
+            </span>
+          </button>
+
+          <p class="text-center small text-muted mt-3 mb-0">
+            By signing up, you agree to our <a href="javascript:void(0)" class="text-primary text-decoration-none fw-medium">Terms</a> and <a href="javascript:void(0)" class="text-primary text-decoration-none fw-medium">Privacy Policy</a>.
+          </p>
+        </form>
+
+        <!-- FORGOT PASSWORD FORM -->
+        <form class="auth-form" id="forgot-form" novalidate>
+          <div class="text-center mb-4">
+            <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 48px; height: 48px; background: var(--primary-soft);">
+              <i class="fa-solid fa-key text-primary"></i>
+            </div>
+            <h5 class="fw-bold mb-1">Reset Password</h5>
+            <p class="text-muted small mb-0">Enter your email and we'll send a reset link.</p>
+          </div>
+
+          <div class="mb-4">
+            <label for="forgot-email" class="form-label small fw-medium text-muted">Email Address</label>
+            <div class="input-icon-wrapper">
+              <input type="email" class="form-control bg-transparent border-secondary py-3" id="forgot-email" placeholder="you@example.com" autocomplete="email" required>
+              <i class="fa-solid fa-envelope input-icon"></i>
+            </div>
+          </div>
+
+          <button type="submit" class="auth-btn" id="forgot-submit">
+            <span class="btn-text">Send Reset Link</span>
+            <span class="btn-loading d-none">
+              <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              Sending...
+            </span>
+          </button>
+
+          <div class="text-center mt-3">
+            <a href="javascript:void(0)" class="small text-primary text-decoration-none fw-medium" id="back-to-login">
+              <i class="fa-solid fa-arrow-left me-1"></i> Back to Login
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <footer class="footer py-5 glass text-body">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/logo.svg" alt="NovaMind Logo" width="32" height="32" class="me-2">
+            <span class="fw-bold fs-4">NovaMind</span>
+          </div>
+          <p class="text-muted small">Empowering Global Innovators for an Intelligent Future. Join the movement.</p>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Platform</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-muted">Home</a></li>
+            <li class="mb-2"><a href="about.html" class="text-decoration-none text-muted">About</a></li>
+            <li class="mb-2"><a href="competition.html" class="text-decoration-none text-muted">Competition</a></li>
+            <li class="mb-2"><a href="timeline.html" class="text-decoration-none text-muted">Timeline</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="fw-bold mb-3">Resources</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="resources.html" class="text-decoration-none text-muted">Downloads</a></li>
+            <li class="mb-2"><a href="faq.html" class="text-decoration-none text-muted">FAQ</a></li>
+            <li class="mb-2"><a href="ai-assistant.html" class="text-decoration-none text-muted">AI Assistant</a></li>
+            <li class="mb-2"><a href="dashboard.html" class="text-decoration-none text-muted">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="fw-bold mb-3">Connect</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/HADI-bit183" class="text-muted fs-5" aria-label="GitHub HADI-bit183" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+            <a href="javascript:void(0)" class="text-muted fs-5" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 border-secondary opacity-25">
+      <div class="text-center text-muted small">
+        &copy; 2026 NovaMind. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script defer src="js/bundle.js"></script>
+  <script defer src="js/ui-refresh.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // ─── Tab Switching ─────────────────────────
+      const tabs = document.querySelectorAll('.auth-tab');
+      const forms = document.querySelectorAll('.auth-form');
+      const alertEl = document.getElementById('auth-alert');
+      const alertText = document.getElementById('auth-alert-text');
+
+      function showForm(targetId) {
+        forms.forEach(f => f.classList.remove('active'));
+        tabs.forEach(t => t.classList.remove('active'));
+        document.getElementById(targetId)?.classList.add('active');
+        const tab = document.querySelector(`[data-target="${targetId}"]`);
+        if (tab) tab.classList.add('active');
+        hideAlert();
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => showForm(tab.dataset.target));
+      });
+
+      // Forgot password link
+      document.getElementById('forgot-password-link')?.addEventListener('click', () => {
+        forms.forEach(f => f.classList.remove('active'));
+        tabs.forEach(t => t.classList.remove('active'));
+        document.getElementById('forgot-form')?.classList.add('active');
+        hideAlert();
+      });
+
+      document.getElementById('back-to-login')?.addEventListener('click', () => {
+        showForm('login-form');
+      });
+
+      // ─── Alert helpers ─────────────────────────
+      function showAlert(message, type = 'danger') {
+        alertEl.className = `auth-alert show alert-${type}`;
+        alertEl.querySelector('i').className = type === 'success'
+          ? 'fa-solid fa-circle-check mt-1'
+          : 'fa-solid fa-circle-exclamation mt-1';
+        alertText.textContent = message;
+      }
+
+      function hideAlert() {
+        alertEl.classList.remove('show');
+      }
+
+      // ─── Toggle password visibility ────────────
+      document.querySelectorAll('.toggle-password').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const input = document.getElementById(btn.dataset.target);
+          const icon = btn.querySelector('i');
+          if (input.type === 'password') {
+            input.type = 'text';
+            icon.className = 'fa-solid fa-eye-slash';
+          } else {
+            input.type = 'password';
+            icon.className = 'fa-solid fa-eye';
+          }
+        });
+      });
+
+      // ─── Password strength indicator ───────────
+      const regPassword = document.getElementById('register-password');
+      const strengthBar = document.getElementById('password-strength-bar');
+      const strengthText = document.getElementById('password-strength-text');
+      const bars = [
+        document.getElementById('str-1'),
+        document.getElementById('str-2'),
+        document.getElementById('str-3'),
+        document.getElementById('str-4')
+      ];
+
+      const strengthConfig = [
+        { label: 'Too weak', color: 'var(--danger)' },
+        { label: 'Weak', color: 'var(--warning)' },
+        { label: 'Good', color: 'var(--accent)' },
+        { label: 'Strong', color: 'var(--success)' }
+      ];
+
+      regPassword?.addEventListener('input', () => {
+        const val = regPassword.value;
+        if (!val) {
+          strengthBar.style.display = 'none';
+          return;
+        }
+        strengthBar.style.display = 'block';
+        let score = 0;
+        if (val.length >= 8) score++;
+        if (/[a-z]/.test(val) && /[A-Z]/.test(val)) score++;
+        if (/\d/.test(val)) score++;
+        if (/[^a-zA-Z0-9]/.test(val)) score++;
+        score = Math.max(1, score);
+
+        bars.forEach((bar, i) => {
+          bar.style.background = i < score ? strengthConfig[score - 1].color : 'var(--border)';
+          bar.style.transition = 'background 0.3s ease';
+        });
+        strengthText.textContent = strengthConfig[score - 1].label;
+        strengthText.style.color = strengthConfig[score - 1].color;
+      });
+
+      // ─── Loading state helpers ─────────────────
+      function setLoading(btn, loading) {
+        btn.disabled = loading;
+        btn.querySelector('.btn-text').classList.toggle('d-none', loading);
+        btn.querySelector('.btn-loading').classList.toggle('d-none', !loading);
+      }
+
+      // ─── LOGIN ─────────────────────────────────
+      document.getElementById('login-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        hideAlert();
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+        const remember = document.getElementById('login-remember').checked;
+        const btn = document.getElementById('login-submit');
+
+        if (!email || !password) {
+          showAlert('Please fill in all fields.');
+          return;
+        }
+
+        setLoading(btn, true);
+        try {
+          const response = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password, remember })
+          });
+
+          const data = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            throw new Error(data.error || 'Login failed. Please check your credentials.');
+          }
+
+          // Login success — redirect based on role
+          showAlert('Login successful! Redirecting...', 'success');
+          const redirectTo = data.user?.role === 'admin' ? 'admin-dashboard.html' : 'dashboard.html';
+          setTimeout(() => { window.location.href = redirectTo; }, 800);
+
+        } catch (err) {
+          showAlert(err.message);
+        } finally {
+          setLoading(btn, false);
+        }
+      });
+
+      // ─── REGISTER ──────────────────────────────
+      document.getElementById('register-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        hideAlert();
+        const fullname = document.getElementById('register-name').value.trim();
+        const email = document.getElementById('register-email').value.trim();
+        const password = document.getElementById('register-password').value;
+        const remember = document.getElementById('register-remember').checked;
+        const btn = document.getElementById('register-submit');
+
+        if (!fullname || !email || !password) {
+          showAlert('Please fill in all fields.');
+          return;
+        }
+        if (password.length < 8) {
+          showAlert('Password must be at least 8 characters.');
+          return;
+        }
+
+        setLoading(btn, true);
+        try {
+          const response = await fetch('/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fullname, email, password, remember })
+          });
+
+          const data = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            throw new Error(data.error || 'Registration failed. Please try again.');
+          }
+
+          if (data.emailVerificationRequired) {
+            showAlert('Account created! Please check your email to verify your account, then login.', 'success');
+            setTimeout(() => showForm('login-form'), 2000);
+          } else {
+            showAlert('Account created! Redirecting...', 'success');
+            setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
+          }
+
+        } catch (err) {
+          showAlert(err.message);
+        } finally {
+          setLoading(btn, false);
+        }
+      });
+
+      // ─── FORGOT PASSWORD ───────────────────────
+      document.getElementById('forgot-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        hideAlert();
+        const email = document.getElementById('forgot-email').value.trim();
+        const btn = document.getElementById('forgot-submit');
+
+        if (!email) {
+          showAlert('Please enter your email address.');
+          return;
+        }
+
+        setLoading(btn, true);
+        try {
+          const response = await fetch('/api/auth/forgot-password', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+          });
+
+          const data = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            throw new Error(data.error || 'Failed to send reset link.');
+          }
+
+          showAlert(data.message || 'If that email exists, a reset link has been sent.', 'success');
+
+        } catch (err) {
+          showAlert(err.message);
+        } finally {
+          setLoading(btn, false);
+        }
+      });
+
+      // ─── Check if already logged in ────────────
+      fetch('/api/auth/me')
+        .then(r => r.ok ? r.json() : null)
+        .then(data => {
+          if (data?.user) {
+            const target = data.user.role === 'admin' ? 'admin-dashboard.html' : 'dashboard.html';
+            window.location.href = target;
+          }
+        })
+        .catch(() => {});
+
+      // ─── Auto-select tab from URL ──────────────
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('tab') === 'register') {
+        showForm('register-form');
+      }
+    });
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.log('SW registration failed: ', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

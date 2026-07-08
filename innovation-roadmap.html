@@ -93,7 +93,7 @@
             </ul>
           </li>
         </ul>
-        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <a href="login.html" class="btn btn-outline-primary ms-2 text-decoration-none" style="border-radius:10px;font-weight:600;font-size:0.85rem;padding:0.45rem 1rem;">Login</a><a href="register.html" class="premium-btn ms-2 text-decoration-none">Register</a>
         <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
       </div>
     </div>
@@ -101,7 +101,7 @@
 
   <main class="flex-grow-1 py-5">
     <div class="container">
-      <div class="text-center mb-5">
+      <div class="text-center mb-5" data-aos="fade-down">
         <h1 class="display-4 fw-bold text-gradient mb-3">Innovation Roadmap</h1>
         <p class="lead text-muted max-w-2xl mx-auto">Follow the path from a simple idea to a global launch.</p>
       </div>
@@ -153,7 +153,7 @@
         
         timeline.innerHTML += `
           <div class="timeline-item ${position} ${activeClass}">
-            <div class="timeline-card">
+            <div class="timeline-card unified-card glass-card">
               <h5 class="fw-bold mb-2"><i class="fa-solid ${stage.icon} ${iconColor} me-2"></i> <span>${stage.title}</span></h5>
               <p class="text-muted small mb-0">${stage.desc}</p>
             </div>

@@ -862,6 +862,31 @@ function initAuth() {
       const isAdmin = user && user.role === 'admin';
       const isDashboardPage = window.location.pathname.includes('admin-dashboard.html');
 
+      if (user) {
+        // User is logged in
+        const loginBtn = document.querySelector('a[href="login.html"]');
+        const registerBtn = document.querySelector('a[href="register.html"]');
+        
+        if (loginBtn) {
+          // Replace Login with Logout
+          const logoutBtn = document.createElement('a');
+          logoutBtn.href = '#';
+          logoutBtn.className = 'btn btn-outline-danger ms-2 text-decoration-none';
+          logoutBtn.style = loginBtn.style.cssText;
+          logoutBtn.innerHTML = '<i class="fa-solid fa-arrow-right-from-bracket me-1"></i> Logout';
+          logoutBtn.onclick = async (e) => {
+            e.preventDefault();
+            await fetch('/api/auth/logout', { method: 'POST' });
+            window.location.href = 'index.html';
+          };
+          loginBtn.replaceWith(logoutBtn);
+        }
+        
+        if (registerBtn) {
+          registerBtn.remove();
+        }
+      }
+
       if (isAdmin) {
         // Append Admin Dashboard to Navbar
         const navMenu = document.querySelector('#navMenu .navbar-nav');

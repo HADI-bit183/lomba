@@ -93,7 +93,7 @@
             </ul>
           </li>
         </ul>
-        <a href="register.html" class="premium-btn ms-3 text-decoration-none">Register</a>
+        <a href="login.html" class="btn btn-outline-primary ms-2 text-decoration-none" style="border-radius:10px;font-weight:600;font-size:0.85rem;padding:0.45rem 1rem;">Login</a><a href="register.html" class="premium-btn ms-2 text-decoration-none">Register</a>
         <button class="btn btn-outline-dark ms-2" id="dark-mode-toggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon"></i></button>
       </div>
     </div>
@@ -101,7 +101,7 @@
 
   <main class="flex-grow-1 py-5">
     <div class="container">
-      <div class="text-center mb-5">
+      <div class="text-center mb-5" data-aos="fade-down">
         <h1 class="display-4 fw-bold text-gradient mb-3">AI Mentor Recommendation</h1>
         <p class="lead text-muted max-w-2xl mx-auto">Find the perfect mentor to guide your project to success.</p>
       </div>
@@ -135,10 +135,6 @@
   <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
   <script src="js/ui-refresh.js"></script>
   <style>
-    .page-mentor main .text-center.mb-5 {
-      animation: mentorHeroIn 720ms var(--ease-out) both;
-    }
-
     .mentor-filter {
       transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
     }
@@ -151,7 +147,6 @@
     }
 
     .mentor-card-premium {
-      animation: mentorCardIn 720ms var(--ease-out) both;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
@@ -298,16 +293,6 @@
       left: 120%;
     }
 
-    @keyframes mentorHeroIn {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes mentorCardIn {
-      from { opacity: 0; transform: translateY(34px) scale(0.96); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
     @keyframes mentorRingPulse {
       0%, 100% { box-shadow: 0 0 0 0 rgba(101, 88, 245, 0.28); }
       50% { box-shadow: 0 0 0 8px rgba(101, 88, 245, 0); }
@@ -319,8 +304,6 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .page-mentor main .text-center.mb-5,
-      .mentor-card-premium,
       .mentor-avatar-ring,
       .mentor-online-dot {
         animation: none !important;
@@ -352,8 +335,8 @@
 
       filtered.forEach((m, index) => {
         container.innerHTML += `
-          <div class="col-md-6 col-lg-4">
-            <div class="p-4 text-center h-100 d-flex flex-column mentor-card-premium" style="animation-delay: ${index * 0.1}s;">
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="${(index % 3) * 100}">
+            <div class="p-4 text-center h-100 d-flex flex-column mentor-card-premium unified-card glass">
               <div class="mentor-card-strip"></div>
 
               <div class="position-relative d-inline-block mx-auto mb-3 mt-3">

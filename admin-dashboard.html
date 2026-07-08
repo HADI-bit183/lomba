@@ -115,6 +115,7 @@
                       <th class="ps-4 py-3 fw-medium">User</th>
                       <th class="py-3 fw-medium">Role</th>
                       <th class="py-3 fw-medium">Date Joined</th>
+                      <th class="py-3 fw-medium text-end pe-4">Actions</th>
                     </tr>
                   </thead>
                   <tbody id="recentUsersTable">
@@ -163,7 +164,7 @@
           return;
         }
         const result = await response.json();
-        const user = result?.data;
+        const user = result?.user;
         
         if (!user || user.role !== 'admin') {
           window.location.href = 'index.html?error=access_denied'; // Redirect if not admin
@@ -266,6 +267,11 @@
             </td>
             <td><span class="badge ${user.role === 'admin' ? 'bg-danger' : 'bg-secondary'} rounded-pill px-3 py-1">${escapeHTML(user.role)}</span></td>
             <td class="text-muted small">${new Date(user.created_at).toLocaleDateString()}</td>
+            <td class="text-end pe-4">
+              <button class="btn btn-sm btn-outline-danger" onclick="deleteUser('${user.id}')" title="Delete User">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </td>
           </tr>
         `).join('');
         document.getElementById('recentUsersTable').innerHTML = usersHtml;
@@ -312,6 +318,24 @@
         console.error('Failed to load admin dashboard:', err);
       }
     });
+
+    async function deleteUser(id) {
+      if (!confirm('Apakah Anda yakin ingin menghapus pengguna ini? Tindakan ini tidak dapat dibatalkan.')) return;
+      
+      try {
+        const response = await fetch(`/api/admin/users/${id}`, { method: 'DELETE' });
+        if (response.ok) {
+          alert('Pengguna berhasil dihapus.');
+          window.location.reload();
+        } else {
+          const err = await response.json();
+          alert('Gagal menghapus pengguna: ' + (err.error || 'Unknown error'));
+        }
+      } catch (e) {
+        console.error(e);
+        alert('Terjadi kesalahan saat menghapus pengguna.');
+      }
+    }
   </script>
 </body>
 </html>

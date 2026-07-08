@@ -22,5 +22,12 @@ module.exports = [
     pattern: /^\/api\/admin\/chats$/,
     middleware: adminMiddleware,
     handler: adminController.chats
+  },
+  {
+    method: 'DELETE',
+    pattern: /^\/api\/admin\/users\/([^/]+)$/,
+    middleware: adminMiddleware,
+    handler: adminController.deleteUser,
+    params: ['id']
   }
 ];

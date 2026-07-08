@@ -1,12 +1,14 @@
 const { sendJson } = require('../http/http-utils');
 const {
+  deleteUserById,
   getAdminStatistics,
   listChats,
   listUsers
 } = require('../services/admin-service');
 const {
   validateLimit,
-  validateOffset
+  validateOffset,
+  validateUuid
 } = require('../validators/common-validator');
 
 function pagination(requestUrl) {
@@ -46,8 +48,16 @@ async function chats(request, response, params, requestUrl) {
   });
 }
 
+async function deleteUser(request, response, params) {
+  const userId = validateUuid(params.id);
+  const requestUserId = request.auth.profileId;
+  await deleteUserById(userId, requestUserId);
+  sendJson(response, 200, { message: 'User deleted successfully' });
+}
+
 module.exports = {
   chats,
+  deleteUser,
   statistics,
   users
 };

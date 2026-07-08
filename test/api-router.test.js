@@ -70,6 +70,7 @@ test('router exposes all required CRUD endpoints', () => {
   assert.equal(hasRoute('GET', '/api/admin/statistics'), true);
   assert.equal(hasRoute('GET', '/api/admin/users'), true);
   assert.equal(hasRoute('GET', '/api/admin/chats'), true);
+  assert.equal(hasRoute('DELETE', '/api/admin/users/123-abc'), true);
   assert.equal(hasRoute('GET', '/api/achievements'), true);
   assert.equal(hasRoute('POST', '/api/achievements/check'), true);
   assert.equal(hasRoute('GET', '/api/users/statistics'), true);
@@ -236,18 +237,19 @@ test('API docs are public OpenAPI JSON', async () => {
 });
 
 test('admin, achievement, and statistics endpoints require authentication', async () => {
-  for (const path of [
-    '/api/admin/statistics',
-    '/api/admin/users',
-    '/api/admin/chats',
-    '/api/achievements',
-    '/api/users/statistics'
+  for (const item of [
+    { method: 'GET', path: '/api/admin/statistics' },
+    { method: 'GET', path: '/api/admin/users' },
+    { method: 'GET', path: '/api/admin/chats' },
+    { method: 'DELETE', path: '/api/admin/users/123-abc' },
+    { method: 'GET', path: '/api/achievements' },
+    { method: 'GET', path: '/api/users/statistics' }
   ]) {
     const response = new MockResponse();
     await routeApiRequest(
-      createRequest('GET'),
+      createRequest(item.method),
       response,
-      new URL(`http://localhost${path}`)
+      new URL(`http://localhost${item.path}`)
     );
     assert.equal(response.statusCode, 401);
     assert.equal(JSON.parse(response.body).code, 'UNAUTHORIZED');
