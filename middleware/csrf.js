@@ -35,7 +35,15 @@ function csrfMiddleware(req, res) {
   const secret = cookies[CSRF_COOKIE_NAME];
   const token = req.headers['x-csrf-token'];
   
-  if (!secret || !token || secret !== token) {
+  if (!secret || !token) {
+    res.writeHead(403, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: false, message: 'Invalid CSRF Token' }));
+    return Promise.reject(new AppError('Invalid CSRF Token', 403, 'CSRF_ERROR'));
+  }
+
+  const secretBuf = Buffer.from(secret);
+  const tokenBuf = Buffer.from(token);
+  if (secretBuf.length !== tokenBuf.length || !crypto.timingSafeEqual(secretBuf, tokenBuf)) {
     res.writeHead(403, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ success: false, message: 'Invalid CSRF Token' }));
     return Promise.reject(new AppError('Invalid CSRF Token', 403, 'CSRF_ERROR'));

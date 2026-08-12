@@ -3,8 +3,7 @@
 
 NovaMind Hub adalah platform kompetisi dan pembelajaran inovasi untuk mahasiswa. Proyek ini membantu peserta mendaftarkan tim, memakai mentor AI, memantau aktivitas, mengembangkan kesiapan inovasi, dan mengakses sumber belajar melalui satu pengalaman web yang konsisten.
 
-![NovaMind Dashboard Screenshot](docs/screenshots/dashboard-placeholder.svg)
-> *Placeholder: Ganti dengan screenshot halaman Dashboard asli sebelum presentasi.*
+![NovaMind Dashboard Screenshot](docs/screenshots/dashboard.png)
 
 ## Tujuan Proyek
 NovaMind dirancang untuk menjembatani ide mahasiswa dengan proses inovasi yang terstruktur. Platform menggabungkan informasi kompetisi, alat evaluasi, pendampingan AI, pelacakan progres, gamifikasi, dan administrasi data dalam arsitektur *full-stack* yang aman dan siap untuk *deployment* (Production-Ready).

@@ -2,7 +2,18 @@ const crypto = require('crypto');
 const { promisify } = require('util');
 const { AppError } = require('../database/errors');
 
+/**
+ * Standalone password-hashing utility (scrypt).
+ *
+ * NOT used in the live authentication flow — Supabase Auth handles all
+ * password hashing and verification on its own infrastructure.
+ *
+ * This module is kept as a tested utility for potential future use cases
+ * such as offline/self-hosted deployments where Supabase is not available.
+ */
+
 const scrypt = promisify(crypto.scrypt);
+
 
 async function hashPassword(password) {
   if (password === undefined || password === null) return null;

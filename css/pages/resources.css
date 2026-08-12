@@ -1,0 +1,171 @@
+/* ================================================================
+   Resources page styles
+   Extracted from resources.html inline <style>
+   ================================================================ */
+
+.page-resources main .section-padding h4 {
+  animation: resourceHeadingSlide 680ms var(--ease-out) both;
+}
+
+.page-resources main .row > [class*="col"] {
+  perspective: 1000px;
+}
+
+.page-resources main .unified-card {
+  animation: resourceCardEnter 760ms var(--ease-out) both, resourceCardBreathe 5.8s ease-in-out infinite;
+  min-height: 360px;
+  transform-origin: center bottom;
+}
+
+.page-resources main .row > [class*="col"]:nth-child(2) .unified-card {
+  animation-delay: 120ms, 900ms;
+}
+
+.page-resources main .row > [class*="col"]:nth-child(3) .unified-card {
+  animation-delay: 240ms, 1.8s;
+}
+
+.page-resources main .unified-card:hover {
+  transform: translateY(-12px) rotateX(2deg);
+}
+
+.page-resources main .unified-card .d-flex.justify-content-between > div:first-child {
+  animation: resourceIconFloat 3.2s ease-in-out infinite;
+  box-shadow: 0 18px 36px color-mix(in srgb, currentColor 20%, transparent);
+  position: relative;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.page-resources main .unified-card .d-flex.justify-content-between > div:first-child::after {
+  animation: resourceIconPulse 2.4s ease-in-out infinite;
+  background: currentColor;
+  border-radius: inherit;
+  content: "";
+  inset: -8px;
+  opacity: 0.12;
+  position: absolute;
+  z-index: -1;
+}
+
+.page-resources main .unified-card:hover .d-flex.justify-content-between > div:first-child {
+  box-shadow: 0 24px 44px color-mix(in srgb, currentColor 30%, transparent);
+  transform: translateY(-5px) scale(1.04) rotate(-3deg);
+}
+
+.page-resources .resource-file-icon {
+  align-items: center;
+  background: linear-gradient(135deg, var(--file-accent), color-mix(in srgb, var(--file-accent) 82%, #111827)) !important;
+  border: 1px solid color-mix(in srgb, var(--file-accent) 22%, #ffffff);
+  border-radius: 18px !important;
+  color: #ffffff !important;
+  display: inline-grid;
+  height: 76px;
+  isolation: isolate;
+  justify-items: center;
+  overflow: hidden;
+  position: relative;
+  width: 76px;
+}
+
+.page-resources .resource-file-icon::after {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), transparent 56%);
+  border-radius: inherit;
+  content: "";
+  inset: 1px;
+  pointer-events: none;
+  position: absolute;
+}
+
+.page-resources .resource-file-report {
+  --file-accent: #ef4e63;
+}
+
+.page-resources .resource-file-signature {
+  --file-accent: #1fad7c;
+}
+
+.page-resources .resource-file-deck {
+  --file-accent: #f0a733;
+}
+
+.page-resources .resource-file-icon svg {
+  display: block;
+  color: #ffffff;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.22));
+  height: 42px;
+  position: relative;
+  width: 42px;
+  z-index: 2;
+}
+
+.page-resources main .unified-card .badge {
+  animation: resourceBadgeBob 4s ease-in-out infinite;
+}
+
+.page-resources main .unified-card .btn {
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.page-resources main .unified-card .btn::after {
+  animation: resourceButtonShine 3.4s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+  content: "";
+  inset: 0 auto 0 -45%;
+  opacity: 0.18;
+  position: absolute;
+  transform: skewX(-18deg);
+  width: 34%;
+}
+
+.page-resources main .unified-card .btn:hover {
+  box-shadow: 0 14px 32px color-mix(in srgb, currentColor 16%, transparent);
+  transform: translateY(-3px);
+}
+
+@keyframes resourceHeadingSlide {
+  from { opacity: 0; transform: translateX(-18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes resourceCardEnter {
+  from { opacity: 0; transform: translateY(34px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes resourceCardBreathe {
+  0%, 100% { box-shadow: var(--shadow-sm); }
+  50% { box-shadow: 0 24px 58px rgba(101, 88, 245, 0.12); }
+}
+
+@keyframes resourceIconFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-9px) rotate(-2deg); }
+}
+
+@keyframes resourceIconPulse {
+  0%, 100% { opacity: 0.08; transform: scale(0.9); }
+  50% { opacity: 0.2; transform: scale(1.12); }
+}
+
+@keyframes resourceBadgeBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes resourceButtonShine {
+  0%, 42% { left: -45%; }
+  78%, 100% { left: 120%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-resources main .section-padding h4,
+  .page-resources main .unified-card,
+  .page-resources main .unified-card .d-flex.justify-content-between > div:first-child,
+  .page-resources main .unified-card .d-flex.justify-content-between > div:first-child::after,
+  .page-resources main .unified-card .badge,
+  .page-resources main .unified-card .btn::after {
+    animation: none !important;
+  }
+}

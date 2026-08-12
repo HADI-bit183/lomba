@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1034"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="codeGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6558f5"/>
+      <stop offset="100%" stop-color="#08b9c7"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="250" rx="12" fill="url(#bg)"/>
+  <!-- Terminal window -->
+  <rect x="60" y="40" width="280" height="160" rx="10" fill="#0d1117" stroke="#292a3d" stroke-width="1.5"/>
+  <!-- Terminal title bar -->
+  <rect x="60" y="40" width="280" height="24" rx="10" fill="#151624"/>
+  <circle cx="78" cy="52" r="4" fill="#e95865" opacity="0.8"/>
+  <circle cx="92" cy="52" r="4" fill="#e9a23b" opacity="0.8"/>
+  <circle cx="106" cy="52" r="4" fill="#16a778" opacity="0.8"/>
+  <!-- Code lines -->
+  <rect x="80" y="76" width="80" height="6" rx="3" fill="#6558f5" opacity="0.6"/>
+  <rect x="168" y="76" width="40" height="6" rx="3" fill="#08b9c7" opacity="0.4"/>
+  <rect x="95" y="92" width="100" height="6" rx="3" fill="#8a7eff" opacity="0.4"/>
+  <rect x="203" y="92" width="55" height="6" rx="3" fill="#36d1d8" opacity="0.35"/>
+  <rect x="95" y="108" width="70" height="6" rx="3" fill="#ff725e" opacity="0.35"/>
+  <rect x="173" y="108" width="85" height="6" rx="3" fill="#8a7eff" opacity="0.3"/>
+  <rect x="80" y="124" width="50" height="6" rx="3" fill="#6558f5" opacity="0.5"/>
+  <rect x="95" y="140" width="120" height="6" rx="3" fill="#16a778" opacity="0.4"/>
+  <rect x="223" y="140" width="40" height="6" rx="3" fill="#08b9c7" opacity="0.3"/>
+  <rect x="80" y="156" width="60" height="6" rx="3" fill="#6558f5" opacity="0.45"/>
+  <rect x="148" y="156" width="90" height="6" rx="3" fill="#e9a23b" opacity="0.3"/>
+  <!-- Cursor blink -->
+  <rect x="80" y="172" width="8" height="12" rx="1" fill="url(#codeGrad)" opacity="0.7"/>
+  <!-- Clock/timer icon -->
+  <g transform="translate(330, 55)" opacity="0.5">
+    <circle cx="0" cy="0" r="14" fill="none" stroke="#e9a23b" stroke-width="1.5"/>
+    <line x1="0" y1="0" x2="0" y2="-8" stroke="#e9a23b" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="6" y2="2" stroke="#e9a23b" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <text x="330" y="80" text-anchor="middle" fill="#e9a23b" font-size="9" font-family="Inter,sans-serif" opacity="0.5">48h</text>
+  <!-- Label -->
+  <text x="200" y="238" text-anchor="middle" fill="#b8b9cb" font-size="11" font-family="Inter,sans-serif" letter-spacing="0.08em">GLOBAL HACKATHON 2026</text>
+</svg>

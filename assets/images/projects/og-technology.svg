@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="50%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6558f5"/>
+      <stop offset="100%" stop-color="#08b9c7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Decorative circles -->
+  <circle cx="150" cy="100" r="200" fill="#6558f5" opacity="0.06"/>
+  <circle cx="1050" cy="530" r="250" fill="#08b9c7" opacity="0.05"/>
+  <circle cx="900" cy="150" r="120" fill="#ff725e" opacity="0.04"/>
+  <!-- Grid pattern -->
+  <g opacity="0.04" stroke="#fff" stroke-width="0.5">
+    <line x1="0" y1="100" x2="1200" y2="100"/><line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/><line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    <line x1="200" y1="0" x2="200" y2="630"/><line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/><line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <!-- Title -->
+  <text x="600" y="260" text-anchor="middle" fill="#fff" font-size="64" font-family="Poppins,Inter,sans-serif" font-weight="700">Future Innovators</text>
+  <!-- Subtitle -->
+  <text x="600" y="320" text-anchor="middle" fill="#b8b9cb" font-size="24" font-family="Inter,sans-serif" font-weight="400">Empowering Global Innovators for an Intelligent Future</text>
+  <!-- Accent line -->
+  <rect x="480" y="350" width="240" height="4" rx="2" fill="url(#accent)" opacity="0.8"/>
+  <!-- Tech icons as abstract nodes -->
+  <circle cx="350" cy="450" r="8" fill="#6558f5" opacity="0.5"/>
+  <circle cx="500" cy="470" r="6" fill="#08b9c7" opacity="0.4"/>
+  <circle cx="650" cy="440" r="7" fill="#8a7eff" opacity="0.45"/>
+  <circle cx="800" cy="460" r="6" fill="#36d1d8" opacity="0.4"/>
+  <circle cx="900" cy="445" r="8" fill="#6558f5" opacity="0.5"/>
+  <line x1="358" y1="450" x2="494" y2="470" stroke="#6558f5" stroke-width="1" opacity="0.2"/>
+  <line x1="506" y1="470" x2="643" y2="440" stroke="#08b9c7" stroke-width="1" opacity="0.2"/>
+  <line x1="657" y1="440" x2="794" y2="460" stroke="#8a7eff" stroke-width="1" opacity="0.2"/>
+  <line x1="806" y1="460" x2="892" y2="445" stroke="#36d1d8" stroke-width="1" opacity="0.2"/>
+</svg>

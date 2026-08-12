@@ -15,6 +15,7 @@
   <link href="css/responsive.css" rel="stylesheet">
   <link href="css/animation.css" rel="stylesheet">
   <link href="css/refresh.css?v=20260708-motion-idle" rel="stylesheet">
+  <link href="css/pages/daily-challenge.css" rel="stylesheet">
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -155,61 +156,6 @@
 
   <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
   <script src="js/ui-refresh.js"></script>
-  <style>
-    .challenge-meta {
-      flex-wrap: wrap;
-    }
-
-    .challenge-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 0.65rem 1rem;
-      border: 1px solid currentColor;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      line-height: 1.2;
-      white-space: nowrap;
-    }
-
-    .challenge-pill-danger {
-      color: var(--danger);
-      background: color-mix(in srgb, var(--danger) 12%, transparent);
-    }
-
-    .challenge-pill-info {
-      color: var(--info);
-      background: color-mix(in srgb, var(--info) 12%, transparent);
-    }
-
-    .challenge-pill-warning {
-      color: var(--warning);
-      background: color-mix(in srgb, var(--warning) 16%, transparent);
-    }
-
-    @media (max-width: 576px) {
-      .page-challenge .unified-card {
-        padding: 2rem 1.25rem !important;
-      }
-
-      .challenge-meta {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .challenge-pill {
-        width: 100%;
-        white-space: normal;
-      }
-
-      #btnComplete {
-        width: 100%;
-        max-width: 320px;
-      }
-    }
-  </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const challenges = [
